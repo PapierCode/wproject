@@ -1,0 +1,88 @@
+/*==============================
+=            Layout            =
+==============================*/
+
+.header {
+	.is-fullscreen & {
+		background-color: transparent;
+	}
+}
+
+.main-inner {
+
+	> * {
+		background-color: var(--color-white);
+	}
+
+	/* $mq-layout-l */
+	@media ( min-width : em($mq-layout-l) ) {
+		background-color: var(--color-grey);
+	}
+	/* $mq-layout-max--fs */
+	@media ( min-width : em($mq-layout-max--fs) ) {
+		border-left-color: var(--color-grey);
+		border-right-color: var(--color-grey);
+	}
+}
+
+
+/*=====  FIN Layout  =====*/
+
+/*===================================
+=            Publication            =
+===================================*/
+
+/*----------  Entête d'article  ----------*/
+
+h1 {
+	.is-fullscreen & {
+		background-color: hsla(var(--color-white-h),var(--color-white-s),var(--color-white-l),.7);
+		padding: 2vw 4vw;
+	}
+}
+
+.fs-more-btn {
+	animation: fs-more-btn-anim 2s ease infinite;
+
+	&:hover, &:focus {
+	   animation:none;
+	}
+}
+
+@keyframes fs-more-btn-anim {
+	0%   { transform: translateY(0); }
+	20%  { transform: translateY(-50%); }
+	40%  { transform: translateY(0); }
+	100% { transform: translateY(0); }
+}
+
+
+/*----------  Article résumé  ----------*/
+
+.st {
+	border-bottom-color:var(--color-grey);
+
+	&.st--fake:hover {
+		background-color: var(--color-white);
+	}
+}
+
+
+/*----------  Raccourics de l'accueil  ----------*/
+
+.home-shortcuts {
+	/* $mq-layout-l */
+	@media ( min-width : em($mq-layout-l) ) {
+		background-color: var(--color-grey);
+	}
+}
+
+.home-shortcut-item {
+	/* $mq-layout-l */
+	@media ( min-width : em($mq-layout-l) ) {
+		background-color: var(--color-white);
+	}
+}
+
+
+/*=====  FIN Publication  =====*/

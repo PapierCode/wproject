@@ -1,0 +1,5 @@
+.map-marker {
+	&:before {
+		background-image:svg-load("../images/map-favicon.svg");
+	}
+}

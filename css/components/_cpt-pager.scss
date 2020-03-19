@@ -1,0 +1,33 @@
+.pager-item {
+	margin-right: rem(10);
+}
+.pager-link {
+	width: rem(40);
+	height: rem(40);
+	background-color: var(--color-black);
+	color:var(--color-white);
+	font-weight: 700;
+	
+	path {
+		fill:var(--color-white);
+	}
+
+	&.is-active {
+		background-color:transparent;
+		color:var(--color-black);
+		border:2px solid var(--color-black);
+	}
+
+	&:not(.is-active):not(.pager-dots):hover, &:not(.is-active):not(.pager-dots):focus {
+	   background-color:var(--color-3);
+	   color:var(--color-black);
+
+	   path {
+		   fill:var(--color-black);
+	   }
+	}
+}
+.pager-dots {
+	background-color: transparent;
+	color:var(--color-black);
+}

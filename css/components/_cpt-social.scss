@@ -1,0 +1,30 @@
+
+.social-link {
+	padding: rem(10);
+	background-color: var(--color-black);
+	
+	path {
+		fill:var(--color-white);
+	}
+}
+
+.social-link--facebook {
+	&:hover, &:focus {
+	   background-color: #3b5998;
+	}
+}
+.social-link--twitter {
+	&:hover, &:focus {
+	   background-color: #00aced;
+	}
+}
+.social-link--linkedin {
+	&:hover, &:focus {
+	   background-color: #007bb5;
+	}
+}
+.social-link--instagram {
+	&:hover, &:focus {
+	   background-color: #c32aa3;
+	}
+}

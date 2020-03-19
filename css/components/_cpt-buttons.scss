@@ -1,0 +1,28 @@
+
+.btn {
+	background-color: var(--color-black);
+	font-family: var(--font);
+	color:var(--color-white);
+
+	path {
+		fill:var(--color-white);
+	}
+
+	&:hover, &:focus {
+		background-color: var(--color-3);
+		color:var(--color-black);
+
+		path {
+			fill:var(--color-black);
+		}
+	}
+}
+
+.btn--color-1 {
+	background-color: var(--color-1);
+	color:var(--color-black);
+}
+.btn--color-2 {
+	background-color: var(--color-2);
+	color:var(--color-black);
+}

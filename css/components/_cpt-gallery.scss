@@ -1,0 +1,31 @@
+.gl {
+	background-color: hsla(var(--color-black-h),var(--color-black-s),var(--color-black-l),.8);
+	color: var(--color-white);
+}
+.gl-footer {
+	background-color: hsla(var(--color-black-h),var(--color-black-s),var(--color-black-l),.5);
+}
+.gl-btn {
+	background-color: var(--color-black);
+	
+	path {
+		fill:var(--color-white);
+	}
+
+	&:hover, &:focus {
+		background-color: var(--color-3);
+		path {
+			fill:var(--color-black);
+		}
+	}
+}
+.gl-loader {
+	&:before {
+		left:50%;
+		top:50%;
+		transform: translate(-50%,-50%) rotate(45deg);
+		background-color: var(--color-black);
+		width: rem(100);
+		height:rem(100);
+	}
+}

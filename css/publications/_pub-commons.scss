@@ -1,0 +1,115 @@
+/*===============================
+=            Communs            =
+===============================*/
+
+/*----------  Titre page  ----------*/
+
+h1 {
+	color:var(--color-black);
+	font-family: var(--font);
+	font-weight: 900;
+
+	font-size: rem(28);
+	line-height: 1.2; // dépend de la font
+
+	/* $mq-title-size */
+	@media ( min-width : em($mq-title-size) ) {
+		font-size: rem(40);
+	}
+}
+
+
+/*----------  Navigation pager, page précédente  ----------*/
+
+.main-footer-nav {
+	border-bottom-color: var(--color-grey);
+}
+
+/*----------  Partage  ----------*/
+
+.social-list--share {
+	.social-item {
+		margin-left:rem(10);
+	}
+}
+
+
+/*=====  FIN Communs  =====*/
+
+/*======================================
+=            Article résumé            =
+======================================*/
+
+.st {
+	transition:background-color $t-st-hover ease;
+
+	&:hover {
+		background-color: var(--color-3);
+		transition:background-color $t-st-hover ease;
+	}
+}
+
+.st-title {
+	font-family: var(--font);
+	font-weight: 900;
+	font-size: rem(24);
+	line-height: 1.2;
+	margin:rem($space--st,0,.5*$space--st,0);
+
+	a {
+		color:var(--color-black);
+		&:focus {
+			outline: none;
+		}
+	}
+	/* $mq-title-size */
+	@media ( min-width : em($mq-title-size) ) {
+		font-size: rem(28);
+	}
+}
+
+.st-figure {
+	overflow: hidden;
+
+	img {
+		transform-origin: center;
+	}	
+	.st:hover & {
+		img {
+			transform:scale(1.1);
+		}
+	}
+}
+
+.st-desc {
+	span {
+		background-color: var(--color-black);
+		svg {
+			fill:var(--color-white);
+		}
+	}
+	.st:hover & {
+		svg {
+			fill:var(--color-3);
+		}
+	}
+}
+
+
+/*=====  FIN Article résumé  =====*/
+
+/*==================================
+=            Actualités            =
+==================================*/
+
+.st-date {
+	color:var(--color-black);
+	font-style: italic;
+
+	span {
+		font-weight: 700;
+	}
+}
+
+
+/*=====  FIN Actualités  =====*/

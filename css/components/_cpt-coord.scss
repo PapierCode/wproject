@@ -1,0 +1,37 @@
+/**
+*
+* Composant : coord
+*
+**/
+
+.coord-item--logo {
+	/* $mq-layout-m */
+	@media ( min-width : em($mq-layout-m) ) {
+		img {
+			width:rem(120);
+		}
+	}
+}
+.coord-item--addr {
+	button {
+		color:var(--color-2);
+		font-size: rem(16);
+
+		&:before {
+			background-color: var(--color-2);
+		}
+	}
+}
+.coord-item--phone {	
+	a {
+		color:var(--color-white);
+	}
+}
+
+.coord-ico {
+	background-color: var(--color-white);
+
+	path {
+		fill:var(--color-black);
+	}
+}

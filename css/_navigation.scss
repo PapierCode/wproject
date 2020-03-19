@@ -1,0 +1,162 @@
+/*==============================
+=            Entête            =
+==============================*/
+
+/*----------  Bouton menu  ----------*/
+
+.h-nav-btn {
+	color:var(--color-black);
+}
+
+.h-nav-btn-ico {
+	background-color: var(--color-black);
+
+	&:before, &:after {
+		background-color: var(--color-white);
+	}
+
+	.h-nav-is-open & {
+		background-color: var(--color-black);
+	}
+
+	.h-nav-btn:hover &, .h-nav-btn:focus & {
+		background-color: transparent;
+
+		&:before, &:after {
+			background-color: var(--color-black);
+		}
+	}
+}
+
+.h-nav-btn-txt {
+
+	/* $mq-layout-m */
+	@media ( min-width : em($mq-layout-m) ) {
+		font-family: var(--font);
+		font-size: rem(26);
+		text-transform: uppercase;
+	}
+}
+
+.btn-overlay {
+	background-color:var(--color-black);
+	opacity: 0;
+
+	.h-nav-is-open & {
+		opacity:.6;
+	}
+}
+
+
+/*----------  Liste  ----------*/
+
+.h-nav {
+	background-color: var(--color-2);
+}
+.h-nav-item {
+	&:nth-child(n+2) {
+		margin-top:rem($space--h-nav);
+	}
+}
+
+
+/*----------  Lien  ----------*/
+
+.h-nav-link, .h-nav-link:visited {
+	
+	$after-size : 20;
+
+	font-family: var(--nav-h-font);
+	color: var(--color-white);
+	background-color:var(--color-black);
+	
+    padding:rem($space--h-nav);
+
+	.is-active & {
+		background-color: var(--color-1);
+		color:var(--color-black);
+
+		&:after {
+			content:"";
+			position: absolute;
+			right:rem($space--h-nav);
+			top:50%;
+			transform:translateY(rem(-$after-size/2));
+			width: rem($after-size);
+			height: rem($after-size);
+			border-radius:50%;
+			background-color: var(--color-black);
+			transition: transform $t-nav-link ease;
+		}
+	}
+
+    &:hover, &:focus {
+		color: var(--color-black);
+		background-color:var(--color-white);
+
+		&:after {
+			transition: transform $t-nav-link ease;
+		}
+	}
+	
+	/* $mq-nav-l */
+	@media ( min-width : em($mq-nav-l) ) {
+		.is-active & {
+			transform:translateX(-$space/2);
+			color:var(--color-black);
+			&:after {
+				right:rem(-$after-size/2);
+			}
+		}
+		&:hover, &:focus {
+			transform:translateX(-$space/2);
+	
+			&:after {
+				transform:translate(rem(-$after-size),rem(-$after-size/2));
+			}
+		}
+	}
+}
+
+
+/*=====  FIN Entête  =====*/
+
+/*==============================
+=            Social            =
+==============================*/
+
+.social-list--header {
+	.social-item {
+		margin-right:rem(10);
+	}
+}
+
+
+/*=====  FIN Social  =====*/
+
+/*====================================
+=            Pied de page            =
+====================================*/
+
+.f-nav-list {
+	font-size: rem(16);
+
+	&:after {
+		content:"/";
+		margin-left:rem(5);
+	}
+}
+.f-nav-item {
+	&:nth-child(n+2) {
+		&:before {
+			content:"/";
+			margin:rem(0,5);
+		}
+	}
+}
+.f-nav-link {
+	color:var(--color-white);
+}
+
+
+/*=====  FIN Pied de page  =====*/
