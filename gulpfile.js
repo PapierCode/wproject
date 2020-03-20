@@ -50,6 +50,25 @@ function css() {
 
 }
 
+function classic_css() {
+    
+    return src( ['css/v-classic.scss'] )
+        .pipe(sass({ precision: 3 }))
+        .pipe(postcss( plugins ))
+        .pipe(dest( './' ));
+
+}
+
+function fullscreen_css() {
+    
+    return src( ['css/v-fullscreen.scss'] )
+        .pipe(sass({ precision: 3 }))
+        .pipe(postcss( plugins ))
+        .pipe(dest( './' ));
+
+}
+
+
 
 /*=====  FIN Tâche CSS  ======*/
 
@@ -58,7 +77,7 @@ function css() {
 ==================================*/
 
 exports.watch = function() {
-	watch( 'css/**/*.scss', series(css) )
+	watch( 'css/**/*.scss', series(css,classic_css,fullscreen_css) )
 };
 
 

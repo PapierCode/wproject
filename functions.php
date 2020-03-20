@@ -12,7 +12,14 @@ add_action( 'wp_enqueue_scripts', 'pc_enqueue_child_theme_style', 999 );
 
     function pc_enqueue_child_theme_style() {
     
-        wp_enqueue_style( 'preform-child-style', get_stylesheet_directory_uri() . '/style.css',null, null, null, 'screen' );
+		wp_enqueue_style( 'preform-child-style', get_stylesheet_directory_uri() . '/style.css',null, null, null, 'screen' );
+		
+		global $settings_project;
+		if ( $settings_project['theme'] == 'fullscreen' ) {
+			wp_enqueue_style( 'project-fullscreen-style', get_stylesheet_directory_uri().'/v-fullscreen.css', null, null, 'screen' );
+		} else {
+			wp_enqueue_style( 'project-classic-style', get_stylesheet_directory_uri().'/v-classic.css', null, null, 'screen' );
+		}
 
     }
 
