@@ -1,3 +1,10 @@
+/*!
+Theme Name: WProject
+Template: wpreform 
+Author: www.papier-code.fr 
+Description: WPreform's child theme 
+*/
+
 @import "../../wpreform/css/vars-sass";
 @import "../../wpreform/css/framework/frk-functions";
 
@@ -10,6 +17,7 @@
 @import "components/cpt-coord";
 @import "components/cpt-pager";
 @import "components/cpt-social";
+@import "components/cpt-loader";
 @import "components/cpt-popup";
 @import "components/cpt-gallery";
 
