@@ -30,6 +30,8 @@ const inlinesvg		= require( 'postcss-inline-svg' ); // svg to data:URI
 =            Tâche CSS            =
 =================================*/
 
+sass.compiler = require('sass');
+
 // plugins CSS
 var plugins = [
 	inlinesvg(),

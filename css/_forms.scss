@@ -5,6 +5,10 @@
 **/
 
 
+@use "../../wpreform/css/vars-sass" as *;
+@use "../../wpreform/css/framework/frk-functions" as *;
+
+
 /*==============================
 =            Défaut            =
 ==============================*/
@@ -57,10 +61,6 @@
 
 .form-item--submit {
 	border-color:var(--color-grey);
-}
-
-.form-submit {
-	text-transform: uppercase;
 }
 
 

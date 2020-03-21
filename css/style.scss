@@ -1,27 +1,43 @@
-/*!
-Theme Name: WProject
-Template: wpreform 
-Author: www.papier-code.fr 
-Description: WPreform's child theme 
-*/
+@use "_wp-theme";
 
-@import "../../wpreform/css/vars-sass";
-@import "../../wpreform/css/framework/frk-functions";
 
-@import "vars-css";
-@import "font-face/_font-face";
-@import "layout";
-@import "navigation";
+/*----------  Variables CSS  ----------*/
 
-@import "components/cpt-buttons";
-@import "components/cpt-coord";
-@import "components/cpt-pager";
-@import "components/cpt-social";
-@import "components/cpt-loader";
-@import "components/cpt-popup";
-@import "components/cpt-gallery";
+@use "_vars-css";
 
-@import "publications/pub-commons";
-@import "publications/pub-home";
 
-@import "forms";
+/*----------  Polices de caractères  ----------*/
+
+@use "font-face/font-face";
+
+
+/*----------  Mise en page globale  ----------*/
+
+@use "layout";
+
+
+/*----------  Navigation  ----------*/
+
+@use "navigation";
+
+
+/*----------  Composants  ----------*/
+
+@use "components/cpt-buttons";
+@use "components/cpt-coord";
+@use "components/cpt-pager";
+@use "components/cpt-social";
+@use "components/cpt-loader";
+@use "components/cpt-popup";
+@use "components/cpt-gallery";
+
+
+/*----------  Publications  ----------*/
+
+@use "publications/pub-commons";
+@use "publications/pub-home";
+
+
+/*----------  Formulaires  ----------*/
+
+@use "forms";

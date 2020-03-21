@@ -4,6 +4,11 @@
 *
 **/
 
+
+@use "../../../wpreform/css/vars-sass" as *;
+@use "../../../wpreform/css/framework/frk-functions" as *;
+
+
 .social-link {
 	padding: rem(10);
 	background-color: var(--color-black);

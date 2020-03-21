@@ -4,6 +4,10 @@
 **
 **/
 
+@use "../../../wpreform/css/vars-sass" as *;
+@use "../../../wpreform/css/framework/frk-functions" as *;
+
+
 .gl {
 	background-color: hsla(var(--color-black-h),var(--color-black-s),var(--color-black-l),.8);
 	color: var(--color-white);

@@ -4,10 +4,16 @@
 *
 **/
 
+
+@use "../../../wpreform/css/vars-sass" as *;
+@use "../../../wpreform/css/framework/frk-functions" as *;
+
+
 .btn {
 	background-color: var(--color-black);
 	font-family: var(--font);
 	color:var(--color-white);
+	text-transform: uppercase;
 
 	path {
 		fill:var(--color-white);

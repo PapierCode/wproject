@@ -5,6 +5,10 @@
 **/
 
 
+@use "../../wpreform/css/vars-sass" as *;
+@use "../../wpreform/css/framework/frk-functions" as *;
+
+
 .header {
 	background-color:var(--color-1);
 }
