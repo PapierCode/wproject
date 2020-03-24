@@ -9,6 +9,9 @@
 @use "../../../wpreform/css/framework/frk-functions" as *;
 
 
+.pop--map {
+	background-color: hsla(var(--color-black-h),var(--color-black-s),var(--color-black-l),.6);
+}
 .map-marker {
 	&:before {
 		background-image:svg-load("../images/map-favicon.svg");

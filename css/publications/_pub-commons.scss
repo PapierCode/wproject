@@ -52,11 +52,8 @@ h1 {
 ======================================*/
 
 .st {
-	transition:background-color $t-st-hover ease;
-
 	&:hover {
 		background-color: var(--color-3);
-		transition:background-color $t-st-hover ease;
 	}
 }
 

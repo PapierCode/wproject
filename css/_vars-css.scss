@@ -1,3 +1,5 @@
+@use "../../wpreform/css/framework/frk-functions" as *;
+
 :root {
 
 	/*============================
@@ -36,23 +38,29 @@
 	--color-white-l 			: 95%;
 	--color-white 				: hsl(var(--color-white-h),var(--color-white-s),var(--color-white-l));
 	
+	// rouge
 	--color-1-h 				: 0;
 	--color-1-s 				: 98%;
 	--color-1-l 				: 64%;
 	--color-1 					: hsl(var(--color-1-h),var(--color-1-s),var(--color-1-l));
 	
+	// bleu
 	--color-2-h 				: 39;
 	--color-2-s 				: 100%;
 	--color-2-l 				: 74%;
 	--color-2 					: hsl(var(--color-2-h),var(--color-2-s),var(--color-2-l));
 	
+	// jaune
 	--color-3-h 				: 183;
 	--color-3-s 				: 51%;
 	--color-3-l 				: 83%;
 	--color-3 					: hsl(var(--color-3-h),var(--color-3-s),var(--color-3-l));
 
-		
+	--color-txt-default			: var(--color-black);
+
 	--color-placeholder 		: var(--color-grey);
+
+	--color-msg-default			: var(--color-black);
 	--color-msg-error			: #d81501;
 	--color-msg-success			: #1D7F00;
 

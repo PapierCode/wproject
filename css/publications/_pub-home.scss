@@ -33,7 +33,6 @@
 	padding: rem(10);
 	background-color: var(--color-black);
 	color:var(--color-white);
-	transition:all $t-home-shortcut-hover ease;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -42,7 +41,6 @@
 		background-color: var(--color-3);
 		color:var(--color-black);
 		min-height:100%;
-		transition:all $t-home-shortcut-hover ease;
 	}
 }
 .home-shortcut-ico {
@@ -56,7 +54,6 @@
 	width: rem(40);
 	height: rem(40);
 	border-radius: 50%;
-	transition:transform $t-home-shortcut-hover ease;
 
 	svg {
 		fill:var(--color-black);
@@ -64,7 +61,6 @@
 
 	.home-shortcut-link:hover &, .home-shortcut-link:focus & {
 		transform:rotate(-90deg);	
-		transition:transform $t-home-shortcut-hover ease;
 	}
 }
 
