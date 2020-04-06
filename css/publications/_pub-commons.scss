@@ -60,7 +60,7 @@ h1 {
 .st-title {
 	font-family: var(--font);
 	font-weight: 900;
-	font-size: rem(24);
+	font-size: rem(20);
 	line-height: 1.2;
 	margin:rem($space--st,0,.5*$space--st,0);
 
@@ -72,7 +72,7 @@ h1 {
 	}
 	/* $mq-title-size */
 	@media ( min-width : em($mq-title-size) ) {
-		font-size: rem(28);
+		font-size: rem(24);
 	}
 }
 
