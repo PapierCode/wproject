@@ -1,13 +1,21 @@
 /**
 *
-* Composant : partage
+* Composant : social (liens & partage)
+*
+** Communs
+** Liens vers les pages
+** Partage
 *
 **/
 
 
-@use "../../../wpreform/css/vars-sass" as *;
-@use "../../../wpreform/css/framework/frk-functions" as *;
+@use "../../../../plugins/pc-preform-styles/css/vars-sass" as *;
+@use "../../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
 
+
+/*===============================
+=            Communs            =
+===============================*/
 
 .social-link {
 	padding: rem(10);
@@ -38,3 +46,32 @@
 	   background-color: #c32aa3;
 	}
 }
+
+
+/*=====  FIN Communs  =====*/
+
+/*============================================
+=            Liens vers les pages            =
+===========================================*/
+
+.social-list--header {
+	.social-item {
+		margin-right:rem(10);
+	}
+}
+
+
+/*=====  FIN Liens vers les pages  =====*/
+
+/*===============================
+=            Partage            =
+===============================*/
+
+.social-list--share {
+	.social-item {
+		margin-left:rem(10);
+	}
+}
+
+
+/*=====  FIN Partage  =====*/

@@ -1,0 +1,24 @@
+/**
+*
+* Navigation dans les articles
+*
+** Container
+*
+*
+**/
+
+
+@use "../../../plugins/pc-preform-styles/css/vars-sass" as *;
+@use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+
+
+/*=================================
+=            Container            =
+=================================*/
+
+.main-footer-nav {
+	border-bottom-color: var(--color-grey);
+}
+
+
+/*=====  FIN Container  =====*/

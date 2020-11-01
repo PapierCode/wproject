@@ -1,0 +1,44 @@
+/**
+*
+* Structure principale
+*
+** Header
+** Footer
+*
+**/
+
+
+@use "../../../plugins/pc-preform-styles/css/vars-sass" as *;
+@use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+
+/*==============================
+=            Header            =
+==============================*/
+
+.header {
+	background-color:var(--color-1);
+}
+
+.h-logo-link {
+	max-width: rem(100);
+
+	/* $mq-layout-m */
+	@media ( min-width : em($mq-layout-m) ) {
+		max-width: none;
+	}
+}
+
+
+/*=====  FIN Header  =====*/
+
+/*==============================
+=            Footer            =
+==============================*/
+
+.footer {
+	background-color:var(--color-black);
+	color:var(--color-white);
+}
+
+
+/*=====  FIN Footer  =====*/

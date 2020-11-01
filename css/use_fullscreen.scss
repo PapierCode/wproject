@@ -1,0 +1,21 @@
+/**
+*
+* @use Fullscreen
+*
+**/
+
+
+/*----------  Communs  ----------*/
+
+@use "use";
+
+
+/*----------  Mise en page globale  ----------*/
+
+@use "layout/layout_fullscreen";
+
+
+/*----------  Publications  ----------*/
+
+@use "publications/pub-commons_fullscreen";
+@use "publications/pub-home_fullscreen";

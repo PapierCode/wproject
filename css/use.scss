@@ -1,6 +1,8 @@
-/*----------  Wordpress  ----------*/
-
-@use "wp-theme";
+/**
+*
+* @use Communs
+*
+**/
 
 
 /*----------  Variables CSS  ----------*/
@@ -15,12 +17,14 @@
 
 /*----------  Mise en page globale  ----------*/
 
-@use "layout";
+@use "layout/layout";
 
 
 /*----------  Navigation  ----------*/
 
-@use "navigation";
+@use "navigation/nav-header";
+@use "navigation/nav-main";
+@use "navigation/nav-footer";
 
 
 /*----------  Composants  ----------*/
@@ -38,8 +42,10 @@
 
 @use "publications/pub-commons";
 @use "publications/pub-home";
+@use "publications/pub-news";
 
 
 /*----------  Formulaires  ----------*/
 
-@use "forms";
+@use "forms/form-default";
+@use "forms/form-contact";

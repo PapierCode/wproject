@@ -1,0 +1,83 @@
+/**
+*
+* Fullscreen / Publications : commun
+*
+** Titre de page (h1)
+** Boutton scroll to content
+** Article résumé
+*
+**/
+
+
+@use "../../../plugins/pc-preform-styles/css/vars-sass" as *;
+@use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+
+
+/*==========================================
+=            Titre de page (h1)            =
+==========================================*/
+
+h1 {
+	.is-fullscreen & {
+		background-color: hsla(var(--color-white-h),var(--color-white-s),var(--color-white-l),.7);
+		padding: 2vw 4vw;
+	}
+}
+
+
+/*=====  FIN Titre de page (h1)  =====*/
+
+/*=================================================
+=            Boutton scroll to content            =
+=================================================*/
+
+.fs-more-btn {
+	animation: fs-more-btn-anim 2s ease infinite;
+
+	&:hover, &:focus {
+	   animation:none;
+	}
+}
+
+@keyframes fs-more-btn-anim {
+	0%   { transform: translateY(0); }
+	20%  { transform: translateY(-50%); }
+	40%  { transform: translateY(0); }
+	100% { transform: translateY(0); }
+}
+
+
+/*=====  FIN Boutton scroll to content  =====*/
+
+/*======================================
+=            Article résumé            =
+======================================*/
+
+.st {
+	border-top:1px solid var(--color-grey);
+
+	/* $mq-layout-l */
+	@media ( min-width : em($mq-layout-l) ) {
+		border-right:1px solid var(--color-grey);
+		&:nth-child(2n+2) {
+			border-right:none;
+		}
+	}
+	/* $mq-layout-xl--fs */
+	@media ( min-width : em($mq-layout-xl--fs) ) {
+		&:nth-child(2n+2) {
+			border-right:1px solid var(--color-grey);
+		}
+		&:nth-child(3n+3) {
+			border-right:none;
+		}
+	}
+}
+
+.st--fake {
+	&:hover {
+	   background-color:transparent;
+	}
+}
+
+/*=====  FIN Article résumé  =====*/

@@ -1,19 +1,20 @@
 /**
 *
-* Publications
+* Publications : commun
+*
+** Titre de page (h1)
+** Article résumé
 *
 **/
 
 
-@use "../../../wpreform/css/vars-sass" as *;
-@use "../../../wpreform/css/framework/frk-functions" as *;
+@use "../../../../plugins/pc-preform-styles/css/vars-sass" as *;
+@use "../../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
 
 
-/*===============================
-=            Communs            =
-===============================*/
-
-/*----------  Titre page  ----------*/
+/*==========================================
+=            Titre de page (h1)            =
+==========================================*/
 
 h1 {
 	color:var(--color-black);
@@ -30,22 +31,7 @@ h1 {
 }
 
 
-/*----------  Navigation pager, page précédente  ----------*/
-
-.main-footer-nav {
-	border-bottom-color: var(--color-grey);
-}
-
-/*----------  Partage  ----------*/
-
-.social-list--share {
-	.social-item {
-		margin-left:rem(10);
-	}
-}
-
-
-/*=====  FIN Communs  =====*/
+/*=====  FIN Titre de page (h1)  =====*/
 
 /*======================================
 =            Article résumé            =
@@ -105,19 +91,3 @@ h1 {
 
 
 /*=====  FIN Article résumé  =====*/
-
-/*==================================
-=            Actualités            =
-==================================*/
-
-.st-date {
-	color:var(--color-black);
-	font-style: italic;
-
-	span {
-		font-weight: 700;
-	}
-}
-
-
-/*=====  FIN Actualités  =====*/

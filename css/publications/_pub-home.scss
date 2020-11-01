@@ -1,34 +1,16 @@
 /**
 *
-* Accueil
+* Publication : accueil
+*
+** Raccourcis
+** Actualités
 *
 **/
 
 
-@use "../../../wpreform/css/vars-sass" as *;
-@use "../../../wpreform/css/framework/frk-functions" as *;
+@use "../../../../plugins/pc-preform-styles/css/vars-sass" as *;
+@use "../../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
 
-
-/*==================================
-=            Actualités            =
-==================================*/
-
-.home-news-title {
-	color:var(--color-black);
-	font-family: var(--font);
-	font-weight: 900;
-
-	font-size: rem(28);
-	line-height: 1.2; // dépend de la font
-
-	/* $mq-title-size */
-	@media ( min-width : em($mq-title-size) ) {
-		font-size: rem(40);
-	}
-}
-
-
-/*=====  FIN Actualités  =====*/
 
 /*==================================
 =            Raccourcis            =
@@ -115,3 +97,24 @@
 
 
 /*=====  FIN Raccourcis  =====*/
+
+/*==================================
+=            Actualités            =
+==================================*/
+
+.home-news-title {
+	color:var(--color-black);
+	font-family: var(--font);
+	font-weight: 900;
+
+	font-size: rem(28);
+	line-height: 1.2; // dépend de la font
+
+	/* $mq-title-size */
+	@media ( min-width : em($mq-title-size) ) {
+		font-size: rem(40);
+	}
+}
+
+
+/*=====  FIN Actualités  =====*/

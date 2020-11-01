@@ -1,0 +1,30 @@
+/**
+*
+* Publications : actualités
+*
+** Date
+*
+**/
+
+
+@use "../../../plugins/pc-preform-styles/css/vars-sass" as *;
+@use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+
+
+/*============================
+=            Date            =
+============================*/
+
+/*----------  Article résumé (st)  ----------*/
+
+.st-date {
+	color:var(--color-black);
+	font-style: italic;
+
+	span {
+		font-weight: 700;
+	}
+}
+
+
+/*=====  FIN Date  =====*/

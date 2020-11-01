@@ -1,0 +1,33 @@
+/**
+*
+* Fullscreen / Publication : accueil
+*
+** Raccourcis
+*
+**/
+
+
+@use "../../../plugins/pc-preform-styles/css/vars-sass" as *;
+@use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+
+
+/*==================================
+=            Raccourcis            =
+==================================*/
+
+.home-shortcuts {
+	/* $mq-layout-l */
+	@media ( min-width : em($mq-layout-l) ) {
+		background-color: var(--color-grey);
+	}
+}
+
+.home-shortcut-item {
+	/* $mq-layout-l */
+	@media ( min-width : em($mq-layout-l) ) {
+		background-color: var(--color-white);
+	}
+}
+
+
+/*=====  FIN Raccourcis  =====*/

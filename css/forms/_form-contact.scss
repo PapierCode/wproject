@@ -1,0 +1,23 @@
+/**
+*
+* Formulaires : contact
+*
+** CGU
+*
+**/
+
+
+@use "../../../plugins/pc-preform-styles/css/vars-sass" as *;
+@use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+
+
+/*===========================
+=            CGU            =
+===========================*/
+
+.form-item--contact-cgu {
+	border-top-color:var(--color-grey);
+}
+
+
+/*=====  FIN CGU  =====*/

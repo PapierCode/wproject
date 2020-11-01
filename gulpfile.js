@@ -22,6 +22,7 @@ const cssnano 		= require( 'cssnano' ); // minification css
 const autoprefixer 	= require( 'autoprefixer' ); // ajout des préfixes
 const mqcombine 	= require( 'postcss-sort-media-queries' ); // factorisation des medias queries
 const inlinesvg		= require( 'postcss-inline-svg' ); // svg to data:URI
+const rename		= require( 'gulp-rename' ); // renommage fichier
 
     
 /*=====  FIN Initialisation  ======*/
@@ -43,29 +44,22 @@ var plugins = [
 
 /*----------  Fonctions  ----------*/
 	
-function css() {
+function css_classic() {
     
-    return src( ['css/style.scss'] )
+    return src( ['css/use_classic.scss'] )
         .pipe(sass({ precision: 3 }))
         .pipe(postcss( plugins ))
+		.pipe(rename('classic.css'))
         .pipe(dest( './' ));
 
 }
 
-function classic_css() {
+function css_fullscreen() {
     
-    return src( ['css/v-classic.scss'] )
+    return src( ['css/use_fullscreen.scss'] )
         .pipe(sass({ precision: 3 }))
         .pipe(postcss( plugins ))
-        .pipe(dest( './' ));
-
-}
-
-function fullscreen_css() {
-    
-    return src( ['css/v-fullscreen.scss'] )
-        .pipe(sass({ precision: 3 }))
-        .pipe(postcss( plugins ))
+		.pipe(rename('fullscreen.css'))
         .pipe(dest( './' ));
 
 }
@@ -79,7 +73,7 @@ function fullscreen_css() {
 ==================================*/
 
 exports.watch = function() {
-	watch( 'css/**/*.scss', series(css,classic_css,fullscreen_css) )
+	watch( 'css/**/*.scss', series(css_classic,css_fullscreen) )
 };
 
 

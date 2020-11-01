@@ -1,28 +1,23 @@
 /**
 *
-* Thème version Classic
+* Classic / Navigation dans l'entête
+*
+** Bouton ouvrir/fermer
+** Container
+** Liste
+** Lien
+*
 *
 **/
 
 
-@use "../../wpreform/css/vars-sass" as *;
-@use "../../wpreform/css/framework/frk-functions" as *;
+@use "../../../plugins/pc-preform-styles/css/vars-sass" as *;
+@use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
 
 
-/*===================================
-=            Publication            =
-===================================*/
-
-.st {
-	border:1px solid var(--color-grey);
-}
-
-
-/*=====  FIN Publication  =====*/
-
-/*==================================
-=            Navigation            =
-==================================*/
+/*=================================
+=            Container            =
+=================================*/
 
 .h-nav {
 	/* $mq-nav-max--cl */
@@ -31,6 +26,14 @@
 		background-color: transparent;
 	}
 }
+
+
+/*=====  FIN Container  =====*/
+
+/*=============================
+=            Liste            =
+=============================*/
+
 .h-nav-item {
     /* $mq-nav-max--cl */
     @media ( min-width : em($mq-nav-max--cl) ) {        
@@ -39,6 +42,14 @@
 		}       
     }
 }
+
+
+/*=====  FIN Liste  =====*/
+
+/*=============================
+=            Liens            =
+=============================*/
+
 .h-nav-link, .h-nav-link:visited {
 
 	$after-size : 14;
@@ -78,20 +89,4 @@
 }
 
 
-/*=====  FIN Navigation  =====*/
-
-/*==============================
-=            Social            =
-==============================*/
-
-.social-list--header {
-	/* $mq-nav-max--cl */
-	@media ( min-width : em($mq-nav-max--cl) ) {
-		.social-item {
-			margin:rem(0,0,0,10);
-		}
-	}
-}
-
-
-/*=====  FIN Social  =====*/
+/*=====  FIN Liens  =====*/

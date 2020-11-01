@@ -1,19 +1,23 @@
 /**
 *
-* Navigations
+* Navigation dans l'entête
+*
+** Bouton ouvrir/fermer
+** Container
+** Liste
+** Lien
+*
 *
 **/
 
 
-@use "../../wpreform/css/vars-sass" as *;
-@use "../../wpreform/css/framework/frk-functions" as *;
+@use "../../../plugins/pc-preform-styles/css/vars-sass" as *;
+@use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
 
 
-/*==============================
-=            Entête            =
-==============================*/
-
-/*----------  Bouton menu  ----------*/
+/*============================================
+=            Bouton ouvrir/fermer            =
+============================================*/
 
 .h-nav-btn {
 	color:var(--color-black);
@@ -59,11 +63,23 @@
 }
 
 
-/*----------  Liste  ----------*/
+/*=====  FIN Bouton ouvrir/fermer  =====*/
+
+/*=================================
+=            Container            =
+=================================*/
 
 .h-nav {
 	background-color: var(--color-2);
 }
+
+
+/*=====  FIN Container  =====*/
+
+/*=============================
+=            Liste            =
+=============================*/
+
 .h-nav-item {
 	&:nth-child(n+2) {
 		margin-top:rem($space--h-nav);
@@ -71,7 +87,11 @@
 }
 
 
-/*----------  Lien  ----------*/
+/*=====  FIN Liste  =====*/
+
+/*============================
+=            Lien            =
+============================*/
 
 .h-nav-link, .h-nav-link:visited {
 	
@@ -130,44 +150,4 @@
 }
 
 
-/*=====  FIN Entête  =====*/
-
-/*==============================
-=            Social            =
-==============================*/
-
-.social-list--header {
-	.social-item {
-		margin-right:rem(10);
-	}
-}
-
-
-/*=====  FIN Social  =====*/
-
-/*====================================
-=            Pied de page            =
-====================================*/
-
-.f-nav-list {
-	font-size: rem(16);
-
-	&:after {
-		content:"/";
-		margin-left:rem(5);
-	}
-}
-.f-nav-item {
-	&:nth-child(n+2) {
-		&:before {
-			content:"/";
-			margin:rem(0,5);
-		}
-	}
-}
-.f-nav-link {
-	color:var(--color-white);
-}
-
-
-/*=====  FIN Pied de page  =====*/
+/*=====  FIN Lien  =====*/

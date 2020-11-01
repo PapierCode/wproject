@@ -1,0 +1,49 @@
+/**
+*
+* Navigation dans le pied de page
+*
+** Liste
+** Liens
+*
+**/
+
+
+@use "../../../plugins/pc-preform-styles/css/vars-sass" as *;
+@use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+
+
+/*=============================
+=            Liste            =
+=============================*/
+
+.f-nav-list {
+	font-size: rem(16);
+
+	&:after {
+		content:"/";
+		margin-left:rem(5);
+	}
+}
+
+.f-nav-item {
+	&:nth-child(n+2) {
+		&:before {
+			content:"/";
+			margin:rem(0,5);
+		}
+	}
+}
+
+
+/*=====  FIN Liste  =====*/
+
+/*=============================
+=            Liens            =
+=============================*/
+
+.f-nav-link {
+	color:var(--color-white);
+}
+
+
+/*=====  FIN Liens  =====*/
