@@ -3,6 +3,7 @@
 * Fullscreen / Publication : accueil
 *
 ** Raccourcis
+** Actualités
 *
 **/
 
@@ -19,6 +20,7 @@
 	/* $mq-layout-l */
 	@media ( min-width : em($mq-layout-l) ) {
 		background-color: var(--color-grey);
+		border-left: 1px solid var(--color-grey);
 	}
 }
 
@@ -31,3 +33,14 @@
 
 
 /*=====  FIN Raccourcis  =====*/
+
+/*==================================
+=            Actualités            =
+==================================*/
+
+.home-news-title {
+	border-top: 1px solid var(--color-grey);
+}
+
+
+/*=====  FIN Actualités  =====*/

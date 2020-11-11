@@ -3,7 +3,6 @@
 * Fullscreen / Publications : commun
 *
 ** Titre de page (h1)
-** Boutton scroll to content
 ** Article résumé
 *
 **/
@@ -18,36 +17,18 @@
 ==========================================*/
 
 h1 {
+	border-left: 1px solid var(--color-grey);
+	border-right: 1px solid var(--color-grey);
+	border-bottom: 1px solid var(--color-grey);
+	
 	.is-fullscreen & {
 		background-color: hsla(var(--color-white-h),var(--color-white-s),var(--color-white-l),.7);
-		padding: 2vw 4vw;
+		border:none;
 	}
 }
 
 
 /*=====  FIN Titre de page (h1)  =====*/
-
-/*=================================================
-=            Boutton scroll to content            =
-=================================================*/
-
-.fs-more-btn {
-	animation: fs-more-btn-anim 2s ease infinite;
-
-	&:hover, &:focus {
-	   animation:none;
-	}
-}
-
-@keyframes fs-more-btn-anim {
-	0%   { transform: translateY(0); }
-	20%  { transform: translateY(-50%); }
-	40%  { transform: translateY(0); }
-	100% { transform: translateY(0); }
-}
-
-
-/*=====  FIN Boutton scroll to content  =====*/
 
 /*======================================
 =            Article résumé            =

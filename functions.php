@@ -1,7 +1,7 @@
 <?php
 /**
  * 
- * Thème enfant du dossier "pc-preform"
+ * Thème enfant de WPréform
  * 
  */
 
@@ -19,7 +19,12 @@ add_action( 'wp_enqueue_scripts', 'pc_enqueue_child_theme_style', 30 );
 			wp_enqueue_style( 'project-classic-style', get_stylesheet_directory_uri().'/classic.css', null, null, 'screen' );
 		}
 
-    }
+	}
+	
+
+/*----------  WooCommerce  ----------*/
+
+// include 'include/woocommerce/woocommerce.php';	
 
 
 /*----------  Logo  ----------*/

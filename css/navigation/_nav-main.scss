@@ -2,7 +2,8 @@
 *
 * Navigation dans les articles
 *
-** Container
+** Header
+** Footer
 *
 *
 **/
@@ -12,13 +13,37 @@
 @use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
 
 
-/*=================================
-=            Container            =
-=================================*/
+/*==============================
+=            Header            =
+==============================*/
+
+.fs-more-btn {
+	animation: fs-more-btn-anim 2s ease infinite;
+
+	&:hover, &:focus {
+	   animation:none;
+	}
+}
+
+@keyframes fs-more-btn-anim {
+	0%   { transform: translateY(0); }
+	20%  { transform: translateY(-50%); }
+	40%  { transform: translateY(0); }
+	100% { transform: translateY(0); }
+}
+
+
+/*=====  FIN Header  =====*/
+
+/*==============================
+=            Footer            =
+==============================*/
+
+/*----------  Container  ----------*/
 
 .main-footer-nav {
 	border-bottom-color: var(--color-grey);
 }
 
 
-/*=====  FIN Container  =====*/
+/*=====  FIN Footer  =====*/
