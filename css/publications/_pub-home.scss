@@ -16,18 +16,44 @@
 =            Raccourcis            =
 ==================================*/
 
+.home-shortcuts {
+
+	/* $mq-layout-l */
+	@media ( min-width : em($mq-layout-l) ) {
+		// Fullscreen
+		.th-f & {
+			background-color: var(--color-grey);
+			border-left: var(--border);
+		}
+	}
+}
+
+.home-shortcut-item {
+
+	/* $mq-layout-l */
+	@media ( min-width : em($mq-layout-l) ) {
+		// Fullscreen
+		.th-f & {
+			background-color: var(--color-white);
+		}
+	}
+}
+
 .home-shortcut-link {
 	font-family: var(--font-alt);
 	line-height: 1.3;
 	overflow: hidden;
 }
+
 .home-shortcut-img {
+
 	.home-shortcut-link:hover &, .home-shortcut-link:focus & {
 		img {
 			transform:translateY(-100%);
 		}
 	}
 }
+
 .home-shortcut-txt {
 	position: absolute;
 	min-height: 0;
@@ -47,6 +73,7 @@
 		min-height:100%;
 	}
 }
+
 .home-shortcut-ico {
 	position: absolute;
 	left:rem(10);
@@ -69,6 +96,7 @@
 }
 
 .home-shortcuts--odd {
+	
 	/* $mq-layout-m */
 	@media ( min-width : em($mq-layout-m) ) {
 		> :first-child {

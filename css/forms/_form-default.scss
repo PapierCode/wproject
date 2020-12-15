@@ -37,7 +37,7 @@
 	input[type="text"],
 	input[type="email"],
 	textarea {
-		border-color: var(--color-black);
+		border: var(--border);
 
 		&:focus {
 			background-color: var(--color-3);
@@ -47,8 +47,8 @@
 	input[type="checkbox"] {
 		+ label {
 			&:before {
-				border-color:#fff;
-				outline-color:var(--color-black);
+				border:rem(4) solid #fff;
+				outline:var(--border);
 				background-color: #fff;
 			}
 		}
@@ -74,7 +74,7 @@
 ===============================*/
 
 .form-item--captcha {
-	border-top-color:var(--color-grey);
+	border-top:var(--border);
 }
 
 
@@ -85,7 +85,7 @@
 ==================================*/
 
 .form-item--submit {
-	border-color:var(--color-grey);
+	border:var(--border);
 }
 
 

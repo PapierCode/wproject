@@ -17,6 +17,11 @@
 
 .header {
 	background-color:var(--color-1);
+
+	// Fullscreen
+	.is-fullscreen & {
+		background-color: transparent;
+	}
 }
 
 .h-logo-link {
@@ -30,6 +35,58 @@
 
 
 /*=====  FIN Header  =====*/
+
+/*============================
+=            Main            =
+============================*/
+
+/*----------  Main header  ----------*/
+
+.main-header {
+
+	// Fullscreen
+	.is-fullscreen & {
+		min-height:calc( 100vh - #{2*$space} - #{rem(150)} ); // 150 : hauteur logo
+	}
+}
+
+
+/*----------  Main content  ----------*/
+
+.main-content {	
+
+	/* $mq-layout-max--fs */
+	@media ( min-width : em($mq-layout-max--fs) ) {
+		// Fullscreen
+		.th-f & {
+			border-left:var(--border);
+			border-right:var(--border);
+		}
+	}
+}
+
+
+/*----------  Main footer  ----------*/
+
+.main-footer {
+
+	// Fullscreen
+	.th-f & {
+		border-top:var(--border);
+	}
+	
+	/* $mq-layout-max--fs */
+	@media ( min-width : em($mq-layout-max--fs) ) {
+		// Fullscreen
+		.th-f & {
+			border-left:var(--border);
+			border-right:var(--border);
+		}
+	}
+}
+
+
+/*=====  FIN Main  =====*/
 
 /*==============================
 =            Footer            =

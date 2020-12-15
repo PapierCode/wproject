@@ -10,6 +10,7 @@
 
 
 .coord-item--logo {
+	
 	/* $mq-layout-m */
 	@media ( min-width : em($mq-layout-m) ) {
 		img {
@@ -18,6 +19,7 @@
 	}
 }
 .coord-item--addr {
+
 	button {
 		color:var(--color-2);
 		font-size: rem(16);
@@ -28,6 +30,7 @@
 	}
 }
 .coord-item--phone {	
+
 	a {
 		color:var(--color-white);
 	}

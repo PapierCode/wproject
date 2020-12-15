@@ -1,6 +1,6 @@
 /**
 *
-* @use Communs
+* @use
 *
 **/
 
@@ -15,6 +15,18 @@
 @use "font-face/font-face";
 
 
+/*----------  Composants  ----------*/
+
+@use "components/cpt-buttons";
+@use "components/cpt-coord";
+@use "components/cpt-pager";
+@use "components/cpt-social";
+@use "components/cpt-loader";
+@use "components/cpt-popup";
+@use "components/cpt-gallery";
+// @use "components/cpt-cookies";
+
+
 /*----------  Mise en page globale  ----------*/
 
 @use "layout/layout";
@@ -25,17 +37,6 @@
 @use "navigation/nav-header";
 @use "navigation/nav-main";
 @use "navigation/nav-footer";
-
-
-/*----------  Composants  ----------*/
-
-@use "components/cpt-buttons";
-@use "components/cpt-coord";
-@use "components/cpt-pager";
-@use "components/cpt-social";
-@use "components/cpt-loader";
-@use "components/cpt-popup";
-@use "components/cpt-gallery";
 
 
 /*----------  Publications  ----------*/

@@ -12,12 +12,7 @@ add_action( 'wp_enqueue_scripts', 'pc_enqueue_child_theme_style', 30 );
 
     function pc_enqueue_child_theme_style() {
 		
-		global $settings_pc;
-		if ( $settings_pc['preform-theme'] == 'fullscreen' ) {
-			wp_enqueue_style( 'project-fullscreen-style', get_stylesheet_directory_uri().'/fullscreen.css', null, null, 'screen' );
-		} else {
-			wp_enqueue_style( 'project-classic-style', get_stylesheet_directory_uri().'/classic.css', null, null, 'screen' );
-		}
+		wp_enqueue_style( 'project-styles', get_stylesheet_directory_uri().'/project.css', null, null, 'screen' );
 
 	}
 	

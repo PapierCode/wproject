@@ -75,6 +75,15 @@
 	
 	
 	/*=====  FIN Layout  =====*/
+
+	/*==================================
+	=            Décoration            =
+	==================================*/
+	
+	--border					: 1px solid var(--color-grey);
+	
+	
+	/*=====  FIN Décoration  =====*/
 	
 	/*===============================
 	=            Wysiwyg            =
@@ -104,9 +113,19 @@
 
 	/*----------  Lien  ----------*/
 	
-	--wysi-link-color			: orange;
-	--wysi-link-color-hover		: red;
-	--wysi-link-color-visited	: purple;
+	--wysi-link-color					: var(--color-black);
+
+	--wysi-link-color-hover				: var(--color-black);
+	--wysi-link-bg-color-hover			: var(--color-2);
+	
+	--wysi-link-color-visited			: var(--color-black);
+	--wysi-link-border-color-visited	: var(--color-grey);
+
+
+	/*----------  Formats  ----------*/
+	
+	--wysi-intro-font			: var(--font);
+	--wysi-intro-font-size		: #{rem(20)};
 	
 	
 	/*=====  FIN Wysiwyg  =====*/

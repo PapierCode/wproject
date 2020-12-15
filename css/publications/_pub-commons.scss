@@ -24,6 +24,17 @@ h1 {
 	font-size: rem(28);
 	line-height: 1.2; // dépend de la font
 
+	// Fullscreen
+	.th-f & {
+		border-left: var(--border);
+		border-right: var(--border);
+		border-bottom: var(--border);
+	}
+	.is-fullscreen & {
+		background-color: hsla(var(--color-white-h),var(--color-white-s),var(--color-white-l),.7);
+		border:none;
+	}
+
 	/* $mq-title-size */
 	@media ( min-width : em($mq-title-size) ) {
 		font-size: rem(40);
@@ -38,8 +49,39 @@ h1 {
 ======================================*/
 
 .st {
+
+	// Classic
+	.th-c & {
+		border:var(--border);
+	}
+	// Fullscreen
+	.th-f & {
+		border-top:var(--border);
+	}
+
 	&:hover {
 		background-color: var(--color-3);
+	}
+
+	/* $mq-layout-l */
+	@media ( min-width : em($mq-layout-l) ) {
+		// Fullscreen
+		.th-f & {
+			border-right:var(--border);
+		}
+		.th-f &:nth-child(2n+2) {
+			border-right:none;
+		}
+	}
+	/* $mq-layout-xl--fs */
+	@media ( min-width : em($mq-layout-xl--fs) ) {
+		// Fullscreen
+		.th-f &:nth-child(2n+2) {
+			border-right:var(--border);
+		}
+		.th-f &:nth-child(3n+3) {
+			border-right:none;
+		}
 	}
 }
 
@@ -63,7 +105,6 @@ h1 {
 }
 
 .st-figure {
-	overflow: hidden;
 
 	img {
 		transform-origin: center;

@@ -55,8 +55,17 @@
 ============================================*/
 
 .social-list--header {
+	
 	.social-item {
 		margin-right:rem(10);
+	}
+
+	/* $mq-nav-max--cl */
+	@media ( min-width : em($mq-nav-max--cl) ) {
+		// Classic
+		.th-c & .social-item {
+			margin:rem(0,0,0,10);
+		}
 	}
 }
 
@@ -68,6 +77,7 @@
 ===============================*/
 
 .social-list--share {
+	
 	.social-item {
 		margin-left:rem(10);
 	}
