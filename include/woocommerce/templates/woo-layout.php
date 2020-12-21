@@ -1,38 +1,47 @@
 <?php
 
-remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+/*----------  Sidebar  ----------*/
 
-add_action('woocommerce_before_main_content', 'pc_woo_main_start_tag', 10);
+remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 
-   function pc_woo_main_start_tag() {
 
-      if ( !is_shop() ) { // autre que la page d'accueil de la boutique
+/*----------  Nombre de résultats  ----------*/
 
-         echo '<div class="layout layout--cols2 layout--woo mw"><main id="main" class="main anime-cat-nav">';
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 
-      } else {
 
-         echo '<div class="layout mw"><main id="main" class="main">';
+/*----------  Classement  ----------*/
 
-      }
-   }
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 
-remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 
-add_action('woocommerce_after_main_content', 'pc_woo_main_end_tag', 10);
+/*----------  Main  ----------*/
 
-   function pc_woo_main_end_tag() {
-      
-      if ( !is_shop() ) { // autre que la page d'accueil de la boutique
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
+add_action( 'woocommerce_before_main_content', 'pc_display_main_start', 10 ); // fonction wpreform
 
-         echo '</main>';
-         pc_woo_sidebar();
-         echo '</div>';
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
+add_action( 'woocommerce_after_main_content', 'pc_display_main_end', 10 ); // fonction wpreform
 
-      } else {
 
-         echo '</main></div>';
+/*----------  Titre  ----------*/
 
-      }
-      
-   }
+add_filter( 'woocommerce_show_page_title', function() { return false; } );
+
+add_action( 'woocommerce_archive_description', 'pc_woo_display_main_title', 5 );
+
+	function pc_woo_display_main_title() {
+
+		echo '<h1><span>'.woocommerce_page_title( false ).'</span></h1>';
+
+	}
+
+
+/*----------  Content  ----------*/
+
+add_action( 'woocommerce_before_shop_loop', 'pc_display_main_content_start', 10 );
+add_action( 'woocommerce_after_shop_loop', 'pc_display_main_content_end', 1 );
+
+add_action( 'woocommerce_after_shop_loop', 'pc_display_main_footer_start', 9 );
+add_action( 'woocommerce_after_shop_loop', 'pc_display_main_footer_end', 11 );
+

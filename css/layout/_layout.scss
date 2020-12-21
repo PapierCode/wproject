@@ -27,8 +27,8 @@
 .h-logo-link {
 	max-width: rem(100);
 
-	/* $mq-layout-m */
-	@media ( min-width : em($mq-layout-m) ) {
+	/* $mq-layout-l */
+	@media ( min-width : em($mq-layout-l) ) {
 		max-width: none;
 	}
 }
@@ -46,7 +46,19 @@
 
 	// Fullscreen
 	.is-fullscreen & {
-		min-height:calc( 100vh - #{2*$space} - #{rem(150)} ); // 150 : hauteur logo
+		min-height:calc( 100vh - #{2*$space} - #{rem(100)} ); // 100 : hauteur logo
+	}
+	/* $mq-layout-m */
+	@media ( min-width : em($mq-layout-m) ) {
+		.is-fullscreen & {
+			min-height:calc( 100vh - #{2*$space} - #{rem(150)} ); // 150 : hauteur logo
+		}
+	}
+	/* $mq-layout-max--fs */
+	@media ( min-width : em($mq-layout-max--fs) ) {
+		.is-fullscreen & {
+			min-height:calc( 100vh - #{rem(2*$space-max)} - #{rem(150)} ); // 150 : hauteur logo
+		}
 	}
 }
 

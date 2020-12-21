@@ -9,7 +9,7 @@
 @use "../../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
 
 
-.btn {
+.button {
 	background-color: var(--color-black);
 	font-family: var(--font);
 	color:var(--color-white);
@@ -29,11 +29,11 @@
 	}
 }
 
-.btn--color-1 {
+.button--color-1 {
 	background-color: var(--color-1);
 	color:var(--color-black);
 }
-.btn--color-2 {
+.button--color-2 {
 	background-color: var(--color-2);
 	color:var(--color-black);
 }
