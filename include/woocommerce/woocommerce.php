@@ -3,17 +3,21 @@
  * 
  * WooCommerce Custom
  * 
+ ** Activation
+ ** Fichiers CSS & JS
+ ** Include
+ * 
  */
 
 
-/*========================================================
-=            Association WooCommerce au thème            =
-========================================================*/
+/*==================================
+=            Activation            =
+==================================*/
 
 add_theme_support( 'woocommerce' );
 
 
-/*=====  FIN Association WooCommerce au thème  =====*/
+/*=====  FIN Activation  =====*/
 
 /*=========================================
 =            Fichiers CSS & JS            =
@@ -51,12 +55,6 @@ include 'templates/woo-product-single.php';
 // fil d'ariane
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 // include 'templates/woo-breadcrumb.php
-
-// WTF ?
-add_action( 'init', 'pc_woo_remove_page_thumbnail' );
-function pc_woo_remove_page_thumbnail() {
-	remove_post_type_support( 'page', 'thumbnail' );
-}
 
 
 /*=====  FIN Include  =====*/

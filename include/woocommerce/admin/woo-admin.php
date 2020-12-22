@@ -7,6 +7,13 @@
  */
 
 
+ 
+// WTF ?
+add_action( 'init', 'pc_woo_remove_page_thumbnail_support' );
+function pc_woo_remove_page_thumbnail_support() {
+	remove_post_type_support( 'page', 'thumbnail' );
+}
+
 /*====================================
 =            Éditor accès            =
 ====================================*/

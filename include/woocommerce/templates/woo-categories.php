@@ -1,7 +1,29 @@
 <?php
+/**
+ * 
+ * Woocommerce : catégories
+ * 
+ ** Suppressions
+ ** CSS classes
+ ** Titre
+ ** Visuel
+ * 
+ */
 
-/*----------  Catégories  ----------*/
+/*====================================
+=            Suppressions            =
+====================================*/
 
+// lien (container)
+remove_action( 'woocommerce_before_subcategory', 'woocommerce_template_loop_category_link_open', 10 );
+remove_action( 'woocommerce_after_subcategory', 'woocommerce_template_loop_category_link_close', 10 );
+
+
+/*=====  FIN Suppressions  =====*/
+
+/*===================================
+=            CSS classes            =
+===================================*/
 
 add_filter( 'product_cat_class', 'pc_woo_st_css_classes',10, 3 );
 
@@ -12,8 +34,11 @@ add_filter( 'product_cat_class', 'pc_woo_st_css_classes',10, 3 );
 	}
 
 
-remove_action( 'woocommerce_before_subcategory', 'woocommerce_template_loop_category_link_open', 10 );
-remove_action( 'woocommerce_after_subcategory', 'woocommerce_template_loop_category_link_close', 10 );
+/*=====  FIN CSS classes  =====*/
+
+/*=============================
+=            Titre            =
+=============================*/
 
 remove_action( 'woocommerce_shop_loop_subcategory_title', 'woocommerce_template_loop_category_title', 10 );
 add_action( 'woocommerce_shop_loop_subcategory_title', 'pc_woo_category_title', 10 );
@@ -21,12 +46,20 @@ add_action( 'woocommerce_shop_loop_subcategory_title', 'pc_woo_category_title', 
 	function pc_woo_category_title( $category ) {
 
 		echo '<h2 class="st-title">';
-		echo '<a href="'.esc_url( get_term_link( $category, 'product_cat' ) ).'">';
-		echo esc_html( $category->name );
-		echo '</a>';
+			echo '<a href="'.esc_url( get_term_link( $category, 'product_cat' ) ).'">';
+				echo esc_html( $category->name );
+			echo '</a>';
 		echo '</h2>';
 
 	}
+
+
+
+/*=====  FIN Titre  =====*/
+
+/*==============================
+=            Visuel            =
+==============================*/
 
 remove_action( 'woocommerce_before_subcategory_title', 'woocommerce_subcategory_thumbnail', 10 );
 add_action( 'woocommerce_before_subcategory_title', 'pc_woo_category_img', 10 );
@@ -66,3 +99,6 @@ add_action( 'woocommerce_before_subcategory_title', 'pc_woo_category_img', 10 );
 		echo '</figure>';
 
 	}
+
+
+/*=====  FIN Visuel  =====*/
