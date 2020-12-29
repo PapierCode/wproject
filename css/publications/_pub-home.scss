@@ -3,7 +3,7 @@
 * Publication : accueil
 *
 ** Raccourcis
-** Actualités
+** Titre intermédiaire
 *
 **/
 
@@ -125,3 +125,29 @@
 
 
 /*=====  FIN Raccourcis  =====*/
+
+/*===========================================
+=            Titre intermédiaire            =
+===========================================*/
+
+.home-title-sub {
+	color:var(--color-black);
+	font-family: var(--font);
+	font-weight: 900;
+
+	font-size: rem(28);
+	line-height: 1.2; // dépend de la font
+
+	// Fullscreen
+	.th-f & {
+		border-top: var(--border);
+	}
+
+	/* $mq-title-size */
+	@media ( min-width : em($mq-title-size) ) {
+		font-size: rem(40);
+	}
+}
+
+
+/*=====  FIN Titre intermédiaire  =====*/
