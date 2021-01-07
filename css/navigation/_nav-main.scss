@@ -3,6 +3,7 @@
 * Navigation dans les articles
 *
 ** Header
+** Footer
 *
 *
 **/
@@ -33,3 +34,20 @@
 
 
 /*=====  FIN Header  =====*/
+
+/*==============================
+=            Footer            =
+==============================*/
+
+.main-footer-nav {
+	border-bottom:var(--border);
+
+	/* $mq-layout-l */
+	@media ( min-width : em($mq-layout-l) ) {
+		border-bottom:none;
+	}
+}
+
+
+
+/*=====  FIN Footer  =====*/
