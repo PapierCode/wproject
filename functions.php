@@ -19,7 +19,12 @@ add_action( 'wp_enqueue_scripts', 'pc_enqueue_child_theme_style', 30 );
 
 /*----------  WooCommerce  ----------*/
 
-include 'include/woocommerce/woocommerce.php';	
+if ( class_exists( 'woocommerce' ) ) {
+
+	add_theme_support( 'woocommerce' );
+	include 'include/woocommerce/woocommerce.php';	
+
+}
 
 
 /*----------  Logo  ----------*/

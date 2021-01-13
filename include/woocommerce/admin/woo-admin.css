@@ -1,0 +1,61 @@
+/*----------  Menu admin  ----------*/
+
+#adminmenu #toplevel_page_woocommerce .menu-icon-generic div.wp-menu-image::before {
+	font-family:dashicons !important;
+	content:"\f312";
+}
+
+
+/*----------  Attributs communs  ----------*/
+
+.product_page_product_attributes label[for=attribute_public],
+.product_page_product_attributes input[id=attribute_public],
+.product_page_product_attributes label[for=attribute_public] + .description,
+.product_page_product_attributes input[id=attribute_public] + .description
+
+{
+	display:none !important;
+}
+
+
+/*----------  Liste de produits  ----------*/
+
+/* largeur des colonnes */
+table.wp-list-table .column-name,
+table.wp-list-table .column-sku,
+table.wp-list-table .column-price,
+table.wp-list-table .column-product_cat,
+table.wp-list-table .column-product_tag
+
+{
+	width: auto !important;
+}
+
+
+/*----------  Produit : box publication  ----------*/
+
+/* "featured" dans la metabox de publication  */
+#submitdiv label[for=_featured],
+#submitdiv input[id=_featured]
+
+{
+	display:none !important;
+}
+
+
+/*----------  Produit : onglets propriétés  ----------*/
+
+/* inventaire */
+._sold_individually_field, /* vendre individuellement */
+
+/* variation */
+#variable_product_options .notice p:nth-child(2), /* lien aide EN  */
+.woocommerce_variable_attributes .upload_image, /* image variable */
+.woocommerce_variable_attributes .options label:nth-child(2), /* option téléchargeable */
+.woocommerce_variable_attributes .options label:nth-child(3), /* option virtuel */
+.woocommerce_variable_attributes .data > div:nth-of-type(3), /* classe de livraison */
+.woocommerce_variable_attributes .data > div:nth-of-type(4) /* description */
+
+{
+	display:none !important;
+}
