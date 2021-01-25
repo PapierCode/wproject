@@ -138,8 +138,8 @@ h1 {
 	bottom:.5*$space;
 	right:.5*$space;
 	padding: rem(10);
-	background-color: rgba($color-black,.8);
-	color:$color-white;
+	background-color: rgba($color-red,.95);
+	color:$color-black;
 	font-size:rem(18);
 	display: flex;
 	align-items: center;
@@ -147,7 +147,7 @@ h1 {
 	transition:all $t-home-shortcut-hover ease;
 	
 	.home-shortcut-link:hover &, .home-shortcut-link:focus & {
-		color:$color-black;
+		//color:$color-black;
 		background-color:rgba($color-blue,.95);
 		bottom:$space;
 		left:$space;
