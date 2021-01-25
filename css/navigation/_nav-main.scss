@@ -9,16 +9,23 @@
 **/
 
 
-@use "../../../plugins/pc-preform-styles/css/vars-sass" as *;
-@use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
 
 
 /*==============================
 =            Header            =
 ==============================*/
 
+.fs-more {}
 .fs-more-btn {
 	animation: fs-more-btn-anim 2s ease infinite;
+
+	svg {
+		transform-origin: center;
+		transform: rotate(-90deg);
+	}
 
 	&:hover, &:focus {
 	   animation:none;
@@ -32,22 +39,34 @@
 	100% { transform: translateY(0); }
 }
 
-
 /*=====  FIN Header  =====*/
 
 /*==============================
 =            Footer            =
 ==============================*/
 
-.main-footer-nav {
-	border-bottom:var(--border);
+/*----------  Container  ----------*/
 
-	/* $mq-layout-l */
+.main-footer-nav {
+	margin-bottom:$space;
+	padding-bottom: $space;
+	border-bottom:$border;
+	
 	@media ( min-width : em($mq-layout-l) ) {
+		margin-bottom:0;
+		padding-bottom: 0;
+		grid-column: 1 / 2;
 		border-bottom:none;
 	}
+
 }
 
+
+/*----------  Pager  ----------*/
+
+.pager-list {
+	justify-content: flex-start;
+}
 
 
 /*=====  FIN Footer  =====*/

@@ -1,13 +1,8 @@
 /**
 *
-* @use
+* @use Communs
 *
 **/
-
-
-/*----------  Variables CSS  ----------*/
-
-@use "vars-css";
 
 
 /*----------  Polices de caractères  ----------*/
@@ -15,15 +10,25 @@
 @use "font-face/font-face";
 
 
+/*----------  Framework  ----------*/
+
+@use "framework/frk-normalize";
+@use "framework/frk-reset";
+@use "framework/frk-helpers";
+
+
 /*----------  Composants  ----------*/
 
 @use "components/cpt-buttons";
 @use "components/cpt-coord";
-@use "components/cpt-pager";
-@use "components/cpt-social";
-@use "components/cpt-loader";
-@use "components/cpt-popup";
 @use "components/cpt-gallery";
+@use "components/cpt-loader";
+@use "components/cpt-messages";
+@use "components/cpt-pager";
+@use "components/cpt-popup";
+@use "components/cpt-skip-nav";
+@use "components/cpt-social";
+@use "components/cpt-wysiwyg";
 // @use "components/cpt-cookies";
 
 
@@ -55,4 +60,3 @@
 /*----------  Woocommerce  ----------*/
 
 @use "woocommerce/woo";
-

@@ -9,20 +9,37 @@
 **/
 
 
-@use "../../../../plugins/pc-preform-styles/css/vars-sass" as *;
-@use "../../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
 
 
 /*===============================
 =            Communs            =
 ===============================*/
 
+.social-list {
+	display:flex;
+}
+.social-item {}
+
 .social-link {
+	display: block;
+	transition:all .3s ease;
 	padding: rem(10);
-	background-color: var(--color-black);
+	background-color: $color-black;
 	
 	path {
-		fill:var(--color-white);
+		fill:$color-white;
+		transition:fill .3s ease;
+	}
+
+	&:hover, &:focus {
+		transition:all .3s ease;
+
+		path {
+			transition:fill .3s ease;
+		}
 	}
 }
 
@@ -47,7 +64,6 @@
 	}
 }
 
-
 /*=====  FIN Communs  =====*/
 
 /*============================================
@@ -55,15 +71,21 @@
 ============================================*/
 
 .social-list--header {
-	
+	justify-content: center;
+	margin-top: $space;
+
 	.social-item {
 		margin-right:rem(10);
 	}
 
-	/* $mq-nav-max--cl */
-	@media ( min-width : em($mq-nav-max--cl) ) {
-		// Classic
-		.th-c & .social-item {
+	@media ( min-width : em($mq-layout-mw) ) {
+		.is-classic & {
+			position:absolute;
+			top:rem($space-max);
+			right:rem($space-max);
+			margin:0;
+		}
+		.is-classic & .social-item {
 			margin:rem(0,0,0,10);
 		}
 	}
@@ -76,11 +98,22 @@
 =            Partage            =
 ===============================*/
 
-.social-list--share {
+.social-share {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 	
 	.social-item {
 		margin-left:rem(10);
 	}
+
+	@media ( min-width : em($mq-layout-l) ) {
+		grid-column: 2 / 3;
+	}
+}
+
+.social-share-title {
+	margin:0;
 }
 
 

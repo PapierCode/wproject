@@ -2,22 +2,36 @@
 *
 * Formulaires : contact
 *
-** CGU
-*
 **/
 
 
-@use "../../../plugins/pc-preform-styles/css/vars-sass" as *;
-@use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
 
 
-/*===========================
-=            CGU            =
-===========================*/
+.form--contact {
+	@extend .layout-sub;
 
-.form-item--contact-cgu {
-	border-top:var(--border);
+	form {
+		max-width: rem($txt-mw);
+	}
+
+	@media ( min-width : em($mq-layout-l) ) {
+		grid-column: 1 / 3;
+	}
+	@media ( min-width : em($mq-layout-mw) ) {
+		.is-fullscreen & {
+			grid-column: 1 / 6;
+		}
+	}
 }
 
+.form-item--contact-cgu {
+	padding-top:$space;
+	border-top:$border;
 
-/*=====  FIN CGU  =====*/
+	@media ( min-width : em($mq-layout-l) ) {
+		padding-top:rem(20);
+	}
+}

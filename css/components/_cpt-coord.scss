@@ -5,41 +5,106 @@
 **/
 
 
-@use "../../../../plugins/pc-preform-styles/css/vars-sass" as *;
-@use "../../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
 
+
+.coord {}
+
+.coord-list {
+	margin:0;
+	font-style: normal;
+}
+
+.coord-item {
+	margin:0;
+	display: flex;
+}
 
 .coord-item--logo {
 	
-	/* $mq-layout-m */
 	@media ( min-width : em($mq-layout-m) ) {
 		img {
 			width:rem(120);
 		}
 	}
 }
+
 .coord-item--addr {
+	margin-top:rem(20);
 
 	button {
-		color:var(--color-2);
+		text-decoration: none;
+		color:$color-yellow;
 		font-size: rem(16);
 
 		&:before {
-			background-color: var(--color-2);
+			content:"";
+			display: inline-block;
+			width: rem(20);
+			height: rem(2);
+			vertical-align: middle;
+			margin-right: rem(5);
+			background-color: $color-yellow;
+		}
+
+		&:hover, &:focus {
+		   text-decoration: underline;
 		}
 	}
-}
-.coord-item--phone {	
 
+	@media ( min-width : em($mq-layout-m) ) {
+		margin-top:rem(30);
+		
+		br:nth-of-type(1) {
+			display:none;
+		}
+	}
+
+}
+.coord-item--phone {
+	margin-top:rem(10);
+	
 	a {
-		color:var(--color-white);
+		text-decoration: none;
+		color:$color-white;
+
+		&:hover, &:focus {
+		   text-decoration: underline;
+		}
+	}
+	.coord-sep {
+		display: none;
+	}
+
+	@media ( min-width : em($mq-layout-m) ) {
+	
+		br {
+			display:none;
+		}
+		.coord-sep {
+			display: inline;
+		}
 	}
 }
 
 .coord-ico {
-	background-color: var(--color-white);
+	flex-shrink: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: rem(30);
+	height: rem(30);
+	margin-right: rem(10);
+	background-color: $color-white;
 
 	path {
-		fill:var(--color-black);
+		fill:$color-black;
 	}
 }
+.coord-item--phone {
+	align-items: center;
+}
+
+.coord-txt {}

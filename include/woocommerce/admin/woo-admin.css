@@ -48,6 +48,9 @@ table.wp-list-table .column-product_tag
 /* inventaire */
 ._sold_individually_field, /* vendre individuellement */
 
+/* simple */
+#shipping_product_data .shipping_class_field, /* classes de livraison */
+
 /* variation */
 #variable_product_options .notice p:nth-child(2), /* lien aide EN  */
 .woocommerce_variable_attributes .upload_image, /* image variable */

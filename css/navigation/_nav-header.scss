@@ -11,54 +11,185 @@
 **/
 
 
-@use "../../../plugins/pc-preform-styles/css/vars-sass" as *;
-@use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
 
 
 /*============================================
 =            Bouton ouvrir/fermer            =
 ============================================*/
 
-.h-nav-btn {
-	color:var(--color-black);
-}
+.h-nav-btn-box {
+    position: absolute;
+    top:$space;
+    right:$space;
+    z-index: 1;
+	color:$color-black;
+    transition:transform $t-nav ease;
 
-.h-nav-btn-ico {
-	background-color: var(--color-black);
-
-	&:before, &:after {
-		background-color: var(--color-white);
+    .h-nav-is-open & {
+        transform:translateX($h-nav-w-s);
+        transition:transform $t-nav ease;
 	}
-
-	.h-nav-is-open & {
-		background-color: var(--color-black);
+	@media ( min-width : em($mq-nav-l) ) {
+		.h-nav-is-open & {
+			transform:translateX($h-nav-w-l);
+		}
 	}
-
-	.h-nav-btn:hover &, .h-nav-btn:focus & {
-		background-color: transparent;
-
-		&:before, &:after {
-			background-color: var(--color-black);
+	@media ( min-width : em($mq-layout-mw) ) {
+		.is-classic & {
+			display:none;
+		}
+		.is-fullscreen & {
+			top:rem($space-max);
+			right:rem($space-max);
+		}
+		.is-fullscreen.h-nav-is-open & {
+			transform:translateX( calc( #{rem($space-max)} + #{$h-nav-w-l - $space} ) );
 		}
 	}
 }
 
-.h-nav-btn-txt {
+.h-nav-btn {
+    display: flex;
+	align-items: center;
+    
+    .h-nav-is-open & {
+        position: sticky;
+        top:$space;
+    }
+}
 
-	/* $mq-layout-m */
+.h-nav-btn-ico {	
+
+	$line-w : 24;
+	$line-h : 4;
+	$arrow-translate : 10;
+
+	width: rem($h-btn-nav-size);
+	height: rem($h-btn-nav-size);
+	position: relative;
+	transition:all $t-nav-btn-ico ease;
+	background-color: $color-black;
+
+	overflow: hidden;
+	&:before, &:after {
+		content: "";
+		width: rem($line-w);
+		height: rem($line-h);
+		position: absolute;
+		z-index: 1;
+		top:50%;
+		left:50%;
+		margin: rem(-$line-h/2,0,0,-$line-w/2);
+		background-color: $color-white;
+		transform-origin:center center 0;
+		transition:all $t-nav-btn-ico ease;
+	}
+	&:before { transform:translateY(rem(-$arrow-translate)); }
+	&:after { transform:translateY(rem($arrow-translate)); }
+
+	.h-nav-is-open & {
+		background-color: $color-black;
+		&:before, &:after { transition:all $t-nav-btn-ico ease; }
+		&:before { transform: translateY(0) rotate(-45deg); }
+		&:after { transform: translateY(0) rotate(45deg); }
+	}
+
+	.h-nav-btn:hover &, .h-nav-btn:focus & {
+		background-color: transparent;
+		transition:all $t-nav-btn-ico ease;
+
+		&:before, &:after {
+			background-color: $color-black;
+			transition:all $t-nav-btn-ico ease;
+			transition:all $t-nav-btn-ico ease;
+		}
+		&:before {
+			transform: translate(rem($arrow-translate),0) rotate(45deg);
+			transform-origin: left top;
+		}
+		&:after {
+			transform: translate(rem($arrow-translate),0) rotate(-45deg);
+			transform-origin: left bottom;
+		}
+	}
+
+	.h-nav-is-open .h-nav-btn:hover &, .h-nav-is-open .h-nav-btn:focus & {
+		&:before {
+			transform: translateY(0) rotate(-45deg);
+			transform-origin: right top;
+		}
+		&:after {
+			transform: translateY(0) rotate(45deg);
+			transform-origin: right bottom;
+		}
+	}
+}
+.h-nav-btn-ico--inner {
+	display: block;
+	&:before { display:none; }
+	&:after { transform:none; }
+	
+	.h-nav-is-open & {
+		&:after { transform: translateX(rem(100)); }
+	}
+
+	.h-nav-is-open .h-nav-btn:hover &, .h-nav-is-open .h-nav-btn:focus &,
+	.h-nav-btn:hover &, .h-nav-btn:focus & {
+		&:after { transform: translateX(rem(100)); }
+	}
+}
+.h-nav-btn-txt {
+	position: absolute;
+	top:-666em;
+
 	@media ( min-width : em($mq-layout-m) ) {
-		font-family: var(--font);
+		position: static;
+		overflow: hidden;
+		padding: rem(5);
+		align-self: stretch;
+		display: flex;
+		align-items: center;
+		max-width: rem(100);
+		font-family: $font;
 		font-size: rem(26);
 		text-transform: uppercase;
+		transition:all $t-nav-btn-ico ease;
+
+		.h-nav-is-open & {
+			max-width: 0;
+			padding: 0;
+			transition:all $t-nav-btn-ico ease;
+		}
 	}
 }
 
 .btn-overlay {
-	background-color:var(--color-black);
+	position: absolute;
+	z-index: 1;
+	left:0;
+	right: 0;
+	bottom: 0;
+	top:0;
+	transform: translateX(-100%);
+	width: 100%;
+	height:100%;
+	background-color:$color-black;
 	opacity: 0;
+	transition:opacity $t-nav ease, transform 0s ease $t-nav;
 
 	.h-nav-is-open & {
 		opacity:.6;
+		transform: translateX(0);
+		transition:opacity $t-nav ease;
+	}
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		.is-classic & {
+			display:none;
+		}
 	}
 }
 
@@ -70,17 +201,32 @@
 =================================*/
 
 .h-nav {
-	background-color: var(--color-2);
+	position: absolute;
+	top: 0;
+	left: 100%;
+	bottom: 0;
+	background-color: $color-yellow;
 
-	/* $mq-nav-max--cl */
-	@media ( min-width : em($mq-nav-max--cl) ) {
-		// Classic
-		.th-c & {
+	width: $h-nav-w-s;
+	padding: calc( #{rem($h-btn-nav-size)} + #{2 * $space} ) $space $space $space;
+
+	@media ( min-width : em($mq-nav-l) ) {
+		width:$h-nav-w-l;
+	}
+	@media ( min-width : em($mq-layout-mw) ) {
+		.is-classic & {
 			background-color: transparent;
+			position: static;
+			width: auto;
+			padding: 0;
+		}
+		.is-fullscreen & {
+			padding-top: rem( $h-btn-nav-size + 2 * $space-max );
 		}
 	}
 }
 
+.h-nav-inner {}
 
 /*=====  FIN Container  =====*/
 
@@ -88,19 +234,26 @@
 =            Liste            =
 =============================*/
 
+.h-nav-list {
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		.is-classic & {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+}
 .h-nav-item {
 
 	&:nth-child(n+2) {
 		margin-top:rem($space--h-nav);
 	}
 
-    /* $mq-nav-max--cl */
-    @media ( min-width : em($mq-nav-max--cl) ) {        
-		// Classic
-		.th-c &:nth-child(n+2) {
+    @media ( min-width : em($mq-layout-mw) ) {        
+		.is-classic &:nth-child(n+2) {
 			margin:rem(0,0,0,$space--h-nav);
 		}       
-    }
+	}
 }
 
 
@@ -111,19 +264,23 @@
 ============================*/
 
 .h-nav-link, .h-nav-link:visited {
+	display:block;
+	position: relative;
+    text-decoration: none;
+	transition: all $t-nav-link ease;	
 	
 	$after-size : 20;
 	$after-size-classic : 14;
 
-	font-family: var(--nav-h-font);
-	color: var(--color-white);
-	background-color:var(--color-black);
+	font-family: $font;
+	color: $color-white;
+	background-color:$color-black;
 	
     padding:rem($space--h-nav);
 
 	.is-active & {
-		background-color: var(--color-1);
-		color:var(--color-black);
+		background-color: $color-red;
+		color:$color-black;
 
 		&:after {
 			content:"";
@@ -134,25 +291,25 @@
 			width: rem($after-size);
 			height: rem($after-size);
 			border-radius:50%;
-			background-color: var(--color-black);
+			background-color: $color-black;
 			transition: transform $t-nav-link ease;
 		}
 	}
 
-    &:hover, &:focus {
-		color: var(--color-black);
-		background-color:var(--color-white);
+	&:hover, &:focus {
+		transition: all $t-nav-link ease;
+		color: $color-black;
+		background-color:$color-white;
 
 		&:after {
 			transition: transform $t-nav-link ease;
-		}
+		}	   
 	}
-	
-	/* $mq-nav-l */
+		
 	@media ( min-width : em($mq-nav-l) ) {
 		.is-active & {
 			transform:translateX(-$space/2);
-			color:var(--color-black);
+			color:$color-black;
 			&:after {
 				right:rem(-$after-size/2);
 			}
@@ -165,11 +322,9 @@
 			}
 		}
 	}
-	/* $mq-nav-max--cl */
-	@media ( min-width : em($mq-nav-max--cl) ) {
-		// Classic
-		.th-c .is-active & {
-			background-color: var(--color-2);
+	@media ( min-width : em($mq-layout-mw) ) {
+		.is-classic .is-active & {
+			background-color: $color-yellow;
 			transform:translateY(rem($space--h-nav));
 
 			&:before {
@@ -189,8 +344,8 @@
 				transform:translate(rem($after-size-classic/2),rem($space-max - $space--h-nav))
 			}
 		}
-		.th-c &:hover, .th-c &:focus {
-			background-color: var(--color-white);
+		.is-classic &:hover, .is-classic &:focus {
+			background-color: $color-white;
 			transform:translateY(rem($space--h-nav));
 
 			&:after {
@@ -199,6 +354,8 @@
 		}
 	}
 }
+
+.h-nav-link-inner {}
 
 
 /*=====  FIN Lien  =====*/

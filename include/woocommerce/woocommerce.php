@@ -40,16 +40,16 @@ add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 =            Include            =
 ===============================*/
 
-	include 'admin/woo-admin.php';
+include 'admin/woo-admin.php';
 
-	include 'templates/woo-layout.php';
-	include 'templates/woo-categories.php';
-	include 'templates/woo-product-resum.php';
-	include 'templates/woo-product-single.php';
+include 'templates/woo-layout.php';
+include 'templates/woo-categories.php';
+include 'templates/woo-product-resum.php';
+include 'templates/woo-product-single.php';
 
-	// fil d'ariane
-	remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
-	// include 'templates/woo-breadcrumb.php
+// fil d'ariane
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
+// include 'templates/woo-breadcrumb.php
 
 
 /*=====  FIN Include  =====*/

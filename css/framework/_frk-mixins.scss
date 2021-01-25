@@ -1,0 +1,54 @@
+/**
+*
+* Framework : mixins
+*
+**/
+
+
+@use "frk-variables" as *;
+@use "frk-functions" as *;
+
+
+/*===========================================
+=            Sous-élément layout            =
+===========================================*/
+
+.layout-sub {
+	padding: $space;
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		padding: rem($space-max)	;
+	}
+}
+
+.layout-sub-xl {
+	padding: 2*$space $space;
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		padding: rem(2*$space-max) rem($space-max) rem($space-max);
+	}
+}
+
+.layout-sub-no-padding-top {
+	padding: 0 $space $space $space;
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		padding: 0 rem($space-max) rem($space-max) rem($space-max);
+	}
+}
+
+.layout-sub-margin-top {
+	margin-top: $space;
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		margin-top: rem($space-max);
+	}
+}
+
+.layout-mw {
+	margin:0 auto;
+	max-width:rem($layout-mw);
+}
+
+
+/*=====  FIN Sous-élément layout  =====*/

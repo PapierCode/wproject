@@ -5,35 +5,58 @@
 **/
 
 
-@use "../../../../plugins/pc-preform-styles/css/vars-sass" as *;
-@use "../../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
 
 
 .button {
-	background-color: var(--color-black);
-	font-family: var(--font);
-	color:var(--color-white);
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	height: rem(40);
+	padding:rem(0,10);
+	text-decoration: none;
+	transition:all .3s ease;
+	background-color: $color-black;
+	font-family: $font;
+	color:$color-white;
 	text-transform: uppercase;
 
+	svg + span {
+		margin-left: rem(5);
+	}
 	path {
-		fill:var(--color-white);
+		transition:fill .3s ease;
+		fill:$color-white;
 	}
 
 	&:hover, &:focus {
-		background-color: var(--color-3);
-		color:var(--color-black);
+		background-color: $color-blue;
+		color:$color-black;
+		transition:all .3s ease;
 
 		path {
-			fill:var(--color-black);
+			fill:$color-black;
+			transition:fill .3s ease;
 		}
 	}
 }
 
+.button--xl {
+	font-size:rem(20);
+
+	@media ( min-width : em($mq-layout-l) ) {
+		font-size: rem(22);
+		padding:rem(0,20);
+	}
+}
+
 .button--color-1 {
-	background-color: var(--color-1);
-	color:var(--color-black);
+	background-color: $color-red;
+	color:$color-black;
 }
 .button--color-2 {
-	background-color: var(--color-2);
-	color:var(--color-black);
+	background-color: $color-yellow;
+	color:$color-black;
 }

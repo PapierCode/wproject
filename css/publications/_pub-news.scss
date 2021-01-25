@@ -2,30 +2,33 @@
 *
 * Publications : actualités
 *
-** Date
-** Accueil
-*
 **/
 
 
-@use "../../../plugins/pc-preform-styles/css/vars-sass" as *;
-@use "../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
 
 
-/*============================
-=            Date            =
-============================*/
+.st-list--news {}
 
-/*----------  Article résumé (st)  ----------*/
+.st--news {
+
+	@media ( min-width : em($mq-layout-xl) ) {
+		.is-home &:nth-of-type(4) {
+			display:none;
+		}
+	}
+}
 
 .st-date {
-	color:var(--color-black);
+	display: block;
+	text-align: center;
+	margin-bottom:rem(5);
+	color:$color-black;
 	font-style: italic;
 
 	span {
 		font-weight: 700;
 	}
 }
-
-
-/*=====  FIN Date  =====*/

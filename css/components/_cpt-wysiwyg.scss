@@ -1,0 +1,320 @@
+/**
+*
+* Composant : WYSIWYG
+*
+** 
+*
+**/
+
+
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
+
+
+.editor {
+	
+	.is-classic & {
+		@extend .layout-sub-no-padding-top;
+	}
+	.is-fullscreen & {
+		@extend .layout-sub;
+	}
+}
+
+.editor-inner {
+	
+	max-width: rem($txt-mw);
+
+	/*===================================
+	=            First-child            =
+	===================================*/
+
+	> :first-child {
+		margin-top:0;
+	}
+	
+
+	/*=====  FIN First-child  =====*/
+
+	/*===============================
+	=            Communs            =
+	===============================*/
+
+	p,
+	ul:not([class]),
+	ol,
+	blockquote,
+	.wp-caption {
+		margin: rem($wysi-space-default-s) 0 0 0;
+
+		@media ( min-width : em($mq-layout-l) ) {
+			margin-top:rem($wysi-space-default-l);
+		}
+	}
+	
+	ul:not([class]),
+	ol,
+	blockquote {
+
+		@media ( min-width : em($mq-layout-m) ) {
+			margin-left: rem($wysi-space-default-s);
+			margin-right: rem($wysi-space-default-s);
+		}
+		@media ( min-width : em($mq-layout-l) ) {
+			margin-left: rem(2 * $wysi-space-default-l);
+			margin-right: rem(2 * $wysi-space-default-l);
+		}
+	}
+	
+	
+	/*=====  FIN Communs  =====*/
+
+
+	/*============================
+	=            Lien            =
+	============================*/
+	
+	a {
+		color:$wysi-link-color;
+		text-decoration:none;
+		border-bottom-width:1px;
+		border-bottom-style: solid;
+		border-bottom-color: $wysi-link-color;
+		transition:background-color 0.3s ease;
+		
+		&:visited {
+			color:$wysi-link-color-visited;
+			border-bottom-color: $wysi-link-border-color-visited;
+		}
+		&:active {
+			border-bottom:none;
+			color:$wysi-link-color-hover;
+		}
+		&:hover, &:focus {
+			border-bottom:none;
+			color:$wysi-link-color-hover;
+			background-color: $wysi-link-bg-color-hover;
+			transition:background-color 0.3s ease;
+		}
+	}
+	
+
+	/*=====  FIN Lien  =====*/
+
+	/*==============================
+	=            Listes            =
+	==============================*/
+	
+	ul:not([class]),
+	ol {
+		padding-left: rem(20);
+	}
+	
+
+	/*=====  FIN Listes  =====*/
+
+	/*================================
+	=            Citation            =
+	================================*/
+
+	blockquote {
+		border-left:2px solid #333;
+		padding-left: rem(18);
+
+		:first-child {
+			margin-top: 0;
+		}
+	}
+	
+	
+	/*=====  FIN Citation  =====*/
+
+	/*==============================
+	=            Titres            =
+	==============================*/
+	
+	h2, h3  {
+		font-family: $wysi-title-font;
+		margin-bottom: 0;
+
+		a {
+			color: inherit;
+			border: none;
+			background: none;
+			text-decoration: none;
+		}
+
+		em, strong {
+			font-style: inherit;
+			font-weight: inherit;
+		}
+	}
+
+	h2 {
+		color: $wysi-h2-color;
+
+		font-size: rem($wysi-h2-font-size-s);
+		line-height: $wysi-title-line-h;
+		margin-top: rem($wysi-h2-mtop-s);
+
+		@media ( min-width : em($mq-title-size) ) {
+			font-size: rem($wysi-h2-font-size-l);
+			margin-top: rem($wysi-h2-mtop-l);
+		}
+	}
+
+	h3 {
+		color: $wysi-h3-color;
+
+		font-size: rem($wysi-h3-font-size-s);
+		line-height: $wysi-title-line-h;
+		margin-top: rem($wysi-h3-mtop-s);
+
+		@media ( min-width : em($mq-title-size) ) {
+			font-size: rem($wysi-h3-font-size-l);
+			margin-top: rem($wysi-h3-mtop-l);
+		}
+	}
+
+	h2 + h3 {
+		margin-top:rem($wysi-space-default-s);
+		
+		@media ( min-width : em($mq-title-size) ) {
+			margin-top:rem($wysi-space-default-l);
+		}
+	}
+
+	
+	/*=====  FIN Titres  =====*/
+
+	/*================================
+	=            Galerie            =
+	================================*/
+
+	$gallery-space-s : 10;
+	$gallery-space-l : 20;
+	
+	.wp-gallery {
+		display:flex;
+		flex-wrap:wrap;
+		justify-content:center;
+		margin: rem($wysi-space-default-s) 0 0 rem(-$gallery-space-s);
+		padding-bottom: rem($gallery-space-s);
+
+		@media ( min-width : em($mq-layout-m) ) {
+			margin-left: rem(-$gallery-space-l);
+		}
+		@media ( min-width : em($mq-layout-l) ) {
+			margin-top: rem($wysi-space-default-l);
+			padding-bottom: rem($gallery-space-l);
+		}
+	}
+	.wp-gallery-item {
+		padding-left: rem($gallery-space-s);
+		margin-top: rem($gallery-space-s);
+		width: 50%;
+
+		/* 430 (2 x img) + marge */
+		@media ( min-width:rem(430)) {
+			width: 33.3333%;
+		}
+		/* 630 (3 x img) + marge */
+		@media ( min-width : em(630) ) {
+			padding-left: rem($gallery-space-l);
+			margin-top: rem($gallery-space-l);
+			width: 25%;
+		}
+	}
+	.wp-gallery-link {
+		display: block;
+		position: relative;
+		overflow: hidden;
+		border:none;
+		outline:2px solid transparent;
+		transition:outline-color .3s ease;
+		
+		&:hover, &:focus {
+			outline-color: $color-black;
+			transition:outline-color .3s ease;
+			
+			.wp-gallery-ico {
+				top:50%;
+				transition: top .4s ease;
+			}
+		}
+	}
+	.wp-gallery-img {}
+	.wp-gallery-ico {
+		position: absolute;
+		left:50%;
+		top:rem(-15); // height/2
+		transform:translate(-50%,-50%);
+		background-color: $color-black;
+		padding:rem(5);
+		transition: top .4s ease;
+
+		svg {
+			fill:$color-white;
+		}
+	}
+	
+	
+	/*=====  FIN Galerie  =====*/
+
+	/*=========================================
+	=            Images alignement            =
+	=========================================*/
+	
+	img.aligncenter,
+	img.alignright {
+		display: block;
+	}
+	img.aligncenter {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	img.alignright {
+		margin-left: auto;
+	}
+	
+
+	/*=====  FIN Images alignement  =====*/
+
+	/*===================================================
+	=            Caption (image avec légende            =
+	===================================================*/
+
+	.wp-caption {
+		display:flex;
+		flex-direction: column;
+
+		&.aligncenter {
+			align-items: center;
+		}
+		&.alignright {
+			align-items: flex-end;
+		}
+		figcaption {
+			font-style: italic;
+			margin-top: rem($wysi-space-default-l / 2);
+		}
+	}
+
+
+	/*=====  FIN Caption (image avec légende  =====*/
+
+	/*===============================
+	=            Formats            =
+	===============================*/
+	
+	.wysi-intro {
+		font-family: $wysi-intro-font;
+		font-size: rem($wysi-intro-font-size);
+	}
+	
+	
+	/*=====  FIN Formats  =====*/
+
+
+} /* FIN .editor */

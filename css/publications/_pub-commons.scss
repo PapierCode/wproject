@@ -3,13 +3,16 @@
 * Publications : commun
 *
 ** Titre de page (h1)
+** WP Editor container
 ** Article résumé
+** Partage
 *
 **/
 
 
-@use "../../../../plugins/pc-preform-styles/css/vars-sass" as *;
-@use "../../../../plugins/pc-preform-styles/css/framework/frk-functions" as *;
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
 
 
 /*==========================================
@@ -17,27 +20,27 @@
 ==========================================*/
 
 h1 {
-	color:var(--color-black);
-	font-family: var(--font);
+	color:$color-black;
+	font-family: $font;
 	font-weight: 900;
 
-	font-size: rem(28);
-	line-height: 1.2; // dépend de la font
+	font-size: rem(36);
+	line-height: 1.2;
+	margin: 0;
 
-	// Fullscreen
-	.th-f & {
-		border-left: var(--border);
-		border-right: var(--border);
-		border-bottom: var(--border);
+	.classic & {
+		border-left: $border;
+		border-right: $border;
+		border-bottom: $border;
 	}
 	.is-fullscreen & {
-		background-color: hsla(var(--color-white-h),var(--color-white-s),var(--color-white-l),.7);
-		border:none;
+		@extend .layout-sub;
+		max-width: rem($txt-mw);
+		background-color: rgba($color-white,.7);
 	}
-
-	/* $mq-title-size */
+	
 	@media ( min-width : em($mq-title-size) ) {
-		font-size: rem(40);
+		font-size: rem(50);
 	}
 }
 
@@ -48,85 +51,159 @@ h1 {
 =            Article résumé            =
 ======================================*/
 
-.st {
+.st-list {
 
-	// Classic
-	.th-c & {
-		border:var(--border);
-	}
-	// Fullscreen
-	.th-f & {
-		border-top:var(--border);
-	}
-
-	&:hover {
-		background-color: var(--color-3);
-	}
-
-	/* $mq-layout-l */
 	@media ( min-width : em($mq-layout-l) ) {
-		// Fullscreen
-		.th-f & {
-			border-right:var(--border);
-		}
-		.th-f &:nth-child(2n+2) {
-			border-right:none;
-		}
+		display:grid;
+		grid-template-columns: repeat(2,1fr);
 	}
-	/* $mq-layout-xl--fs */
-	@media ( min-width : em($mq-layout-xl--fs) ) {
-		// Fullscreen
-		.th-f &:nth-child(2n+2) {
-			border-right:var(--border);
-		}
-		.th-f &:nth-child(3n+3) {
-			border-right:none;
-		}
+	@media ( min-width : em($mq-layout-xl) ) {
+		grid-template-columns: repeat(3,1fr);
+	}
+	@media ( min-width : em($mq-layout-mw) ) {
+		border-right:$border;		
 	}
 }
 
+.st {
+	@extend .layout-sub;
+	position: relative;
+	transition:all $t-st-hover ease;
+	border-top:$border;
+
+	&:hover {
+		background-color: $color-blue;
+		transition:all $t-st-hover ease;
+	}
+
+	@media ( min-width : em($mq-layout-l) ) {
+		&:nth-child(n+2) {
+			border-left:$border;
+		}
+	}
+	@media ( min-width : em($mq-layout-mw) ) {
+		&, &:nth-child(2n+3) {
+			border-left:$border;
+		}
+	}
+}
+.st-inner {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
 .st-title {
-	font-family: var(--font);
+	font-family: $font;
 	font-weight: 900;
+	color:$color-black;
 	font-size: rem(20);
 	line-height: 1.2;
 	margin:rem($space--st,0,.5*$space--st,0);
 
 	a {
-		color:var(--color-black);
+		text-decoration: none;
+		outline: none;
+		color:$color-black;
+
+		&:before {
+			content:"";
+			position: absolute;
+			top:0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
 		&:focus {
 			outline: none;
 		}
 	}
-	/* $mq-title-size */
+	
 	@media ( min-width : em($mq-title-size) ) {
 		font-size: rem(24);
 	}
 }
 
 .st-figure {
+	overflow: hidden;
 
 	img {
 		transform-origin: center;
-	}	
+		width: 100%;
+		transition:all $t-st-hover ease;
+	}
+	
 	.st:hover & {
 		img {
 			transform:scale(1.1);
+			transition:all $t-st-hover ease;
 		}
 	}
 }
 
 .st-desc {
+	margin:0;
+
 	span {
-		background-color: var(--color-black);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		vertical-align: middle;
+		width: rem(24);
+		height: rem(24);
+		background-color: $color-black;
+
 		svg {
-			fill:var(--color-white);
+			fill:$color-white;
 		}
 	}
 	.st:hover & {
 		svg {
-			fill:var(--color-3);
+			fill:$color-blue;
 		}
+	}
+}
+
+
+/*----------  Fake version  ----------*/
+
+.st--fake {
+	display:none;
+
+	&:hover {
+		background-color:transparent;
+	}
+
+	@media ( min-width : em($mq-layout-l) ) {
+		
+		display:block;
+
+		// 1|2 st
+		&:nth-child(n+3) {
+			display:none;
+		}
+		// 3 st
+		&:nth-child(n+4) {
+			display:block;
+		}		
+		// 4 st
+		&:nth-child(n+5) {
+			display:none;
+		}
+		// 5 st
+		&:nth-child(n+6) {
+			display:block;
+		}
+	}
+	@media ( min-width : em($mq-layout-mw) ) {
+			// 1|2 st, 4 st
+			&:nth-child(n+3) {
+				display:block;
+			}
+			// 3 st
+			&:nth-child(4) {
+				display:none;
+			}
 	}
 }
 

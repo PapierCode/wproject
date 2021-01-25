@@ -24,9 +24,9 @@ const mqcombine 	= require( 'postcss-sort-media-queries' ); // factorisation des
 const inlinesvg		= require( 'postcss-inline-svg' ); // svg to data:URI
 const rename		= require( 'gulp-rename' ); // renommage fichier
 
-// const jshint		= require( 'gulp-jshint' ); // recherche d'erreurs js
-// const concat		= require( 'gulp-concat' ); // empile plusieurs fichiers js en un seul
-// const terser		= require( 'gulp-terser' ); // minification js
+const jshint		= require( 'gulp-jshint' ); // recherche d'erreurs js
+const concat		= require( 'gulp-concat' ); // empile plusieurs fichiers js en un seul
+const terser		= require( 'gulp-terser' ); // minification js
 
     
 /*=====  FIN Initialisation  ======*/
@@ -65,31 +65,22 @@ function css() {
 =            Tâche JS            =
 ================================*/
 
-// jshint_src = [
-// 	'scripts/scripts.js'
-// ],
+function js_hint() {
 
-// js_global_src = [].concat(jshint_src);
+	return src( 'scripts/scripts.js' )
+        .pipe(jshint())
+        .pipe(jshint.reporter( 'default' ));
 
+}
 
-/*----------  Fonctions  ----------*/
+function js() {
 
-// function js_hint() {
+    return src( 'scripts/scripts.js' )
+        .pipe(concat( 'scripts.min.js' ))
+        .pipe(terser())
+        .pipe(dest( 'scripts/' ));
 
-// 	return src( jshint_src )
-//         .pipe(jshint())
-//         .pipe(jshint.reporter( 'default' ));
-
-// }
-
-// function js() {
-
-//     return src( js_global_src )
-//         .pipe(concat( 'scripts.min.js' ))
-//         .pipe(terser())
-//         .pipe(dest( 'scripts/' ));
-
-// }
+}
 
 
 /*=====  FIN Tâche JS  =====*/
@@ -100,7 +91,7 @@ function css() {
 
 exports.watch = function() {
 	watch( 'css/**/*.scss', series(css) )
-	// watch( ['scripts/**/*.js', '!scripts/scripts.min.js'], series(js_hint,js) )
+	watch( ['scripts/**/*.js', '!scripts/scripts.min.js'], series(js_hint,js) )
 };
 
 
