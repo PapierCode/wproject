@@ -15,7 +15,7 @@
 .st--news {
 
 	@media ( min-width : em($mq-layout-xl) ) {
-		.is-home &:nth-of-type(4) {
+		.is-home &:nth-child(4) {
 			display:none;
 		}
 	}
