@@ -1,7 +1,7 @@
 <?php
 /**
  * 
- * Woocommerce : breadcrumb
+ * Woocommerce template : fil d'ariane
  * 
  */
 
@@ -25,9 +25,9 @@ add_filter( 'woocommerce_breadcrumb_defaults', 'pc_woo_breadcrum_custom' );
 
 /*----------  Lien "Accueil"  ----------*/
 
-add_filter( 'woocommerce_breadcrumb_home_url', 'woo_custom_breadrumb_home_url' );
+add_filter( 'woocommerce_breadcrumb_home_url', 'pc_woo_custom_breadrumb_home_url' );
 
-   function woo_custom_breadrumb_home_url() {
+   function pc_woo_custom_breadrumb_home_url() {
 
       return get_permalink( wc_get_page_id( 'shop' ) );
 
@@ -36,9 +36,9 @@ add_filter( 'woocommerce_breadcrumb_home_url', 'woo_custom_breadrumb_home_url' )
 
 /*----------  Condition d'affichage  ----------*/
 
-add_action('template_redirect', 'pc_woo_display_breadcrumb' );
+add_action('template_redirect', 'pc_woo_breadcrumb_display' );
 
-   function pc_woo_display_breadcrumb(){
+   function pc_woo_breadcrumb_display() {
     
       remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 

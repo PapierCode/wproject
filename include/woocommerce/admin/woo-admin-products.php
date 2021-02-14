@@ -1,4 +1,33 @@
 <?php
+/**
+ * 
+ * Woocommerce admin : produits
+ * 
+ ** Type de produits désactivés
+ ** Liste des produits
+ ** Données produit Woo
+ ** Métaboxes Wpréform
+ * 
+ */
+
+/*===================================================
+=            Type de produits désactivés            =
+===================================================*/
+
+add_filter( 'product_type_selector', 'pc_woo_admin_product_type_selector' );
+
+	function pc_woo_admin_product_type_selector( $types )  {
+
+		unset( $types['grouped'] );
+		unset( $types['external'] );
+		//unset( $types['variable'] );
+		
+		return $types;
+
+	}
+
+
+/*=====  FIN Type de produits désactivés  =====*/
 
 /*==========================================
 =            Liste des produits            =
@@ -17,33 +46,21 @@ function pc_woo_admin_product_view( $views ) {
 }
 
 
-/*----------  Filtres  ----------*/
+/*----------  Filtre par type  ----------*/
 
-add_filter( 'product_type_selector', 'pc_woo_admin_product_type_selector' );
-
-	function pc_woo_admin_product_type_selector( $types )  {
-
-		unset( $types['grouped'] );
-		unset( $types['external'] );
-		
-		return $types;
-
-	}
-
-// supprime les options "Virtuel" et "Téléchargeable"
 add_filter( 'woocommerce_products_admin_list_table_filters', 'pc_woo_admin_type_selector_sub' );
 
 	function pc_woo_admin_type_selector_sub( $filters ) {
  
 		if( isset( $filters[ 'product_type' ] ) ) {
-			$filters[ 'product_type' ] = 'pc_woo_admin_product_type_callback';
+			$filters[ 'product_type' ] = 'pc_woo_admin_product_type_selector_sub_callback';
 		}
 
 		return $filters;
 	 
 	}
 	 
-	function pc_woo_admin_product_type_callback(){
+	function pc_woo_admin_product_type_selector_sub_callback(){
 
 		$current_product_type = isset( $_REQUEST['product_type'] ) ? wc_clean( wp_unslash( $_REQUEST['product_type'] ) ) : false;
 		$output = '<select name="product_type" id="dropdown_product_type"><option value="">'.esc_html__( 'Filter by product type', 'woocommerce' ).'</option>';
@@ -78,25 +95,25 @@ add_filter( 'manage_product_posts_columns', 'pc_woo_admin_product_list_columns',
 
 /*=====  FIN Liste des produits  =====*/
 
-/*===============================
-=            Produit            =
-===============================*/
+/*===========================================
+=            Données produit Woo            =
+===========================================*/
 
-/*----------  Métaboxes  ----------*/
+/*----------  Métaboxes désactivées  ----------*/
 
 add_action( 'add_meta_boxes', 'pc_woo_admin_product_remove_metaboxes', 999 );
 
-	function pc_woo_admin_product_remove_metaboxes() {
+	function pc_woo_admin_product_remove_metaboxes() {	
 
-		remove_meta_box( 'woocommerce-product-images','product','side' ); // galerie
 		remove_meta_box( 'postcustom', 'product', 'normal' ); // champs personnalisés
 		remove_meta_box( 'slugdiv', 'product', 'normal' ); // slug
 		remove_meta_box( 'postexcerpt', 'product', 'normal' ); // description
+		remove_meta_box( 'commentsdiv', 'product', 'normal' ); // avis
 
 	}
 
 
-/*----------  Variante de produit simple  ----------*/
+/*----------  Suppression options virtuel et téléchargeable  ----------*/
 
 add_filter( 'product_type_options', 'pc_woo_admin_product_type_options' );
 
@@ -110,16 +127,19 @@ add_filter( 'product_type_options', 'pc_woo_admin_product_type_options' );
 	}
 
 
-/*----------  Onglets propriétés  ----------*/
+/*----------  Onglets  ----------*/
 
 add_filter( 'woocommerce_product_data_tabs', 'pc_woo_admin_data_tabs' );
 
 	function pc_woo_admin_data_tabs( $tabs ) {
 
-		unset( $tabs['shipping'] ); // livraison
 		unset( $tabs['advanced'] ); // avancé
 		unset( $tabs['linked_product'] ); // produits liés
 
+		// Général devient Tarifs
+		$tabs['general']['label'] = 'Tarifs';
+
+		// Attributs masqué pour les produits simples
 		$tabs['attribute']['class'][] = 'hide_if_simple';
 
 		return $tabs;
@@ -127,8 +147,28 @@ add_filter( 'woocommerce_product_data_tabs', 'pc_woo_admin_data_tabs' );
 	}
 	
 
-add_filter( 'wc_product_weight_enabled', '__return_false' );
+/*----------  Suppression des champs dimensions  ----------*/
+
 add_filter( 'wc_product_dimensions_enabled', '__return_false' );
 
 
-/*=====  FIN Produit  =====*/
+/*=====  FIN Données produit Woo  =====*/
+
+/*==========================================
+=            Métaboxes Wpréform            =
+==========================================*/
+
+/*----------  WPreform, Résumé & SEO  ----------*/
+
+add_filter( 'pc_filter_metabox_resum_for', 'pc_woo_product_metabox_wpreform' );
+add_filter( 'pc_filter_metabox_seo_for', 'pc_woo_product_metabox_wpreform' );
+
+	function pc_woo_product_metabox_wpreform( $metabox_img_for ) {
+
+		$metabox_img_for[] = 'product';
+		return $metabox_img_for;
+
+	}
+
+
+/*=====  FIN Métaboxes Wpréform  =====*/

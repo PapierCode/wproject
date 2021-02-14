@@ -1,6 +1,17 @@
 <?php
+/**
+ * 
+ * Woocommerce amdin : attributs
+ * 
+ ** Liste
+ * 
+ */
 
-/*----------  Nouveaux messages  ----------*/
+/*=============================
+=            Liste            =
+=============================*/
+
+/*----------  Message d'aide  ----------*/
 
 add_filter( 'gettext', 'pc_woo_admin_product_attr_message', 10, 3 );
 
@@ -13,3 +24,26 @@ add_filter( 'gettext', 'pc_woo_admin_product_attr_message', 10, 3 );
 		return $translation;
 
 	}
+
+
+/*----------  Colonnes  ----------*/
+
+$admin_attributes_list = wc_get_attribute_taxonomies();
+
+foreach ( $admin_attributes_list as $attribute ) {
+
+	add_filter( 'manage_edit-pa_'.$attribute->attribute_name.'_columns', 'pc_woo_admin_product_attributes_columns', 999 );
+	
+}
+
+	function pc_woo_admin_product_attributes_columns( $columns ) {
+
+		unset( $columns['description'] );
+
+		return $columns;
+
+	}
+
+
+
+/*=====  FIN Liste  =====*/

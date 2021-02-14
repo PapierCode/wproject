@@ -2,6 +2,19 @@
 @use "../framework/frk-functions" as *;
 @use "../framework/frk-mixins" as *;
 
+
+.woocommerce-products-header {
+	background-color: $color-white;
+
+	h1 {
+		@extend .layout-sub;
+		@extend .layout-mw;
+	}
+	.editor {
+		@extend .layout-mw;
+	}
+}
+
 .st--product {
 
 	.add_to_cart_button, .cart, .btn--add-to-cart {

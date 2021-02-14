@@ -223,7 +223,6 @@ body {
 .main-footer-inner {
 	@extend .layout-sub;
 	@extend .layout-mw;
-	border-top:$border;
 
 	@media ( min-width : em($mq-layout-l) ) {
 		display:grid;

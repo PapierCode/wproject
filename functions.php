@@ -15,6 +15,23 @@ add_action( 'wp_enqueue_scripts', 'pc_enqueue_child_theme_style', 30 );
 		wp_enqueue_style( 'project-styles', get_stylesheet_directory_uri().'/project.css', null, null, 'screen' );
 
 	}
+
+
+/*----------  JS  ----------*/
+
+
+add_filter( 'pc_filter_js_files', 'pc_enqueuechild_theme_js' );
+
+	function pc_enqueuechild_theme_js( $js_files ) {
+
+		// $js_files['wpreform'] = get_bloginfo('template_directory').'/scripts/scripts.min.js'; // version sans jquery
+		$js_files['project'] = get_stylesheet_directory_uri().'/scripts/scripts.min.js';
+
+		return $js_files;
+
+	}
+	
+	
 	
 
 /*----------  WooCommerce  ----------*/

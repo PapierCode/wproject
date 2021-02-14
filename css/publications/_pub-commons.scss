@@ -51,7 +51,8 @@ h1 {
 =            Article résumé            =
 ======================================*/
 
-.st-list {
+.st-list {	
+	border-bottom:$border;
 
 	@media ( min-width : em($mq-layout-l) ) {
 		display:grid;
@@ -61,7 +62,7 @@ h1 {
 		grid-template-columns: repeat(3,1fr);
 	}
 	@media ( min-width : em($mq-layout-mw) ) {
-		border-right:$border;		
+		border-right:$border;			
 	}
 }
 
@@ -195,7 +196,7 @@ h1 {
 			display:block;
 		}
 	}
-	@media ( min-width : em($mq-layout-mw) ) {
+	@media ( min-width : em($mq-layout-xl) ) {
 			// 1|2 st, 4 st
 			&:nth-child(n+3) {
 				display:block;
