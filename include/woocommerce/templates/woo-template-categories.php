@@ -185,6 +185,7 @@ add_action( 'woocommerce_after_main_content', 'pc_woo_category_footer' );
 
 			}
 
+			// affichage
 			echo '<nav class="main-footer-nav"><a href="'.$back_link_url.'" class="button" title="Retour '.$back_link_url_inner.'">'.pc_svg('arrow',null,'svg_block').'<span>'.$back_link_url_inner.'</span></a></nav>';
 
 
@@ -199,6 +200,7 @@ add_action( 'woocommerce_after_main_content', 'pc_woo_category_footer' );
 
 			}
 
+			// affichage pager
 			pc_get_pager( $fake_query, $current_page_number, $pager_args );
 
 		}

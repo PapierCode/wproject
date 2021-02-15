@@ -30,9 +30,7 @@ add_filter( 'pc_filter_js_files', 'pc_enqueuechild_theme_js' );
 		return $js_files;
 
 	}
-	
-	
-	
+		
 
 /*----------  WooCommerce  ----------*/
 
@@ -43,26 +41,11 @@ if ( class_exists( 'woocommerce' ) ) {
 
 }
 
+/*===============================
+=            Include            =
+===============================*/
 
-/*----------  Logo  ----------*/
+include 'include/images.php';
 
-// add_filter( 'pc_filter_header_logo', 'pc_project_header_logo' );
 
-//     function pc_project_header_logo( $logoDatas ) {
-
-//         $logoDatas['url'] = get_stylesheet_directory_uri().'/images/logo.svg';
-//         return $logoDatas;
-
-//     }
-
-// add_filter( 'pc_filter_settings_project_fields', 'test_social' );
-
-// function test_social( $settings ) {
-// 	$settings[2]['fields'][] = array(
-// 		'type'      => 'url',
-// 		'label_for' => 'truc',
-// 		'label'     => 'Truc',
-// 		'css'       => 'width:100%'
-// 	);
-// 	return $settings;
-// }
+/*=====  FIN Include  =====*/
