@@ -1,0 +1,31 @@
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-helpers" as *;
+@use "../framework/frk-mixins" as *;
+
+
+.price {
+	display: inline-block;
+	padding:rem(5,10);
+	font-family: $font;
+	background-color: $color-red;
+}
+
+.quantity {
+	@extend .visually-hidden;
+}
+
+.cart {
+	display: flex;
+	justify-content: space-between;
+}
+
+.pc-qty {
+	display:flex;
+}
+.pc-qty-counter {
+	display: flex;
+	align-items: center;
+	font-family: $font;
+	padding:rem(0,5);
+}

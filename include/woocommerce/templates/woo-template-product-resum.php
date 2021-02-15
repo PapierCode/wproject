@@ -62,27 +62,29 @@ add_action( 'woocommerce_shop_loop_item_title', 'pc_woo_product_resum_display_co
 
 		global $product;
 		$product_id = $product->get_id();
+		$product_link = get_the_permalink();
+		$product_title = ( isset( $product_metas['resum-title'] ) ) ? $product_metas['resum-title'][0] : get_the_title();
 		$product_metas = get_post_meta( $product_id );
 
 
 		/*----------  Visuel  ----------*/		
 
-		$product_metas = ( isset( $product_metas['_thumbnail_id'] ) ) ? array( 'visual-id' => array($product_metas['_thumbnail_id'][0]) ) : array();
+		if ( isset( $product_metas['_thumbnail_id'] ) ) {
+			$product_metas['visual-id'] = array( $product_metas['_thumbnail_id'][0] );
+		}
 		$img_datas = pc_get_post_resum_img_datas( $product->id, $product_metas );
 
 		echo '<figure class="st-figure">';
-			pc_display_post_resum_img_tag( $product->id, $img_datas );
+			echo '<a href="'.$product_link.'">';
+				pc_display_post_resum_img_tag( $product->id, $img_datas );
+			echo '</a>';
 		echo '</figure>';
 
 
 		/*----------  Titre  ----------*/	
-		
-		$product_title = ( isset( $product_metas['resum-title'] ) ) ? $product_metas['resum-title'][0] : get_the_title();
 
 		echo '<h2 class="st-title">';
-			echo '<a href="'.get_the_permalink().'">';
-				echo $product_title;
-			echo '</a>';
+			echo '<a href="'.$product_link.'">'.$product_title.'</a>';
 		echo '</h2>';	
 
 		

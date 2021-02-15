@@ -65,9 +65,14 @@ function css() {
 =            Tâche JS            =
 ================================*/
 
+var js_src = [
+	'scripts/include/woocommerce.js',
+	'scripts/scripts.js'
+];
+
 function js_hint() {
 
-	return src( 'scripts/scripts.js' )
+	return src( js_src )
         .pipe(jshint())
         .pipe(jshint.reporter( 'default' ));
 
@@ -75,7 +80,7 @@ function js_hint() {
 
 function js() {
 
-    return src( 'scripts/scripts.js' )
+    return src( js_src )
         .pipe(concat( 'scripts.min.js' ))
         .pipe(terser())
         .pipe(dest( 'scripts/' ));

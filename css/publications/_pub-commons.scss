@@ -72,11 +72,6 @@ h1 {
 	transition:all $t-st-hover ease;
 	border-top:$border;
 
-	&:hover {
-		background-color: $color-blue;
-		transition:all $t-st-hover ease;
-	}
-
 	@media ( min-width : em($mq-layout-l) ) {
 		&:nth-child(n+2) {
 			border-left:$border;
@@ -107,14 +102,6 @@ h1 {
 		outline: none;
 		color:$color-black;
 
-		&:before {
-			content:"";
-			position: absolute;
-			top:0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-		}
 		&:focus {
 			outline: none;
 		}
@@ -133,13 +120,6 @@ h1 {
 		width: 100%;
 		transition:all $t-st-hover ease;
 	}
-	
-	.st:hover & {
-		img {
-			transform:scale(1.1);
-			transition:all $t-st-hover ease;
-		}
-	}
 }
 
 .st-desc {
@@ -156,11 +136,6 @@ h1 {
 
 		svg {
 			fill:$color-white;
-		}
-	}
-	.st:hover & {
-		svg {
-			fill:$color-blue;
 		}
 	}
 }
@@ -202,7 +177,7 @@ h1 {
 				display:block;
 			}
 			// 3 st
-			&:nth-child(4) {
+			.is-home &:nth-child(4) {
 				display:none;
 			}
 	}
