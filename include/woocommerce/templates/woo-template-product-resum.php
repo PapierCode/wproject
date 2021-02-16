@@ -68,7 +68,7 @@ add_action( 'woocommerce_after_shop_loop_item_title', 'pc_woo_product_resum_wrap
 
 	function pc_woo_product_resum_wrap_cart_start() {
 
-		echo '<div class="st-cart">';
+		echo '<div class="pc-cart pc-cart--st">';
 
 	}
 

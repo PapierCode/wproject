@@ -68,45 +68,88 @@ add_filter( 'woocommerce_post_class', 'pc_woo_single_product_css_classes', 10 ,2
 
 remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
 
+function pc_woo_get_gallery_item( $img_id, $first = false ) {
+
+	global $images_project_sizes;
+	$size = ( $first ) ? 'product-single' : 'gl-th';
+	$visual_sizes = wp_get_attachment_image_src( $img_id, $size );
+	
+	if ( $visual_sizes[1] == $images_project_sizes[$size]['width'] && $visual_sizes[2] == $images_project_sizes[$size]['height'] ) {
+		
+		return array(
+			'urls' => array( 
+				$size => $visual_sizes[0],
+				'gl-m' => wp_get_attachment_image_url( $img_id, 'gl-m' ),
+				'gl-l' => wp_get_attachment_image_url( $img_id, 'gl-l' )
+			),
+			'caption' => wp_get_attachment_caption( $img_id ),
+			'alt' => get_post_meta( $img_id, '_wp_attachment_image_alt', true ),
+			'thumb' => $size
+		);
+
+	} else {
+
+		return false;
+
+	}
+
+}
+
 add_action( 'woocommerce_before_single_product_summary', 'pc_woo_single_product_gallery', 20 );
 
 	function pc_woo_single_product_gallery() {
 
-		global $product;
+		global $product, $images_project_sizes;
+		$gallery_datas = array();
 
-		$img_id_list = array_merge(
-			array( $product->get_image_id() ),
-			$product->get_gallery_image_ids()
-		);
+		if ( $product->get_image_id() && null != get_post( $product->get_image_id() ) ) {
 
-		// html contruction
-		$return = '<figure><ul class="wp-gallery reset-list">';
+			$gallery_item = pc_woo_get_gallery_item( $product->get_image_id(), true );
+			if ( $gallery_item ) { $gallery_datas['visual'] = $gallery_item; }
+			
+		}
 
-			foreach ( $img_id_list as $img_id ) {
+		if ( count( $product->get_gallery_image_ids() ) > 0 ) {
 
-				$thumbnail_datas = wp_get_attachment_image_src($img_id,'gl-th');
+			foreach ( $product->get_gallery_image_ids() as $key => $id ) {
+				
+				$gallery_item = pc_woo_get_gallery_item( $id );
 
-				$medium_datas = wp_get_attachment_image_url($img_id,'gl-m');
-				if ( !isset($medium_datas) ) { $medium_datas = wp_get_attachment_image_src($value,'full'); }
-				$large_datas = wp_get_attachment_image_url($img_id,'gl-l');
-				if ( !isset($large_datas) ) { $large_datas = wp_get_attachment_image_src($value,'full'); }
-
-					$caption = wp_get_attachment_caption($img_id);
-					$alt = get_post_meta( $img_id, '_wp_attachment_image_alt', true);
-
-					// affichage
-					$return .= '<li class="wp-gallery-item">';
-					$return .= '<a class="wp-gallery-link" href="'.$large_datas.'" data-gl-caption="'.$caption.'" data-gl-responsive="'.$medium_datas.'" title="Afficher l\'image">';
-					$return .= '<img class="wp-gallery-img" src="'.$thumbnail_datas[0].'" width="'.$thumbnail_datas[1].'" height="'.$thumbnail_datas[2].'" alt="'.$alt.'" loading="lazy"/>';
-					$return .= '<span class="wp-gallery-ico">'.pc_svg('zoom').'</span>';
-					$return .= '</a>';
-					$return .= '</li>';
-
+				if ( $gallery_item ) { $gallery_datas[$key] = $gallery_item; }
 
 			}
 
-		$return .= '</ul></figure>';
-		echo $return;
+		}
+
+		if ( !empty( $gallery_datas ) ) {
+				
+			echo '<figure class="product-single-gallery"><ul class="wp-gallery reset-list">';
+
+				$post_img = $gallery_datas['visual'];
+				echo '<li class="wp-gallery-item">';
+				echo '<a class="wp-gallery-link" href="'.$post_img['urls']['gl-l'].'" data-gl-caption="'.$post_img['caption'].'" data-gl-responsive="'.$post_img['urls']['gl-m'].'" title="Afficher l\'image">';
+				echo '<img class="wp-gallery-img" src="'.$post_img['urls'][$post_img['thumb']].'" width="'.$images_project_sizes['product-single']['width'].'" height="'.$images_project_sizes['product-single']['height'].'" alt="'.$post_img['alt'].'" loading="lazy"/>';
+				echo '<span class="wp-gallery-ico">'.pc_svg('zoom').'</span>';
+				echo '</a>';
+				echo '</li>';
+
+				unset( $gallery_datas['visual'] );
+
+				foreach ( $gallery_datas as $gallery_item ) {
+					
+					$post_img = $gallery_item;
+					echo '<li class="wp-gallery-item">';
+					echo '<a class="wp-gallery-link" href="'.$post_img['urls']['gl-l'].'" data-gl-caption="'.$post_img['caption'].'" data-gl-responsive="'.$post_img['urls']['gl-m'].'" title="Afficher l\'image">';
+					echo '<img class="wp-gallery-img" src="'.$post_img['urls'][$post_img['thumb']].'" width="'.$images_project_sizes['gl-th']['width'].'" height="'.$images_project_sizes['gl-th']['height'].'" alt="'.$post_img['alt'].'" loading="lazy"/>';
+					echo '<span class="wp-gallery-ico">'.pc_svg('zoom').'</span>';
+					echo '</a>';
+					echo '</li>';
+
+				}
+
+			echo '</ul></figure>';
+
+		}
 
 	}
 

@@ -38,3 +38,37 @@
 		display: flex;		
 	}
 }
+
+.summary {
+
+	@media ( min-width : em($mq-layout-xl) ) {
+		margin-left: rem($space-max);
+	}
+}
+
+
+/*===============================
+=            Galerie            =
+===============================*/
+
+.product-single-gallery {
+	max-width: rem(400);
+
+	.wp-gallery {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.wp-gallery-item {
+
+		&:first-child() {
+			width: 100%;
+		}
+		&:nth-child(n+2) {
+			max-width: rem(100);
+		}
+	}
+
+}
+
+
+/*=====  FIN Galerie  =====*/

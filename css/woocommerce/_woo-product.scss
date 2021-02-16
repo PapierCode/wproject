@@ -14,7 +14,7 @@
 	}
 }
 
-.st-cart {
+.pc-cart {
 	display: flex;
 	justify-content: space-between;
 	border:$border;
@@ -23,12 +23,13 @@
 }
 button[name=add-to-cart] {
 	background-color: $color-red;
-	text-indent: -666em;
 	width: rem(40);
+	overflow: h;
 	margin-left: rem(10);
 	background-image:svg-load('../images/cart-more.svg',fill=$color-black);
 	background-repeat: no-repeat;
 	background-position: center;
+	text-indent: -666em;
 }
 
 
@@ -37,6 +38,13 @@ button[name=add-to-cart] {
 	font-family: $font-bold;
 	background-color: $color-yellow;
 	font-size: rem(18);
+}
+
+.variation {
+
+	.label {
+		@extend .visually-hidden;
+	}
 }
 
 .quantity {

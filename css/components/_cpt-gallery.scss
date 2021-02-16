@@ -29,6 +29,40 @@ $gl-btn-bg-color-hover	: purple;
 
 /*=====  FIN Variables  ======*/
 
+/*=======================================
+=            Icône vignette	            =
+=======================================*/
+
+.wp-gallery-link {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	
+	&:hover, &:focus {
+		
+		.wp-gallery-ico {
+			top:50%;
+			transition: top .4s ease;
+		}
+	}
+}
+.wp-gallery-ico {
+	position: absolute;
+	left:50%;
+	top:rem(-15); // height/2
+	transform:translate(-50%,-50%);
+	background-color: $color-black;
+	padding:rem(5);
+	transition: top .4s ease;
+
+	svg {
+		fill:$color-white;
+	}
+}
+
+
+/*=====  FIN Icône vignette	  =====*/
+
 /*=================================
 =            Conteneur            =
 =================================*/
