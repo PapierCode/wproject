@@ -26,4 +26,4 @@ if ( is_shop() ) {
 
 }
 
-echo '<div class="'.$css_class.'">';
+echo '<ul class="'.$css_class.'">';

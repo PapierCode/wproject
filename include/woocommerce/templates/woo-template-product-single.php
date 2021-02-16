@@ -50,7 +50,7 @@ add_filter( 'woocommerce_post_class', 'pc_woo_single_product_css_classes', 10 ,2
 	function pc_woo_single_product_css_classes( $classes, $product ) {
 
 		if ( is_product() ) {
-			$classes[] = 'single-product';
+			$classes[] = 'main-content single-product';
 		}
 		
 		return $classes;
@@ -59,6 +59,59 @@ add_filter( 'woocommerce_post_class', 'pc_woo_single_product_css_classes', 10 ,2
 
 
 /*=====  FIN CSS classes  =====*/
+
+/*===============================
+=            Visuels            =
+===============================*/
+
+// (content-single-product.php)
+
+remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
+
+add_action( 'woocommerce_before_single_product_summary', 'pc_woo_single_product_gallery', 20 );
+
+	function pc_woo_single_product_gallery() {
+
+		global $product;
+
+		$img_id_list = array_merge(
+			array( $product->get_image_id() ),
+			$product->get_gallery_image_ids()
+		);
+
+		// html contruction
+		$return = '<figure><ul class="wp-gallery reset-list">';
+
+			foreach ( $img_id_list as $img_id ) {
+
+				$thumbnail_datas = wp_get_attachment_image_src($img_id,'gl-th');
+
+				$medium_datas = wp_get_attachment_image_url($img_id,'gl-m');
+				if ( !isset($medium_datas) ) { $medium_datas = wp_get_attachment_image_src($value,'full'); }
+				$large_datas = wp_get_attachment_image_url($img_id,'gl-l');
+				if ( !isset($large_datas) ) { $large_datas = wp_get_attachment_image_src($value,'full'); }
+
+					$caption = wp_get_attachment_caption($img_id);
+					$alt = get_post_meta( $img_id, '_wp_attachment_image_alt', true);
+
+					// affichage
+					$return .= '<li class="wp-gallery-item">';
+					$return .= '<a class="wp-gallery-link" href="'.$large_datas.'" data-gl-caption="'.$caption.'" data-gl-responsive="'.$medium_datas.'" title="Afficher l\'image">';
+					$return .= '<img class="wp-gallery-img" src="'.$thumbnail_datas[0].'" width="'.$thumbnail_datas[1].'" height="'.$thumbnail_datas[2].'" alt="'.$alt.'" loading="lazy"/>';
+					$return .= '<span class="wp-gallery-ico">'.pc_svg('zoom').'</span>';
+					$return .= '</a>';
+					$return .= '</li>';
+
+
+			}
+
+		$return .= '</ul></figure>';
+		echo $return;
+
+	}
+
+
+/*=====  FIN Visuels  =====*/
 
 /*==============================
 =            Entête            =
@@ -73,25 +126,25 @@ add_action( 'woocommerce_before_single_product', 'pc_woo_single_product_display_
 		global $product;
 		$terms = get_the_terms( $product->get_id(), 'product_cat' );
 
-		echo '<header class="main-header">';
+		echo '<header class="main-header"><div class="main-header-inner">';
 
 			echo '<h1><span>'.$product->get_title().'</span></h1>';
-
-			$latin_name = get_post_meta( $product->get_id(), 'txts-latin', true );
-			if ( '' != $latin_name ) { echo '<p>'.$latin_name.'</p>'; }
 
 			if ( count( $terms ) > 0 ) {
 
 				$prefix = ( count( $terms ) > 1 ) ? 'Catégories' : 'Catégorie';
-				echo '<dl class=""><dt>'.$prefix.'</dt>';
+				echo '<dl class="related-product-cat"><dt class="related-product-cat-title">'.$prefix.'&nbsp;: </dt>';
 					foreach ( $terms as $key => $term ) {
-						echo '<dd><a href="'.get_term_link( $term, 'product_cat' ).'" class="button" title="">'.$term->name.'</a></dd>';
+						echo '<dd class="related-product-cat-item">';
+							echo '<a href="'.get_term_link( $term, 'product_cat' ).'" class="related-product-cat-link" title="Voir la catégorie '.$term->name.'">'.$term->name.'</a>';
+							if ( $key + 1 != count( $terms ) ) { echo ', '; } else { echo '.'; }
+						echo '</dd>';
 					}
 				echo '</dl>';
 
 			}
 
-		echo '</header>';
+		echo '</div></header>';
 		
 	}
 
@@ -104,17 +157,33 @@ add_action( 'woocommerce_before_single_product', 'pc_woo_single_product_display_
 
 // (content-single-product.php)
 
-add_action( 'woocommerce_before_single_product_summary', 'pc_woo_single_product_display_layout_start', 10 );
+add_action( 'woocommerce_before_single_product_summary', 'pc_woo_single_product_display_inner_start', 1 );
 
-	function pc_woo_single_product_display_layout_start() {
+	function pc_woo_single_product_display_inner_start() {
 
-		echo '<div class="single-product-layout">';
+		echo '<div class="main-content-inner">';
 
 	}
 
-add_action( 'woocommerce_after_single_product_summary', 'pc_woo_single_product_display_layout_end', 10 );
+	add_action( 'woocommerce_before_single_product_summary', 'pc_woo_single_product_display_layout_start', 2 );
 
-	function pc_woo_single_product_display_layout_end() {
+		function pc_woo_single_product_display_layout_start() {
+
+			echo '<div class="single-product-2cols">';
+
+		}
+
+	add_action( 'woocommerce_after_single_product_summary', 'pc_woo_single_product_display_layout_end', 10 );
+
+		function pc_woo_single_product_display_layout_end() {
+
+			echo '</div>';
+
+		}
+
+add_action( 'woocommerce_after_single_product_summary', 'pc_woo_single_product_display_inner_end', 99 );
+
+	function pc_woo_single_product_display_inner_end() {
 
 		echo '</div>';
 
@@ -122,20 +191,6 @@ add_action( 'woocommerce_after_single_product_summary', 'pc_woo_single_product_d
 
 
 /*=====  FIN Layout  =====*/
-
-/*===============================
-=            Visuels            =
-===============================*/
-
-add_filter( 'woocommerce_get_image_size_single', function( $size ) {
-	return array(
-		'width'  => 500,
-		'height' => 500,
-		'crop'   => 1,
-	);
-} );
-
-/*=====  FIN Visuels  =====*/
 
 /*===============================
 =            Contenu            =
@@ -158,7 +213,7 @@ add_action( 'woocommerce_single_product_summary', 'pc_woo_single_product_datas',
 			echo '<ul class="single-product-datas reset-list">';
 
 			if ( '' != $weight ) {
-				echo '<li class="single-product-datas-item"><strong>Poids du sachet : </strong>'.$weight.'&nbsp'.$weight_unit.'</li>';
+				echo '<li class="single-product-datas-item"><strong>Poids : </strong>'.$weight.'&nbsp'.$weight_unit.'</li>';
 			}
 
 			echo '</ul>';
@@ -171,7 +226,7 @@ add_action( 'woocommerce_single_product_summary', 'pc_woo_single_product_datas',
 /*----------  Description  ----------*/
 
 // (content-single-product.php)
-add_action( 'woocommerce_after_single_product_summary', 'pc_woo_single_product_display_description', 20 );
+add_action( 'woocommerce_single_product_summary', 'pc_woo_single_product_display_description', 99 );
 
 	function pc_woo_single_product_display_description() {
 

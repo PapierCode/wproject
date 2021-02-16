@@ -4,11 +4,39 @@
 @use "../framework/frk-mixins" as *;
 
 
-.price {
-	display: inline-block;
-	padding:rem(5,10);
-	font-family: $font;
+.st--product-cat,
+.st--product {
+	
+	article {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.st-cart {
+	display: flex;
+	justify-content: space-between;
+	border:$border;
+	padding: rem(10);
+	margin-top:rem(10);
+}
+button[name=add-to-cart] {
 	background-color: $color-red;
+	text-indent: -666em;
+	width: rem(40);
+	margin-left: rem(10);
+	background-image:svg-load('../images/cart-more.svg',fill=$color-black);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.price {
+	padding:rem(5,10);
+	font-family: $font-bold;
+	background-color: $color-yellow;
+	font-size: rem(18);
 }
 
 .quantity {
@@ -26,6 +54,12 @@
 .pc-qty-counter {
 	display: flex;
 	align-items: center;
-	font-family: $font;
-	padding:rem(0,5);
+	font-family: $font-regular;
+	font-size:rem(20);
+	padding:rem(0,10);
 }
+.pc-qty-btn {
+	font-family: $font-regular;
+	font-size: rem(24);
+}
+

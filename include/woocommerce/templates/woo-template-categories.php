@@ -25,7 +25,7 @@ add_filter( 'woocommerce_product_subcategories_args', 'pc_woo_categories_per_pag
 		$args['number'] = get_option( 'posts_per_page' );
 
 		if ( $current_page_number > 1 ) {
-			$args['offset'] = ($current_page_number - 1) * 6;
+			$args['offset'] = ($current_page_number - 1) * $args['number'];
 		}
 
 		return $args;
@@ -59,52 +59,13 @@ add_filter( 'product_cat_class', 'pc_woo_category_resum_edit_css_classes', 10, 3
 	}
 
 
-/*----------  Résumé : visuel, titre et description  ----------*/
+/*----------  Visuel, titre et description  ----------*/
 
 // (content-product-cat.php)
 
 remove_action( 'woocommerce_shop_loop_subcategory_title', 'woocommerce_template_loop_category_title', 10 );
 
-add_action( 'woocommerce_shop_loop_subcategory_title', 'pc_woo_category_resum_display_texts', 10 );
-
-	function pc_woo_category_resum_display_texts( $term, $hn = 2 ) {
-
-		$term_metas = get_term_meta( $term->term_id );
-
-
-		/*----------  Visuel  ----------*/
-		
-		$term_img_datas = pc_get_post_resum_img_datas( $term->term_id, $term_metas );
-
-		echo '<figure class="st-figure">';
-			pc_display_post_resum_img_tag( $term->term_id, $term_img_datas );
-		echo '</figure>';
-
-
-		/*----------  Titre & lien  ----------*/	
-		
-		$term_title = ( isset( $term_metas['resum-title'] ) ) ? $term_metas['resum-title'][0] : $term->name;
-		$term_url = get_term_link( $term, 'product_cat' );
-
-		echo '<h'.$hn.' class="st-title"><a href="'.$term_url.'">'.$term_title.'</a></h'.$hn.'>';
-
-		/*----------  Description  ----------*/
-		
-		if ( isset( $term_metas['resum-desc'] ) ) {
-			$term_desc = $term_metas['resum-desc'][0];
-		} else if ( isset( $term_metas['content-desc'] ) ) {
-			$term_desc = wp_trim_words( $term_metas['content-desc'][0] );
-		} else {
-			$term_desc = '';
-		}
-		
-		if ( '' != $term_desc ) {
-			echo '<p class="st-desc">'.pc_words_limit( $term_desc, 150 ).'...</p>';
-		}
-
-	}
-
-
+add_action( 'woocommerce_shop_loop_subcategory_title', 'pc_woo_category_resum_display_content', 10 );
 
 
 /*=====  FIN Résumé  =====*/

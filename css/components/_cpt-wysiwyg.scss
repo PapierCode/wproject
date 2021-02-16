@@ -14,10 +14,10 @@
 
 .editor {
 	
-	.is-classic & {
+	.is-classic .main-content-inner > & {
 		@extend .layout-sub-no-padding-top;
 	}
-	.is-fullscreen & {
+	.is-fullscreen .main-content-inner > & {
 		@extend .layout-sub;
 	}
 }

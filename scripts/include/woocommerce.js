@@ -4,13 +4,13 @@ jQuery(document).ready(function($){
 =            Galerie d'images            =
 ========================================*/
 
-$('.woocommerce-product-gallery--with-images').gallery({
-	btnNextInner:sprite.arrow,
-	btnPrevInner:sprite.arrow,
-	btnCloseInner:sprite.cross,
-	moveDuration:500,
-	responsiveImg:true
-});
+// $('.woocommerce-product-gallery--with-images').gallery({
+// 	btnNextInner:sprite.arrow,
+// 	btnPrevInner:sprite.arrow,
+// 	btnCloseInner:sprite.cross,
+// 	moveDuration:500,
+// 	responsiveImg:true
+// });
 
 
 /*=====  FIN Galerie d'images  =====*/

@@ -21,7 +21,7 @@
 
 h1 {
 	color:$color-black;
-	font-family: $font;
+	font-family: $font-bold;
 	font-weight: 900;
 
 	font-size: rem(36);
@@ -52,7 +52,6 @@ h1 {
 ======================================*/
 
 .st-list {	
-	border-bottom:$border;
 
 	@media ( min-width : em($mq-layout-l) ) {
 		display:grid;
@@ -90,25 +89,26 @@ h1 {
 }
 
 .st-title {
-	font-family: $font;
+	font-family: $font-bold;
 	font-weight: 900;
 	color:$color-black;
 	font-size: rem(20);
-	line-height: 1.2;
+	line-height: 1.3;
 	margin:rem($space--st,0,.5*$space--st,0);
 
-	a {
-		text-decoration: none;
-		outline: none;
-		color:$color-black;
-
-		&:focus {
-			outline: none;
-		}
-	}
-	
-	@media ( min-width : em($mq-title-size) ) {
+	@media ( min-width : em($mq-layout-l) ) {
 		font-size: rem(24);
+	}
+}
+.st-title-link {
+	text-decoration: none;
+	color:$color-black;
+	border-bottom:rem(3) solid transparent;
+	transition:text-decoration $t-st-hover ease;
+
+	&:hover, &:focus {
+		border-color:$color-blue;
+		transition:text-decoration $t-st-hover ease;
 	}
 }
 
@@ -116,27 +116,41 @@ h1 {
 	overflow: hidden;
 
 	img {
-		transform-origin: center;
 		width: 100%;
-		transition:all $t-st-hover ease;
 	}
 }
 
 .st-desc {
-	margin:0;
+	margin: rem(0,0,.5*$space--st,0);
+}
 
-	span {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		vertical-align: middle;
-		width: rem(24);
-		height: rem(24);
-		background-color: $color-black;
+.st-read-more {
+	align-self: flex-start;
+	margin-top:auto;
+	display: inline-flex;
+	align-items: center;
+}
+.st-read-more-ico {
+	margin-right: rem(5);
 
+	svg {
+		fill:$color-white;
+		transition: fill $t-st-hover ease;
+	}
+	.st-read-more:hover &, .st-read-more:focus & {  
 		svg {
-			fill:$color-white;
+			fill:$color-black;
+			transition: fill $t-st-hover ease;
 		}
+	}
+}
+.st-read-more-txt {
+	color:$color-white;
+	transition:color .3s ease;
+
+	.st-read-more:hover &, .st-read-more:focus & {
+		color:$color-black;
+		transition:color .3s ease;
 	}
 }
 
@@ -177,7 +191,7 @@ h1 {
 				display:block;
 			}
 			// 3 st
-			.is-home &:nth-child(4) {
+			&:nth-child(4) {
 				display:none;
 			}
 	}

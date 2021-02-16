@@ -223,10 +223,11 @@ body {
 .main-footer-inner {
 	@extend .layout-sub;
 	@extend .layout-mw;
+	border-top: $border;
 
 	@media ( min-width : em($mq-layout-l) ) {
 		display:grid;
-		grid-template-columns: repeat(2,1fr);
+		grid-template-columns: repeat(3,1fr);
 	}
 }
 

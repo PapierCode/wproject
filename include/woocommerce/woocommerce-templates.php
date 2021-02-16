@@ -6,6 +6,8 @@
  ** Suppression sidebar
  ** Skip links
  ** Main
+ ** Woo notices
+ ** Article
  ** Titre (h1)
  ** Content
  ** Footer
@@ -69,6 +71,32 @@ add_action( 'woocommerce_before_main_content', 'woocommerce_output_all_notices',
 
 
 /*=====  FIN Woo notices  =====*/
+
+/*===============================
+=            Article            =
+===============================*/
+
+// (content-product-cat.php)
+add_action( 'woocommerce_before_subcategory', 'pc_woo_article_tag_start', 0 );
+add_action( 'woocommerce_after_subcategory', 'pc_woo_article_tag_end', 999 );
+// (content-product.php)
+add_action( 'woocommerce_before_shop_loop_item', 'pc_woo_article_tag_start', 0 );
+add_action( 'woocommerce_after_shop_loop_item', 'pc_woo_article_tag_end', 999 );
+
+	function pc_woo_article_tag_start() {
+
+		echo '<article>';
+
+	}
+
+	function pc_woo_article_tag_end() {
+
+		echo '</article>';
+
+	}
+
+
+/*=====  FIN Article  =====*/
 
 /*==================================
 =            Titre (h1)            =

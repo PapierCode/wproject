@@ -1,0 +1,40 @@
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-helpers" as *;
+@use "../framework/frk-mixins" as *;
+
+.related-product-cat {
+	margin:rem($wysi-space-default-l,0,0,0);
+
+	> * {
+		display: inline;
+	}
+}
+.related-product-cat-title {
+	font-family: $font-bold;
+}
+.related-product-cat-item {
+	font-family: $font-regular;
+	margin:0;
+}
+.related-product-cat-link {
+	color: $color-black;
+	text-decoration: none;
+
+	&:hover, &:focus {
+	   text-decoration: underline;
+	}
+}
+
+.single-product-2cols {
+	@extend .layout-sub-no-padding-top;
+	@extend .layout-mw;
+
+	.editor {
+		padding:0;
+	}
+
+	@media ( min-width : em($mq-layout-l) ) {
+		display: flex;		
+	}
+}

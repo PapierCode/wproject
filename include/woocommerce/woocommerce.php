@@ -40,6 +40,41 @@ add_action( 'wp_enqueue_scripts', 'pc_woo_enqueue_scripts', 999 );
 
 /*=====  FIN Fichiers CSS & JS  =====*/
 
+/*========================================
+=            Tailles d'images            =
+========================================*/
+
+add_action('init', 'pc_woo_remove_images_sizes');
+
+	function pc_woo_remove_images_sizes() {
+
+		$sizes_to_remove = array(
+			'woocommerce_thumbnail',
+			'woocommerce_single',
+			'woocommerce_gallery_thumbnail',
+			'shop_catalog',
+			'shop_single',
+			'shop_thumbnail'
+		);
+
+		foreach ($sizes_to_remove as $size) {
+			remove_image_size( $size );
+		}
+
+	}
+
+add_filter( 'pc_filter_add_img_sizes', 'pc_woo_add_images_sizes' );
+
+	function pc_woo_add_images_sizes( $images_project_sizes ) {
+
+		$images_project_sizes['product-single'] = array( 'width'=>400, 'height'=>400, 'crop'=>true );
+		return $images_project_sizes;
+
+	}
+
+
+/*=====  FIN Tailles d'images  =====*/
+
 /*=================================
 =            Variables            =
 =================================*/
@@ -72,6 +107,7 @@ add_filter( 'query_vars', 'pc_woo_query_vars' );
 =            Include            =
 ===============================*/
 
+include 'woocommerce-functions.php';
 include 'woocommerce-admin.php';
 include 'woocommerce-templates.php';
 
