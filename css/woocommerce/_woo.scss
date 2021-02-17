@@ -1,7 +1,22 @@
+/**
+*
+* Woocommerce : communs
+*
+** Layout
+** Résumés catégorie & produit
+*
+**/
+
 @use "../framework/frk-variables" as *;
 @use "../framework/frk-functions" as *;
 @use "../framework/frk-mixins" as *;
 
+
+/*==============================
+=            Layout            =
+==============================*/
+
+/*----------  Entête  ----------*/
 
 .woocommerce-products-header {
 	background-color: $color-white;
@@ -10,16 +25,26 @@
 		@extend .layout-sub;
 		@extend .layout-mw;
 	}
-	.editor {
-		@extend .layout-mw;
-	}
 }
 
+
+/*=====  FIN Layout  =====*/
+
+/*===================================================
+=            Résumés catégorie & produit            =
+===================================================*/
+
+/*----------  Article  ----------*/
+
+.st--product-cat,
 .st--product {
-
-	.add_to_cart_button, .cart, .btn--add-to-cart {
-		position: relative;
-		z-index: 1;
+	
+	article {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
 	}
-
 }
+
+
+/*=====  FIN Résumés catégorie & produit  =====*/

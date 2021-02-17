@@ -5,6 +5,8 @@
  * 
  */
 
+////////// à relire ///////////
+
 /*----------  Global  ----------*/
 
 add_filter( 'woocommerce_breadcrumb_defaults', 'pc_woo_breadcrum_custom' );

@@ -1,25 +1,32 @@
+/**
+*
+* Woocommerce : Produits (communs)
+*
+** Ajout au panier
+*
+**/
+
+
 @use "../framework/frk-variables" as *;
 @use "../framework/frk-functions" as *;
 @use "../framework/frk-helpers" as *;
 @use "../framework/frk-mixins" as *;
 
 
-.st--product-cat,
-.st--product {
-	
-	article {
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-	}
-}
+/*=======================================
+=            Ajout au panier            =
+=======================================*/
 
 .pc-cart {
 	display: flex;
 	justify-content: space-between;
 	border:$border;
 	padding: rem(10);
-	margin-top:rem(10);
+}
+
+.cart {
+	display: flex;
+	justify-content: space-between;
 }
 button[name=add-to-cart] {
 	background-color: $color-red;
@@ -33,12 +40,7 @@ button[name=add-to-cart] {
 }
 
 
-.price {
-	padding:rem(5,10);
-	font-family: $font-bold;
-	background-color: $color-yellow;
-	font-size: rem(18);
-}
+/*----------  Variation  ----------*/
 
 .variation {
 
@@ -47,15 +49,12 @@ button[name=add-to-cart] {
 	}
 }
 
+
+/*----------  Quantité  ----------*/
+
 .quantity {
 	@extend .visually-hidden;
 }
-
-.cart {
-	display: flex;
-	justify-content: space-between;
-}
-
 .pc-qty {
 	display:flex;
 }
@@ -71,3 +70,15 @@ button[name=add-to-cart] {
 	font-size: rem(24);
 }
 
+/*----------  Prix  ----------*/
+
+.price {
+	margin:0;
+	padding:rem(5,10);
+	font-family: $font-bold;
+	background-color: $color-yellow;
+	font-size: rem(18);
+}
+
+
+/*=====  FIN Ajout au panier  =====*/

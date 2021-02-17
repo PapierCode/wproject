@@ -67,7 +67,8 @@ add_filter( 'pc_filter_add_img_sizes', 'pc_woo_add_images_sizes' );
 
 	function pc_woo_add_images_sizes( $images_project_sizes ) {
 
-		$images_project_sizes['product-single'] = array( 'width'=>400, 'height'=>400, 'crop'=>true );
+		$images_project_sizes['product-single-s'] = array( 'width'=>400, 'height'=>400, 'crop'=>true );
+		$images_project_sizes['product-single-l'] = array( 'width'=>700, 'height'=>700, 'crop'=>true );
 		return $images_project_sizes;
 
 	}
