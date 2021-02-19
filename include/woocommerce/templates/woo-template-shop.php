@@ -8,32 +8,11 @@
  */
 
 
-/*===================================
-=            Description            =
-===================================*/
-
-function pc_woo_shop_description() {
-
-	if ( is_shop() && !get_query_var( 'catpaged' ) ) {
-
-		$description = get_post_field( 'post_content', wc_get_page_id('shop') );
-
-		if ( '' != $description ) {
-			echo pc_wp_wysiwyg( $description );
-		}
-
-	}
-
-}
-
-
-/*=====  FIN Description  =====*/
-
 /*==================================
 =            Pagination            =
 ==================================*/
 	
-function pc_woo_shop_pager() {
+function pc_woo_display_shop_pager() {
 
 	if ( is_shop() ) { 
 		

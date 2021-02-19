@@ -41,17 +41,17 @@ remove_action( 'woocommerce_after_subcategory', 'woocommerce_template_loop_categ
 ======================================*/
 
 // résumé article start (content-product-cat.php)
-add_action( 'woocommerce_before_subcategory', 'pc_woo_article_tag_start', 10 );
+add_action( 'woocommerce_before_subcategory', 'pc_woo_display_article_tag_start', 10 );
 
 // ---------
 
 // résumé contenu (content-product-cat.php)
-add_action( 'woocommerce_shop_loop_subcategory_title', 'pc_woo_category_resum_display_content', 10 );
+add_action( 'woocommerce_shop_loop_subcategory_title', 'pc_woo_display_category_resum_content', 10 );
 
 // ---------
 
 // résumé article end (content-product-cat.php)
-add_action( 'woocommerce_after_subcategory', 'pc_woo_article_tag_end', 10 );
+add_action( 'woocommerce_after_subcategory', 'pc_woo_display_article_tag_end', 10 );
 
 
 /*=====  FIN Hooks (ajouts)  =====*/
@@ -60,29 +60,11 @@ add_action( 'woocommerce_after_subcategory', 'pc_woo_article_tag_end', 10 );
 =            Liste            =
 =============================*/
 
-/*----------  Description  ----------*/
-
-function pc_woo_category_details_display_description() {
-
-	if ( is_product_category() && !get_query_var( 'pcpaged' ) ) {
-
-		$term = get_queried_object();
-		$description = get_term_meta( $term->term_id, 'content-desc', true );
-
-		if ( '' != $description ) {
-			echo pc_wp_wysiwyg( $description );
-		}
-
-	}
-
-}
-
-
 /*----------  Nombre de catégories par page  ----------*/
 
-add_filter( 'woocommerce_product_subcategories_args', 'pc_woo_categories_per_page' );
+add_filter( 'woocommerce_product_subcategories_args', 'pc_woo_edit_categories_per_page' );
 
-	function pc_woo_categories_per_page( $args ) {
+	function pc_woo_edit_categories_per_page( $args ) {
 
 		$current_page_number = ( get_query_var( 'catpaged' ) ) ? get_query_var( 'catpaged' ) : 1;
 
@@ -99,7 +81,7 @@ add_filter( 'woocommerce_product_subcategories_args', 'pc_woo_categories_per_pag
 
 /*----------  Footer  ----------*/
 	
-function pc_woo_category_details_footer() {
+function pc_woo_display_category_single_footer() {
 
 	if ( is_product_category() ) {
 		
@@ -162,9 +144,9 @@ function pc_woo_category_details_footer() {
 
 /*----------  CSS classes  ----------*/
 
-add_filter( 'product_cat_class', 'pc_woo_category_resum_edit_css_classes', 10, 3 );
+add_filter( 'product_cat_class', 'pc_woo_edit_category_resum_css_classes', 10, 3 );
 
-function pc_woo_category_resum_edit_css_classes( $classes, $class, $term ) {
+function pc_woo_edit_category_resum_css_classes( $classes, $class, $term ) {
 
 	return array( 'st', 'st--product-cat' );
 
@@ -173,7 +155,7 @@ function pc_woo_category_resum_edit_css_classes( $classes, $class, $term ) {
 
 /*----------  Contenu  ----------*/
 
-function pc_woo_category_resum_display_content( $term, $hn = 2 ) {
+function pc_woo_display_category_resum_content( $term, $hn = 2 ) {
 
 	// métas
 	$term_metas = get_term_meta( $term->term_id );
@@ -181,6 +163,7 @@ function pc_woo_category_resum_display_content( $term, $hn = 2 ) {
 	$term_title = ( isset( $term_metas['resum-title'] ) ) ? $term_metas['resum-title'][0] : $term->name;
 	// permalien
 	$term_link = get_term_link( $term, 'product_cat' );
+	$term_link_title = 'Voir les produits de la catégorie '.$term_title;
 	// visuel
 	$term_img_datas = pc_get_post_resum_img_datas( $term->term_id, $term_metas );
 	// description
@@ -199,14 +182,14 @@ function pc_woo_category_resum_display_content( $term, $hn = 2 ) {
 		pc_display_post_resum_img_tag( $term->term_id, $term_img_datas );
 	echo '</figure>';	
 
-	echo '<h'.$hn.' class="st-title">'.pc_woo_resum_get_link_tag_start( 'category', 'st-title-link', $term_link, $term_title ).$term_title.'</a></h'.$hn.'>';
+	echo '<h'.$hn.' class="st-title"><a href="'.$term_link.'" class="st-title-link" title="'.$term_link_title.'">'.$term_title.'</a></h'.$hn.'>';
 	
 	if ( '' != $term_desc ) {
 		global $texts_lengths;
 		echo '<p class="st-desc">'.pc_words_limit( $term_desc, $texts_lengths['resum-desc'] ).'...</p>';
 	}
 
-	echo pc_woo_resum_get_link_tag_start( 'category', 'st-read-more button', $term_link, $term_title ).'<span class="st-read-more-ico">'.pc_svg('more-16').'</span> <span class="st-read-more-txt">Voir les produits</span><span class="visually-hidden"> de la catégorie '.$term_title.'</span></a>';
+	echo '<a href="'.$term_link.'" class="st-read-more button" title="'.$term_link_title.'" aria-hidden="true"><span class="st-read-more-ico">'.pc_svg('more-16').'</span> <span class="st-read-more-txt">Voir les produits</span><span class="visually-hidden"> de la catégorie '.$term_title.'</span></a>';
 
 }
 

@@ -61,32 +61,32 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_r
 ======================================*/
 
 // (content-single-product.php)
-add_action( 'woocommerce_before_single_product', 'pc_woo_single_product_display_header', 10 );
+add_action( 'woocommerce_before_single_product', 'pc_woo_display_product_single_header', 10 );
 
 // ---------
 
 // div.main-content-inner start (content-single-product.php)
-add_action( 'woocommerce_before_single_product_summary', 'pc_woo_single_product_display_inner_start', 10 );
+add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_main_content_inner_start', 10 );
 // catégories (content-single-product.php)
-add_action( 'woocommerce_before_single_product_summary', 'pc_woo_single_product_display_categories', 20 );
+add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_categories', 20 );
 // images (content-single-product.php)
-add_action( 'woocommerce_before_single_product_summary', 'pc_woo_single_product_gallery', 30 );
+add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_gallery', 30 );
 
 // ---------
 
 // Container prix & ajout au panier start (content-single-product.php)
-add_action( 'woocommerce_single_product_summary', 'pc_woo_single_product_wrap_cart_start', 5 );
+add_action( 'woocommerce_single_product_summary', 'pc_woo_display_product_single_cart_wrapper_start', 5 );
 // Container prix & ajout au panier end (content-single-product.php)
-add_action( 'woocommerce_single_product_summary', 'pc_woo_single_product_wrap_cart_end', 40 );
+add_action( 'woocommerce_single_product_summary', 'pc_woo_display_product_single_cart_wrapper_end', 40 );
 // propriétés (content-single-product.php)
-add_action( 'woocommerce_single_product_summary', 'pc_woo_single_product_datas', 50 );
+add_action( 'woocommerce_single_product_summary', 'pc_woo_display_product_single_datas', 50 );
 
 // ---------
 
 // description (content-single-product.php)
-add_action( 'woocommerce_after_single_product_summary', 'pc_woo_single_product_display_description', 10 );
+add_action( 'woocommerce_after_single_product_summary', 'pc_woo_display_product_single_wysiwyg', 10 );
 // div.main-content-inner end (content-single-product.php)
-add_action( 'woocommerce_after_single_product_summary', 'pc_woo_single_product_display_inner_end', 20 );
+add_action( 'woocommerce_after_single_product_summary', 'pc_woo_display_product_single_main_content_inner_end', 20 );
 
 
 /*=====  FIN Hooks (ajouts)  =====*/
@@ -95,9 +95,9 @@ add_action( 'woocommerce_after_single_product_summary', 'pc_woo_single_product_d
 =            CSS classes            =
 ===================================*/
 
-add_filter( 'woocommerce_post_class', 'pc_woo_single_product_css_classes', 10 ,2 );
+add_filter( 'woocommerce_post_class', 'pc_woo_edit_single_product_css_classes', 10 ,2 );
 
-	function pc_woo_single_product_css_classes( $classes, $product ) {
+	function pc_woo_edit_single_product_css_classes( $classes, $product ) {
 
 		if ( is_product() ) {
 			$classes[] = 'main-content single-product';
@@ -114,7 +114,7 @@ add_filter( 'woocommerce_post_class', 'pc_woo_single_product_css_classes', 10 ,2
 =            Entête            =
 ==============================*/
 
-function pc_woo_single_product_display_header() {
+function pc_woo_display_product_single_header() {
 
 	global $product;
 
@@ -135,13 +135,13 @@ function pc_woo_single_product_display_header() {
 
 /*----------  Main content inner  ----------*/
 
-function pc_woo_single_product_display_inner_start() {
+function pc_woo_display_product_single_main_content_inner_start() {
 
 	echo '<div class="main-content-inner">';
 
 }
 
-function pc_woo_single_product_display_inner_end() {
+function pc_woo_display_product_single_main_content_inner_end() {
 
 	echo '</div>';
 
@@ -150,13 +150,13 @@ function pc_woo_single_product_display_inner_end() {
 
 /*----------  Container Prix & Ajout au panier  ----------*/
 	
-function pc_woo_single_product_wrap_cart_start() {
+function pc_woo_display_product_single_cart_wrapper_start() {
 
 	echo '<div class="pc-cart pc-cart--single">';
 
 }
 
-function pc_woo_single_product_wrap_cart_end() {
+function pc_woo_display_product_single_cart_wrapper_end() {
 
 	echo '</div>';
 
@@ -169,7 +169,7 @@ function pc_woo_single_product_wrap_cart_end() {
 =            Catégories            =
 ==================================*/
 
-function pc_woo_single_product_display_categories() {
+function pc_woo_display_product_single_categories() {
 
 	global $product;
 	$terms = get_the_terms( $product->get_id(), 'product_cat' );
@@ -238,7 +238,7 @@ function pc_woo_gallery_item_get_datas( $img_id, $size = 'product-single-s' ) {
 
 }
 
-function pc_woo_gallery_item_display( $item_datas ) {
+function pc_woo_get_gallery_item_datas( $item_datas ) {
 
 	global $images_project_sizes;
 
@@ -264,7 +264,7 @@ function pc_woo_gallery_item_display( $item_datas ) {
 
 }
 
-function pc_woo_single_product_gallery() {
+function pc_woo_display_product_single_gallery() {
 
 	global $product;
 	$gallery_datas = array();
@@ -294,10 +294,10 @@ function pc_woo_single_product_gallery() {
 
 		echo '<figure class="product-single-gallery"><ul class="wp-gallery reset-list">';
 
-			pc_woo_gallery_item_display( $gallery_datas['visual'] );
+			pc_woo_get_gallery_item_datas( $gallery_datas['visual'] );
 			unset( $gallery_datas['visual'] );
 
-			foreach ( $gallery_datas as $gallery_item ) { pc_woo_gallery_item_display( $gallery_item ); }
+			foreach ( $gallery_datas as $gallery_item ) { pc_woo_get_gallery_item_datas( $gallery_item ); }
 
 		echo '</ul></figure>';
 
@@ -312,7 +312,7 @@ function pc_woo_single_product_gallery() {
 =            Propriétés            =
 ==================================*/
 
-function pc_woo_single_product_datas() {
+function pc_woo_display_product_single_datas() {
 
 	global $product;
 
@@ -342,7 +342,7 @@ function pc_woo_single_product_datas() {
 =            Wysiwyg            =
 ===============================*/
 
-function pc_woo_single_product_display_description() {
+function pc_woo_display_product_single_wysiwyg() {
 
 	echo pc_wp_wysiwyg( get_the_content() );
 		
@@ -357,13 +357,13 @@ function pc_woo_single_product_display_description() {
 	
 /*----------  Lien retour  ----------*/
 
-function pc_woo_single_product_display_back_link() {
+function pc_woo_display_product_single_back_link() {
 
 	if ( is_product() ) {	
 
-		global $shop_name;
+		global $woo_pages, $shop_name;
 
-		echo '<nav class="main-footer-nav"><a href="'.get_the_permalink( wc_get_page_id( 'shop' ) ).'" class="button" title="Retour vers la boutique">'.pc_svg('arrow',null,'svg_block').'<span>'.$shop_name.'</span></a></nav>';
+		echo '<nav class="main-footer-nav"><a href="'.get_the_permalink( $woo_pages['shop'] ).'" class="button" title="Retour vers la boutique">'.pc_svg('arrow',null,'svg_block').'<span>'.$shop_name.'</span></a></nav>';
 
 	}
 

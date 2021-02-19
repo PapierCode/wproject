@@ -24,7 +24,10 @@ add_filter( 'pc_filter_js_files', 'pc_enqueuechild_theme_js' );
 
 	function pc_enqueuechild_theme_js( $js_files ) {
 
-		// $js_files['wpreform'] = get_bloginfo('template_directory').'/scripts/scripts.min.js'; // version sans jquery
+		if ( class_exists( 'woocommerce' ) ) {
+			$js_files['wpreform'] = get_bloginfo('template_directory').'/scripts/scripts.min.js'; // version sans jquery
+		}
+
 		$js_files['project'] = get_stylesheet_directory_uri().'/scripts/scripts.min.js';
 
 		return $js_files;

@@ -6,7 +6,7 @@
  ** Hooks (suppressions)
  ** Hooks (ajouts)
  ** Skip links
- ** Titre (h1)
+ ** Shop & catégories : titre & description
  ** Include
  * 
  */
@@ -67,15 +67,14 @@ add_action( 'woocommerce_before_main_content', 'woocommerce_output_all_notices',
 // ---------
 
 // titre (archive-product.php)
-add_action( 'woocommerce_archive_description', 'pc_woo_layout_display_main_title', 10 );
+add_action( 'woocommerce_archive_description', 'pc_woo_display_main_title', 10 );
 
 // ---------
 
 // div.main-content start (archive-product.php)
 add_action( 'woocommerce_before_shop_loop', 'pc_display_main_content_start', 10 ); // fonction wpreform
-// description (archive-product.php)
-add_action( 'woocommerce_before_shop_loop', 'pc_woo_shop_description', 20 );
-add_action( 'woocommerce_before_shop_loop', 'pc_woo_category_details_display_description', 30 );
+// descriptions shop & catégories (archive-product.php)
+add_action( 'woocommerce_before_shop_loop', 'pc_woo_display_description', 20 );
 
 // ---------
 
@@ -87,11 +86,11 @@ add_action( 'woocommerce_after_shop_loop', 'pc_display_main_content_end', 10 ); 
 // footer start (archive-product.php & single-product.php)
 add_action( 'woocommerce_after_main_content', 'pc_display_main_footer_start', 10 );  // fonction wpreform
 // lien retour (archive-product.php & single-product.php)
-add_action( 'woocommerce_after_main_content', 'pc_woo_single_product_display_back_link', 20 );
+add_action( 'woocommerce_after_main_content', 'pc_woo_display_product_single_back_link', 20 );
 // pagination shop (archive-product.php & single-product.php)
-add_action( 'woocommerce_after_main_content', 'pc_woo_shop_pager', 20 );
+add_action( 'woocommerce_after_main_content', 'pc_woo_display_shop_pager', 20 );
 // catégorie footer (archive-product.php & single-product.php)
-add_action( 'woocommerce_after_main_content', 'pc_woo_category_details_footer', 30 );
+add_action( 'woocommerce_after_main_content', 'pc_woo_display_category_single_footer', 30 );
 // partage shop (archive-product.php & single-product.php)
 add_action( 'woocommerce_after_main_content', 'pc_display_share_links', 40 );  // fonction wpreform
 // main footer end (archive-product.php & single-product.php)
@@ -122,21 +121,49 @@ add_filter( 'pc_filter_skip_nav', 'pc_woo_edit_skip_nav' );
 
 /*=====  FIN Skip Links  =====*/
 
-/*==================================
-=            Titre (h1)            =
-==================================*/
+/*===============================================================
+=            Shop & catégories : titre & description            =
+===============================================================*/
+
+/*----------  H1  ----------*/
 
 // suppression (archive-product.php)
 add_filter( 'woocommerce_show_page_title', function() { return false; } );
 
-function pc_woo_layout_display_main_title() {
+function pc_woo_display_main_title() {
 
 	echo '<h1><span>'.woocommerce_page_title( false ).'</span></h1>';
 
 }
 
+/*----------  Description  ----------*/
 
-/*=====  FIN Titre (h1)  =====*/
+function pc_woo_display_description() {
+
+	if ( !get_query_var( 'catpaged' ) ) {
+
+		if ( is_shop() ) {
+
+			global $woo_pages;
+			$description = get_post_field( 'post_content', $woo_pages['shop'] );
+
+		} else if ( is_product_category() ) {
+
+			$term = get_queried_object();
+			$description = get_term_meta( $term->term_id, 'content-desc', true );
+
+		}		
+		
+		if ( '' != $description ) {
+			echo pc_wp_wysiwyg( $description );
+		}
+
+	}
+
+}
+
+
+/*=====  FIN Shop & catégories : titre et description  =====*/
 
 /*===============================
 =            Include            =
@@ -157,6 +184,9 @@ include 'templates/woo-template-product-single.php';
 
 // panier
 include 'templates/woo-template-cart.php';
+
+// SEO
+include 'woocommerce-seo.php';
 
 
 /*=====  FIN Include  =====*/

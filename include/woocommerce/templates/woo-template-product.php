@@ -15,9 +15,9 @@
 
 /*----------  Espace avant €  ----------*/
 
-add_filter( 'woocommerce_currency_symbol', 'pc_woo_price_space' );
+add_filter( 'woocommerce_currency_symbol', 'pc_woo_edit_currency_symbol' );
 
-	function pc_woo_price_space( $currency_symbol ) {
+	function pc_woo_edit_currency_symbol( $currency_symbol ) {
 
 		return '&nbsp;'.$currency_symbol;
 
@@ -32,9 +32,9 @@ add_filter( 'woocommerce_currency_symbol', 'pc_woo_price_space' );
 
 /*----------  Promotion  ----------*/
 
-add_filter( 'woocommerce_sale_flash', 'pc_woo_sale_msg' );
+add_filter( 'woocommerce_sale_flash', 'pc_woo_edit_sale_flag_html' );
 
-   	function pc_woo_sale_msg( $html ) {
+   	function pc_woo_edit_sale_flag_html( $html ) {
 
     	return '<p class="promo">Promotion</p>';
     
@@ -43,9 +43,9 @@ add_filter( 'woocommerce_sale_flash', 'pc_woo_sale_msg' );
 
 /*----------  Stock & réapprovisionnement  ----------*/
 
-add_filter( 'woocommerce_get_availability_text', 'pc_woo_stock_msg', 10, 2 );
+add_filter( 'woocommerce_get_availability_text', 'pc_woo_edit_stock_flag_txt', 10, 2 );
 
-	function pc_woo_stock_msg( $text, $product ) {
+	function pc_woo_edit_stock_flag_txt( $text, $product ) {
 
 		if ( !$product->is_in_stock() ) { $text = 'Stock épuisé'; }
 		if ( $product->is_on_backorder() ) { $text = 'En réapprovisionnement'; }
