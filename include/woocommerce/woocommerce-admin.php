@@ -93,7 +93,7 @@ add_filter( 'map_meta_cap', 'pc_woo_admin_prevent_delete_shop_page', 10, 4 );
 	
 		global $woo_pages;
 
-		if ( $cap === 'delete_post' && get_the_id() === $woo_pages['shop'] ) {
+		if ( $cap === 'delete_post' && get_the_ID() === $woo_pages['shop'] ) {
 			$caps[] = 'do_not_allow';
 		}
 	
