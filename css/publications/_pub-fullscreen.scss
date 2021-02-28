@@ -1,0 +1,267 @@
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
+
+
+/*================================================
+=            Navigation dans l'entête            =
+================================================*/
+
+/*----------  Réseaux sociaux  ----------*/
+
+.social-list--header {
+
+	@media ( min-width : em($mq-layout-mw) ) {
+
+		.is-fullscreen & {
+			margin-top: $space;
+			position:static;
+			
+			.social-item {
+				margin:rem(0,10,0,0);
+			}
+		}
+	}
+}
+
+
+/*----------  Bouton ouvrir/fermer  ----------*/
+
+.h-nav-btn-box {
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		.is-fullscreen & {
+			display: block;
+			top:rem($space-max);
+			right:rem($space-max);
+		}
+		.is-fullscreen.h-nav-is-open & {
+			transform:translateX( calc( #{rem($space-max)} + #{$h-nav-w-l - $space} ) );
+		}
+	}
+}
+
+.btn-overlay {
+
+	@media ( min-width : em($mq-layout-mw) ) {
+
+		.is-fullscreen & {
+			display:block;
+		}
+	}
+}
+
+
+/*----------  Container  ----------*/
+
+.h-nav {
+
+	@media ( min-width : em($mq-layout-mw) ) {
+
+		.is-fullscreen & {
+			background-color: $color-yellow;
+			position: absolute;
+			width: $h-nav-w-l;
+			padding: calc( #{rem( $h-btn-nav-size + 2 * $space-max )} ) $space $space $space;
+		}
+	}
+}
+
+
+/*----------  Liste  ----------*/
+
+.h-nav-list {
+
+	@media ( min-width : em($mq-layout-mw) ) {
+
+		.is-fullscreen & {
+			display: block;
+		}
+	}
+}
+
+.h-nav-item {
+
+    @media ( min-width : em($mq-layout-mw) ) {  
+
+		.is-fullscreen & {
+			margin-left:0;
+
+			&:nth-child(n+2) {
+				margin-top:rem($space--h-nav);
+			}
+		}
+	}
+}
+
+
+/*----------  Lien  ----------*/
+
+.h-nav-link, .h-nav-link:visited {
+
+	@media ( min-width : em($mq-layout-mw) ) {
+
+		.is-fullscreen .is-active & {
+			background-color: $color-red;
+			transform:translateX(-$space/2);
+		}
+		.is-fullscreen &:hover, .is-fullscreen &:focus {
+			background-color: $color-white;
+			transform:translateX(-$space/2);
+		}
+	}
+
+}
+
+
+/*=====  FIN Navigation dans l'entête  =====*/
+
+/*==============================
+=            Layout            =
+==============================*/
+
+/*----------  Body  ----------*/
+
+.body-inner {
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		.is-fullscreen.h-nav-is-open & {
+			transform:translateX(-$h-nav-w-l);			
+		}
+	}
+}
+
+
+/*----------  Visuel  ----------*/
+
+.fs-img {
+	position: absolute;
+	z-index: -1;
+	top:0;
+	left:0;
+	right:0;
+	width: 100%;
+	height: 100vh; // modifié en js
+	background-position: center;
+	background-size: cover;
+	background-color: $color-white;
+}
+
+
+/*----------  Header  ----------*/
+
+.header {
+	
+	.is-fullscreen & {
+		background-color: transparent;
+	}
+}
+
+.header-inner {
+
+	.is-fullscreen & {
+		margin:0;
+		max-width: none;
+	}
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		
+		.is-fullscreen & {
+			position:static;
+			display:block;
+		}
+	}
+}
+
+/*----------  Main  ----------*/
+
+.main-header {
+	
+	.is-fullscreen & {
+		@extend .layout-sub-no-padding-top;
+		background-color: transparent;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		min-height:calc( 100vh - #{2*$space} - #{rem(100)} ); // modifié en js, 100 : hauteur logo
+	}
+	.h1-pos-v-top & {
+		align-items: flex-start;
+	}
+	.h1-pos-v-bottom & {
+		align-items: flex-end;
+	}
+	.h1-pos-h-left & {
+		justify-content: flex-start;
+	}
+	.h1-pos-h-right & {
+		justify-content: flex-end;
+	}
+
+	@media ( min-width : em($mq-layout-m) ) {
+		.is-fullscreen & {
+			min-height:calc( 100vh - #{2*$space} - #{rem(150)} ); // modifié en js, 150 : hauteur logo
+		}
+	}
+	@media ( min-width : em($mq-layout-mw) ) {
+		.is-fullscreen & {
+			min-height:calc( 100vh - #{rem(2*$space-max)} - #{rem(150)} ); // modifié en js, 150 : hauteur logo
+		}
+	}
+}
+
+.main-header-inner {
+
+	.is-fullscreen & {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		margin: 0;
+		max-width: none;
+	}
+}
+
+
+/*=====  FIN Layout  =====*/
+
+/*====================================
+=            Publications            =
+====================================*/
+
+h1 {
+
+	.is-fullscreen & {
+		@extend .layout-sub;
+		max-width: rem($txt-mw);
+		background-color: rgba($color-white,.7);
+	}
+}
+
+
+/*=====  FIN Publications  =====*/
+
+/*==================================
+=            Composants            =
+==================================*/
+
+.editor {
+
+	.is-fullscreen .main-content-inner > &:first-child {
+		@extend .layout-sub;
+	}
+}
+
+.form--contact {
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		.is-fullscreen & {
+			grid-column: 1 / 6;
+		}
+	}
+}
+
+
+/*=====  FIN Composants  =====*/

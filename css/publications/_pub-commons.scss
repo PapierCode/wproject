@@ -27,17 +27,6 @@ h1 {
 	font-size: rem(36);
 	line-height: 1.2;
 	margin: 0;
-
-	.classic & {
-		border-left: $border;
-		border-right: $border;
-		border-bottom: $border;
-	}
-	.is-fullscreen & {
-		@extend .layout-sub;
-		max-width: rem($txt-mw);
-		background-color: rgba($color-white,.7);
-	}
 	
 	@media ( min-width : em($mq-title-size) ) {
 		font-size: rem(50);

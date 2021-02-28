@@ -13,13 +13,7 @@
 
 
 .editor {
-	
-	.is-classic .main-content-inner > &:first-child {
-		@extend .layout-sub-no-padding-top;
-	}
-	.is-fullscreen .main-content-inner > &:first-child {
-		@extend .layout-sub;
-	}
+	@extend .layout-sub-no-padding-top;
 }
 
 .editor-inner {

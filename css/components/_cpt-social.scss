@@ -79,16 +79,10 @@
 	}
 
 	@media ( min-width : em($mq-layout-mw) ) {
-		.is-classic & {
-			position:absolute;
-			top:rem($space-max);
-			right:rem($space-max);
-			margin:0;
-			
-			.social-item {
-				margin:rem(0,0,0,10);
-			}
-		}
+		position:absolute;
+		top:rem($space-max);
+		right:rem($space-max);
+		margin:0;
 	}
 }
 

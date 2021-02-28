@@ -11,7 +11,7 @@
 
 
 .form--contact {
-	@extend .layout-sub;
+	@extend .layout-sub-no-padding-top;
 
 	form {
 		max-width: rem($txt-mw);
@@ -19,11 +19,6 @@
 
 	@media ( min-width : em($mq-layout-l) ) {
 		grid-column: 1 / 3;
-	}
-	@media ( min-width : em($mq-layout-mw) ) {
-		.is-fullscreen & {
-			grid-column: 1 / 6;
-		}
 	}
 }
 

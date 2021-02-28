@@ -3,7 +3,6 @@
 * Structure principale
 *
 ** Html & Body
-** Visuel Fullscreen
 ** Header
 ** Main
 ** Footer
@@ -60,34 +59,12 @@ body {
 		}
 	}
 	@media ( min-width : em($mq-layout-mw) ) {
-		.is-classic.h-nav-is-open & {
-			transform:none;		
-		}
+		transform:none;		
 	}
 }
 
 
 /*=====  FIN Html & body  =====*/
-
-/*=========================================
-=            Visuel Fullscreen            =
-=========================================*/
-
-.fs-img {
-	position: absolute;
-	z-index: -1;
-	top:0;
-	left:0;
-	right:0;
-	width: 100%;
-	height: 100vh; // modifié en js
-	background-position: center;
-	background-size: cover;
-	background-color: $color-white;
-}
-
-
-/*=====  FIN Visuel Fullscreen  =====*/
 
 /*==============================
 =            Header            =
@@ -96,27 +73,18 @@ body {
 /*----------  Header containers  ----------*/
 
 .header {
-	
-	.is-classic & {
-		background-color: $color-red;
-	}
+	background-color: $color-red;
 }
 
 .header-inner {
 	@extend .layout-sub;
-
-	.is-classic & {
-		@extend .layout-mw;
-	}
+	@extend .layout-mw;
 
 	@media ( min-width : em($mq-layout-mw) ) {
-		.is-classic & {
-			// navigation visible
-			position:relative;
-			display:flex;
-			justify-content: space-between;
-			align-items: flex-end;
-		}
+		position:relative;
+		display:flex;
+		justify-content: space-between;
+		align-items: flex-end;
 	}
 }
 
@@ -152,55 +120,12 @@ body {
 /*----------  Main header  ----------*/
 
 .main-header {
-
-	.is-classic & {
-		background-color: $color-white;
-	}
-	.is-fullscreen & {
-		@extend .layout-sub-no-padding-top;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		min-height:calc( 100vh - #{2*$space} - #{rem(100)} ); // modifié en js, 100 : hauteur logo
-	}
-	.h1-pos-v-top & {
-		align-items: flex-start;
-	}
-	.h1-pos-v-bottom & {
-		align-items: flex-end;
-	}
-	.h1-pos-h-left & {
-		justify-content: flex-start;
-	}
-	.h1-pos-h-right & {
-		justify-content: flex-end;
-	}
-
-	@media ( min-width : em($mq-layout-m) ) {
-		.is-fullscreen & {
-			min-height:calc( 100vh - #{2*$space} - #{rem(150)} ); // modifié en js, 150 : hauteur logo
-		}
-	}
-	@media ( min-width : em($mq-layout-mw) ) {
-		.is-fullscreen & {
-			min-height:calc( 100vh - #{rem(2*$space-max)} - #{rem(150)} ); // modifié en js, 150 : hauteur logo
-		}
-	}
+	background-color: $color-white;
 }
 
 .main-header-inner {
-
-	.is-classic & {
-		@extend .layout-sub;
-		@extend .layout-mw;
-	}
-	.is-fullscreen & {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
+	@extend .layout-sub;
+	@extend .layout-mw;
 }
 
 
