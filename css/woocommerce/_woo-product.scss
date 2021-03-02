@@ -31,7 +31,7 @@
 button[name=add-to-cart] {
 	background-color: $color-red;
 	width: rem(40);
-	overflow: h;
+	overflow: hidden;
 	margin-left: rem(10);
 	background-image:svg-load('../images/cart-more.svg',fill=$color-black);
 	background-repeat: no-repeat;

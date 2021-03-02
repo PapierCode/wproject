@@ -122,17 +122,25 @@ function pc_woo_display_product_resum_content( $custom_product, $hn = 2 ) {
 
 	/*----------  Affichage  ----------*/		
 
-	echo '<figure class="st-figure">';
+	echo '<div class="st-figure" aria-hidden="true">';
 		pc_display_post_resum_img_tag( $product_id, $img_datas );
-	echo '</figure>';
+	echo '</div>';
 
-	echo '<h'.$hn.' class="st-title"><a href="'.$product_link.'" class="st-title-link" title="'.$product_link_title.'">'.$product_title.'</a></h'.$hn.'>';	
+	echo '<h'.$hn.' class="st-title"><a href="'.$product_link.'" class="st-link" title="'.$product_link_title.'">'.$product_title.'</a></h'.$hn.'>';	
 
 	if ( '' != $product_desc ) {
-		echo '<p class="st-desc">'.$product_desc.'...</p>';
+		echo '<p class="st-desc">';
+			echo $product_desc;
+			$post_ico_more = apply_filters( 'pc_filter_post_resum_ico_more', pc_svg('more-16') );
+			$st_desc_ico_more_display = apply_filters( 'pc_st_desc_ico_more_display', true );
+			if ( $st_desc_ico_more_display ) { echo ' <span class="st-desc-ico">'.$post_ico_more.'</span>';	}	
+		echo '</p>';
 	}
-	
-	echo '<a href="'.$product_link.'" class="st-read-more button" title="'.$product_link_title.'" aria-hidden="true"><span class="st-read-more-ico">'.pc_svg('more-16').'</span> <span class="st-read-more-txt">En savoir plus</span><span class="visually-hidden"> sur le produit '.$product_title.'</span></a>';
+
+	$st_read_more_display = apply_filters( 'pc_st_read_more_display', false );
+	if ( $st_read_more_display ) {
+		echo '<div class="st-read-more" aria-hidden="true"><span class="st-read-more-ico">'.$post_ico_more.'</span> <span class="st-read-more-txt">Lire la suite</span></a></div>';
+	}
 
 }
 

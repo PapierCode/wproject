@@ -170,7 +170,7 @@ function pc_woo_display_category_resum_content( $term, $hn = 2 ) {
 	if ( isset( $term_metas['resum-desc'] ) ) {
 		$term_desc = $term_metas['resum-desc'][0];
 	} else if ( isset( $term_metas['content-desc'] ) ) {
-		$term_desc = wp_trim_words( $term_metas['content-desc'][0] );
+		$term_desc = wp_strip_all_tags( $term_metas['content-desc'][0] );
 	} else {
 		$term_desc = '';
 	}
@@ -178,18 +178,26 @@ function pc_woo_display_category_resum_content( $term, $hn = 2 ) {
 
 	/*----------  Affichage  ----------*/		
 
-	echo '<figure class="st-figure">';
+	echo '<div class="st-figure" aria-hidden="true">';
 		pc_display_post_resum_img_tag( $term->term_id, $term_img_datas );
-	echo '</figure>';	
+	echo '</div>';	
 
-	echo '<h'.$hn.' class="st-title"><a href="'.$term_link.'" class="st-title-link" title="'.$term_link_title.'">'.$term_title.'</a></h'.$hn.'>';
+	echo '<h'.$hn.' class="st-title"><a href="'.$term_link.'" class="st-link" title="'.$term_link_title.'">'.$term_title.'</a></h'.$hn.'>';
 	
 	if ( '' != $term_desc ) {
 		global $texts_lengths;
-		echo '<p class="st-desc">'.pc_words_limit( $term_desc, $texts_lengths['resum-desc'] ).'...</p>';
+		echo '<p class="st-desc">';
+			echo pc_words_limit( $term_desc, $texts_lengths['resum-desc'] ).'&hellip;';
+			$post_ico_more = apply_filters( 'pc_filter_post_resum_ico_more', pc_svg('more-16') );
+			$st_desc_ico_more_display = apply_filters( 'pc_st_desc_ico_more_display', true );
+			if ( $st_desc_ico_more_display ) { echo ' <span class="st-desc-ico">'.$post_ico_more.'</span>';	}	
+		echo '</p>';
 	}
-
-	echo '<a href="'.$term_link.'" class="st-read-more button" title="'.$term_link_title.'" aria-hidden="true"><span class="st-read-more-ico">'.pc_svg('more-16').'</span> <span class="st-read-more-txt">Voir les produits</span><span class="visually-hidden"> de la catégorie '.$term_title.'</span></a>';
+			
+	$st_read_more_display = apply_filters( 'pc_st_read_more_display', false );
+	if ( $st_read_more_display ) {
+		echo '<div class="st-read-more" aria-hidden="true"><span class="st-read-more-ico">'.$post_ico_more.'</span> <span class="st-read-more-txt">Lire la suite</span></a></div>';
+	}
 
 }
 
