@@ -83,12 +83,23 @@ h1 {
 	}
 
 	@media ( min-width : em($mq-layout-l) ) {
-		&:nth-child(n+2) {
+
+		&:nth-child(2n+2) {
+			border-left:$border;
+		}
+	}
+	@media ( min-width : em($mq-layout-xl) ) {
+
+		&:nth-child(4) {
+			border-left: none;
+		}
+		&:nth-child(2n+3) {
 			border-left:$border;
 		}
 	}
 	@media ( min-width : em($mq-layout-mw) ) {
-		&, &:nth-child(2n+3) {
+
+		&:nth-child(1), &:nth-child(4) {
 			border-left:$border;
 		}
 	}
@@ -183,8 +194,8 @@ h1 {
 		display: none;
 	}
 
+	/* $mq-layout-l */
 	@media ( min-width : em($mq-layout-l) ) {
-		
 		display:block;
 
 		// 1|2 st
@@ -199,20 +210,21 @@ h1 {
 		&:nth-child(n+5) {
 			display:none;
 		}
-		// 5 st
-		&:nth-child(n+6) {
-			display:block;
+		.st:not(.st--fake):nth-child(5) + & {
+			display: block;
 		}
 	}
+	/* $mq-layout-xl */
 	@media ( min-width : em($mq-layout-xl) ) {
-			// 1|2 st, 4 st
-			&:nth-child(n+3) {
-				display:block;
-			}
-			// 3 st
-			&:nth-child(4) {
-				display:none;
-			}
+
+		// 1|2 st, 4 st
+		&:nth-child(n+3) {
+			display:block;
+		}
+		// 3 st
+		&:nth-child(4) {
+			display:none;
+		}
 	}
 }
 
