@@ -165,7 +165,7 @@ function pc_woo_display_category_resum_content( $term, $hn = 2 ) {
 	$term_link = get_term_link( $term, 'product_cat' );
 	$term_link_title = 'Voir les produits de la catégorie '.$term_title;
 	// visuel
-	$term_img_datas = pc_get_post_resum_img_datas( $term->term_id, $term_metas );
+	$term_img_datas = pc_get_post_resum_img_urls( $term->term_id, $term_metas );
 	// description
 	if ( isset( $term_metas['resum-desc'] ) ) {
 		$term_desc = $term_metas['resum-desc'][0];
