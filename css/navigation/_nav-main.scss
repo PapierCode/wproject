@@ -45,27 +45,8 @@
 =            Footer            =
 ==============================*/
 
-/*----------  Container  ----------*/
-
-.main-footer-nav {
-	margin-bottom:$space;
-	padding-bottom: $space;
-	border-bottom:$border;
-	
-	@media ( min-width : em($mq-layout-l) ) {
-		margin-bottom:0;
-		padding-bottom: 0;
-		grid-column: 1 / 2;
-		border-bottom:none;
-	}
-
-}
-
-
-/*----------  Pager  ----------*/
-
-.pager-list {
-	justify-content: flex-start;
+.previous {
+	justify-self: start;
 }
 
 

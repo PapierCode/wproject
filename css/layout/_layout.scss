@@ -150,8 +150,12 @@ body {
 	@extend .layout-mw;
 	border-top: $border;
 
-	@media ( min-width : em($mq-layout-l) ) {
+	
+	@media ( min-width : em($mq-nav-l) ) {
 		display:grid;
+		grid-template-columns: repeat(2,1fr);
+	}
+	@media ( min-width : em($mq-layout-xl) ) {
 		grid-template-columns: repeat(3,1fr);
 	}
 }
@@ -174,7 +178,7 @@ body {
 	@extend .layout-mw;
 	@extend .layout-sub;
 
-	@media ( min-width : em($mq-nav-l) ) {
+	@media ( min-width : em($mq-layout-l) ) {
 		display: flex;
 		justify-content: space-between;		
 	}

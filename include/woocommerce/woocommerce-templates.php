@@ -5,6 +5,7 @@
  * 
  ** Hooks (suppressions)
  ** Hooks (ajouts)
+ ** Html css classes
  ** Skip links
  ** Shop & catégories : titre & description
  ** Include
@@ -101,6 +102,47 @@ add_action( 'woocommerce_after_main_content', 'pc_display_main_end', 60 ); // fo
 
 
 /*=====  FIN Hooks (ajouts)  =====*/
+
+/*======================================================
+=            Classes CSS sur l'élément HMTL            =
+======================================================*/
+
+add_filter( 'pc_filter_html_css_class', 'pc_woo_html_css_class' );
+
+function pc_woo_html_css_class ( $css_classes ) {
+
+	if ( is_shop() ) {
+
+		$css_classes[] = 'is-shop';
+	
+	} else if ( is_product_category() ) {
+	
+		$term = get_queried_object(); // catégorie courante (object)
+		$terms_childrens = get_term_children( $term->term_id, 'product_cat' ); // enfants de la catégorie courante (array)
+	
+		if ( count( $terms_childrens ) > 0 ) {
+	
+			$css_classes[] = 'is-shop-categories-list';
+	
+		} else {
+	
+			$css_classes[] = 'is-shop-products-list';
+		
+		}
+	
+	} else if ( is_product() ) {
+
+		$css_classes[] = 'is-product';
+
+	}
+
+	return $css_classes;
+
+}
+
+
+
+/*=====  FIN Classes CSS sur l'élément HMTL  =====*/
 
 /*==================================
 =            Skip Links            =

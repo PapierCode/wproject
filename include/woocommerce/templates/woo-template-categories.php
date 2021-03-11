@@ -95,6 +95,21 @@ function pc_woo_display_category_single_footer() {
 		$pager_args = array();
 
 
+		/*----------  Pagination  ----------*/
+		
+		// si la catégorie courante a un nombre d'enfants au nombre de posts par page
+		if ( count( $terms_childrens ) > $terms_per_page ) {
+
+			$fake_query = (object) array( 'max_num_pages' => ceil( count( $terms_childrens ) / (int) $terms_per_page ) );
+			$current_page_number = ( get_query_var( 'catpaged' ) ) ? get_query_var( 'catpaged' ) : 1;
+			$pager_args = array( 'format' => '?catpaged=%#%#main');
+
+		}
+
+		// affichage pager
+		pc_get_pager( $fake_query, $current_page_number, $pager_args );
+
+
 		/*----------  Lien retour  ----------*/
 		
 		// si c'est une catégorie enfant
@@ -114,22 +129,7 @@ function pc_woo_display_category_single_footer() {
 		}
 
 		// affichage
-		echo '<nav class="main-footer-nav"><a href="'.$back_link_url.'" class="button" title="Retour '.$back_link_url_inner.'">'.pc_svg('arrow',null,'svg_block').'<span>'.$back_link_url_inner.'</span></a></nav>';
-
-
-		/*----------  Pagination  ----------*/
-		
-		// si la catégorie courante a un nombre d'enfants au nombre de posts par page
-		if ( count( $terms_childrens ) > $terms_per_page ) {
-
-			$fake_query = (object) array( 'max_num_pages' => ceil( count( $terms_childrens ) / (int) $terms_per_page ) );
-			$current_page_number = ( get_query_var( 'catpaged' ) ) ? get_query_var( 'catpaged' ) : 1;
-			$pager_args = array( 'format' => '?catpaged=%#%#main');
-
-		}
-
-		// affichage pager
-		pc_get_pager( $fake_query, $current_page_number, $pager_args );
+		echo '<a href="'.$back_link_url.'" class="previous button" title="Retour '.$back_link_url_inner.'">'.pc_svg('arrow',null,'svg_block').'<span>'.$back_link_url_inner.'</span></a>';
 
 	}
 
