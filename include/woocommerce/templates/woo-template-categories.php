@@ -188,7 +188,7 @@ function pc_woo_display_category_resum_content( $term, $hn = 2 ) {
 		global $texts_lengths;
 		echo '<p class="st-desc">';
 			echo pc_words_limit( $term_desc, $texts_lengths['resum-desc'] ).'&hellip;';
-			$post_ico_more = apply_filters( 'pc_filter_post_resum_ico_more', pc_svg('more-16') );
+			$post_ico_more = apply_filters( 'pc_filter_post_resum_ico_more', pc_svg('more') );
 			$st_desc_ico_more_display = apply_filters( 'pc_st_desc_ico_more_display', true );
 			if ( $st_desc_ico_more_display ) { echo ' <span class="st-desc-ico">'.$post_ico_more.'</span>';	}	
 		echo '</p>';

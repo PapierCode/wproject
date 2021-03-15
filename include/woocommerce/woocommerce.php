@@ -57,8 +57,12 @@ add_action('init', 'pc_woo_remove_images_sizes');
 			'shop_thumbnail'
 		);
 
+		$all_sizes = get_intermediate_image_sizes();
+
 		foreach ($sizes_to_remove as $size) {
-			remove_image_size( $size );
+			if ( in_array( $size, $all_sizes ) ) {
+				remove_image_size( $size );
+			}
 		}
 
 	}

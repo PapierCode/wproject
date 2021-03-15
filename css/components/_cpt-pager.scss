@@ -13,10 +13,6 @@
 .pager-list {
 	display: flex;
 	justify-content: flex-start;
-
-	&:nth-child(2) {
-		justify-content: center;
-	}
 }
 .pager-item {
 	margin-right: rem(10);

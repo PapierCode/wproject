@@ -131,7 +131,7 @@ function pc_woo_display_product_resum_content( $custom_product, $hn = 2 ) {
 	if ( '' != $product_desc ) {
 		echo '<p class="st-desc">';
 			echo $product_desc;
-			$post_ico_more = apply_filters( 'pc_filter_post_resum_ico_more', pc_svg('more-16') );
+			$post_ico_more = apply_filters( 'pc_filter_post_resum_ico_more', pc_svg('more') );
 			$st_desc_ico_more_display = apply_filters( 'pc_st_desc_ico_more_display', true );
 			if ( $st_desc_ico_more_display ) { echo ' <span class="st-desc-ico">'.$post_ico_more.'</span>';	}	
 		echo '</p>';
