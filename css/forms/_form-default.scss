@@ -20,16 +20,8 @@
 =            Liste            =
 =============================*/
 
-.form-list {
+.form-list {}
 
-	.form--page-protected & {
-		margin-top: $wysi-space-default-s;
-
-		@media ( min-width : em($mq-layout-l) ) {
-			margin-top:$wysi-space-default-l;
-		}
-	}
-}
 .form-item {
 	& + & {
 		margin-top:$space;
