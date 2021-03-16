@@ -115,7 +115,7 @@ function pc_woo_display_product_resum_content( $custom_product, $hn = 2 ) {
 	if ( isset( $product_metas['_thumbnail_id'] ) ) {
 		$product_metas['visual-id'] = array( $product_metas['_thumbnail_id'][0] );
 	}
-	$img_datas = pc_get_post_resum_img_urls( $product_id, $product_metas );
+	$img_datas = pc_get_post_resum_img_datas( $product_id, $product_title, $product_metas );
 	// description
 	$product_desc = pc_get_post_resum_excerpt( $product_id, $product_metas );
 

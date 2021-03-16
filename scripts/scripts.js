@@ -2,33 +2,6 @@ jQuery(document).ready(function($){
 
 var $html = $('html');
 
-
-	
-// $('.js-toggle').click(function() {
-	
-// 	var target = $(this).data('target');
-	
-// 	/*----------  Recherche  ----------*/	
-
-// 	if ( $('.'+target).hasClass('is-hidden') ) {
-
-// 		$('.'+target).removeClass('is-hidden');
-// 		if ( target == 'form-search-box' ) {
-// 			$('.'+target).find('input,button').removeAttr('tabindex');
-// 			$('.'+target).find('input').focus();
-// 		}
-
-// 	} else {
-
-// 		$('.'+target).addClass('is-hidden');
-// 		if ( target == 'form-search-box' ) {
-// 			$('.'+target).find('input,button').attr('tabindex','-1');
-// 		}
-
-// 	}
-
-// });
-
 /*----------  fake post resum  ----------*/
 
 var $st_list = $('.st-list');
@@ -61,6 +34,64 @@ if ( $st_list.length > 0 ) {
 	}
 
 }
+	
+// $('.js-toggle').click(function() {
+	
+// 	var target = $(this).data('target');
+	
+// 	/*----------  Recherche  ----------*/	
+
+// 	if ( $('.'+target).hasClass('is-hidden') ) {
+
+// 		$('.'+target).removeClass('is-hidden');
+// 		if ( target == 'form-search-box' ) {
+// 			$('.'+target).find('input,button').removeAttr('tabindex');
+// 			$('.'+target).find('input').focus();
+// 		}
+
+// 	} else {
+
+// 		$('.'+target).addClass('is-hidden');
+// 		if ( target == 'form-search-box' ) {
+// 			$('.'+target).find('input,button').attr('tabindex','-1');
+// 		}
+
+// 	}
+
+// });
+
+
+/*=======================================
+=            Message cookies            =
+=======================================*/
+
+// cookie es-tu là ?
+/* if (getCookie('cookies') === '') {
+
+	// création du message
+	$('body').prepend('<p class="cookies-msg is-hidden no-print">En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de <strong>cookies</strong>, <a href="'+cguUrl+'" title="Conditions générales d\'utilisation" class="cookies-msg-link" rel="nofollow">en savoir plus</a>. <button type="button" class="button cookies-msg-btn">J\'accepte</button></p>');
+
+	var $cookiesMsg = $('.cookies-msg');
+
+	// apparition du message
+	$cookiesMsg.removeClass('is-hidden');
+
+	// btn de validation des cookies
+	$('.btn-alert-cookie').click(function() {
+
+		// création du cookie, valable un an
+		setCookie('cookies', 'accepted', 365);
+		// disparition du message
+		$cookiesMsg.addClass('is-hidden');
+		// suppression du message
+		setTimeout(function(){ $cookiesMsg.remove(); }, 500); // durée à reporter en css
+
+	});
+
+} */
+
+
+/*=====  FIN Message cookies  ======*/
 
 
 });
