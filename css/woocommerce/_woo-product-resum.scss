@@ -15,7 +15,7 @@
 
 	.main-footer-inner {
 
-		@media ( min-width : em($mq-layout-m) ) {
+		@media ( min-width : em($mq-nav-l) ) {
 			display:grid;
 			grid-template-columns: repeat(2,1fr);
 		}
@@ -55,22 +55,14 @@
 
 	.social-share {
 
-		&:nth-child(2) {
-			margin-top:0;
-			padding-top:0;
-			border-top:none;
-		}
 		&:nth-child(3) {
 			margin-top:$space;
 			padding-top:$space;
 			border-top:$border;
 		}
 
-		@media ( min-width : em($mq-layout-m) ) {
+		@media ( min-width : em($mq-nav-l) ) {
 
-			&:nth-child(2) {
-				grid-column: 2/3;
-			}
 			&:nth-child(3) {
 				margin-top:0;
 				padding-top:0;

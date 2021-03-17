@@ -123,7 +123,7 @@ function pc_woo_display_product_resum_content( $custom_product, $hn = 2 ) {
 	/*----------  Affichage  ----------*/		
 
 	echo '<div class="st-figure" aria-hidden="true">';
-		pc_display_post_resum_img_tag( $product_id, $img_datas );
+		pc_display_post_resum_img_tag( $img_datas, $product_id );
 	echo '</div>';
 
 	echo '<h'.$hn.' class="st-title"><a href="'.$product_link.'" class="st-link" title="'.$product_link_title.'">'.$product_title.'</a></h'.$hn.'>';	

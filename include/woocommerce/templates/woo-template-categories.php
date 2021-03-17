@@ -179,7 +179,7 @@ function pc_woo_display_category_resum_content( $term, $hn = 2 ) {
 	/*----------  Affichage  ----------*/		
 
 	echo '<div class="st-figure" aria-hidden="true">';
-		pc_display_post_resum_img_tag( $term->term_id, $term_img_datas );
+		pc_display_post_resum_img_tag( $term_img_datas, $term->term_id );
 	echo '</div>';	
 
 	echo '<h'.$hn.' class="st-title"><a href="'.$term_link.'" class="st-link" title="'.$term_link_title.'">'.$term_title.'</a></h'.$hn.'>';
