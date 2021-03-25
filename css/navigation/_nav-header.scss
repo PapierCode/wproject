@@ -22,9 +22,9 @@
 
 .h-nav-btn-box {
     position: absolute;
+	z-index: 999;
     top:$space;
     right:$space;
-    z-index: 1;
 	color:$color-black;
     transition:transform $t-nav ease;
 
@@ -163,7 +163,7 @@
 
 .btn-overlay {
 	position: absolute;
-	z-index: 666;
+	z-index: 777;
 	left:0;
 	right: 0;
 	bottom: 0;
@@ -195,7 +195,7 @@
 
 .h-nav {
 	position: absolute;
-	z-index: 999;
+	z-index: 888;
 	top: 0;
 	left: 100%;
 	bottom: 0;

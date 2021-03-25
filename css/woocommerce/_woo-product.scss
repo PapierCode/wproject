@@ -30,6 +30,7 @@
 		justify-content: space-between;
 	}
 }
+
 button[name=add-to-cart] {
 	background-color: $color-red;
 	width: rem(40);
@@ -59,6 +60,7 @@ button[name=add-to-cart] {
 }
 .pc-qty {
 	display:flex;
+	justify-content: center;
 }
 .pc-qty-counter {
 	display: flex;

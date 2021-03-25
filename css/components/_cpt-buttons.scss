@@ -41,6 +41,18 @@
 			fill:$color-black;
 			transition:fill .3s ease;
 		}
+	}	
+	
+	&:disabled {
+		background-color: transparent;
+		color: $color-grey;
+		border:$border;
+		cursor: default;
+
+		&:hover, &:focus {
+		   background-color: transparent;
+		   color: $color-grey;
+		}
 	}
 }
 

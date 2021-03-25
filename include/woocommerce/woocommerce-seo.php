@@ -28,7 +28,7 @@ add_filter( 'pc_filter_seo_metas', 'pc_woo_edit_seo_metas' );
 
 			global $woo_pages;
 			$page_metas = get_post_meta( $woo_pages['shop'] );
-			$seo_metas = pc_get_post_seo_metas( $seo_metas, $woo_pages['shop'], $page_metas );
+			$seo_metas = pc_get_post_seo_metas( $seo_metas, get_post($woo_pages['shop']), $page_metas );
 
 		} else if ( is_product_category() ) {
 
