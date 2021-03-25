@@ -62,9 +62,6 @@ remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 // container main start (archive-product.php & single-product.php)
 add_action( 'woocommerce_before_main_content', 'pc_display_main_start', 10 ); // fonction wpreform
 
-// messages (archive-product.php & single-product.php)
-add_action( 'woocommerce_before_main_content', 'woocommerce_output_all_notices', 20 ); // fonction woo
-
 // ---------
 
 // titre (archive-product.php)
@@ -74,8 +71,10 @@ add_action( 'woocommerce_archive_description', 'pc_woo_display_main_title', 10 )
 
 // div.main-content start (archive-product.php)
 add_action( 'woocommerce_before_shop_loop', 'pc_display_main_content_start', 10 ); // fonction wpreform
+// messages (archive-product.php)
+add_action( 'woocommerce_before_shop_loop', 'woocommerce_output_all_notices', 20 );
 // descriptions shop & catégories (archive-product.php)
-add_action( 'woocommerce_before_shop_loop', 'pc_woo_display_description', 20 );
+add_action( 'woocommerce_before_shop_loop', 'pc_woo_display_description', 30 );
 
 // ---------
 

@@ -24,17 +24,21 @@
 	
 	@extend .layout-sub-no-padding-top;
 
+	.editor {
+		padding:0;
+	}
+
 	@media ( min-width : em($mq-layout-l) ) {
 		display: grid;		
 		grid-template-columns: max-content 1fr;
-		grid-template-rows: max-content max-content 1fr;
 		gap: $space;
 
-		.editor {
+		.woocommerce-notices-wrapper, .editor {
 			grid-column: 1/3;
 		}
 	}
 	@media ( min-width : em($mq-layout-xl) ) {
+		grid-template-rows: repeat(3,max-content) 1fr;
 		
 		.editor {
 			grid-column: 2/3;
@@ -131,7 +135,7 @@
 		margin-top:0;
 	}
 	@media ( min-width : em($mq-layout-xl) ) {
-		grid-row:2/4;
+		grid-row:3/5;
 		max-width:rem(400);
 	}
 }

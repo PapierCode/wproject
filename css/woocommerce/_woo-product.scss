@@ -17,16 +17,18 @@
 =            Ajout au panier            =
 =======================================*/
 
-.pc-cart {
+.pc-add-to-cart {
+	position: relative;
+	z-index: 1;
 	display: flex;
 	justify-content: space-between;
 	border:$border;
 	padding: rem(10);
-}
 
-.cart {
-	display: flex;
-	justify-content: space-between;
+	.cart {
+		display: flex;
+		justify-content: space-between;
+	}
 }
 button[name=add-to-cart] {
 	background-color: $color-red;

@@ -44,7 +44,7 @@ add_action( 'wp_enqueue_scripts', 'pc_woo_enqueue_scripts', 999 );
 =            Tailles d'images            =
 ========================================*/
 
-add_action('init', 'pc_woo_remove_images_sizes');
+add_action( 'init', 'pc_woo_remove_images_sizes' );
 
 	function pc_woo_remove_images_sizes() {
 

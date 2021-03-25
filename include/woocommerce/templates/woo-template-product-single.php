@@ -67,10 +67,12 @@ add_action( 'woocommerce_before_single_product', 'pc_woo_display_product_single_
 
 // div.main-content-inner start (content-single-product.php)
 add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_main_content_inner_start', 10 );
+// messages (content-single-product.php)
+add_action( 'woocommerce_before_single_product_summary', 'woocommerce_output_all_notices', 20 );
 // catégories (content-single-product.php)
-add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_categories', 20 );
+add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_categories', 30 );
 // images (content-single-product.php)
-add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_gallery', 30 );
+add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_gallery', 40 );
 
 // ---------
 
@@ -152,7 +154,7 @@ function pc_woo_display_product_single_main_content_inner_end() {
 	
 function pc_woo_display_product_single_cart_wrapper_start() {
 
-	echo '<div class="pc-cart pc-cart--single">';
+	echo '<div class="pc-add-to-cart pc-add-to-cart--single">';
 
 }
 
@@ -206,39 +208,28 @@ function pc_woo_display_product_single_categories() {
 =            Galerie            =
 ===============================*/
 
-function pc_woo_gallery_item_get_datas( $img_id, $size = 'product-single-s' ) {
-
-	global $images_project_sizes;
-	$thumb_datas = wp_get_attachment_image_src( $img_id, $size );
-	
-	if ( $thumb_datas[1] == $images_project_sizes[$size]['width'] && $thumb_datas[2] == $images_project_sizes[$size]['height'] ) {
+function pc_woo_get_gallery_item_datas( $img_id, $size = 'product-single-s' ) {
 		
-		$datas = array(
-			'urls' => array( 
-				$size => $thumb_datas[0],
-				'gl-m' => wp_get_attachment_image_url( $img_id, 'gl-m' ),
-				'gl-l' => wp_get_attachment_image_url( $img_id, 'gl-l' )
-			),
-			'caption' => wp_get_attachment_caption( $img_id ),
-			'alt' => get_post_meta( $img_id, '_wp_attachment_image_alt', true ),
-			'thumb' => $size,
-		);
+	$datas = array(
+		'urls' => array( 
+			$size => wp_get_attachment_image_url( $img_id ,$size ),
+			'gl-m' => wp_get_attachment_image_url( $img_id, 'gl-m' ),
+			'gl-l' => wp_get_attachment_image_url( $img_id, 'gl-l' )
+		),
+		'caption' => wp_get_attachment_caption( $img_id ),
+		'alt' => get_post_meta( $img_id, '_wp_attachment_image_alt', true ),
+		'thumb' => $size,
+	);
 
-		if ( $size == 'product-single-s' ) {
-			$datas['urls']['product-single-l'] = wp_get_attachment_image_url( $img_id, 'product-single-l' );
-		}
-
-		return $datas;
-
-	} else {
-
-		return false;
-
+	if ( $size == 'product-single-s' ) {
+		$datas['urls']['product-single-l'] = wp_get_attachment_image_url( $img_id, 'product-single-l' );
 	}
+
+	return $datas;
 
 }
 
-function pc_woo_get_gallery_item_datas( $item_datas ) {
+function pc_woo_display_gallery_item( $item_datas ) {
 
 	global $images_project_sizes;
 
@@ -267,41 +258,38 @@ function pc_woo_get_gallery_item_datas( $item_datas ) {
 function pc_woo_display_product_single_gallery() {
 
 	global $product;
-	$gallery_datas = array();
 
-	// visuel principal
-	if ( $product->get_image_id() && null != get_post( $product->get_image_id() ) ) {
+	echo '<figure class="product-single-gallery"><ul class="wp-gallery reset-list">';
 
-		$gallery_item = pc_woo_gallery_item_get_datas( $product->get_image_id() );
-		if ( $gallery_item ) { $gallery_datas['visual'] = $gallery_item; }
-		
-	}
+		// visuel principal
+		if ( $product->get_image_id() && is_object( get_post( $product->get_image_id() ) ) ) {
 
-	// visuels supplémentaires
-	if ( count( $product->get_gallery_image_ids() ) > 0 ) {
+			$image_datas = pc_woo_get_gallery_item_datas( $product->get_image_id() );
+			pc_woo_display_gallery_item( $image_datas );				
 
-		foreach ( $product->get_gallery_image_ids() as $key => $id ) {
-			
-			$gallery_item = pc_woo_gallery_item_get_datas( $id, 'gl-th' );
-			if ( $gallery_item ) { $gallery_datas[$key] = $gallery_item; }
+		} else {
+
+			echo '<li class="wp-gallery-item"><img class="wp-gallery-img" src="'.get_bloginfo( 'template_directory' ).'/images/square-default.jpg" alt="" loading="lazy" /></li>';
 
 		}
 
-	}
+		// visuels supplémentaires
+		if ( count( $product->get_gallery_image_ids() ) > 0 ) {
 
-	// affichage
-	if ( !empty( $gallery_datas ) ) {
+			foreach ( $product->get_gallery_image_ids() as $key => $id ) {
 
-		echo '<figure class="product-single-gallery"><ul class="wp-gallery reset-list">';
+				if ( is_object( get_post( $id ) ) ) {
+				
+					$gallery_item_datas = pc_woo_get_gallery_item_datas( $id, 'gl-th' );
+					pc_woo_display_gallery_item( $gallery_item_datas );
 
-			pc_woo_get_gallery_item_datas( $gallery_datas['visual'] );
-			unset( $gallery_datas['visual'] );
+				}
 
-			foreach ( $gallery_datas as $gallery_item ) { pc_woo_get_gallery_item_datas( $gallery_item ); }
+			}
 
-		echo '</ul></figure>';
+		}
 
-	}
+	echo '</ul></figure>';
 
 }
 

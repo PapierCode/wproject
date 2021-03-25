@@ -1,0 +1,85 @@
+
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-helpers" as *;
+@use "../framework/frk-mixins" as *;
+
+
+.woocommerce-cart-form {
+	@extend .layout-sub-no-padding-top;
+}
+
+.pc-cart {}
+.pc-cart-head {
+	position: absolute;
+	left: -666em;
+}
+.pc-cart-body {
+	display: block;
+}
+
+.pc-cart-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	&:nth-child(n+2) {
+		margin-top: rem(10);
+	}
+
+	> td {
+		padding: rem(5,10);
+	}
+}
+
+.pc-cart-remove, .pc-cart-name {
+	border:$border;
+}
+
+$cart-btn-remove-size : 45;
+.pc-cart-remove {
+	width: rem($cart-btn-remove-size);
+	align-self: stretch;
+	border-left: none;
+
+	a {
+		text-decoration: none;
+		background-color: $color-red;
+		display: block;
+		padding: rem(5);
+		border-radius: 50%;
+
+		&:hover, &:focus {
+		   background-color: $color-blue;
+		}
+	}
+	svg {
+		width: rem(15);
+		height: rem(15);
+	}
+}
+.pc-cart-name {
+	order:-1;
+	width: calc( 100% - #{rem($cart-btn-remove-size)} );
+	border-right: none;
+
+	a, a:visited {
+		text-decoration: none;
+		font-size: rem(18);
+		font-weight: 700;
+		color:$color-black;
+
+		&:hover, &:focus {
+		   text-decoration: underline;
+		}
+	}
+}
+.pc-cart-price {}
+.pc-cart-quantity {
+	flex-grow: 1;
+}
+.pc-cart-subtotal {}
+.pc-cart-update {
+	width: 100%;
+	text-align: center;
+}

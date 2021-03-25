@@ -131,7 +131,7 @@ function pc_woo_display_product_resum_content( $custom_product, $hn = 2 ) {
 	if ( '' != $product_desc ) {
 		echo '<p class="st-desc">';
 			echo $product_desc;
-			$post_ico_more = apply_filters( 'pc_filter_post_resum_ico_more', pc_svg('more') );
+			$post_ico_more = apply_filters( 'pc_filter_post_resum_ico_more', pc_svg('arrow') );
 			$st_desc_ico_more_display = apply_filters( 'pc_st_desc_ico_more_display', true );
 			if ( $st_desc_ico_more_display ) { echo ' <span class="st-desc-ico">'.$post_ico_more.'</span>';	}	
 		echo '</p>';
@@ -172,7 +172,7 @@ function pc_woo_display_product_resum_add_to_cart() {
 
 function pc_woo_display_product_resum_cart_wrapper_start() {
 
-	echo '<div class="pc-cart pc-cart--st">';
+	echo '<div class="pc-add-to-cart pc-add-to-cart--st">';
 
 }
 

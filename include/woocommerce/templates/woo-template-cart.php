@@ -38,3 +38,21 @@ add_filter( 'woocommerce_add_to_cart_form_action', 'pc_woo_add_to_cart_form_acti
 
 
 /*=====  FIN Ajout au panier  =====*/
+
+/*===================================
+=            Page panier            =
+===================================*/
+
+add_filter( 'pc_the_content_before', 'pc_woo_remove_editor_form_cart' );
+add_filter( 'pc_the_content_after', 'pc_woo_remove_editor_form_cart' );
+
+	function pc_woo_remove_editor_form_cart( $html ) {
+		if ( is_cart() ) {
+			return '';
+		} else {
+			return $html;
+		}
+	}
+
+
+/*=====  FIN Page panier  =====*/
