@@ -1,0 +1,50 @@
+
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-helpers" as *;
+@use "../framework/frk-mixins" as *;
+@use "../forms/form-default" as *;
+
+
+.checkout{
+
+	@media ( min-width : em($mq-layout-xl) ) {
+		display: grid;
+		gap: rem($space-max);
+		grid-template-columns: repeat(2,1fr);
+		grid-template-rows: max-content 1fr;
+	}
+}
+
+#customer_details {
+
+	@media ( min-width : em($mq-layout-xl) ) {
+		grid-row:1/3;
+	}
+}
+
+#order_review_heading {
+
+	@media ( min-width : em($mq-layout-xl) ) {
+		grid-column: 2/3;
+		
+	}
+}
+#order_review {
+
+	@media ( min-width : em($mq-layout-xl) ) {
+		grid-column: 2/3;
+	}
+}
+
+.form-row {
+
+	label {
+		@extend .form-label;
+	}
+	.woocommerce-input-wrapper {
+		@extend .form-item-inner;
+		display:block;
+		margin-top:rem(10);
+	}
+}

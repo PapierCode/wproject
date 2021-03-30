@@ -4,13 +4,24 @@
 @use "../framework/frk-helpers" as *;
 @use "../framework/frk-mixins" as *;
 
+
+/*============================
+=            Vide            =
+============================*/
+
+.cart-empty {
+	margin:0;
+}
+.return-to-shop {
+	@extend .layout-sub-margin-top;
+	text-align: center;
+}
+
+
+/*=====  FIN Vide  =====*/
 /*==========================================
 =            Liste des produits            =
 ==========================================*/
-
-.woocommerce-cart-form {
-	@extend .layout-sub-no-padding-top;
-}
 
 .pc-cart {
 	width: 100%;
@@ -168,7 +179,7 @@ $cart-td-remove-size : 45;
 ==================================*/
 
 .pc-cart-total {
-	@extend .layout-sub-no-padding-top;
+	@extend .layout-sub-margin-top;
 	margin:0 auto;
 
 	h2 {

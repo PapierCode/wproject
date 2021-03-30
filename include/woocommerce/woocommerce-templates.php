@@ -223,8 +223,9 @@ include 'templates/woo-template-product.php';
 include 'templates/woo-template-product-resum.php';
 include 'templates/woo-template-product-single.php';
 
-// panier
+// tunnel
 include 'templates/woo-template-cart.php';
+include 'templates/woo-template-checkout.php';
 
 // SEO
 include 'woocommerce-seo.php';

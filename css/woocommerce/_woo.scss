@@ -48,3 +48,15 @@
 
 
 /*=====  FIN Résumés catégorie & produit  =====*/
+
+/*==============================
+=            Tunnel            =
+==============================*/
+
+.woocommerce {
+	@extend .layout-sub-no-padding-top;
+	@extend .layout-mw;
+}
+
+
+/*=====  FIN Tunnel  =====*/

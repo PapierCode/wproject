@@ -46,7 +46,7 @@
 =============================*/
 
 .form-label {
-	font-family: $font-bold;
+	font-family: $font-regular;
 
 	a, a:visited {
 		color:inherit;
@@ -77,6 +77,7 @@
 	input[type="text"],
 	input[type="email"],
 	input[type="password"],
+	input[type="tel"],
 	textarea {		
 		width:100%;
 		padding:rem(10);
