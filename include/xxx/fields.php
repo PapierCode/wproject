@@ -11,8 +11,8 @@
 
 /*----------  Reprise de métaboxes du thème parent ----------*/
 
-add_filter( 'pc_filter_metabox_img_for', 'pc_xxx_admin_edit_metabox_for', 20, 1 );
-add_filter( 'pc_filter_metabox_resum_for', 'pc_xxx_admin_edit_metabox_for', 20, 1 );
+add_filter( 'pc_filter_metabox_image_for', 'pc_xxx_admin_edit_metabox_for', 20, 1 );
+add_filter( 'pc_filter_metabox_card_for', 'pc_xxx_admin_edit_metabox_for', 20, 1 );
 add_filter( 'pc_filter_metabox_seo_for', 'pc_xxx_admin_edit_metabox_for', 20, 1 );
 
 	function pc_xxx_admin_edit_metabox_for( $for ) {

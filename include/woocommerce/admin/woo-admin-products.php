@@ -160,7 +160,7 @@ add_filter( 'wc_product_dimensions_enabled', '__return_false' );
 
 /*----------  WPreform, Résumé & SEO  ----------*/
 
-add_filter( 'pc_filter_metabox_resum_for', 'pc_woo_product_metabox_wpreform' );
+add_filter( 'pc_filter_metabox_card_for', 'pc_woo_product_metabox_wpreform' );
 add_filter( 'pc_filter_metabox_seo_for', 'pc_woo_product_metabox_wpreform' );
 
 	function pc_woo_product_metabox_wpreform( $metabox_img_for ) {

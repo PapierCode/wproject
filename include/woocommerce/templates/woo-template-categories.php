@@ -85,9 +85,9 @@ function pc_woo_display_category_single_footer() {
 
 	if ( is_product_category() ) {
 		
-		$term = get_queried_object(); // catégorie courante (object)
+		global $pc_term;
+		$terms_childrens = $pc_term->childrens; // enfants de la catégorie courante (array)
 		$terms_per_page = get_option( 'posts_per_page' ); // nombre de posts par page (int, cf. Paramètre WP)
-		$terms_childrens = get_term_children( $term->term_id, 'product_cat' ); // enfants de la catégorie courante (array)
 
 		// pour les catégories enfant
 		$fake_query = null;
@@ -97,7 +97,7 @@ function pc_woo_display_category_single_footer() {
 
 		/*----------  Pagination  ----------*/
 		
-		// si la catégorie courante a un nombre d'enfants au nombre de posts par page
+		// si la catégorie courante a un nombre d'enfants supérieur au nombre de posts par page
 		if ( count( $terms_childrens ) > $terms_per_page ) {
 
 			$fake_query = (object) array( 'max_num_pages' => ceil( count( $terms_childrens ) / (int) $terms_per_page ) );
@@ -113,23 +113,23 @@ function pc_woo_display_category_single_footer() {
 		/*----------  Lien retour  ----------*/
 		
 		// si c'est une catégorie enfant
-		if ( $term->parent > 0 ) {
+		if ( $pc_term->parent > 0 ) {
 
-			$term_parent = get_term( $term->parent );
+			$term_parent = get_term( $pc_term->parent );
 			$back_link_url = get_term_link( $term_parent->term_id, 'product_cat' );
-			$back_link_url_inner = $term_parent->name;
+			$back_link_text = $term_parent->name;
 
 		// si ce n'est pas une catégorie enfant
 		} else {
 
 			global $woo_pages, $shop_name;
 			$back_link_url = get_the_permalink( $woo_pages['shop'] );
-			$back_link_url_inner = $shop_name;
+			$back_link_text = $shop_name;
 
 		}
 
 		// affichage
-		echo '<a href="'.$back_link_url.'" class="previous button" title="Retour '.$back_link_url_inner.'">'.pc_svg('arrow',null,'svg_block').'<span>'.$back_link_url_inner.'</span></a>';
+		echo '<a href="'.$back_link_url.'" class="previous button" title="Retour '.$back_link_text.'">'.pc_svg('arrow',null,'svg_block').'<span>'.$back_link_text.'</span></a>';
 
 	}
 
@@ -155,49 +155,10 @@ function pc_woo_edit_category_resum_css_classes( $classes, $class, $term ) {
 
 /*----------  Contenu  ----------*/
 
-function pc_woo_display_category_resum_content( $term, $hn = 2 ) {
+function pc_woo_display_category_resum_content( $term ) {
 
-	// métas
-	$term_metas = get_term_meta( $term->term_id );
-	//titre
-	$term_title = ( isset( $term_metas['resum-title'] ) ) ? $term_metas['resum-title'][0] : $term->name;
-	// permalien
-	$term_link = get_term_link( $term, 'product_cat' );
-	$term_link_title = 'Voir les produits de la catégorie '.$term_title;
-	// visuel
-	$term_img_datas = pc_get_post_resum_img_datas( $term->term_id, $term_title, $term_metas );
-	// description
-	if ( isset( $term_metas['resum-desc'] ) ) {
-		$term_desc = $term_metas['resum-desc'][0];
-	} else if ( isset( $term_metas['content-desc'] ) ) {
-		$term_desc = wp_strip_all_tags( $term_metas['content-desc'][0] );
-	} else {
-		$term_desc = '';
-	}
-
-
-	/*----------  Affichage  ----------*/		
-
-	echo '<div class="st-figure" aria-hidden="true">';
-		pc_display_post_resum_img_tag( $term_img_datas, $term->term_id );
-	echo '</div>';	
-
-	echo '<h'.$hn.' class="st-title"><a href="'.$term_link.'" class="st-link" title="'.$term_link_title.'">'.$term_title.'</a></h'.$hn.'>';
-	
-	if ( '' != $term_desc ) {
-		global $texts_lengths;
-		echo '<p class="st-desc">';
-			echo pc_words_limit( $term_desc, $texts_lengths['resum-desc'] ).'&hellip;';
-			$post_ico_more = apply_filters( 'pc_filter_post_resum_ico_more', pc_svg('arrow') );
-			$st_desc_ico_more_display = apply_filters( 'pc_st_desc_ico_more_display', true );
-			if ( $st_desc_ico_more_display ) { echo ' <span class="st-desc-ico">'.$post_ico_more.'</span>';	}	
-		echo '</p>';
-	}
-			
-	$st_read_more_display = apply_filters( 'pc_st_read_more_display', false );
-	if ( $st_read_more_display ) {
-		echo '<div class="st-read-more" aria-hidden="true"><span class="st-read-more-ico">'.$post_ico_more.'</span> <span class="st-read-more-txt">Lire la suite</span></a></div>';
-	}
+	$pc_term = new PC_Term( $term );
+	$pc_term->display_card();
 
 }
 

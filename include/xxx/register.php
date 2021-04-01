@@ -17,7 +17,7 @@ if ( class_exists( 'PC_Add_Custom_Post' )) {
 
 	/*----------  Labels  ----------*/
 
-	$xxx__post_labels = array (
+	$xxx_post_labels = array (
 		'name'                  => 'xxx',
 		'singular_name'         => 'xxx',
 		'menu_name'             => 'xxx',
@@ -32,7 +32,7 @@ if ( class_exists( 'PC_Add_Custom_Post' )) {
 
 	/*----------  Configuration  ----------*/
 
-	$xxx__post_args = array(
+	$xxx_post_args = array(
 		'menu_position'     => 28,
 		'menu_icon'         => 'dashicons-xxx',
 		'show_in_nav_menus' => false,
@@ -44,7 +44,7 @@ if ( class_exists( 'PC_Add_Custom_Post' )) {
 
 	/*----------  Déclaration  ----------*/
 
-	$xxx__post_declaration = new PC_Add_Custom_Post( XXX_POST_SLUG, $xxx__post_labels, $xxx__post_args );
+	$xxx_post_declaration = new PC_Add_Custom_Post( XXX_POST_SLUG, $xxx_post_labels, $xxx_post_args );
 	
 	
 	/*=====  FIN Post  =====*/
@@ -85,7 +85,7 @@ if ( class_exists( 'PC_Add_Custom_Post' )) {
 
 	/*----------  Déclaration  ----------*/
 
-	$xxx__post_declaration->add_custom_tax(
+	$xxx_post_declaration->add_custom_tax(
 		XXX_TAX_SLUG,
 		$xxx_tax_labels,
 		$xxx_tax_args

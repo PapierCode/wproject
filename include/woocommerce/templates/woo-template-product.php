@@ -9,23 +9,6 @@
  */
 
 
-/*============================
-=            Prix            =
-============================*/
-
-/*----------  Espace avant €  ----------*/
-
-add_filter( 'woocommerce_currency_symbol', 'pc_woo_edit_currency_symbol' );
-
-	function pc_woo_edit_currency_symbol( $currency_symbol ) {
-
-		return '&nbsp;'.$currency_symbol;
-
-	}
-
-
-/*=====  FIN Prix  =====*/
-
 /*================================
 =            Messages            =
 ================================*/

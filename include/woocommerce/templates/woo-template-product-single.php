@@ -81,7 +81,7 @@ add_action( 'woocommerce_single_product_summary', 'pc_woo_display_product_single
 // Container prix & ajout au panier end (content-single-product.php)
 add_action( 'woocommerce_single_product_summary', 'pc_woo_display_product_single_cart_wrapper_end', 40 );
 // propriétés (content-single-product.php)
-add_action( 'woocommerce_single_product_summary', 'pc_woo_display_product_single_datas', 50 );
+add_action( 'woocommerce_single_product_summary', 'pc_woo_display_product_single_properties', 50 );
 
 // ---------
 
@@ -231,7 +231,7 @@ function pc_woo_get_gallery_item_datas( $img_id, $size = 'product-single-s' ) {
 
 function pc_woo_display_gallery_item( $item_datas ) {
 
-	global $images_project_sizes;
+	global $images_sizes;
 
 	echo '<li class="wp-gallery-item">';
 		echo '<a class="wp-gallery-link" href="'.$item_datas['urls']['gl-l'].'" data-gl-caption="'.$item_datas['caption'].'" data-gl-responsive="'.$item_datas['urls']['gl-m'].'" title="Afficher l\'image">';
@@ -245,7 +245,7 @@ function pc_woo_display_gallery_item( $item_datas ) {
 
 			} else {
 
-				echo '<img class="wp-gallery-img" src="'.$item_datas['urls'][$item_datas['thumb']].'" width="'.$images_project_sizes[$item_datas['thumb']]['width'].'" height="'.$images_project_sizes[$item_datas['thumb']]['height'].'" alt="'.$item_datas['alt'].'" loading="lazy"/>';
+				echo '<img class="wp-gallery-img" src="'.$item_datas['urls'][$item_datas['thumb']].'" width="'.$images_sizes[$item_datas['thumb']]['width'].'" height="'.$images_sizes[$item_datas['thumb']]['height'].'" alt="'.$item_datas['alt'].'" loading="lazy"/>';
 
 			}
 
@@ -300,7 +300,7 @@ function pc_woo_display_product_single_gallery() {
 =            Propriétés            =
 ==================================*/
 
-function pc_woo_display_product_single_datas() {
+function pc_woo_display_product_single_properties() {
 
 	global $product;
 
@@ -332,7 +332,7 @@ function pc_woo_display_product_single_datas() {
 
 function pc_woo_display_product_single_wysiwyg() {
 
-	echo pc_wp_wysiwyg( get_the_content() );
+	echo the_content();
 		
 }
 

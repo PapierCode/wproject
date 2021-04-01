@@ -12,7 +12,7 @@ pc_display_main_start();
 
 		echo '<h1><span>'.$term_title.'</span></h1>';
 
-		pc_club_display_nav_categories( $term );
+		pc_xxx_display_nav_categories( $term );
 
 	pc_display_main_header_end();
 

@@ -28,7 +28,7 @@ function pc_xxx_admin_edit_page_content_from( $settings_project ) {
 }
 
 // sauf si déjà publié
-add_filter( 'pc_filter_metabox_select_content_from', 'pc_xxx_admin_edit_page_content_from_one_time', 10, 2 );
+add_filter( 'pc_filter_page_metabox_select_content_from', 'pc_xxx_admin_edit_page_content_from_one_time', 10, 2 );
 
 function pc_xxx_admin_edit_page_content_from_one_time( $metabox_select_content_from, $post ) {
 

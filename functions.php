@@ -54,13 +54,15 @@ include 'include/images.php';
 
 /*----------  Custom post  ----------*/
 
+// RELECTURE !
+
 // define( 'XXX_POST_SLUG', 'xxxpost');
 // define( 'XXX_TAX_SLUG', 'xxxtax');
 // include 'include/xxx/register.php';
 // include 'include/xxx/fields.php';
 // include 'include/xxx/admin.php';
 // include 'include/xxx/template_tax.php';
-// include 'include/xxx/template_resum.php';
+// include 'include/xxx/template_card.php';
 // include 'include/xxx/template_single.php';
 
 

@@ -103,7 +103,7 @@ if ( class_exists('PC_add_field_to_tax') ) {
 
 	/*----------  Visuel  ----------*/
 
-	$product_cat_img_fields_args = array(	
+	$product_cat_image_fields_args = array(	
 		'title'     => 'Visuel',
 		'prefix'    => 'visual',
 		'fields'    => array(
@@ -118,9 +118,9 @@ if ( class_exists('PC_add_field_to_tax') ) {
 		)
 	);
 
-	$product_cat_img_fields = new PC_add_field_to_tax(
+	$product_cat_image_fields = new PC_add_field_to_tax(
 		'product_cat',
-		$product_cat_img_fields_args
+		$product_cat_image_fields_args
 	);
 
 
@@ -172,7 +172,7 @@ if ( class_exists('PC_add_field_to_tax') ) {
 
 	/*----------  Résumé  ----------*/
 
-	$product_cat_resum_fields_args = array(	
+	$product_cat_card_fields_args = array(	
 		'title'     => 'Résumé',
 		'prefix'    => 'resum',
 		'fields'    => array(
@@ -195,9 +195,9 @@ if ( class_exists('PC_add_field_to_tax') ) {
 		)
 	);
 
-	$product_cat_resum_fields = new PC_add_field_to_tax(
+	$product_cat_card_fields = new PC_add_field_to_tax(
 		'product_cat',
-		$product_cat_resum_fields_args
+		$product_cat_card_fields_args
 	);
 
 

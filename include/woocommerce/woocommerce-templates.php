@@ -106,9 +106,9 @@ add_action( 'woocommerce_after_main_content', 'pc_display_main_end', 60 ); // fo
 =            Classes CSS sur l'élément HMTL            =
 ======================================================*/
 
-add_filter( 'pc_filter_html_css_class', 'pc_woo_html_css_class' );
+add_filter( 'pc_filter_html_css_class', 'pc_woo_edit_html_css_class' );
 
-function pc_woo_html_css_class ( $css_classes ) {
+function pc_woo_edit_html_css_class ( $css_classes ) {
 
 	if ( is_shop() ) {
 
@@ -177,6 +177,7 @@ function pc_woo_display_main_title() {
 
 }
 
+
 /*----------  Description  ----------*/
 
 function pc_woo_display_description() {
@@ -190,8 +191,9 @@ function pc_woo_display_description() {
 
 		} else if ( is_product_category() ) {
 
-			$term = get_queried_object();
-			$description = get_term_meta( $term->term_id, 'content-desc', true );
+			global $pc_term;
+			$metas = $pc_term->metas;
+			$description = ( isset( $metas['content-desc'] ) ) ? $metas['content-desc'] : '';
 
 		}		
 		

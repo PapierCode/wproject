@@ -104,7 +104,7 @@ add_filter( 'map_meta_cap', 'pc_woo_admin_prevent_delete_shop_page', 10, 4 );
 
 /*----------  Suppression des pages Woo dans la liste des sous-pages  ----------*/
 	
-add_filter( 'pc_filter_subpages_list_args', 'pc_woo_remove_pages_from_subpages_list', 10, 2 );
+add_filter( 'pc_filter_page_metabox_subpages_args', 'pc_woo_remove_pages_from_subpages_list', 10, 2 );
 
 	function pc_woo_remove_pages_from_subpages_list( $all_subpages_args, $post ) {
 

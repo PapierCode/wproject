@@ -1,7 +1,7 @@
 <?php
 /**
  * 
- * Woocommerce amdin : attributs
+ * Woocommerce admin : attributs
  * 
  ** Liste
  * 

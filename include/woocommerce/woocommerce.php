@@ -67,13 +67,13 @@ add_action( 'init', 'pc_woo_remove_images_sizes' );
 
 	}
 
-add_filter( 'pc_filter_add_img_sizes', 'pc_woo_add_images_sizes' );
+add_filter( 'pc_filter_images_sizes', 'pc_woo_edit_images_sizes' );
 
-	function pc_woo_add_images_sizes( $images_project_sizes ) {
+	function pc_woo_edit_images_sizes( $images_sizes ) {
 
-		$images_project_sizes['product-single-s'] = array( 'width'=>400, 'height'=>400, 'crop'=>true );
-		$images_project_sizes['product-single-l'] = array( 'width'=>700, 'height'=>700, 'crop'=>true );
-		return $images_project_sizes;
+		$images_sizes['product-single-s'] = array( 'width'=>400, 'height'=>400, 'crop'=>true );
+		$images_sizes['product-single-l'] = array( 'width'=>700, 'height'=>700, 'crop'=>true );
+		return $images_sizes;
 
 	}
 

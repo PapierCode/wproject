@@ -1,7 +1,7 @@
 <?php
 /**
  * 
- * Custom post xxx : page archive
+ * Custom post xxx : archive
  * 
  */  
 
@@ -32,31 +32,39 @@ $xxx_query = new WP_Query( $xxx_query_args );
 
 if ( $xxx_query->have_posts() ) {
 
-	$post_title = get_the_title( $post->ID );
+	global $pc_post;
 
 	// données structurées
 	$xxx_schema = array(
 		'@context' => 'http://schema.org/',
 		'@type'=> 'CollectionPage',
-		'name' => pc_get_post_seo_title( $post, $post_metas ),
-		'headline' => pc_get_post_seo_title( $post, $post_metas ),
-		'description' => pc_get_post_seo_description( $post, $post_metas ),
+		'name' => $pc_post->get_seo_meta_title(),
+		'headline' => $pc_post->get_seo_meta_title(),
+		'description' => $pc_post->get_seo_meta_description(),
 		'mainEntity' => array(
 			'@type' => 'ItemList',
 			'itemListElement' => array()
 		),
 		'isPartOf' => pc_get_schema_website()
 	);
-	global $post_resum_schema;
 
 	echo '<ul class="st-list st-list--xxx reset-list">';
 
 	// affichage des actus
     while ( $xxx_query->have_posts() ) { $xxx_query->the_post();
+		
+		// début d'élément
+		echo '<li class="st st--xxx">';
 
-		pc_display_post_resum( $xxx_query->post->ID, 'st--xxx', 2 );
-		// données structurées
-		$xxx_schema['mainEntity']['itemListElement'][] = $post_resum_schema;
+			$xxx_post = new PC_Post( $xxx_query->post );
+			
+			// affichage résumé
+			$xxx_post->display_card();
+			// données structurées
+			$xxx_schema['mainEntity']['itemListElement'][] = $xxx_post->get_schema_list_item();
+		
+		// fin d'élément
+		echo '</li>';
 
 	}
 	
