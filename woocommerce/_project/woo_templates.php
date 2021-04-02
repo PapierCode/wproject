@@ -212,25 +212,25 @@ function pc_woo_display_description() {
 =            Include            =
 ===============================*/
 
-// include 'woo-template-breadcrumb.php
+// include 'woo-template_breadcrumb.php
 
-// accueil catalogue
-include 'templates/woo-template-shop.php';
+// accueil boutique
+include 'templates/woo-template_shop.php';
 
 // catégories
-include 'templates/woo-template-categories.php';
+include 'templates/woo-template_categories.php';
 
 // produit
-include 'templates/woo-template-product.php';
-include 'templates/woo-template-product-resum.php';
-include 'templates/woo-template-product-single.php';
+include 'templates/woo-template_product.php';
+include 'templates/woo-template_product-resum.php';
+include 'templates/woo-template_product-single.php';
 
 // tunnel
-include 'templates/woo-template-cart.php';
-include 'templates/woo-template-checkout.php';
+include 'templates/woo-template_cart.php';
+include 'templates/woo-template_checkout.php';
 
 // SEO
-include 'woocommerce-seo.php';
+include 'templates/woo-template_seo.php';
 
 
 /*=====  FIN Include  =====*/

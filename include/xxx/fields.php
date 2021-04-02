@@ -51,6 +51,7 @@ $xxx_post_metabox_coord = new PC_Add_Metabox(
 
 } // FIN if class_exists('PC_Add_Metabox')
 
+
 /*=====  FIN Champs post  =====*/
 
 /*========================================

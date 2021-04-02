@@ -41,7 +41,7 @@ add_filter( 'pc_filter_js_files', 'pc_enqueuechild_theme_js' );
 if ( class_exists( 'woocommerce' ) ) {
 
 	add_theme_support( 'woocommerce' );
-	include 'include/woocommerce/woocommerce.php';	
+	include 'woocommerce/_project/woocommerce.php';	
 
 }
 

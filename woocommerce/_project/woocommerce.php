@@ -112,9 +112,9 @@ add_filter( 'query_vars', 'pc_woo_query_vars' );
 =            Include            =
 ===============================*/
 
-include 'woocommerce-functions.php';
-include 'woocommerce-admin.php';
-include 'woocommerce-templates.php';
+include 'woo_functions.php';
+include 'woo_admin.php';
+include 'woo_templates.php';
 
 
 /*=====  FIN Include  =====*/

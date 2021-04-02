@@ -47,6 +47,8 @@ if ( $xxx_query->have_posts() ) {
 		),
 		'isPartOf' => pc_get_schema_website()
 	);
+	// compteur position itemListElement
+	$xxx_list_item_key = 1;
 
 	echo '<ul class="st-list st-list--xxx reset-list">';
 
@@ -61,7 +63,8 @@ if ( $xxx_query->have_posts() ) {
 			// affichage résumé
 			$xxx_post->display_card();
 			// données structurées
-			$xxx_schema['mainEntity']['itemListElement'][] = $xxx_post->get_schema_list_item();
+			$xxx_schema['mainEntity']['itemListElement'][] = $xxx_post->get_schema_list_item( $xxx_list_item_key );
+			$xxx_list_item_key++;
 		
 		// fin d'élément
 		echo '</li>';

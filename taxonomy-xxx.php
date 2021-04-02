@@ -40,11 +40,11 @@ pc_display_main_start();
 		);
 		global $st_schema;
 
-		echo '<ul class="st-list st-list--club reset-list">';	
+		echo '<ul class="st-list st-list--xxx reset-list">';	
 
 		if ( have_posts() ) : while ( have_posts() ) : the_post(); // Boucle WP (1/2)
 		
-			pc_display_post_resum( $post->ID, 'st--club', 2 );
+			pc_display_post_resum( $post->ID, 'st--xxx', 2 );
 			$term_schema['mainEntity']['itemListElement'][] = $post_resum_schema;
 
 		endwhile; endif; // Boucle WP (2/2)

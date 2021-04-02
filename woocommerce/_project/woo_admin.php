@@ -18,11 +18,11 @@
 =            Include            =
 ===============================*/
 
-include 'admin/woo-admin-products.php';
-include 'admin/woo-admin-categories.php';
-include 'admin/woo-admin-attributs.php';
-include 'admin/woo-admin-orders.php';
-include 'admin/woo-admin-editor-caps.php';
+include 'admin/woo-admin_products.php';
+include 'admin/woo-admin_categories.php';
+include 'admin/woo-admin_attributs.php';
+include 'admin/woo-admin_orders.php';
+include 'admin/woo-admin_caps.php';
 
 
 /*=====  FIN Include  =====*/

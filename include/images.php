@@ -3,11 +3,11 @@
 
 /*----------  Logo  ----------*/
 
-// add_filter( 'pc_filter_header_logo', 'pc_project_header_logo' );
+// add_filter( 'pc_filter_header_logo_img_datas', 'pc_project_edit_header_logo_img_datas' );
 
-//     function pc_project_header_logo( $logoDatas ) {
+//     function pc_project_header_logo_img_datas( $logo_datas ) {
 
-//         $logoDatas['url'] = get_stylesheet_directory_uri().'/images/logo.svg';
-//         return $logoDatas;
+//         $logo_datas['url'] = get_stylesheet_directory_uri().'/images/logo.svg';
+//         return $logo_datas;
 
 //     }

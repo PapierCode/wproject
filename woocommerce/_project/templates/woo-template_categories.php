@@ -62,13 +62,15 @@ add_action( 'woocommerce_after_subcategory', 'pc_woo_display_article_tag_end', 1
 
 /*----------  Nombre de catégories par page  ----------*/
 
+add_filter( 'woocommerce_product_subcategories_hide_empty', '__return_false' );
+
 add_filter( 'woocommerce_product_subcategories_args', 'pc_woo_edit_categories_per_page' );
 
 	function pc_woo_edit_categories_per_page( $args ) {
 
 		$current_page_number = ( get_query_var( 'catpaged' ) ) ? get_query_var( 'catpaged' ) : 1;
-
 		$args['number'] = get_option( 'posts_per_page' );
+		$args['hide_empty'] = true;
 
 		if ( $current_page_number > 1 ) {
 			$args['offset'] = ($current_page_number - 1) * $args['number'];
