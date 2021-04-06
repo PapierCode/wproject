@@ -26,19 +26,7 @@
     top:$space;
     right:$space;
 	color:$color-black;
-    transition:transform $t-nav ease;
 
-    .h-nav-is-open & {
-        transform:translateX($h-nav-w-s);
-        transition:transform $t-nav ease;
-	}
-
-	@media ( min-width : em($mq-nav-l) ) {
-
-		.h-nav-is-open & {
-			transform:translateX($h-nav-w-l);
-		}
-	}
 	@media ( min-width : em($mq-layout-mw) ) {
 		display:none;
 	}
@@ -161,31 +149,6 @@
 	}
 }
 
-.btn-overlay {
-	position: absolute;
-	z-index: 777;
-	left:0;
-	right: 0;
-	bottom: 0;
-	top:0;
-	transform: translateX(-100%);
-	width: 100%;
-	height:100%;
-	background-color:$color-black;
-	opacity: 0;
-	transition:opacity $t-nav ease, transform 0s ease $t-nav;
-
-	.h-nav-is-open & {
-		opacity:.6;
-		transform: translateX(0);
-		transition:opacity $t-nav ease;
-	}
-
-	@media ( min-width : em($mq-layout-mw) ) {
-		display:none;
-	}
-}
-
 
 /*=====  FIN Bouton ouvrir/fermer  =====*/
 
@@ -197,13 +160,46 @@
 	position: absolute;
 	z-index: 888;
 	top: 0;
-	left: 100%;
+	left: 0;
 	bottom: 0;
-	background-color: $color-yellow;
+	width: 0;
+	overflow: hidden;
+	transition:width 0s ease $t-nav, background-color $t-nav ease;
 
+	display: flex;
+	justify-content: flex-end;
+
+	.h-nav-is-open & {
+		width: 100%;
+		background-color: rgba($color-black,.6);
+		cursor: pointer;
+		transition:background-color $t-nav ease;
+	}
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		position: static;
+		overflow: visible;
+		display: block;
+		width: auto;
+		transition: none;
+		background-color: transparent;
+	}
+}
+
+.h-nav-inner {
 	width: $h-nav-w-s;
-	padding: calc( #{rem($h-btn-nav-size)} + #{2 * $space} ) $space $space $space;
+	height: 100%;
+	padding: calc( #{rem($h-btn-nav-size)} + #{2*$space} ) $space $space $space;
+	background-color: $color-yellow;
+	transform: translateX(100%);
+	transition: transform $t-nav ease;
 
+	.h-nav-is-open & {
+		transform: translateX(0);
+		cursor: default;
+		transition: transform $t-nav ease;
+	}
+	
 	@media ( min-width : em($mq-nav-l) ) {
 		width:$h-nav-w-l;
 	}
@@ -212,10 +208,11 @@
 		position: static;
 		width: auto;
 		padding: 0;
+		transform: none;
+		transition: none;
 	}
 }
 
-.h-nav-inner {}
 
 /*=====  FIN Container  =====*/
 

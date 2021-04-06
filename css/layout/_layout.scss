@@ -22,14 +22,17 @@
 /*----------  html  ----------*/
 
 html {
-	overflow-x:hidden;
+
+	&.h-nav-is-open {
+		overflow: hidden;
+	}
 }
 
 
 /*----------  Body  ----------*/
 
 body {
-	overflow-x:hidden;
+	position: relative;
 	
 	font-family: $font-default;
 	font-size: rem($base-font-size-s);
@@ -43,25 +46,7 @@ body {
 	}
 }
 
-.body-inner {
-	// pour la navigation cachée
-	position: relative;
-	transition: transform $t-nav ease;
-
-	.h-nav-is-open & {
-		transform:translateX(-$h-nav-w-s);
-		transition: transform $t-nav ease;
-	}
-
-	@media ( min-width : em($mq-nav-l) ) {
-		.h-nav-is-open & {
-			transform:translateX(-$h-nav-w-l);		
-		}
-	}
-	@media ( min-width : em($mq-layout-mw) ) {
-		transform:none;		
-	}
-}
+.body-inner {}
 
 
 /*=====  FIN Html & body  =====*/
