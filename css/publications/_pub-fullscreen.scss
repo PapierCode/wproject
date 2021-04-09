@@ -35,19 +35,6 @@
 			top:rem($space-max);
 			right:rem($space-max);
 		}
-		.is-fullscreen.h-nav-is-open & {
-			transform:translateX( calc( #{rem($space-max)} + #{$h-nav-w-l - $space} ) );
-		}
-	}
-}
-
-.btn-overlay {
-
-	@media ( min-width : em($mq-layout-mw) ) {
-
-		.is-fullscreen & {
-			display:block;
-		}
 	}
 }
 
@@ -59,10 +46,37 @@
 	@media ( min-width : em($mq-layout-mw) ) {
 
 		.is-fullscreen & {
-			background-color: $color-yellow;
 			position: absolute;
-			width: $h-nav-w-l;
-			padding: calc( #{rem( $h-btn-nav-size + 2 * $space-max )} ) $space $space $space;
+			overflow: hidden;
+			display: flex;
+			width: 0;
+			transition:width 0s ease $t-nav, background-color $t-nav ease;
+		}
+		.is-fullscreen.h-nav-is-open & {
+			width: 100%;
+			background-color: rgba($color-black,.6);
+			cursor: pointer;
+			transition:background-color $t-nav ease;
+		}
+	}
+}
+
+.h-nav-inner {
+
+	@media ( min-width : em($mq-layout-mw) ) {
+
+		.is-fullscreen & {
+			width:$h-nav-w-l;
+			padding: calc( #{rem($h-btn-nav-size)} + #{rem(2*$space-max)} ) rem($space-max) rem($space-max) rem($space-max);
+			background-color: $color-yellow;
+			transform: translateX(100%);
+			transition: transform $t-nav ease;
+		}
+
+		.is-fullscreen.h-nav-is-open & {
+			transform: translateX(0);
+			cursor: default;
+			transition: transform $t-nav ease;
 		}
 	}
 }
@@ -119,17 +133,6 @@
 /*==============================
 =            Layout            =
 ==============================*/
-
-/*----------  Body  ----------*/
-
-.body-inner {
-
-	@media ( min-width : em($mq-layout-mw) ) {
-		.is-fullscreen.h-nav-is-open & {
-			transform:translateX(-$h-nav-w-l);			
-		}
-	}
-}
 
 
 /*----------  Visuel  ----------*/

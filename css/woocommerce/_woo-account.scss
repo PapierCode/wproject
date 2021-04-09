@@ -3,7 +3,3 @@
 @use "../framework/frk-helpers" as *;
 @use "../framework/frk-mixins" as *;
 @use "../components/cpt-buttons" as *;
-
-.showlogin {
-	@extend .button;
-}

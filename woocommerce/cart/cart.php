@@ -21,9 +21,9 @@ defined( 'ABSPATH' ) || exit;
  * 
  * Modifications
  * 
- * Éléments masqué précédé de [PC]
+ * Éléments masqué/remplacé précédés de "[PC]"
  * Ajout de classes préfixées "pc-"
- * Ajout pc_svg()
+ * 
  * 
  */
 
@@ -172,7 +172,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 <?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 
-<div class="cart-collaterals pc-cart-total">
+<div class="cart-collaterals">
 	<?php
 		/**
 		 * Cart collaterals hook.

@@ -43,7 +43,7 @@
 .woocommerce-message,
 .woocommerce-error {
     padding:rem(10);
-    background-color:$color-yellow;
+    background-color:$color-green;
     animation: woo-msg 0.3s ease;
 
 	html:not(.is-product) & {

@@ -133,6 +133,14 @@ function pc_woo_edit_html_css_class ( $css_classes ) {
 
 		$css_classes[] = 'is-product';
 
+	} else if ( is_cart() ) {
+
+		$css_classes[] = 'is-cart';
+
+	} else if ( is_checkout() ) {
+
+		$css_classes[] = 'is-checkout';
+
 	}
 
 	return $css_classes;
@@ -226,8 +234,7 @@ include 'templates/woo-template_product-resum.php';
 include 'templates/woo-template_product-single.php';
 
 // tunnel
-include 'templates/woo-template_cart.php';
-include 'templates/woo-template_checkout.php';
+include 'templates/woo-template_cart-checkout.php';
 
 // SEO
 include 'templates/woo-template_seo.php';

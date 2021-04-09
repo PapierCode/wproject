@@ -19,6 +19,7 @@
 
 
 /*=====  FIN Vide  =====*/
+
 /*==========================================
 =            Liste des produits            =
 ==========================================*/
@@ -165,10 +166,6 @@ $cart-td-remove-size : 45;
 .pc-cart-actions {
 	width: 100%;
 	text-align: center;
-
-	@media ( min-width : em($mq-layout-l) ) {
-		
-	}
 }
 
 
@@ -182,32 +179,31 @@ $cart-td-remove-size : 45;
 	@extend .layout-sub-margin-top;
 	margin:0 auto;
 
-	h2 {
-		margin:0;
-		font-size:rem(30);
-		text-align: center;
-		font-family: $font-bold;
-		text-transform: uppercase;
-	}
 	.shop_table {
 		margin:0 auto;
 		font-size:rem(20);
 		border-spacing:rem(10);
 
 		th, td {
-			padding:rem(10);
+			padding:rem(10,20);
+			font-size: rem(26);
 		}
-		th {}
 		td {
 			text-align: right;
 		}
 		.order-total th, .order-total td {
-			background-color: $color-yellow;
+			background-color: $color-red;
 		}
 	}
 	.wc-proceed-to-checkout {
 		@extend .layout-sub-margin-top;
 		text-align: center;
+	}
+	.checkout-button {
+		svg {
+			transform: rotate(180deg);
+			margin-left: rem(10);
+		}
 	}
 
 	@media ( min-width : em($mq-layout-l) ) {

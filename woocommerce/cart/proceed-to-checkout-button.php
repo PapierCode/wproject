@@ -20,6 +20,15 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-?>
 
-<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-button button alt wc-forward">Étape suivante</a>
+/**
+ * 
+ * Modifications
+ * 
+ * echo
+ * ajout classe button--xl
+ * remplacement du texte dans le lien
+ * 
+ */
+
+echo '<a href="'.esc_url( wc_get_checkout_url() ).'" class="checkout-button button button--xl alt wc-forward"><span>Étape suivante</span>'.pc_svg('arrow').'</a>';

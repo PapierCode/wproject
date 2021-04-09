@@ -49,14 +49,20 @@
 
 /*=====  FIN Résumés catégorie & produit  =====*/
 
-/*==============================
-=            Tunnel            =
-==============================*/
+/*===================================================
+=            Panier & vlidation commande            =
+===================================================*/
 
 .woocommerce {
 	@extend .layout-sub-no-padding-top;
 	@extend .layout-mw;
 }
 
+.is-cart, .is-checkout {
 
-/*=====  FIN Tunnel  =====*/
+	h1 {
+		text-align:center;
+	}
+}
+
+/*=====  FIN Panier & vlidation commande  =====*/
