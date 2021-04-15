@@ -1,0 +1,123 @@
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-helpers" as *;
+@use "../framework/frk-mixins" as *;
+@use "../forms/form-default" as *;
+
+
+.woocommerce {
+	
+	.form-row {
+		margin:rem(15,0,0,0);
+
+		label + span {
+			display: block;
+			margin-top:rem(5);
+		}
+	}
+	.required {
+		display: inline-block;
+		color:$color-red;
+		font-family: $font-regular;
+		text-decoration: none;
+		line-height: 1;
+		transform: scale(2);
+		margin-left:rem(3)
+	}
+	.optional {
+		display: none;
+	}
+
+	input[type="radio"],
+	input[type="checkbox"] {
+		@extend .visually-hidden;
+	}
+
+}
+
+.woocommerce-shipping-methods,
+.wc_payment_methods {
+	@extend .reset-list;
+}
+
+
+/*----------  Login  ----------*/
+
+.woocommerce-form-login {
+
+	> :last-child {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+.pc-woo-link-lost-password {
+	color:$color-black;
+	transition:all .3s ease;
+
+	&:hover, &:focus {
+	   text-decoration: none;
+	   background-color: $color-yellow;
+	   padding:rem(0,10);
+	   transition:all .3s ease;
+	}
+}
+
+
+/*----------  Message champs obligatoire  ----------*/
+
+.pc-woo-msg-required-fields {
+	margin:0;
+}
+
+
+/*----------  Case à cocher  "Expédier à une adresse différente"  ----------*/
+
+#ship-to-different-address {
+	@extend .layout-sub-margin-top;
+	margin-bottom:0;
+	display: inline-block;
+
+	label {
+		display: flex;
+		align-items: center;
+		padding:rem(10);
+		font-family: $font-bold;
+		font-size: rem(16);
+		text-transform: uppercase;
+		color:$color-white;
+		background-color: $color-black;
+		transition: all .3s ease;
+	
+		&:hover, &:focus {
+		   background-color: $color-blue;
+		   color:$color-black;
+		   transition: all .3s ease;
+		}
+
+		span {
+			display: flex;
+			align-items: center;
+
+			&:before {
+				margin-right:rem(10);
+				outline-color: $color-black;
+			}
+		}
+	}
+
+	+ div > div {
+		margin-top:rem(30);
+	}
+}
+
+
+/*----------  Message associé à la commande  ----------*/
+
+.woocommerce-additional-fields {
+
+	.form-row {
+		margin-top:0;
+	}
+}

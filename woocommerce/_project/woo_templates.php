@@ -234,7 +234,7 @@ include 'templates/woo-template_product-resum.php';
 include 'templates/woo-template_product-single.php';
 
 // tunnel
-include 'templates/woo-template_cart-checkout.php';
+include 'templates/woo-template_tunnel.php';
 
 // SEO
 include 'templates/woo-template_seo.php';

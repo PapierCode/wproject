@@ -5,6 +5,103 @@
 @use "../framework/frk-mixins" as *;
 
 
+/*=======================================
+=            Ajout au panier            =
+=======================================*/
+
+.pc-add-to-cart {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: space-between;
+	border:$border;
+	padding: rem(10);
+
+	.cart {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+button[name=add-to-cart] {
+	background-color: $color-red;
+	width: rem(40);
+	overflow: hidden;
+	margin-left: rem(10);
+	background-image:svg-load('../images/cart-more.svg',fill=$color-black);
+	background-repeat: no-repeat;
+	background-position: center;
+	text-indent: -666em;
+}
+
+
+/*----------  Variation  ----------*/
+
+.variation {
+
+	.label {
+		@extend .visually-hidden;
+	}
+}
+
+
+/*----------  Quantité  ----------*/
+
+.quantity {
+	@extend .visually-hidden;
+}
+.pc-qty {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.pc-qty-counter {
+	text-align: center;
+	min-width: rem(35);
+	font-weight: 700;
+}
+.pc-qty-btn {
+	flex-shrink: 0;
+	display: flex;
+	background-color: $color-black;
+	padding:rem(5);
+	border-radius: 50%;
+	transition: all .3s ease;
+
+	svg {
+		fill:$color-white;
+		width: rem(15);
+		height: rem(15);
+		transition: all .3s ease;
+	}
+	&:disabled {
+		opacity: .3;
+		cursor: default;
+	}
+	&:not(:disabled):hover, &:not(:disabled):focus {
+		background-color: $color-blue;
+		transition: all .3s ease;
+
+	   	svg {
+			fill:$color-black;
+			transition: all .3s ease;
+		}
+	}
+}
+
+/*----------  Prix  ----------*/
+
+.price {
+	margin:0;
+	padding:rem(5,10);
+	font-family: $font-bold;
+	background-color: $color-yellow;
+	font-size: rem(18);
+}
+
+
+/*=====  FIN Ajout au panier  =====*/
+
 /*============================
 =            Vide            =
 ============================*/
@@ -57,54 +154,46 @@
 	flex-wrap: wrap;
 	align-items: center;
 
-	&:nth-last-child(n+2) {
-		margin-top: rem(10);
-	}
-	&:last-child {
+	&:nth-child(n+2) {
 		margin-top: $space;
-	}
-
-	td:not(.pc-cart-actions) {
-		padding: rem(5,10);
 	}
 
 	@media ( min-width : em($mq-layout-l) ) {
 		display:table-row;
-		margin-top:0;
 
-		&:first-child td {
-			border-top:$border;
+		td {
+			border-bottom:$border;
+		}	
+		&:first-child {
+			td {
+				border-top: $border;
+			}
 		}
-		td:not(.pc-cart-actions) {
-			border-bottom:1px solid $color-grey;
-			padding: rem(10);
-		}
-		&:nth-child(n+2) td {
-			padding-top:0;
+		&:nth-child(n+2) {
+			td {
+				padding-top:0;
+			}
 		}
 	}
 }
 
 .pc-cart-remove, .pc-cart-name {
-	border:$border;
+	align-self: stretch;
+	padding:$space;
+	background-color: $color-yellow;
 
 	@media ( min-width : em($mq-layout-l) ) {
-		border:none;
+		padding:rem(10);
+		background-color: transparent;
 	}
 }
-
-$cart-td-remove-size : 45;
 .pc-cart-remove {
-	width: rem($cart-td-remove-size);
-	align-self: stretch;
-	border-left: none;
-	text-align: center;
+	display: flex;
+	align-items: flex-start;
 
 	a {
 		text-decoration: none;
 		background-color: $color-red;
-		display: inline-block;
-		vertical-align: middle;
 		padding: rem(5);
 		border-radius: 50%;
 
@@ -117,15 +206,25 @@ $cart-td-remove-size : 45;
 		height: rem(15);
 		max-width: none;
 	}
+
+	@media ( min-width : em($mq-layout-l) ) {
+		display:table-cell;
+		text-align: center;
+
+		a {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
 }
 .pc-cart-name {
 	order:-1;
-	width: calc( 100% - #{rem($cart-td-remove-size)} );
-	border-right: none;
+	width: calc( 100% - #{rem(25)} - #{2*$space} );
 
 	a, a:visited {
 		text-decoration: none;
 		font-size: rem(18);
+		line-height: 1.1;
 		font-weight: 700;
 		color:$color-black;
 
@@ -138,46 +237,67 @@ $cart-td-remove-size : 45;
 		width:auto;
 	}
 }
-.pc-cart-price {
-	text-align: left;
-	flex-grow:1;
-	
+.pc-cart-price, .pc-cart-quantity, .pc-cart-subtotal {
+	width: 100%;
+	display: flex;
+	padding:.5*$space $space;
+	margin:0 $space;
+
+	&::before {
+		content:attr(data-title);
+		flex-grow: 1;
+	}
+
 	@media ( min-width : em($mq-layout-l) ) {
-		min-width: rem(70);
+		display:table-cell;
+		width: auto;
+		padding:rem(10);
+		margin:0;
 		text-align: center;
+
+		&:before {
+			display: none;
+		}
 	}
 }
+.pc-cart-price {}
 .pc-cart-quantity {
-	flex-grow: 2;
-	
+	border-top:$border;
+	border-bottom:$border;
+
 	@media ( min-width : em($mq-layout-l) ) {
-		min-width: rem(110);
+		border:none;
 	}
 }
 .pc-cart-subtotal {
-	text-align: right;
-	flex-grow:1;
-	
-	@media ( min-width : em($mq-layout-l) ) {
-		min-width: rem(120);
-		text-align: center;
-	}
+	font-size: rem(18);
+	font-weight: 700;
 }
+
 .pc-cart-actions {
-	width: 100%;
 	text-align: center;
+	
+	td {
+		padding-top: $space;
+	}
+
+	@media ( min-width : em($mq-layout-l) ) {
+		td {
+			padding-top:rem(10);
+		}
+	}
 }
 
 
 /*=====  FIN Liste des produits  =====*/
 
-/*==================================
-=            Validation            =
-==================================*/
+/*=============================
+=            Total            =
+=============================*/
 
 .pc-cart-total {
 	@extend .layout-sub-margin-top;
-	margin:0 auto;
+	margin:$space auto 0;
 
 	.shop_table {
 		margin:0 auto;
@@ -188,10 +308,13 @@ $cart-td-remove-size : 45;
 			padding:rem(10,20);
 			font-size: rem(26);
 		}
+		th {
+			background-color: $color-yellow;
+		}
 		td {
 			text-align: right;
 		}
-		.order-total th, .order-total td {
+		.order-total td {
 			background-color: $color-red;
 		}
 	}
@@ -215,4 +338,4 @@ $cart-td-remove-size : 45;
 }
 
 
-/*=====  FIN Validation  =====*/
+/*=====  FIN Total  =====*/

@@ -62,10 +62,10 @@
 /*----------  Woocommerce  ----------*/
 
 @use "woocommerce/woo";
-@use "woocommerce/woo-product";
 @use "woocommerce/woo-product-resum";
 @use "woocommerce/woo-product-single";
 @use "woocommerce/woo-messages";
+@use "woocommerce/woo-forms";
 @use "woocommerce/woo-account";
 @use "woocommerce/woo-cart";
 @use "woocommerce/woo-checkout";

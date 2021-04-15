@@ -25,9 +25,9 @@
 	text-transform: uppercase;
 
 	svg + span {
-		margin-left: rem(5);
+		margin-left: rem(10);
 	}
-	path, rect {
+	svg {
 		transition:fill .3s ease;
 		fill:$color-white;
 	}
@@ -37,7 +37,7 @@
 		color:$color-black;
 		transition:all .3s ease;
 
-		path, rect {
+		svg {
 			fill:$color-black;
 			transition:fill .3s ease;
 		}

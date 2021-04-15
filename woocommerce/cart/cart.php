@@ -17,22 +17,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
-/**
- * 
- * Modifications
- * 
- * Éléments masqué/remplacé précédés de "[PC]"
- * Ajout de classes préfixées "pc-"
- * 
- * 
- */
-
 do_action( 'woocommerce_before_cart' ); ?>
 
 <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
-	<?php do_action( 'woocommerce_before_cart_table' ); ?>
-
+	<?php do_action( 'woocommerce_before_cart_table' );
+	
+	/* [PC] + .pc-cart */ ?>
 	<table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents pc-cart" cellspacing="0">
+		<?php /* [PC] + .pc-cart-head */ ?>
 		<thead class="pc-cart-head">
 			<tr>
 				<th class="product-remove">&nbsp;</th>
@@ -43,6 +35,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
 			</tr>
 		</thead>
+		<?php /* [PC] + .pc-cart-body */ ?>
 		<tbody class="pc-cart-body">
 			<?php do_action( 'woocommerce_before_cart_contents' ); ?>
 
@@ -53,9 +46,11 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 				if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
 					$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
-					?>
+					
+					/* [PC] + .pc-cart-row */ ?>
 					<tr class="woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?> pc-cart-row">
 
+						<?php /* [PC] + .pc-cart-remove */ ?>
 						<td class="product-remove pc-cart-remove">
 							<?php
 								echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -73,18 +68,16 @@ do_action( 'woocommerce_before_cart' ); ?>
 							?>
 						</td>
 
-						<?php /* [PC] <td class="product-thumbnail">
-	
+						<?php /* [PC] <td class="product-thumbnail">	
 						$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
-
 						if ( ! $product_permalink ) {
 							echo $thumbnail; // PHPCS: XSS ok.
 						} else {
 							printf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $thumbnail ); // PHPCS: XSS ok.
 						}
-						?>
-						</td> */ ?>
-
+						?> </td> */ 
+						
+						/* [PC] + .pc-cart-name */ ?>
 						<td class="product-name pc-cart-name" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
 						<?php
 						if ( ! $product_permalink ) {
@@ -105,12 +98,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 						?>
 						</td>
 
+						<?php /* [PC] + .pc-cart-price */ ?>
 						<td class="product-price pc-cart-price" data-title="<?php esc_attr_e( 'Price', 'woocommerce' ); ?>">
 							<?php
 								echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 							?>
 						</td>
 
+						<?php /* [PC] + .pc-cart-quantity */ ?>
 						<td class="product-quantity pc-cart-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
 						<?php
 						if ( $_product->is_sold_individually() ) {
@@ -133,6 +128,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						?>
 						</td>
 
+						<?php /* [PC] + . pc-cart-subtotal */ ?>
 						<td class="product-subtotal pc-cart-subtotal" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">
 							<?php
 								echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
@@ -146,8 +142,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 			<?php do_action( 'woocommerce_cart_contents' ); ?>
 
-			<tr class="pc-cart-row">
-				<td colspan="6" class="actions pc-cart-actions">
+			</tr>
+			
+		<?php /* [PC] + */ ?>
+		</tbody>
+		<tfoot class="pc-cart-actions">
+
+			<tr>
+				<td colspan="6" class="actions">
 
 					<?php if ( wc_coupons_enabled() ) { ?>
 						<div class="coupon">
@@ -164,8 +166,11 @@ do_action( 'woocommerce_before_cart' ); ?>
 				</td>
 			</tr>
 
-			<?php do_action( 'woocommerce_after_cart_contents' ); ?>
-		</tbody>
+			<?php do_action( 'woocommerce_after_cart_contents' );
+		
+		/* [PC] + */ ?>
+		</tfoot>
+
 	</table>
 	<?php do_action( 'woocommerce_after_cart_table' ); ?>
 </form>

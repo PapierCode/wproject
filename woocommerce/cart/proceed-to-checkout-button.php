@@ -21,14 +21,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-/**
- * 
- * Modifications
- * 
- * echo
- * ajout classe button--xl
- * remplacement du texte dans le lien
- * 
- */
-
+/* [PC] <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-button button alt wc-forward"><?php esc_html_e( 'Proceed to checkout', 'woocommerce' ); ?></a> */
 echo '<a href="'.esc_url( wc_get_checkout_url() ).'" class="checkout-button button button--xl alt wc-forward"><span>Étape suivante</span>'.pc_svg('arrow').'</a>';

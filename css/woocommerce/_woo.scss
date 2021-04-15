@@ -27,6 +27,27 @@
 	}
 }
 
+*/*----------  Titre intermédiaires  ----------*/
+
+.pc-woo-subtitle {
+	font-family: $wysi-title-font;
+	font-size: rem($wysi-h2-font-size-s);
+	line-height: $wysi-title-line-h;
+	color: $wysi-h2-color;
+
+	margin: 2*$space 0 $space 0;
+	padding-bottom:$space;
+	border-bottom: $border;
+
+	@media ( min-width : em($mq-title-size) ) {
+		font-size: rem($wysi-h2-font-size-l);
+	}
+	@media ( min-width : em($mq-layout-mw) ) {
+		margin:0;
+		padding-bottom: rem(.5*$space-max);
+	}
+}
+
 
 /*=====  FIN Layout  =====*/
 

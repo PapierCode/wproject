@@ -17,16 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-/**
- * 
- * Modifications
- * 
- * Éléments masqué précédé de [PC]
- * ajout classe pc-cart-total
- * 
- */
-
-?>
+/* [PC] + .pc-cart-total */ ?>
 <div class="pc-cart-total cart_totals <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?>">
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
@@ -49,6 +40,7 @@ defined( 'ABSPATH' ) || exit;
 			</tr>
 		<?php endforeach; ?>
 
+		<?php /* [PC]
 		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
 
 			<?php do_action( 'woocommerce_cart_totals_before_shipping' ); ?>
@@ -72,6 +64,7 @@ defined( 'ABSPATH' ) || exit;
 				<td data-title="<?php echo esc_attr( $fee->name ); ?>"><?php wc_cart_totals_fee_html( $fee ); ?></td>
 			</tr>
 		<?php endforeach; ?>
+		*/ ?>
 
 		<?php
 		if ( wc_tax_enabled() && ! WC()->cart->display_prices_including_tax() ) {

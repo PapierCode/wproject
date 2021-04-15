@@ -3,48 +3,60 @@
 @use "../framework/frk-functions" as *;
 @use "../framework/frk-helpers" as *;
 @use "../framework/frk-mixins" as *;
-@use "../forms/form-default" as *;
 
 
-.checkout{
+.is-checkout {
 
-	@media ( min-width : em($mq-layout-xl) ) {
-		display: grid;
-		gap: rem($space-max);
-		grid-template-columns: repeat(2,1fr);
-		grid-template-rows: max-content 1fr;
+	.login {
+		@extend .layout-sub-no-padding-top;
+		margin:0 auto;
+		max-width: rem(500);
 	}
+
 }
 
-#customer_details {
+.pc-woo-checkout-total {
+	border-spacing: rem(10);
+	margin-left:rem(-10);
+	width: calc( 100% + #{rem(20)} );
+	max-width: none;
 
-	@media ( min-width : em($mq-layout-xl) ) {
-		grid-row:1/3;
+	th {
+		background-color: $color-yellow;
+		padding:$space;
+		text-align: left;
 	}
-}
+	td {}
 
-#order_review_heading {
-
-	@media ( min-width : em($mq-layout-xl) ) {
-		grid-column: 2/3;
-		
+	thead {
+		th {
+	
+			&:nth-child(2) {
+				text-align: right;
+			}
+		}
 	}
-}
-#order_review {
 
-	@media ( min-width : em($mq-layout-xl) ) {
-		grid-column: 2/3;
-	}
-}
+	tbody {
 
-.form-row {
 
-	label {
-		@extend .form-label;
+		td {
+			border-bottom:$border;
+			padding:.5*$space $space;
+
+			&:first-child {
+				text-align: left;
+			}
+			&:nth-child(2) {
+				text-align: right;
+				font-weight: 700;
+			}
+		}
 	}
-	.woocommerce-input-wrapper {
-		@extend .form-item-inner;
-		display:block;
-		margin-top:rem(10);
+	.product-quantity {
+		&::before { content:"("; }
+		&::after { content:")"; }
 	}
+
+	tfoot {}
 }

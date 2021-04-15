@@ -45,12 +45,15 @@
 =            Label            =
 =============================*/
 
-.form-label {
+label {
 	font-family: $font-regular;
 
 	a, a:visited {
 		color:inherit;
 	}
+}
+
+.form-label {
 
 	.form-item--checkbox & {
 		display: flex;
@@ -71,55 +74,55 @@
 =            Champs            =
 ==============================*/
 
-.form-item-inner {
-	margin-top : rem(5);
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+textarea {		
+	width:100%;
+	padding:rem(10);
+	border: $border;
 
-	input[type="text"],
-	input[type="email"],
-	input[type="password"],
-	input[type="tel"],
-	textarea {		
-		width:100%;
-		padding:rem(10);
-		border: $border;
+	&.error { border-color: $color-msg-error; }
+	&:focus {
+		outline: none;
+		background-color: $color-blue;
+	}
+}
 
-		&.error { border-color: $color-msg-error; }
-		&:focus {
-			outline: none;
-			background-color: $color-blue;
+input[type="radio"],
+input[type="checkbox"] {
+	+ * {
+		display:flex;
+		&:before {
+			content:"";
+			display: inline-block;
+			flex-shrink: 0;
+			width: rem(20);
+			height: rem(20);
+			border:rem(4) solid #fff;
+			outline:$border;
+			background-color: #fff;
+			margin-right: rem(10);
 		}
 	}
-
-	input[type="checkbox"] {
-		+ label {
-			&:before {
-				content:"";
-				display: inline-block;
-				flex-shrink: 0;
-				width: rem(20);
-				height: rem(20);
-				margin:rem(4,10,0,0);
-				border:rem(4) solid #fff;
-				outline:$border;
-				background-color: #fff;
-			}
-		}
-		&:focus + label {
-			&:before {
-				background-color:$color-blue;
-				border-color:$color-blue;
-			}
-		}
-		&:checked + label {	
-			&:before {
-				background-color: $color-red;
-			}
+	&:focus + * {
+		&:before {
+			background-color:$color-blue;
+			border-color:$color-blue;
 		}
 	}
-
-	@media ( min-width : em($mq-layout-l) ) {
-		margin-top: 0;
-		flex-grow: 1;
+	&:checked + * {	
+		&:before {
+			background-color: $color-red;
+		}
+	}
+}
+input[type="radio"] {
+	+ * {
+		&::before {
+			border-radius:50%;
+		}
 	}
 }
 
