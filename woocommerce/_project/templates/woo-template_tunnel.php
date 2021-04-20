@@ -39,7 +39,7 @@ add_action( 'wp', 'pc_woo_remove_main_footer' );
 
 	function pc_woo_remove_main_footer() {
 
-		if ( is_cart() || is_checkout() ) {
+		if ( is_cart() || is_checkout() || is_account_page() ) {
 
 			remove_action( 'pc_action_page_main_footer', 'pc_display_main_footer_start', 10 );
 			remove_action( 'pc_action_page_main_footer', 'pc_display_share_links', 90 );
@@ -64,7 +64,6 @@ add_action( 'woocommerce_before_checkout_billing_form', 'pc_woo_display_message_
 
 /*=====  FIN Communs  =====*/
 
-
 /*=================================================
 =            Validation de la commande            =
 =================================================*/
@@ -74,19 +73,10 @@ add_filter( 'woocommerce_ship_to_different_address_checked', '__return_false' );
 
 add_filter( 'woocommerce_checkout_fields', 'pc_woo_checkout_fields' );
 
-	function pc_woo_checkout_fields( $fields ) {
+	function pc_woo_checkout_fields( $fields ) { 
 
-		$to_remove = array( 'company', 'country', 'address_2', 'phone' ) ;
-		foreach ( $to_remove as $id)  {
-			unset( $fields['billing']['billing_'.$id] );
-			unset( $fields['shipping']['shipping_'.$id] );
-		}
-
-		$label_address = 'Adresse';
-		$fields['billing']['billing_address_1']['label'] = $label_address;
-		$fields['billing']['billing_address_1']['placeholder'] = '';
-		$fields['shipping']['shipping_address_1']['label'] = $label_address;
-		$fields['shipping']['shipping_address_1']['placeholder'] = '';
+		$fields['billing']['billing_phone']['required'] = false;
+		$fields['billing']['billing_email']['label'] = 'E-mail';
 
 		$fields['account']['account_password']['label'] = 'Mot de passe';
 		$fields['account']['account_password']['placeholder'] = '';
@@ -98,5 +88,46 @@ add_filter( 'woocommerce_checkout_fields', 'pc_woo_checkout_fields' );
 
 	}
 
+add_action( 'woocommerce_admin_order_data_after_shipping_address', 'pc_woo_admin_order_data_after_shipping_address', 10, 1 );
+
+	function pc_woo_admin_order_data_after_shipping_address( $order ){
+
+		echo '<p><strong>'.__('Phone From Checkout Form').':</strong> ' . get_post_meta( $order->get_id(), '_shipping_phone', true ) . '</p>';
+
+	}
+
+
+add_filter( 'woocommerce_cart_shipping_method_full_label', 'pc_woo_cart_shipping_label', 10, 2 );
+
+	function pc_woo_cart_shipping_label( $label, $shipping_rate ) {
+
+		$label = str_replace( ':', '&nbsp;:&nbsp;', $label );
+		return $label;
+
+	}
+
 
 /*=====  FIN Validation de la commande  =====*/
+
+add_filter( 'woocommerce_get_terms_and_conditions_checkbox_text', 'pc_woo_terms_and_conditions_checkbox_text' );
+
+	function pc_woo_terms_and_conditions_checkbox_text( $text ) {
+
+		return 'truc';
+
+	}
+
+add_filter( 'woocommerce_order_button_html', 'pc_woo_order_button_html' );
+
+	function pc_woo_order_button_html() {
+
+		return '<div class="pc-woo-submit-box"><button type="submit" class="button button--xl button--red">Commander</button></div>';
+
+	}
+
+/*=============================================
+=            Confirmation commande            =
+=============================================*/
+
+
+/*=====  FIN Confirmation commande  =====*/

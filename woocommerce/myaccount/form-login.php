@@ -24,19 +24,22 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 <?php if ( 'yes' === get_option( 'woocommerce_enable_myaccount_registration' ) ) :
 	
 /* [PC] + */ ?>
-<div class="pc-woo-account"><div class="pc-woo-account-col">
+<div class="pc-woo-account-2cols"><div>
 
 <?php endif; ?>
 
-		<?php /* [PC] + .pc-woo-subtitle */ ?>
-		<h2 class="pc-woo-subtitle"><?php esc_html_e( 'Login', 'woocommerce' ); ?></h2>
+		<?php /* [PC] <h2><?php esc_html_e( 'Login', 'woocommerce' ); ?></h2> */ ?>
+		<h2 class="pc-woo-subtitle">Se connecter</h2>
 
 		<form class="woocommerce-form woocommerce-form-login login" method="post">
 
 			<?php do_action( 'woocommerce_login_form_start' ); ?>
 
 			<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-				<label for="username"><?php esc_html_e( 'Username or email address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+				
+				<?php /* [PC] <label for="username"><?php esc_html_e( 'Username or email address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label> */ ?>
+				<label for="username">E-mail&nbsp;<span class="required">*</span></label>
+
 				<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="<?php echo ( ! empty( $_POST['username'] ) ) ? esc_attr( wp_unslash( $_POST['username'] ) ) : ''; ?>" /><?php // @codingStandardsIgnoreLine ?>
 			</p>
 			<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
@@ -63,10 +66,10 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 <?php if ( 'yes' === get_option( 'woocommerce_enable_myaccount_registration' ) ) : ?>
 
 	<?php /* [PC] + */ ?>
-	</div><div class="pc-woo-account-col">
+	</div><div>
 
-		<?php /* [PC] + .pc-woo-subtitle */ ?>
-		<h2 class="pc-woo-subtitle"><?php esc_html_e( 'Register', 'woocommerce' ); ?></h2>
+		<?php /* [PC] <h2><?php esc_html_e( 'Register', 'woocommerce' ); ?></h2> */ ?>
+		<h2 class="pc-woo-subtitle">Créer un compte</h2>
 
 		<form method="post" class="woocommerce-form woocommerce-form-register register" <?php do_action( 'woocommerce_register_form_tag' ); ?> >
 
@@ -82,7 +85,10 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 			<?php endif; ?>
 
 			<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-				<label for="reg_email"><?php esc_html_e( 'Email address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
+				
+				<?php /* [PC] <label for="reg_email"><?php esc_html_e( 'Email address', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label> */ ?>
+				<label for="reg_email">E-mail&nbsp;<span class="required">*</span></label>
+
 				<input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="<?php echo ( ! empty( $_POST['email'] ) ) ? esc_attr( wp_unslash( $_POST['email'] ) ) : ''; ?>" /><?php // @codingStandardsIgnoreLine ?>
 			</p>
 

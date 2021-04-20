@@ -152,7 +152,7 @@
 		line-height: $wysi-title-line-h;
 		margin-top: rem($wysi-h2-mtop-s);
 
-		@media ( min-width : em($mq-title-size) ) {
+		@media ( min-width : em($mq-layout-l) ) {
 			font-size: rem($wysi-h2-font-size-l);
 			margin-top: rem($wysi-h2-mtop-l);
 		}
@@ -165,7 +165,7 @@
 		line-height: $wysi-title-line-h;
 		margin-top: rem($wysi-h3-mtop-s);
 
-		@media ( min-width : em($mq-title-size) ) {
+		@media ( min-width : em($mq-layout-l) ) {
 			font-size: rem($wysi-h3-font-size-l);
 			margin-top: rem($wysi-h3-mtop-l);
 		}
@@ -174,7 +174,7 @@
 	h2 + h3 {
 		margin-top:rem($wysi-space-default-s);
 		
-		@media ( min-width : em($mq-title-size) ) {
+		@media ( min-width : em($mq-layout-l) ) {
 			margin-top:rem($wysi-space-default-l);
 		}
 	}

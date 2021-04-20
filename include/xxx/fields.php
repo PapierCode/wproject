@@ -104,10 +104,10 @@ if ( class_exists('PC_add_field_to_tax') ) {
 		$xxx_tax_content_fields_args
 	);
 
-	$xxx_tax_resum_fields_args = array(	
+	$xxx_tax_card_fields_args = array(	
 		'title'     => 'Résumé',
 		'prefix'    => 'resum',
-		'desc'		=> $metabox_resum_desc,
+		'desc'		=> $metabox_card_desc,
 		'fields'    => array(
 			array(
 				'type'      => 'text',
@@ -124,6 +124,11 @@ if ( class_exists('PC_add_field_to_tax') ) {
 				'css'		=> 'width:100%'
 			)					
 		)
+	);
+
+	$xxx_tax_card_fields = new PC_add_field_to_tax(
+		XXX_TAX_SLUG,
+		$xxx_tax_card_fields_args
 	);
 
 	$xxx_tax_seo_fields_args = array(	

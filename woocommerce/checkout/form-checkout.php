@@ -27,15 +27,15 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	return;
 }
 
-?>
-
-<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+/* [PC] + .pc-woo-checkout-form */ ?>
+<form name="checkout" method="post" class="checkout woocommerce-checkout pc-woo-checkout-form" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
 	<?php if ( $checkout->get_checkout_fields() ) : ?>
 
 		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
-		<div class="col2-set" id="customer_details">
+		<?php /* [PC] + .pc-woo-checkout-customer */ ?>
+		<div class="col2-set pc-woo-checkout-customer" id="customer_details">
 			<div class="col-1">
 				<?php do_action( 'woocommerce_checkout_billing' ); ?>
 			</div>
@@ -49,7 +49,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 	<?php endif; ?>
 	
-	<?php /* [PC] */ ?>
+	<?php /* [PC] + */ ?>
 	<div class="pc-checkout-order-review">
 
 		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
@@ -65,7 +65,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 		<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 	
-	<?php /* [PC] */ ?>
+	<?php /* [PC] + */ ?>
 	</div>
 
 </form>

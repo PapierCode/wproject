@@ -20,8 +20,9 @@ defined( 'ABSPATH' ) || exit;
 if ( ! is_ajax() ) {
 	do_action( 'woocommerce_review_order_before_payment' );
 }
-?>
-<div id="payment" class="woocommerce-checkout-payment">
+
+/* [PC] + .pc-woo-checkout-paiment */ ?>
+<div id="payment" class="woocommerce-checkout-payment pc-woo-checkout-paiment">
 	<?php if ( WC()->cart->needs_payment() ) :
 
 		/* [PC] + */ ?><h2 class="pc-woo-subtitle">Mode de paiment</h2>

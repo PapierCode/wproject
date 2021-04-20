@@ -3,3 +3,66 @@
 @use "../framework/frk-helpers" as *;
 @use "../framework/frk-mixins" as *;
 @use "../components/cpt-buttons" as *;
+
+
+.is-account {
+
+	.main-content-inner {
+		max-width: rem($txt-mw);
+	}
+}
+
+.pc-woo-account-user-name {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:rem(10,0,0,0);
+	font-weight: 700;
+
+	span {
+		margin-right: rem(10);
+	}
+	svg {
+		fill:$color-black;
+	}
+}
+
+/*==================================
+=            Navigation            =
+==================================*/
+
+.nav-account-list {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	li {
+		margin:rem(0,5,10,5);
+		
+		&.is-active a {
+			background-color: $color-red;
+			color:$color-black;
+
+			&:hover, &:focus {
+			   background-color: $color-blue;
+			}
+		}
+	}
+}
+
+
+/*=====  FIN Navigation  =====*/
+
+/*================================
+=            Adresses            =
+================================*/
+
+address {
+
+	.is-account & {
+		margin-bottom: rem(10);
+	}
+}
+
+
+/*=====  FIN Adresses  =====*/

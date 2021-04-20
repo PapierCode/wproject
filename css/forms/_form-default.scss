@@ -50,6 +50,12 @@ label {
 
 	a, a:visited {
 		color:inherit;
+		transition:all .3s ease;
+
+		&:hover, &:focus {
+		   background-color: $wysi-link-bg-color-hover;
+		   transition:all .3s ease;
+		}
 	}
 }
 
@@ -63,6 +69,7 @@ label {
 		min-width : rem(300);
 	}
 }
+
 .form-label-required {
 	opacity: .6;
 }
@@ -94,6 +101,8 @@ input[type="radio"],
 input[type="checkbox"] {
 	+ * {
 		display:flex;
+		align-items: center;
+
 		&:before {
 			content:"";
 			display: inline-block;

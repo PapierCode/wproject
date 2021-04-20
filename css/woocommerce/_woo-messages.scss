@@ -11,9 +11,9 @@
 @use "../framework/frk-mixins" as *;
 
 
-.woocommerce-notices-wrapper {
-}
+.woocommerce-notices-wrapper {}
 
+.woocommerce-notice,
 .woocommerce-info,
 .woocommerce-message,
 .woocommerce-error li {
@@ -39,22 +39,19 @@
     }
 }
 
+.woocommerce-notice,
 .woocommerce-info,
 .woocommerce-message,
 .woocommerce-error {
-    padding:rem(10);
-    background-color:$color-green;
+	padding:rem(10);
+	margin-top:0;
     animation: woo-msg 0.3s ease;
 
 	html:not(.is-product) & {
-		margin-bottom: $space;
+		@extend .layout-sub-margin-bottom;
 	}
-
-	@media ( min-width : em($mq-layout-mw) ) {
-
-		html:not(.is-product) & {
-			margin-bottom:rem($space-max);
-		}
+	.is-account & {
+		@extend .layout-sub-margin-top;
 	}
 }
 
@@ -67,9 +64,21 @@
 	}
 }
 
-.woocommerce-info, .woocommerce-message {
+.woocommerce-notice,
+.woocommerce-info,
+.woocommerce-message { 
+	background-color: $color-blue;
+}
+.woocommerce-error {
+	background-color: $color-red;
+}
+
+.woocommerce-notice,
+.woocommerce-info,
+.woocommerce-message {
     justify-content: center;
 }
+
 .woocommerce-error {
     @extend .reset-list;
 

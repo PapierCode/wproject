@@ -28,7 +28,7 @@ h1 {
 	line-height: 1.2;
 	margin: 0;
 	
-	@media ( min-width : em($mq-title-size) ) {
+	@media ( min-width : em($mq-layout-l) ) {
 		font-size: rem(50);
 	}
 }

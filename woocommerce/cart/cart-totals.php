@@ -100,14 +100,16 @@ defined( 'ABSPATH' ) || exit;
 
 		<tr class="order-total">
 			<th><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
-			<td data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
+			<?php /* [PC] <td data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td> */ ?>
+			<td data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?= WC()->cart->get_cart_total(); ?></td>
 		</tr>
 
 		<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
 
 	</table>
 
-	<div class="wc-proceed-to-checkout">
+	<?php /* [PC] + .pc-woo-submit-box */ ?>
+	<div class="wc-proceed-to-checkout pc-woo-submit-box">
 		<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
 	</div>
 

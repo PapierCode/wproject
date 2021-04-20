@@ -131,4 +131,43 @@ if ( $cart.length > 0 ) {
 
 /*=====  FIN Panier  =====*/
 
+/*====================================
+=            Mot de passe            =
+====================================*/
+
+var $input_password = $('input[type="password"]');
+
+if ( $input_password.length > 0 ) {
+
+	$input_password.each(function() {
+
+		$(this)
+			.wrap('<div class="password-display-box"></div>')
+			.before('<button type="button" aria-hidden="true" class="password-display-btn reset-btn" title="Afficher/masquer le mot de passe"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="20" viewBox="0 0 30 20"><path d="M15,6.43A3.66,3.66,0,0,0,11.25,10,3.66,3.66,0,0,0,15,13.57,3.66,3.66,0,0,0,18.75,10,3.66,3.66,0,0,0,15,6.43Zm0,10A6.6,6.6,0,0,1,8.25,10,6.6,6.6,0,0,1,15,3.57,6.6,6.6,0,0,1,21.75,10,6.6,6.6,0,0,1,15,16.43ZM15,0C4.5,0,0,10,0,10S4.5,20,15,20,30,10,30,10,25.5,0,15,0Z"/></svg></button>');
+
+	});
+
+	var $button_password_display = $('.password-display-btn');
+
+	if ( $button_password_display.length > 0 ) {
+
+		$button_password_display.click(function() {
+
+			var $input_passwordNext = $(this).next('input');
+			
+			if ( $input_passwordNext.attr('type') == 'password' ) {
+				$input_passwordNext.attr('type','text');
+			} else {
+				$input_passwordNext.attr('type','password');
+			}
+
+		});
+
+	}
+
+}
+
+
+/*=====  FIN Mot de passe  =====*/
+
 }); // FIN jquery ready

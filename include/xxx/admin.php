@@ -20,7 +20,7 @@ function pc_xxx_admin_edit_page_content_from( $settings_project ) {
 
 	$settings_project['page-content-from'][XXX_POST_SLUG] = array(
 		'xxx',
-		get_stylesheet_directory().'/include/xxx/archive.php'
+		get_stylesheet_directory().'/include/xxx/template_archive.php'
 	);
 
 	return $settings_project;

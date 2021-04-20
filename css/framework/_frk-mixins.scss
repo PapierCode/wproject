@@ -45,6 +45,14 @@
 	}
 }
 
+.layout-sub-margin-bottom {
+	margin-bottom: $space;
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		margin-bottom: rem($space-max);
+	}
+}
+
 .layout-mw {
 	margin:0 auto;
 	max-width:rem($layout-mw);

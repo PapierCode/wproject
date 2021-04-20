@@ -22,13 +22,13 @@ defined( 'ABSPATH' ) || exit;
 <div class="woocommerce-billing-fields">
 	<?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
-		<?php /* [PC] <h3><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3> */ ?>
-		<h2 class="pc-woo-subtitle">Coordonnées</h2>
+		<?php /* [PC] h3 > h2 */ ?>
+		<h2 class="pc-woo-subtitle"><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h2>
 
 	<?php else : ?>
 
-		<?php /* [PC] <h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h3> */ ?>
-		<h2 class="pc-woo-subtitle">Coordonnées</h2>
+		<?php /* [PC] h3 > h2 */ ?>
+		<h2 class="pc-woo-subtitle"><?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h2>
 
 	<?php endif; ?>
 

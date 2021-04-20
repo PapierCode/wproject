@@ -103,7 +103,7 @@ add_action( 'woocommerce_after_main_content', 'pc_display_main_end', 60 ); // fo
 /*=====  FIN Hooks (ajouts)  =====*/
 
 /*======================================================
-=            Classes CSS sur l'élément HMTL            =
+=            Classes CSS sur l'élément HTML            =
 ======================================================*/
 
 add_filter( 'pc_filter_html_css_class', 'pc_woo_edit_html_css_class' );
@@ -141,6 +141,10 @@ function pc_woo_edit_html_css_class ( $css_classes ) {
 
 		$css_classes[] = 'is-checkout';
 
+	} else if (  is_account_page() ) {
+
+		$css_classes[] = 'is-account';
+
 	}
 
 	return $css_classes;
@@ -149,7 +153,7 @@ function pc_woo_edit_html_css_class ( $css_classes ) {
 
 
 
-/*=====  FIN Classes CSS sur l'élément HMTL  =====*/
+/*=====  FIN Classes CSS sur l'élément HTML  =====*/
 
 /*==================================
 =            Skip Links            =
@@ -235,6 +239,9 @@ include 'templates/woo-template_product-single.php';
 
 // tunnel
 include 'templates/woo-template_tunnel.php';
+
+// Compte
+include 'templates/woo-template_account.php';
 
 // SEO
 include 'templates/woo-template_seo.php';

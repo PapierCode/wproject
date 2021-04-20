@@ -40,6 +40,50 @@
 	@extend .reset-list;
 }
 
+.pc-woo-submit-box {
+	@extend .layout-sub-margin-top;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+#billing_country_field,
+#shipping_country_field,
+.is-account #billing_email_field {
+	display: none;
+}
+
+
+/*====================================
+=            Mot de passe            =
+====================================*/
+
+.password-display-box {
+	position: relative;
+
+	input[type="password"] {
+		padding-right:rem(50);
+	}
+}
+.password-display-btn {
+	display: flex;
+	position: absolute;
+	top:50%;
+	right:rem(10);
+	transform: translateY(-50%);
+
+	svg {
+		fill:$color-black;
+	}
+
+	&:hover, &:focus {	   
+		svg {
+			fill:$color-red;
+		}
+	}
+}
+
+
+/*=====  FIN Mot de passe  =====*/
 
 /*----------  Login  ----------*/
 
@@ -47,8 +91,25 @@
 
 	> :last-child {
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		align-items: flex-start;
+		flex-direction: column;
+
+		a {
+			display: inline-block;
+			margin-top: $space;
+		}
+	}	
+
+	@media ( min-width : em($mq-layout-m) ) {
+		> :last-child {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+
+			a {
+				margin-top: 0;
+			}
+		}		
 	}
 }
 

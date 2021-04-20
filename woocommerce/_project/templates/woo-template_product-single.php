@@ -351,7 +351,7 @@ function pc_woo_display_product_single_back_link() {
 
 		global $woo_pages, $shop_name;
 
-		echo '<a href="'.get_the_permalink( $woo_pages['shop'] ).'" class="previous button" title="Retour vers la boutique">'.pc_svg('arrow',null,'svg_block').'<span>'.$shop_name.'</span></a>';
+		echo '<a href="'.get_the_permalink( $woo_pages['shop'] ).'" class="main-footer-prev button" title="Retour vers la boutique">'.pc_svg('arrow',null,'svg_block').'<span>'.$shop_name.'</span></a>';
 
 	}
 

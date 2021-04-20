@@ -243,7 +243,7 @@ h1 {
 	text-align: center;
 	@extend .layout-sub;
 	
-	@media ( min-width : em($mq-title-size) ) {
+	@media ( min-width : em($mq-layout-l) ) {
 		font-size: rem(50);
 	}
 }

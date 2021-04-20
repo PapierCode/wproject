@@ -131,7 +131,7 @@ function pc_woo_display_category_single_footer() {
 		}
 
 		// affichage
-		echo '<a href="'.$back_link_url.'" class="previous button" title="Retour '.$back_link_text.'">'.pc_svg('arrow',null,'svg_block').'<span>'.$back_link_text.'</span></a>';
+		echo '<a href="'.$back_link_url.'" class="main-footer-prev button" title="Retour '.$back_link_text.'">'.pc_svg('arrow',null,'svg_block').'<span>'.$back_link_text.'</span></a>';
 
 	}
 

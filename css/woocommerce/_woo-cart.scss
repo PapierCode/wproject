@@ -313,14 +313,11 @@ button[name=add-to-cart] {
 		}
 		td {
 			text-align: right;
+			font-weight: 700;
 		}
 		.order-total td {
 			background-color: $color-red;
 		}
-	}
-	.wc-proceed-to-checkout {
-		@extend .layout-sub-margin-top;
-		text-align: center;
 	}
 	.checkout-button {
 		svg {

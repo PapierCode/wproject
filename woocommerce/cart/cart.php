@@ -32,7 +32,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
 				<th class="product-price"><?php esc_html_e( 'Price', 'woocommerce' ); ?></th>
 				<th class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
-				<th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
+				<?php /* [PC] <th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th> */ ?>
+				<th class="product-subtotal">Total</th>
 			</tr>
 		</thead>
 		<?php /* [PC] + .pc-cart-body */ ?>
