@@ -39,14 +39,21 @@ body {
 	line-height: $line-height-default;
 	color: $color-black;
 	
-	background-color: $color-black;
+	background-color: $color-white;
 
 	@media ( min-width : em($mq-layout-l) ) {
 		font-size: rem($base-font-size-l);
 	}
 }
 
-.body-inner {}
+.body-inner {
+
+	@media ( min-width : em($mq-layout-l) ) {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+}
 
 
 /*=====  FIN Html & body  =====*/
@@ -58,12 +65,13 @@ body {
 /*----------  Header containers  ----------*/
 
 .header {
-	background-color: $color-red;
+	background-color: $color-orange;
 }
 
 .header-inner {
-	@extend .layout-sub;
+	@extend .layout-ptrbl;
 	@extend .layout-mw;
+	@extend .layout-center;
 
 	@media ( min-width : em($mq-layout-mw) ) {
 		position:relative;
@@ -97,46 +105,44 @@ body {
 
 /*----------  Main containers  ----------*/
 
-.main {}
+.main {
+}
 
-.main-inner {}
+.main-inner {
+	@extend .layout-ptrbl;
+	@extend .layout-mw;
+	@extend .layout-center;
+}
 
 
 /*----------  Main header  ----------*/
 
-.main-header {
-	background-color: $color-white;
-}
+.main-header {}
 
 .main-header-inner {
-	@extend .layout-sub;
-	@extend .layout-mw;
+	max-width: rem($txt-mw);
 }
 
 
 /*----------  Main content  ----------*/
 
 .main-content {
-	background-color: $color-white;
+	@extend .layout-mt;
 }
-.main-content-inner {
-	@extend .layout-mw;
-}
+.main-content-inner {}
 
 
 /*----------  Main footer  ----------*/
 
-.main-footer {
-	background-color: $color-white;
-}
+.main-footer {}
 
-.main-footer-inner {
-	@extend .layout-sub;
-	@extend .layout-mw;
+.main-footer-inner:not(:empty) {
+	display: flex;
+	flex-direction: column;
 	border-top: $border;
-
+	@extend .layout-pt;
 	
-	@media ( min-width : em($mq-nav-l) ) {
+	@media ( min-width : em($mq-main-f-nav-l) ) {
 		display:grid;
 		grid-template-columns: repeat(2,1fr);
 	}
@@ -157,11 +163,16 @@ body {
 .footer {
 	background-color:$color-black;
 	color:$color-white;
+
+	@media ( min-width : em($mq-layout-l) ) {
+		flex-grow: 1;	
+	}
 }
 
 .footer-inner {
 	@extend .layout-mw;
-	@extend .layout-sub;
+	@extend .layout-center;
+	@extend .layout-ptrbl;
 
 	@media ( min-width : em($mq-layout-l) ) {
 		display: flex;

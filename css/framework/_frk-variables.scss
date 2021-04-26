@@ -28,9 +28,10 @@ $color-black			: #290f0f;
 $color-grey				: #e3dcd3;
 $color-white 			: #f9f5ec;
 
-$color-yellow			: #ffd17a;
-$color-blue				: #bee8ea;
 $color-red				: #fd4949;
+$color-orange			: #ff7800;
+$color-yellow			: #ffcb00;
+$color-blue				: #bee8ea;
 $color-green			: #aad262;
 
 // formulaires
@@ -39,7 +40,7 @@ $color-placeholder 		: $color-grey;
 // Messages 
 $color-msg-default		: $color-black;
 $color-msg-error		: #d81501;
-$color-msg-success		: #1D7F00;
+$color-msg-success		: $color-green;
 
 
 /*=====  FIN Couleurs  =====*/	
@@ -76,12 +77,18 @@ $mq-layout-mw			: $layout-mw;
 
 /*----------  Navigation  ----------*/
 
+// header
+$space--h-nav 			: 10;
 $h-btn-nav-size 		: 40;
+$mq-h-nav-w				: 600;
 $h-nav-w-s	 			: 80vw; // masquée
 $h-nav-w-l				: 50vw; // masquée
-$space--h-nav 			: 10;
 
-$mq-nav-l	 			: 600;
+// main
+$mq-main-f-nav-l		: 600;
+
+// footer
+$mq-f-nav-l				: 600;
 
 
 /*----------  Divers  ----------*/
@@ -90,6 +97,11 @@ $space--st 				: 20;
 
 $mq-gallery-max			: 1200;
 $gl-btn-size 			: 50;
+
+/*----------  Catalogue  ----------*/
+
+$single-product-mw		: 1100;
+$mq-single-product-mw	: $single-product-mw;
 
 
 /*=====  FIN Agencement  ======*/

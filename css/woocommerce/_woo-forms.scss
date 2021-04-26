@@ -41,7 +41,7 @@
 }
 
 .pc-woo-submit-box {
-	@extend .layout-sub-margin-top;
+	@extend .layout-mt;
 	text-align: center;
 	margin-bottom: 0;
 }
@@ -136,7 +136,7 @@
 /*----------  Case à cocher  "Expédier à une adresse différente"  ----------*/
 
 #ship-to-different-address {
-	@extend .layout-sub-margin-top;
+	@extend .layout-mt;
 	margin-bottom:0;
 	display: inline-block;
 
@@ -161,7 +161,7 @@
 			display: flex;
 			align-items: center;
 
-			&:before {
+			&::before {
 				margin-right:rem(10);
 				outline-color: $color-black;
 			}

@@ -28,6 +28,7 @@
 @use "components/cpt-popup";
 @use "components/cpt-skip-nav";
 @use "components/cpt-social";
+@use "components/cpt-breadcrumb";
 @use "components/cpt-wysiwyg";
 // @use "components/cpt-cookies";
 
@@ -40,7 +41,6 @@
 /*----------  Navigation  ----------*/
 
 @use "navigation/nav-header";
-@use "navigation/nav-main";
 @use "navigation/nav-footer";
 
 

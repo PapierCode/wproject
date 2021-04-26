@@ -40,18 +40,8 @@ remove_action( 'woocommerce_after_subcategory', 'woocommerce_template_loop_categ
 =            Hooks (ajouts)            =
 ======================================*/
 
-// résumé article start (content-product-cat.php)
-add_action( 'woocommerce_before_subcategory', 'pc_woo_display_article_tag_start', 10 );
-
-// ---------
-
 // résumé contenu (content-product-cat.php)
 add_action( 'woocommerce_shop_loop_subcategory_title', 'pc_woo_display_category_resum_content', 10 );
-
-// ---------
-
-// résumé article end (content-product-cat.php)
-add_action( 'woocommerce_after_subcategory', 'pc_woo_display_article_tag_end', 10 );
 
 
 /*=====  FIN Hooks (ajouts)  =====*/
@@ -97,21 +87,6 @@ function pc_woo_display_category_single_footer() {
 		$pager_args = array();
 
 
-		/*----------  Pagination  ----------*/
-		
-		// si la catégorie courante a un nombre d'enfants supérieur au nombre de posts par page
-		if ( count( $terms_childrens ) > $terms_per_page ) {
-
-			$fake_query = (object) array( 'max_num_pages' => ceil( count( $terms_childrens ) / (int) $terms_per_page ) );
-			$current_page_number = ( get_query_var( 'catpaged' ) ) ? get_query_var( 'catpaged' ) : 1;
-			$pager_args = array( 'format' => '?catpaged=%#%#main');
-
-		}
-
-		// affichage pager
-		pc_get_pager( $fake_query, $current_page_number, $pager_args );
-
-
 		/*----------  Lien retour  ----------*/
 		
 		// si c'est une catégorie enfant
@@ -131,7 +106,22 @@ function pc_woo_display_category_single_footer() {
 		}
 
 		// affichage
-		echo '<a href="'.$back_link_url.'" class="main-footer-prev button" title="Retour '.$back_link_text.'">'.pc_svg('arrow',null,'svg_block').'<span>'.$back_link_text.'</span></a>';
+		echo '<div class="main-footer-prev"><a href="'.$back_link_url.'" class="button" title="Retour '.$back_link_text.'">'.pc_svg('arrow',null,'svg_block').'<span>'.$back_link_text.'</span></a></div>';		
+
+
+		/*----------  Pagination  ----------*/
+		
+		// si la catégorie courante a un nombre d'enfants supérieur au nombre de posts par page
+		if ( count( $terms_childrens ) > $terms_per_page ) {
+
+			$fake_query = (object) array( 'max_num_pages' => ceil( count( $terms_childrens ) / (int) $terms_per_page ) );
+			$current_page_number = ( get_query_var( 'catpaged' ) ) ? get_query_var( 'catpaged' ) : 1;
+			$pager_args = array( 'format' => '?catpaged=%#%#main');
+
+		}
+
+		// affichage pager
+		pc_get_pager( $fake_query, $current_page_number, $pager_args );
 
 	}
 

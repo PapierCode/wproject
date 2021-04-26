@@ -13,49 +13,36 @@
 =            Sous-élément layout            =
 ===========================================*/
 
-.layout-sub {
-	padding: $space;
+@mixin layout( $type : p, $t : 1, $r : 1, $b : 1, $l : 1 ) {
+
+	@if ( $type == p ) { $type : padding; }
+	@if ( $type == m ) { $type : margin; }
+
+	#{$type} : $t*$space $r*$space $b*$space $l*$space;
 
 	@media ( min-width : em($mq-layout-mw) ) {
-		padding: rem($space-max)	;
+		#{$type} : rem( $t*$space-max, $r*$space-max, $b*$space-max, $l*$space-max )	;
 	}
+
 }
 
-.layout-sub-xl {
-	padding: 2*$space $space;
+.layout-ptrbl	{ @include layout(); }
+.layout-prbl	{ @include layout( p, 0, 1, 1, 1 ); }
+.layout-pt 		{ @include layout( p, 1, 0, 0, 0 ); }
+.layout-pb 		{ @include layout( p, 0, 0, 1, 0 ); }
 
-	@media ( min-width : em($mq-layout-mw) ) {
-		padding: rem(2*$space-max) rem($space-max) rem($space-max);
-	}
+.layout-mt		{ @include layout( m, 1, 0, 0, 0 ); }
+.layout-mb		{ @include layout( m, 0, 0, 1, 0 ); }
+
+.layout-center {
+	margin-right: auto;
+	margin-left: auto;
 }
-
-.layout-sub-no-padding-top {
-	padding: 0 $space $space $space;
-
-	@media ( min-width : em($mq-layout-mw) ) {
-		padding: 0 rem($space-max) rem($space-max) rem($space-max);
-	}
-}
-
-.layout-sub-margin-top {
-	margin-top: $space;
-
-	@media ( min-width : em($mq-layout-mw) ) {
-		margin-top: rem($space-max);
-	}
-}
-
-.layout-sub-margin-bottom {
-	margin-bottom: $space;
-
-	@media ( min-width : em($mq-layout-mw) ) {
-		margin-bottom: rem($space-max);
-	}
-}
-
 .layout-mw {
-	margin:0 auto;
 	max-width:rem($layout-mw);
+}
+.layout-txt-mw {
+	max-width:rem($txt-mw);
 }
 
 

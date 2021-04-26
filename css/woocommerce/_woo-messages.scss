@@ -44,14 +44,11 @@
 .woocommerce-message,
 .woocommerce-error {
 	padding:rem(10);
-	margin-top:0;
+	@extend .layout-mt;
     animation: woo-msg 0.3s ease;
 
 	html:not(.is-product) & {
-		@extend .layout-sub-margin-bottom;
-	}
-	.is-account & {
-		@extend .layout-sub-margin-top;
+		@extend .layout-mb;
 	}
 }
 
@@ -67,7 +64,7 @@
 .woocommerce-notice,
 .woocommerce-info,
 .woocommerce-message { 
-	background-color: $color-blue;
+	background-color: $color-green;
 }
 .woocommerce-error {
 	background-color: $color-red;
@@ -83,7 +80,7 @@
     @extend .reset-list;
 
     strong {
-        &:after {
+        &::after {
             content: "\00a0";
         }
     }

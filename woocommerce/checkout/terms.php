@@ -32,7 +32,7 @@ if ( apply_filters( 'woocommerce_checkout_show_terms', true ) && function_exists
 					<?php /* [PC]
 					<span class="woocommerce-terms-and-conditions-checkbox-text"><?php wc_terms_and_conditions_checkbox_text(); ?></span>&nbsp;<span class="required">*</span>
 					*/ ?>
-					<span class="pc-woo-terms-and-conditions"><span>J'ai lu et j'accepte les <a href="<?= get_privacy_policy_url(); ?>" title="Consulter les Conditions Générales d'Utilisation">Conditions Générales d'Utilisation</a> ainsi que les <a href="<?= get_the_permalink( wc_terms_and_conditions_page_id() ); ?>" title="Conditions Générales de Vente">Conditions Générales de Vente</a>&nbsp;<span class="required">*</span></span></span>
+					<span class="pc-woo-terms-and-conditions"><span>J'ai lu et j'accepte les <a href="<?= get_the_permalink( wc_terms_and_conditions_page_id() ); ?>" title="Conditions Générales de Vente">Conditions Générales de Vente</a>&nbsp;<span class="required">*</span></span></span>
 
 				</label>
 

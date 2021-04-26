@@ -8,7 +8,8 @@
 .is-account {
 
 	.main-content-inner {
-		max-width: rem($txt-mw);
+		@extend .layout-txt-mw;
+		@extend .layout-center;
 	}
 }
 

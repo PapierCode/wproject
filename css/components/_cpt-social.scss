@@ -103,20 +103,23 @@
 		flex-shrink: 0;
 	}
 
-	&:nth-child(2) {
+	&:nth-child(n+2) {
 		border-top:$border;
 		margin-top: $space;
 		padding-top: $space;
 	}
 
-	@media ( min-width : em($mq-nav-l) ) {
-		grid-column-end: -1;
-
-		&:nth-child(2) {
-			margin-top:0;
-			padding-top:0;
+	@media ( min-width : em($mq-main-f-nav-l) ) {
+		grid-column: 2/3;
+				
+		&:nth-child(n+2) {
 			border-top:none;
+			margin-top: 0;
+			padding-top: 0;
 		}
+	}
+	@media ( min-width : em($mq-layout-xl) ) {
+		grid-column: 3/4;
 	}
 }
 

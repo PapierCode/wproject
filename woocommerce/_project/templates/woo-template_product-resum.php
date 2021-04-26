@@ -23,12 +23,21 @@ remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_p
 // ---------
 
 // visuel (content-product.php)
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
+// visuel (content-product.php)
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
 
 // ---------
 
 // titre (content-product.php)
 remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
+
+// ---------
+
+// notes (content-product.php)
+remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
+// prix (content-product.php)
+remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
 
 // ---------
 
@@ -43,27 +52,10 @@ remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_ad
 =            Hooks (ajouts)            =
 ======================================*/
 
-// article start (content-product.php)
-add_action( 'woocommerce_before_shop_loop_item', 'pc_woo_display_article_tag_start', 10 );
-
-// ---------
-
+// Promorion/staock/prix ($pc_post)
+add_action( 'pc_post_card_before_end', 'pc_woo_display_product_card_price', 10 );
 // contenu (content-product.php)
-add_action( 'woocommerce_shop_loop_item_title', 'pc_woo_display_product_resum_content', 10 );
-
-// ---------
-
-// Containeur prix + ajout au panier start(content-product.php)
-add_action( 'woocommerce_after_shop_loop_item_title', 'pc_woo_display_product_resum_cart_wrapper_start', 5 );
-
-// ---------
-
-// Ajout au panier avec quantité (content-product.php)
-add_action( 'woocommerce_after_shop_loop_item', 'pc_woo_display_product_resum_add_to_cart', 10 );
-// Containeur prix + ajout au panier end (content-product.php)
-add_action( 'woocommerce_after_shop_loop_item', 'pc_woo_display_product_resum_cart_wrapper_end', 20 );
-// article end (content-product.php)
-add_action( 'woocommerce_after_shop_loop_item', 'pc_woo_display_article_tag_end', 30 );
+add_action( 'woocommerce_before_shop_loop_item', 'pc_woo_display_product_card_content', 10 );
 
 
 /*=====  FIN Hooks (ajouts)  =====*/
@@ -72,9 +64,9 @@ add_action( 'woocommerce_after_shop_loop_item', 'pc_woo_display_article_tag_end'
 =            CSS classes            =
 ===================================*/
 
-add_filter( 'woocommerce_post_class', 'pc_woo_edit_product_resum_css_classes', 10 ,2 );
+add_filter( 'woocommerce_post_class', 'pc_woo_edit_product_card_css_classes', 10 ,2 );
 
-	function pc_woo_edit_product_resum_css_classes( $product_css_classes, $product ) {
+	function pc_woo_edit_product_card_css_classes( $product_css_classes, $product ) {
 
 		if ( is_product_category() ) {
 
@@ -94,7 +86,7 @@ add_filter( 'woocommerce_post_class', 'pc_woo_edit_product_resum_css_classes', 1
 =            Contenu            =
 ===============================*/
 
-function pc_woo_display_product_resum_content() {
+function pc_woo_display_product_card_content() {
 
 	global $product;
 
@@ -103,43 +95,30 @@ function pc_woo_display_product_resum_content() {
 
 }
 
+function pc_woo_display_product_card_price( $pc_post ) {
 
-/*=====  FIN Contenu  =====*/
+	if ( 'product' == $pc_post->type ) {
 
-/*=====================================================
-=            Ajout au panier avec quantité            =
-=====================================================*/
+		global $product;
 
-function pc_woo_display_product_resum_add_to_cart() {
+		echo '<div class="st-price">';
+		
+			echo wc_get_stock_html( $product );
+			woocommerce_show_product_loop_sale_flash();
 
-	global $product;
+			woocommerce_template_loop_price();
 
-	if( 'simple' == $product->get_type() ) {
+			// if ( $product->get_type() == 'variable' ) {
+			// 	if ( !$product->is_on_backorder() ) { woocommerce_variable_add_to_cart(); }
+			// } else {
+			// 	woocommerce_simple_add_to_cart();
+			// }
 
-		woocommerce_simple_add_to_cart();
-	
+		echo '</div>';
+
 	}
 
 }
 
 
-/*=====  FIN Ajout au panier avec quantité  =====*/
-
-/*=========================================================
-=            Containeur prix + ajout au panier            =
-=========================================================*/
-
-function pc_woo_display_product_resum_cart_wrapper_start() {
-
-	echo '<div class="pc-add-to-cart pc-add-to-cart--st">';
-
-}
-
-function pc_woo_display_product_resum_cart_wrapper_end() {
-
-	echo '</div>';
-
-}
-
-
-/*=====  FIN Containeur prix + ajout au panier  =====*/
+/*=====  FIN Containeur stock + prix + ajout au panier  =====*/

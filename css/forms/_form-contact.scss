@@ -11,14 +11,10 @@
 
 
 .form--contact {
-	@extend .layout-sub-no-padding-top;
 
 	form {
-		max-width: rem($txt-mw);
-	}
-
-	@media ( min-width : em($mq-layout-l) ) {
-		grid-column: 1 / 3;
+		@extend .layout-txt-mw;
+		@extend .layout-pb;
 	}
 }
 
@@ -28,7 +24,7 @@
 
 	input[type="checkbox"] {
 		+ * {
-			&:before {
+			&::before {
 				margin:rem(4,10,0,0);
 			}
 		}

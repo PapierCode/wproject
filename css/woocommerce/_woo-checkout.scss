@@ -8,8 +8,8 @@
 .is-checkout {
 
 	.login {
-		@extend .layout-sub-no-padding-top;
-		margin:0 auto;
+		@extend .layout-prbl;
+		@extend .layout-center;
 		max-width: rem(500);
 	}
 
@@ -207,8 +207,8 @@ $td-width-s : 35vw;
 ======================================*/
 
 .pc-woo-thankyou-page {
-	margin:0 auto;
-	max-width: rem($txt-mw);
+	@extend .layout-center;
+	@extend .layout-txt-mw;
 
 	td {
 

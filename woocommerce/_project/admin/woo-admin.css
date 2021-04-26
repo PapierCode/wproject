@@ -53,11 +53,9 @@ table.wp-list-table .column-product_tag
 
 /* variation */
 #variable_product_options .notice p:nth-child(2), /* lien aide EN  */
-/* .woocommerce_variable_attributes .upload_image, */ /* image variable */
 .woocommerce_variable_attributes .options label:nth-child(2), /* option téléchargeable */
 .woocommerce_variable_attributes .options label:nth-child(3), /* option virtuel */
-.woocommerce_variable_attributes .data > div:nth-of-type(3), /* classes de livraison */
-.woocommerce_variable_attributes .data > div:nth-of-type(4) /* description */
+.woocommerce_variable_attributes .data > div:nth-of-type(3) /* classes de livraison */
 
 {
 	display:none !important;

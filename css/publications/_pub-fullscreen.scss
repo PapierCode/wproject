@@ -117,11 +117,11 @@
 
 		.is-fullscreen .is-active & {
 			background-color: $color-red;
-			transform:translateX(-$space/2);
+			transform:translateX(rem(-.5*$space-max));
 		}
 		.is-fullscreen &:hover, .is-fullscreen &:focus {
 			background-color: $color-white;
-			transform:translateX(-$space/2);
+			transform:translateX(rem(-.5*$space-max));
 		}
 	}
 
@@ -133,7 +133,6 @@
 /*==============================
 =            Layout            =
 ==============================*/
-
 
 /*----------  Visuel  ----------*/
 
@@ -176,12 +175,36 @@
 	}
 }
 
+/*----------  Button scroll  ----------*/
+
+.fs-more {}
+.fs-more-btn {
+	animation: fs-more-btn-anim 2s ease infinite;
+
+	svg {
+		transform-origin: center;
+		transform: rotate(-90deg);
+	}
+
+	&:hover, &:focus {
+	   animation:none;
+	}
+}
+
+@keyframes fs-more-btn-anim {
+	0%   { transform: translateY(0); }
+	20%  { transform: translateY(-50%); }
+	40%  { transform: translateY(0); }
+	100% { transform: translateY(0); }
+}
+
+
 /*----------  Main  ----------*/
 
 .main-header {
 	
 	.is-fullscreen & {
-		@extend .layout-sub-no-padding-top;
+		@extend .layout-prbl;
 		background-color: transparent;
 		display: flex;
 		align-items: center;
@@ -237,8 +260,7 @@
 h1 {
 
 	.is-fullscreen & {
-		@extend .layout-sub;
-		max-width: rem($txt-mw);
+		@extend .layout-ptrbl;
 		background-color: rgba($color-white,.7);
 	}
 }
@@ -249,13 +271,6 @@ h1 {
 /*==================================
 =            Composants            =
 ==================================*/
-
-.editor {
-
-	.is-fullscreen .main-content-inner > &:first-child {
-		@extend .layout-sub;
-	}
-}
 
 .form--contact {
 

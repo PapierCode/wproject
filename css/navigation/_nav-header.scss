@@ -55,7 +55,7 @@
 	background-color: $color-black;
 
 	overflow: hidden;
-	&:before, &:after {
+	&::before, &::after {
 		content: "";
 		width: rem($line-w);
 		height: rem($line-h);
@@ -68,31 +68,31 @@
 		transform-origin:center center 0;
 		transition:all $t-nav-btn-ico ease;
 	}
-	&:before { transform:translateY(rem(-$arrow-translate)); }
-	&:after { transform:translateY(rem($arrow-translate)); }
+	&::before { transform:translateY(rem(-$arrow-translate)); }
+	&::after { transform:translateY(rem($arrow-translate)); }
 
 	.h-nav-is-open & {
 		background-color: $color-black;
 
-		&:before, &:after { transition:all $t-nav-btn-ico ease; }
-		&:before { transform: translateY(0) rotate(-45deg); }
-		&:after { transform: translateY(0) rotate(45deg); }
+		&::before, &::after { transition:all $t-nav-btn-ico ease; }
+		&::before { transform: translateY(0) rotate(-45deg); }
+		&::after { transform: translateY(0) rotate(45deg); }
 	}
 
 	.h-nav-btn:hover &, .h-nav-btn:focus & {
 		background-color: transparent;
 		transition:all $t-nav-btn-ico ease;
 
-		&:before, &:after {
+		&::before, &::after {
 			background-color: $color-black;
 			transition:all $t-nav-btn-ico ease;
 			transition:all $t-nav-btn-ico ease;
 		}
-		&:before {
+		&::before {
 			transform: translate(rem($arrow-translate),0) rotate(45deg);
 			transform-origin: left top;
 		}
-		&:after {
+		&::after {
 			transform: translate(rem($arrow-translate),0) rotate(-45deg);
 			transform-origin: left bottom;
 		}
@@ -100,11 +100,11 @@
 
 	.h-nav-is-open .h-nav-btn:hover &, .h-nav-is-open .h-nav-btn:focus & {
 
-		&:before {
+		&::before {
 			transform: translateY(0) rotate(-45deg);
 			transform-origin: right top;
 		}
-		&:after {
+		&::after {
 			transform: translateY(0) rotate(45deg);
 			transform-origin: right bottom;
 		}
@@ -112,16 +112,16 @@
 }
 .h-nav-btn-ico--inner {
 	display: block;
-	&:before { display:none; }
-	&:after { transform:none; }
+	&::before { display:none; }
+	&::after { transform:none; }
 	
 	.h-nav-is-open & {
-		&:after { transform: translateX(rem(100)); }
+		&::after { transform: translateX(rem(100)); }
 	}
 
 	.h-nav-is-open .h-nav-btn:hover &, .h-nav-is-open .h-nav-btn:focus &,
 	.h-nav-btn:hover &, .h-nav-btn:focus & {
-		&:after { transform: translateX(rem(100)); }
+		&::after { transform: translateX(rem(100)); }
 	}
 }
 .h-nav-btn-txt {
@@ -157,7 +157,7 @@
 =================================*/
 
 .h-nav {
-	position: absolute;
+	position: fixed;
 	z-index: 888;
 	top: 0;
 	left: 0;
@@ -183,6 +183,13 @@
 		width: auto;
 		transition: none;
 		background-color: transparent;
+
+		.h-nav-is-open & {
+			width: auto;
+			background-color: transparent;
+			cursor: default;
+			transition:none;
+		}
 	}
 }
 
@@ -193,6 +200,7 @@
 	background-color: $color-yellow;
 	transform: translateX(100%);
 	transition: transform $t-nav ease;
+	overflow-y: scroll;
 
 	.h-nav-is-open & {
 		transform: translateX(0);
@@ -200,7 +208,7 @@
 		transition: transform $t-nav ease;
 	}
 	
-	@media ( min-width : em($mq-nav-l) ) {
+	@media ( min-width : em($mq-h-nav-w) ) {
 		width:$h-nav-w-l;
 	}
 	@media ( min-width : em($mq-layout-mw) ) {
@@ -209,6 +217,12 @@
 		padding: 0;
 		transform: none;
 		transition: none;
+		overflow-y: visible;
+
+		.h-nav-is-open & {
+			transform: none;
+			transition: none;
+		}
 	}
 }
 
@@ -270,7 +284,7 @@
 		background-color:$color-white;   
 	}
 		
-	@media ( min-width : em($mq-nav-l) ) {
+	@media ( min-width : em($mq-h-nav-w) ) {
 
 		.is-active & {
 			transform:translateX(-$space/2);

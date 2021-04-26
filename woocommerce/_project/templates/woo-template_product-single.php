@@ -69,10 +69,8 @@ add_action( 'woocommerce_before_single_product', 'pc_woo_display_product_single_
 add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_main_content_inner_start', 10 );
 // messages (content-single-product.php)
 add_action( 'woocommerce_before_single_product_summary', 'woocommerce_output_all_notices', 20 );
-// catégories (content-single-product.php)
-add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_categories', 30 );
 // images (content-single-product.php)
-add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_gallery', 40 );
+add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_gallery', 30 );
 
 // ---------
 
@@ -102,7 +100,7 @@ add_filter( 'woocommerce_post_class', 'pc_woo_edit_single_product_css_classes', 
 	function pc_woo_edit_single_product_css_classes( $classes, $product ) {
 
 		if ( is_product() ) {
-			$classes[] = 'main-content single-product';
+			$classes[] = 'main-content';
 		}
 		
 		return $classes;
@@ -111,61 +109,6 @@ add_filter( 'woocommerce_post_class', 'pc_woo_edit_single_product_css_classes', 
 
 
 /*=====  FIN CSS classes  =====*/
-
-/*==============================
-=            Entête            =
-==============================*/
-
-function pc_woo_display_product_single_header() {
-
-	global $product;
-
-	echo '<header class="main-header"><div class="main-header-inner">';
-
-		echo '<h1><span>'.$product->get_title().'</span></h1>';
-
-	echo '</div></header>';
-	
-}
-
-
-/*=====  FIN Entête  =====*/
-
-/*==============================
-=            Layout            =
-==============================*/
-
-/*----------  Main content inner  ----------*/
-
-function pc_woo_display_product_single_main_content_inner_start() {
-
-	echo '<div class="main-content-inner">';
-
-}
-
-function pc_woo_display_product_single_main_content_inner_end() {
-
-	echo '</div>';
-
-}
-
-
-/*----------  Container Prix & Ajout au panier  ----------*/
-	
-function pc_woo_display_product_single_cart_wrapper_start() {
-
-	echo '<div class="pc-add-to-cart pc-add-to-cart--single">';
-
-}
-
-function pc_woo_display_product_single_cart_wrapper_end() {
-
-	echo '</div>';
-
-}
-
-
-/*=====  FIN Layout  =====*/
 
 /*==================================
 =            Catégories            =
@@ -204,6 +147,67 @@ function pc_woo_display_product_single_categories() {
 
 /*=====  FIN Catégories  =====*/
 
+/*==============================
+=            Entête            =
+==============================*/
+
+function pc_woo_display_product_single_header() {
+
+	global $product;
+
+	echo '<header class="main-header"><div class="main-header-inner">';
+
+		pc_woo_display_product_single_categories();
+
+		echo '<h1><span>'.$product->get_title().'</span></h1>';
+
+	echo '</div></header>';
+	
+}
+
+
+/*=====  FIN Entête  =====*/
+
+/*==============================
+=            Layout            =
+==============================*/
+
+/*----------  Main content inner  ----------*/
+
+function pc_woo_display_product_single_main_content_inner_start() {
+
+	echo '<div class="main-content-inner">';
+
+}
+
+function pc_woo_display_product_single_main_content_inner_end() {
+
+	echo '</div>';
+
+}
+
+
+/*----------  Container Prix & Ajout au panier  ----------*/
+	
+function pc_woo_display_product_single_cart_wrapper_start() {
+
+	echo '<div class="pc-woo-add-to-cart">';
+
+	global $product;
+	echo wc_get_stock_html( $product );
+	woocommerce_show_product_loop_sale_flash();
+
+}
+
+function pc_woo_display_product_single_cart_wrapper_end() {
+
+	echo '</div>';
+
+}
+
+
+/*=====  FIN Layout  =====*/
+
 /*===============================
 =            Galerie            =
 ===============================*/
@@ -239,7 +243,7 @@ function pc_woo_display_gallery_item( $item_datas ) {
 			if ( isset($item_datas['urls']['product-single-s']) ) {
 
 				$img_tag_srcset = $item_datas['urls']['product-single-s'].' 400w, '.$item_datas['urls']['product-single-l'].' 700w';
-				$img_tag_sizes = '(max-width:400px) 400px, (min-width:401px) and (max-width:659px) 700px, (min-width:700px) 400px';
+				$img_tag_sizes = '(max-width:400px) 400px, (min-width:401px) and (max-width:700px) 700px, 400px';
 
 				echo '<img class="wp-gallery-img" src="'.$item_datas['urls']['product-single-l'].'" alt="'.$item_datas['alt'].'" srcset="'.$img_tag_srcset.'" sizes="'.$img_tag_sizes.'" loading="lazy" />';
 
@@ -351,7 +355,7 @@ function pc_woo_display_product_single_back_link() {
 
 		global $woo_pages, $shop_name;
 
-		echo '<a href="'.get_the_permalink( $woo_pages['shop'] ).'" class="main-footer-prev button" title="Retour vers la boutique">'.pc_svg('arrow',null,'svg_block').'<span>'.$shop_name.'</span></a>';
+		echo '<div class="main-footer-prev"><a href="'.get_the_permalink( $woo_pages['shop'] ).'" class="button" title="Retour vers la boutique">'.pc_svg('arrow',null,'svg_block').'<span>'.$shop_name.'</span></a></div>';
 
 	}
 

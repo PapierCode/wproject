@@ -155,6 +155,40 @@ function pc_woo_edit_html_css_class ( $css_classes ) {
 
 /*=====  FIN Classes CSS sur l'élément HTML  =====*/
 
+/*=======================================
+=            Menu item actif            =
+=======================================*/
+
+add_filter( 'wp_nav_menu_objects', 'pc_woo_nav_item_active', NULL, 2 );
+
+function pc_woo_nav_item_active( $menu_items, $args ) {
+
+	// si menu d'entête
+	if ( $args->theme_location == 'nav-header' ) {
+
+		// si c'est une actualité d'afficher
+		if ( is_product() || is_cart() || is_checkout() ) {
+			$id_to_search = wc_get_page_id( 'shop' );
+		}
+
+		if ( isset( $id_to_search ) ) {
+			foreach ( $menu_items as $object ) {
+				if ( $object->object_id == $id_to_search ) {
+					// ajout classe WP (remplacée dans le Walker du menu)
+					$object->classes[] = 'current-menu-item';
+				}
+			}
+		}
+
+	}
+
+	return $menu_items;
+
+};
+
+
+/*=====  FIN Menu item actif  =====*/
+
 /*==================================
 =            Skip Links            =
 ==================================*/
@@ -185,6 +219,8 @@ add_filter( 'woocommerce_show_page_title', function() { return false; } );
 
 function pc_woo_display_main_title() {
 
+	pc_woo_display_breadcrumb();
+	
 	echo '<h1><span>'.woocommerce_page_title( false ).'</span></h1>';
 
 }
@@ -223,8 +259,6 @@ function pc_woo_display_description() {
 /*===============================
 =            Include            =
 ===============================*/
-
-// include 'woo-template_breadcrumb.php
 
 // accueil boutique
 include 'templates/woo-template_shop.php';

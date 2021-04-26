@@ -1,0 +1,66 @@
+/**
+*
+* Fil d'ariane
+*
+**/
+
+
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
+
+
+.breadcrumb {
+	font-family: $font-regular;
+}
+.breadcrumb-list {
+	display: flex;
+}
+.breadcrumb-item {
+	display: flex;
+	align-items: center;
+
+	&:not(:nth-last-child(2)) {
+		position: absolute;
+		left:-100vw;
+	}
+	&:nth-last-child(2) {
+		&:before {
+			content:"\003c";
+			margin-right: rem(5);
+		}
+	}
+
+	a, a:visited {
+		text-decoration: none;
+		color:$color-black;
+
+		&:hover, &:focus {
+		   text-decoration: underline;
+		}
+	}
+
+	@media ( min-width : em($mq-layout-l) ) {
+
+		&:not(:nth-last-child(2)) {
+			position: static;
+		}
+		&:nth-last-child(2) {
+			&:before {
+				display: none;
+			}
+		}
+		
+		&:nth-last-child(n+2) {
+			&:after {
+				font-family: $font-bold;
+				content:"\003e";
+				margin: rem(0,5);
+			}
+		}
+		&:last-child {
+			color:rgba($color-black,.6);
+		}
+		
+	}
+}

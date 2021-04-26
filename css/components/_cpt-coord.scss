@@ -39,7 +39,7 @@
 		color:$color-yellow;
 		font-size: rem(16);
 
-		&:before {
+		&::before {
 			content:"";
 			display: inline-block;
 			width: rem(20);

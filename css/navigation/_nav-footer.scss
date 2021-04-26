@@ -22,7 +22,7 @@
 	margin-top:$space;
 	padding-top:$space;
 
-	@media ( min-width : em($mq-nav-l) ) {
+	@media ( min-width : em($mq-f-nav-l) ) {
 		border:none;
 		margin: 0;
 		padding: 0;

@@ -85,7 +85,7 @@ if ( $show_downloads ) {
 				if ( 'payment_method' === $key )	{ continue; } ?>
 				<tr class="<?= str_replace( '_', '-', $key ); ?>">
 					<th scope="row"><?php echo esc_html( str_replace( ':', '', $total['label'] ) ); ?></th>
-					<td><?php echo ( 'shipping' === $key ) ? wc_price($order->shipping_total) : wp_kses_post( $total['value'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
+					<td><?php echo ( 'shipping' === $key ) ? wc_price($order->get_shipping_total()) : wp_kses_post( $total['value'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
 				</tr>
 			<?php }
 

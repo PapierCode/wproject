@@ -13,7 +13,18 @@
 @use "../framework/frk-functions" as *;
 @use "../framework/frk-mixins" as *;
 
+/*============================
+=            Main            =
+============================*/
 
+.is-home {
+	.main-content {
+		margin-top:0;
+	}
+}
+
+
+/*=====  FIN Main  =====*/
 /*==========================================
 =            Titre de page (h1)            =
 ==========================================*/
@@ -37,7 +48,7 @@ h1 {
 
 	.is-home & {
 		text-align: center;
-		margin:0 auto;
+		@extend .layout-center;
 	}
 }
 
@@ -49,7 +60,7 @@ h1 {
 ==================================*/
 
 .home-shortcuts {
-	@extend .layout-sub-no-padding-top;
+	@extend .layout-prbl;
 }
 
 .home-shortcuts-list {
@@ -241,7 +252,7 @@ h1 {
 	font-size: rem(36);
 	line-height: 1.2; // dépend de la font
 	text-align: center;
-	@extend .layout-sub;
+	@extend .layout-ptrbl;
 	
 	@media ( min-width : em($mq-layout-l) ) {
 		font-size: rem(50);

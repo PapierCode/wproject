@@ -160,7 +160,7 @@
 
 	// si l'on clique sur l'enfant SVG
 	// ben ça clique à travers et ferme la galerie...
-	&:after {
+	&::after {
 		content: "";
 		position: absolute;
 		top:0;
@@ -262,7 +262,7 @@
 	transform:translate(-50%,-50%);
 	transition:transform 0.5s ease;
 
-	&:before {
+	&::before {
 		content:"";
 		position: absolute;		
 		left:50%;

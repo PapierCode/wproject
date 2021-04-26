@@ -16,18 +16,7 @@
 =            Layout            =
 ==============================*/
 
-/*----------  Entête  ----------*/
-
-.woocommerce-products-header {
-	background-color: $color-white;
-
-	h1 {
-		@extend .layout-sub;
-		@extend .layout-mw;
-	}
-}
-
-*/*----------  Titre intermédiaires  ----------*/
+/*----------  Titre intermédiaires  ----------*/
 
 .pc-woo-subtitle {
 	font-family: $wysi-title-font;
@@ -76,15 +65,11 @@
 =            Tunnel & compte            =
 =======================================*/
 
-.woocommerce {
-	@extend .layout-sub-no-padding-top;
-	@extend .layout-mw;
-}
-
 .is-cart, .is-checkout, .is-account {
 
-	h1 {
-		text-align:center;
+	.main-header-inner {
+		max-width: none;
+		text-align: center;
 	}
 }
 

@@ -85,6 +85,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="tel"],
+select,
 textarea {		
 	width:100%;
 	padding:rem(10);
@@ -97,13 +98,30 @@ textarea {
 	}
 }
 
+select {
+	position: relative;
+
+	&::before, &::after {
+		content:"";
+		position: absolute;
+		z-index: 1;
+	}
+	&::after {
+		top:1px;
+		right: 1px;
+		bottom:1px;
+		width: rem(20);
+		background-color: $color-white;
+	}
+}
+
 input[type="radio"],
 input[type="checkbox"] {
 	+ * {
 		display:flex;
 		align-items: center;
 
-		&:before {
+		&::before {
 			content:"";
 			display: inline-block;
 			flex-shrink: 0;
@@ -116,13 +134,13 @@ input[type="checkbox"] {
 		}
 	}
 	&:focus + * {
-		&:before {
+		&::before {
 			background-color:$color-blue;
 			border-color:$color-blue;
 		}
 	}
 	&:checked + * {	
-		&:before {
+		&::before {
 			background-color: $color-red;
 		}
 	}

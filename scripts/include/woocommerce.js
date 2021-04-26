@@ -58,7 +58,7 @@ if ( $cart.length > 0 ) {
 				qtyMin = Number($qtyInput.attr('min')),
 				qtyStep = Number($qtyInput.attr('step'));	
 	
-				$qtyInput.parent().before('<div class="pc-qty" aria-hidden="true"><button class="reset-btn pc-qty-btn pc-qty-btn--less no-print" type="button" title="Supprimer une unité">'+sprite.less+'</button><div class="pc-qty-counter">'+$qtyInput.val()+'</div><button class="reset-btn pc-qty-btn pc-qty-btn--more no-print" type="button" title="Ajouter une unité">'+sprite.more+'</button></div>');
+				$qtyInput.parent().before('<div class="pc-qty no-print" aria-hidden="true"><div class="pc-qty-label">Quantité</div><button class="reset-btn pc-qty-btn pc-qty-btn--less no-print" type="button" title="Supprimer une unité">'+sprite.less+'</button><div class="pc-qty-counter">'+$qtyInput.val()+'</div><button class="reset-btn pc-qty-btn pc-qty-btn--more" type="button" title="Ajouter une unité">'+sprite.more+'</button></div>');
 				
 				var $qtyCounter = $(this).prev().find('.pc-qty-counter'),
 				$qtyBtnLess = $(this).prev().find('.pc-qty-btn--less'),

@@ -11,68 +11,12 @@
 @use "../framework/frk-mixins" as *;
 
 
-.is-shop-categories-list, .is-shop-products-list {
+.st-desc {
 
-	.main-footer-inner {
-
-		@media ( min-width : em($mq-nav-l) ) {
-			display:grid;
-			grid-template-columns: repeat(2,1fr);
-		}
-		@media ( min-width : em($mq-layout-xl) ) {
-			grid-template-columns: repeat(3,1fr);
-		}
+	.st--product & {
+		margin-bottom:rem($space--st);
 	}
-
-	.main-footer-prev {
-
-		@media ( min-width : em($mq-layout-xl) ) {
-			grid-row: 1/3;
-		}
-	}
-
-	.pager-list {
-
-		margin-bottom:$space;
-		padding-bottom:$space;
-		border-bottom:$border;
-		justify-content: center;
-
-		.pager-item {
-			margin: rem(0,5);
-		}
-
-		@media ( min-width : em($mq-layout-m) ) {
-			grid-column: 1/3;
-		}
-		@media ( min-width : em($mq-layout-xl) ) {
-			grid-column: 2/3;
-			margin-bottom:0;
-			padding-bottom:0;
-			border-bottom:none;
-		}
-	}
-
-	.social-share {
-
-		&:nth-child(3) {
-			margin-top:$space;
-			padding-top:$space;
-			border-top:$border;
-		}
-
-		@media ( min-width : em($mq-nav-l) ) {
-
-			&:nth-child(3) {
-				margin-top:0;
-				padding-top:0;
-				border-top:none;
-			}
-		}
-	}
-
 }
-
-.pc-cart--st {
-	margin-top:rem(10);
+.st-price {
+	margin-top:auto;
 }

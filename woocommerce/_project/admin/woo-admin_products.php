@@ -149,7 +149,7 @@ add_filter( 'woocommerce_product_data_tabs', 'pc_woo_admin_data_tabs' );
 
 /*----------  Suppression des champs dimensions  ----------*/
 
-add_filter( 'wc_product_dimensions_enabled', '__return_false' );
+// add_filter( 'wc_product_dimensions_enabled', '__return_false' );
 
 
 /*=====  FIN Données produit Woo  =====*/

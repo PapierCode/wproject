@@ -9,13 +9,123 @@
 =            Ajout au panier            =
 =======================================*/
 
-.pc-add-to-cart {
-	position: relative;
-	z-index: 1;
+.pc-woo-add-to-cart {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
+	flex-wrap: wrap;
 	border:$border;
 	padding: rem(10);
+
+	.cart {
+		width: 100%;
+		margin-top: rem(10);
+	}
+
+	@media ( min-width : em($mq-layout-m) ) {
+		flex-direction: row;
+
+		> * {
+			flex-grow: 1;
+		}
+	}
+}
+
+
+/*----------  Messages promotion & stock  ----------*/
+
+.promotion, .stock {
+	display: block;
+	padding: rem(10);
+	margin:0;
+	font-family: $font-bold;
+	text-align: center;
+}
+.promotion {
+	background-color: darken($color-blue,30%);
+}
+.stock {
+	background-color: rgba($color-black,.2);
+}
+
+
+/*----------  Bouton ajout au panier  ----------*/
+
+@mixin button-add-to-cart-s {
+	text-indent: -666em;
+	overflow: hidden;
+	width: rem(40);
+	padding-left:rem(10);
+}
+@mixin button-add-to-cart-l {
+	text-indent: 0;
+	overflow: visible;
+	width: auto;
+	padding-left: rem(40);
+}
+
+.single_add_to_cart_button {
+	background-color: $color-red;
+	color: $color-black;
+	margin-left: rem(10);
+	background-image:svg-load('../images/cart-more.svg',fill=$color-black);
+	background-repeat: no-repeat;
+	background-position: rem(10) center;
+	@include button-add-to-cart-s;
+	font-size: rem(18);
+
+	&:hover, &:focus {
+	   background-color: $color-blue;
+	}
+
+	@media ( min-width : em(550) ) {
+		@include button-add-to-cart-l;
+	}
+	@media ( min-width : em(700) ) {
+		@include button-add-to-cart-s;
+	}
+	@media ( min-width : em(900) ) {
+		@include button-add-to-cart-l;
+	}
+}
+
+
+/*----------  Prix  ----------*/
+
+.price {
+	display: block;
+	margin:0;
+	padding:rem(10);
+	font-family: $font-bold;
+	background-color: $color-yellow;
+	font-size: rem(18);
+	text-align: center;
+
+	// .product-type-variable .pc-woo-add-to-cart > & { // single "à partir de"
+	// 	background-color: transparent;
+	// }
+
+	del {
+		font-family: $font-regular;
+		font-size: rem(14);
+	}
+	ins {
+		text-decoration: none;
+	}
+}
+
+.price-from { // txt "à partir de"
+	font-family: $font-default;
+	font-size: rem(14);
+}
+
+
+/*----------  Type de produit  ----------*/
+
+.is-product {
+
+}
+
+.product-type-simple {
 
 	.cart {
 		display: flex;
@@ -23,24 +133,43 @@
 	}
 }
 
-button[name=add-to-cart] {
-	background-color: $color-red;
-	width: rem(40);
-	overflow: hidden;
-	margin-left: rem(10);
-	background-image:svg-load('../images/cart-more.svg',fill=$color-black);
-	background-repeat: no-repeat;
-	background-position: center;
-	text-indent: -666em;
-}
+.product-type-variable {
 
+	.woocommerce-variation-add-to-cart {
+		display: flex;
+		justify-content: space-between;
+		margin-top: rem(10);
+	}
 
-/*----------  Variation  ----------*/
+	// tableau de sélection d'une variation
+	.variations, tbody {
+		display: block;
+	}
+	tr {
+		display: flex;
+		align-items: center;
+	}
+	td.label {
+		padding:rem(10,20,10,0);
+	}
+	label {
+		text-transform: uppercase;
+		font-family: $font-bold;
+	}
+	td.value {
+		flex-grow: 1;
+	}
 
-.variation {
+	// description variation
+	.woocommerce-variation-description {
+		p {
+			margin:rem(10,0,0,0);
+		}
+	}
 
-	.label {
-		@extend .visually-hidden;
+	// prix variation
+	.woocommerce-variation-price {
+		margin-top:rem(10);
 	}
 }
 
@@ -49,6 +178,11 @@ button[name=add-to-cart] {
 
 .quantity {
 	@extend .visually-hidden;
+}
+.pc-qty-label {
+	font-family: $font-bold;
+	text-transform: uppercase;
+	margin-right: rem(20);
 }
 .pc-qty {
 	display:flex;
@@ -86,19 +220,11 @@ button[name=add-to-cart] {
 			fill:$color-black;
 			transition: all .3s ease;
 		}
+		.st &:hover, .st &:focus {
+			background-color:darken($color-blue,30%);
+		}
 	}
 }
-
-/*----------  Prix  ----------*/
-
-.price {
-	margin:0;
-	padding:rem(5,10);
-	font-family: $font-bold;
-	background-color: $color-yellow;
-	font-size: rem(18);
-}
-
 
 /*=====  FIN Ajout au panier  =====*/
 
@@ -110,7 +236,7 @@ button[name=add-to-cart] {
 	margin:0;
 }
 .return-to-shop {
-	@extend .layout-sub-margin-top;
+	@extend .layout-mt;
 	text-align: center;
 }
 
@@ -255,7 +381,7 @@ button[name=add-to-cart] {
 		margin:0;
 		text-align: center;
 
-		&:before {
+		&::before {
 			display: none;
 		}
 	}
@@ -264,6 +390,10 @@ button[name=add-to-cart] {
 .pc-cart-quantity {
 	border-top:$border;
 	border-bottom:$border;
+
+	.pc-qty-label {
+		display: none;
+	}
 
 	@media ( min-width : em($mq-layout-l) ) {
 		border:none;
@@ -296,11 +426,11 @@ button[name=add-to-cart] {
 =============================*/
 
 .pc-cart-total {
-	@extend .layout-sub-margin-top;
+	@extend .layout-mt;
 	margin:$space auto 0;
 
 	.shop_table {
-		margin:0 auto;
+		@extend .layout-center;
 		font-size:rem(20);
 		border-spacing:rem(10);
 
