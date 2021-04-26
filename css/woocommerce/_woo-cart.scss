@@ -66,7 +66,7 @@
 .single_add_to_cart_button {
 	background-color: $color-red;
 	color: $color-black;
-	margin-left: rem(10);
+	margin-left: auto;
 	background-image:svg-load('../images/cart-more.svg',fill=$color-black);
 	background-repeat: no-repeat;
 	background-position: rem(10) center;
@@ -121,15 +121,10 @@
 
 /*----------  Type de produit  ----------*/
 
-.is-product {
-
-}
-
 .product-type-simple {
 
 	.cart {
 		display: flex;
-		justify-content: space-between;
 	}
 }
 
@@ -137,7 +132,6 @@
 
 	.woocommerce-variation-add-to-cart {
 		display: flex;
-		justify-content: space-between;
 		margin-top: rem(10);
 	}
 

@@ -167,7 +167,7 @@ function pc_woo_nav_item_active( $menu_items, $args ) {
 	if ( $args->theme_location == 'nav-header' ) {
 
 		// si c'est une actualité d'afficher
-		if ( is_product() || is_cart() || is_checkout() ) {
+		if ( is_product() || is_product_category() || is_cart() || is_checkout() ) {
 			$id_to_search = wc_get_page_id( 'shop' );
 		}
 
@@ -208,6 +208,51 @@ add_filter( 'pc_filter_skip_nav', 'pc_woo_edit_skip_nav' );
 
 /*=====  FIN Skip Links  =====*/
 
+/*====================================
+=            Fil d'ariane            =
+====================================*/
+
+add_filter( 'pc_filter_breadcrumb', 'pc_woo_edit_breadcrumb' );
+
+	function pc_woo_edit_breadcrumb( $links ) {
+
+		if ( is_shop() || is_product_category() || is_cart() || is_checkout() ) {
+
+			$pc_post_shop = new PC_Post( get_post( wc_get_page_id('shop') ) );
+			$links[] = array(
+				'name' => $pc_post_shop->get_card_title(),
+				'permalink' => $pc_post_shop->permalink
+			);
+
+			if ( is_checkout() ) {
+
+				$pc_post_cart = new PC_Post( get_post( wc_get_page_id('cart') ) );
+				$links[] = array(
+					'name' => $pc_post_cart->get_card_title(),
+					'permalink' => $pc_post_cart->permalink
+				);
+
+			}
+
+		}
+
+		// if ( is_cart() || is_checkout() ) {
+
+		// 	$pc_post = new PC_Post( get_post( wc_get_page_id('shop') ) );
+		// 	$links[] = array(
+		// 		'name' => $pc_post->get_card_title(),
+		// 		'permalink' => $pc_post->permalink
+		// 	);
+
+		// }
+
+		return $links;
+
+	}
+
+
+/*=====  FIN Fil d'ariane  =====*/
+
 /*===============================================================
 =            Shop & catégories : titre & description            =
 ===============================================================*/
@@ -219,7 +264,8 @@ add_filter( 'woocommerce_show_page_title', function() { return false; } );
 
 function pc_woo_display_main_title() {
 
-	pc_woo_display_breadcrumb();
+	//pc_woo_display_breadcrumb();
+	pc_display_breadcrumb();
 	
 	echo '<h1><span>'.woocommerce_page_title( false ).'</span></h1>';
 

@@ -44,9 +44,9 @@ add_action( 'wp_enqueue_scripts', 'pc_woo_enqueue_scripts', 999 );
 =            Tailles d'images            =
 ========================================*/
 
-add_action( 'init', 'pc_woo_remove_images_sizes' );
+add_filter( 'intermediate_image_sizes_advanced', 'pc_woo_remove_images_sizes', 10 );
 
-	function pc_woo_remove_images_sizes() {
+	function pc_woo_remove_images_sizes( $sizes ) {
 
 		$sizes_to_remove = array(
 			'woocommerce_thumbnail',
@@ -57,13 +57,11 @@ add_action( 'init', 'pc_woo_remove_images_sizes' );
 			'shop_thumbnail'
 		);
 
-		$all_sizes = get_intermediate_image_sizes();
-
 		foreach ($sizes_to_remove as $size) {
-			if ( in_array( $size, $all_sizes ) ) {
-				remove_image_size( $size );
-			}
+			unset( $sizes[$size] );
 		}
+
+		return $sizes;
 
 	}
 
