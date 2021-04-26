@@ -236,16 +236,6 @@ add_filter( 'pc_filter_breadcrumb', 'pc_woo_edit_breadcrumb' );
 
 		}
 
-		// if ( is_cart() || is_checkout() ) {
-
-		// 	$pc_post = new PC_Post( get_post( wc_get_page_id('shop') ) );
-		// 	$links[] = array(
-		// 		'name' => $pc_post->get_card_title(),
-		// 		'permalink' => $pc_post->permalink
-		// 	);
-
-		// }
-
 		return $links;
 
 	}
