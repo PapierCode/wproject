@@ -85,16 +85,21 @@ add_action( 'pre_get_posts' ,'pc_woo_admin_hide_pages' );
 	}
 
 
-/*----------  Ne pas supprimer la page catalogue  ----------*/
+/*----------  Ne pas supprimer la page catalogue & CGV  ----------*/
 
 add_filter( 'map_meta_cap', 'pc_woo_admin_prevent_delete_shop_page', 10, 4 );
 
 	function pc_woo_admin_prevent_delete_shop_page( $caps, $cap, $user_id, $args ) {
-	
-		global $woo_pages;
 
-		if ( $cap === 'delete_post' && get_the_ID() === $woo_pages['shop'] ) {
-			$caps[] = 'do_not_allow';
+		global $current_user_role;
+
+		if ( 'editor' == $current_user_role && 'delete_post' == $cap ) {
+
+			if ( wc_get_page_id('shop') == $args[0] || wc_terms_and_conditions_page_id() == $args[0] ) {
+	
+				$caps[] = 'do_not_allow';
+
+			}
 		}
 	
 		return $caps;

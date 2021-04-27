@@ -16,6 +16,7 @@
 
 	.is-fullscreen & {
 		border-bottom:$border;
+		@include layout(m,0,0,1,0);
 		@include layout(p,0,0,.5,0);
 	}
 }
