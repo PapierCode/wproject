@@ -1,6 +1,57 @@
 jQuery(document).ready(function($){
 
-var $html = $('html');
+/*=================================
+=            Variables            =
+=================================*/
+
+var $win 			= $(window),
+	$html 			= $('html'),
+	$header 		= $('.header'),
+	$fs_img			= $('.fs-img'),
+	$main_header 	= $('.main-header'),
+
+	win_w, header_h, win_w_old = 0;
+
+
+
+
+/*=====  FIN Variables  =====*/
+
+/*==================================
+=            Responsive            =
+==================================*/
+
+// fonction executée au chargement de la page et à chaque modification de largeur de la fenêtre
+function win_resize() {
+
+	/*----------  Fullscreen  ----------*/	
+
+	if ( $html.hasClass('is-fullscreen') ) {
+
+		win_w = $win.width();
+
+		if ( win_w != win_w_old ) {
+
+			win_h = $win.height();
+			header_h = $header.outerHeight();
+
+			$main_header.css( 'height', rem( win_h - header_h ) );
+			$fs_img.css( 'height', rem( win_h ) );
+
+			win_w_old = win_w;
+
+		}
+
+	}
+
+} // fin winWidthChange()
+
+win_resize();
+
+$win.resize( win_resize );
+
+
+/*=====  End of Responsive  ======*/
 
 /*----------  fake post resum  ----------*/
 

@@ -27,10 +27,6 @@ h1 {
 	font-size: rem(36);
 	line-height: 1.2;
 	margin: 0;
-
-	&:not(:first-child) {
-		@include layout(m,1,0,0,0);
-	}
 	
 	@media ( min-width : em($mq-layout-l) ) {
 		font-size: rem(50);

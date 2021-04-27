@@ -201,16 +201,24 @@
 
 /*----------  Main  ----------*/
 
+.main-inner {
+
+	.is-fullscreen & {
+		padding:0;
+		max-width: none;
+	}
+}
+
 .main-header {
 	
 	.is-fullscreen & {
-		@extend .layout-prbl;
 		background-color: transparent;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
 		min-height:calc( 100vh - #{2*$space} - #{rem(100)} ); // modifié en js, 100 : hauteur logo
+		@extend .layout-prbl;
 	}
 	.h1-pos-v-top & {
 		align-items: flex-start;
@@ -250,6 +258,25 @@
 	}
 }
 
+.main-content, .main-footer {
+
+	.is-fullscreen & {
+		@extend .layout-mw;
+		@extend .layout-center;
+	}
+}
+.main-content {
+
+	.is-fullscreen & {
+		@include layout(p,0,1,0,1);
+	}
+}
+.main-footer {
+
+	.is-fullscreen & {
+		@include layout(p,0,1,1,1);
+	}
+}
 
 /*=====  FIN Layout  =====*/
 

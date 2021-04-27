@@ -313,11 +313,11 @@ function pc_woo_display_product_single_properties() {
 	$weight_unit = get_option( 'woocommerce_weight_unit' );
 	$weight = $product->get_weight();
 	
-	if ( '' != $weight ) {
+	if ( '' != $weight ) { // temporaire
 		
 		echo '<ul class="single-product-datas reset-list">';
 
-		if ( '' != $weight ) {
+		if ( '' != $weight ) { // temporaire
 			echo '<li class="single-product-datas-item"><strong>Poids : </strong>'.$weight.'&nbsp'.$weight_unit.'</li>';
 		}
 

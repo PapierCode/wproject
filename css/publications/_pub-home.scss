@@ -13,18 +13,7 @@
 @use "../framework/frk-functions" as *;
 @use "../framework/frk-mixins" as *;
 
-/*============================
-=            Main            =
-============================*/
 
-.is-home {
-	.main-content {
-		margin-top:0;
-	}
-}
-
-
-/*=====  FIN Main  =====*/
 /*==========================================
 =            Titre de page (h1)            =
 ==========================================*/

@@ -218,18 +218,17 @@ add_filter( 'pc_filter_breadcrumb', 'pc_woo_edit_breadcrumb' );
 
 		if ( is_shop() || is_product_category() || is_cart() || is_checkout() ) {
 
-			$pc_post_shop = new PC_Post( get_post( wc_get_page_id('shop') ) );
+			global $shop_name;
 			$links[] = array(
-				'name' => $pc_post_shop->get_card_title(),
-				'permalink' => $pc_post_shop->permalink
+				'name' => $shop_name,
+				'permalink' => get_the_permalink( wc_get_page_id('shop') )
 			);
 
 			if ( is_checkout() ) {
 
-				$pc_post_cart = new PC_Post( get_post( wc_get_page_id('cart') ) );
 				$links[] = array(
-					'name' => $pc_post_cart->get_card_title(),
-					'permalink' => $pc_post_cart->permalink
+					'name' => 'Panier',
+					'permalink' => get_the_permalink( wc_get_page_id('cart') )
 				);
 
 			}
