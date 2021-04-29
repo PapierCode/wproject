@@ -12,6 +12,7 @@
 @use "../framework/frk-variables" as *;
 @use "../framework/frk-functions" as *;
 @use "../framework/frk-mixins" as *;
+@use "../components/cpt-buttons" as *;
 
 
 /*===============================
@@ -24,45 +25,9 @@
 .social-item {}
 
 .social-link {
-	display: block;
-	transition:all .3s ease;
-	padding: rem(10);
-	background-color: $color-black;
-	
-	path {
-		fill:$color-white;
-		transition:fill .3s ease;
-	}
-
-	&:hover, &:focus {
-		transition:all .3s ease;
-
-		path {
-			transition:fill .3s ease;
-		}
-	}
+	@extend .button;
 }
 
-.social-link--facebook {
-	&:hover, &:focus {
-	   background-color: #3b5998;
-	}
-}
-.social-link--twitter {
-	&:hover, &:focus {
-	   background-color: #00aced;
-	}
-}
-.social-link--linkedin {
-	&:hover, &:focus {
-	   background-color: #007bb5;
-	}
-}
-.social-link--instagram {
-	&:hover, &:focus {
-	   background-color: #c32aa3;
-	}
-}
 
 /*=====  FIN Communs  =====*/
 

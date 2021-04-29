@@ -277,11 +277,10 @@
 		background-color: $color-red;
 		color:$color-black;
 	}
-
 	&:hover, &:focus {
-		transition: all $t-nav-link ease;
-		color: $color-black;
-		background-color:$color-white;   
+	   background-color:$color-blue;
+	   color:$color-black;
+	   transition: all $t-nav-link ease;	
 	}
 		
 	@media ( min-width : em($mq-h-nav-w) ) {
@@ -301,8 +300,9 @@
 			transform:translateY(rem($space--h-nav));
 		}
 		&:hover, &:focus {
-			background-color: $color-white;
 			transform:translateY(rem($space--h-nav));
+			background-color:$color-blue;
+			color:$color-black;
 		}
 	}
 }

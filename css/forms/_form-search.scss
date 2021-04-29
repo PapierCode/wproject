@@ -1,0 +1,54 @@
+/**
+*
+* Formulaires : recherche
+*
+**/
+
+
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
+
+
+.form-search-box {
+	max-height: rem(200);
+	transition: max-height .3s ease;
+
+	&.is-hidden {
+		max-height: 0;
+		transition: max-height .3s ease;
+		overflow: hidden;
+	}
+}
+.form-search-box-inner {
+	@extend .layout-center;
+	@extend .layout-mw;
+	@extend .layout-pt;
+	width: 100%;
+}
+.form-search {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: $border;
+	@extend .layout-prbl;
+}
+.form-search-label {
+	position: absolute;
+	left:-100vw;
+
+	@media ( min-width : em($mq-layout-m) ) {
+		position: static;
+		flex-shrink: 0;	
+		margin-right:rem(10);
+	}
+}
+.form-search-input {
+	width: auto;
+	max-width: rem(300);
+}
+.form-search-submit {
+	flex-shrink: 0;
+	transform:rotate(180deg);
+	margin-left:rem(10);
+}

@@ -85,31 +85,6 @@ if ( $st_list.length > 0 ) {
 	}
 
 }
-	
-// $('.js-toggle').click(function() {
-	
-// 	var target = $(this).data('target');
-	
-// 	/*----------  Recherche  ----------*/	
-
-// 	if ( $('.'+target).hasClass('is-hidden') ) {
-
-// 		$('.'+target).removeClass('is-hidden');
-// 		if ( target == 'form-search-box' ) {
-// 			$('.'+target).find('input,button').removeAttr('tabindex');
-// 			$('.'+target).find('input').focus();
-// 		}
-
-// 	} else {
-
-// 		$('.'+target).addClass('is-hidden');
-// 		if ( target == 'form-search-box' ) {
-// 			$('.'+target).find('input,button').attr('tabindex','-1');
-// 		}
-
-// 	}
-
-// });
 
 
 /*=======================================

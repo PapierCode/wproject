@@ -28,8 +28,8 @@
 		margin-left: rem(10);
 	}
 	svg {
-		transition:fill .3s ease;
 		fill:$color-white;
+		transition:fill .3s ease;
 	}
 
 	&:hover, &:focus {

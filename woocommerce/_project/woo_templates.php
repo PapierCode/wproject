@@ -167,7 +167,7 @@ function pc_woo_nav_item_active( $menu_items, $args ) {
 	if ( $args->theme_location == 'nav-header' ) {
 
 		// si c'est une actualité d'afficher
-		if ( is_product() || is_product_category() || is_cart() || is_checkout() ) {
+		if ( is_product() || is_product_category() || is_cart() || is_checkout() || is_account_page() ) {
 			$id_to_search = wc_get_page_id( 'shop' );
 		}
 

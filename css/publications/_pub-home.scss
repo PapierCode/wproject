@@ -48,9 +48,7 @@ h1 {
 =            Raccourcis            =
 ==================================*/
 
-.home-shortcuts {
-	@extend .layout-prbl;
-}
+.home-shortcuts {}
 
 .home-shortcuts-list {
 
@@ -66,9 +64,6 @@ h1 {
 }
 
 .home-shortcut-item {
-	display: flex;
-	justify-content: stretch;
-	align-items: stretch;
 	margin-top:$space;
 
 	&:first-child {
@@ -98,7 +93,7 @@ h1 {
 }
 
 .home-shortcut-link {
-	display: bloc;
+	display: flex;
 	position: relative;
 	text-decoration: none;
 	text-align: center;
@@ -108,8 +103,11 @@ h1 {
 
 .home-shortcut-img {
 
+	img {
+		width: 100%;
+	}
+
 	@media ( min-width : em($mq-layout-l) ) {
-		overflow: hidden;
 
 		img {
 			transition:all #{$t-home-shortcut-hover - .1} ease;
@@ -241,7 +239,7 @@ h1 {
 	font-size: rem(36);
 	line-height: 1.2; // dépend de la font
 	text-align: center;
-	@extend .layout-ptrbl;
+	@include layout(p,2,1,1,1);
 	
 	@media ( min-width : em($mq-layout-l) ) {
 		font-size: rem(50);

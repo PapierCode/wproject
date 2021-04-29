@@ -1,0 +1,68 @@
+/**
+*
+* Autres liens/boutons dans l'entête
+*
+**/
+
+
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
+@use "../components/cpt-buttons" as *;
+
+
+/*==================================
+=            Containers            =
+==================================*/
+
+.h-tools {}
+.h-tools-inner {}
+
+
+/*=====  FIN Containers  =====*/
+
+/*=============================
+=            Liste            =
+=============================*/
+
+.h-tools-list {}
+.h-tools-item {}
+
+
+/*=====  FIN Liste  =====*/
+
+/*=======================================
+=            Liens / Boutons            =
+=======================================*/
+
+.h-tools-link {
+	@extend .button;
+	// padding:rem(10);
+	// background-color: $color-black;
+	// transition:background-color .3s ease;
+
+	// &:hover, &:focus {
+	//    background-color: $color-white;
+	//    transition:background-color .3s ease;
+	// }
+}
+.h-tools-ico {
+	
+	// svg {
+	// 	fill:$color-white;
+	// }
+
+	// .h-tools-link:hover &, .h-tools-link:focus & {
+	   
+	// 	svg {
+	// 		fill: $color-black;
+	// 	}
+	// }
+}
+.h-tools-txt {
+	position: absolute;
+	left:-100vw;
+}
+
+
+/*=====  FIN Liens / Boutons  =====*/

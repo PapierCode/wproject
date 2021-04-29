@@ -41,6 +41,7 @@
 /*----------  Navigation  ----------*/
 
 @use "navigation/nav-header";
+@use "navigation/nav-tools";
 @use "navigation/nav-footer";
 
 
@@ -56,6 +57,7 @@
 
 @use "forms/form-default";
 @use "forms/form-contact";
+@use "forms/form-search";
 @use "forms/form-page-password";
 
 
