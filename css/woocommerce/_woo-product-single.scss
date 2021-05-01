@@ -24,7 +24,6 @@
 	
 	.main-content {
 		margin-top:0;
-		max-width: rem($single-product-mw);
 	}
 
 	.main-content-inner {
@@ -75,7 +74,7 @@
 ==================================*/
 
 .related-product-cat {
-	margin:0;
+	@include layout(m,0,0,.5,0);
 
 	> * {
 		display: inline;

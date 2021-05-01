@@ -12,12 +12,14 @@
 
 .form-search-box {
 	max-height: rem(200);
-	transition: max-height .3s ease;
+	transition: max-height .5s ease;
+	display: flex;
+	align-items: flex-end;
+	overflow: hidden;
 
 	&.is-hidden {
 		max-height: 0;
-		transition: max-height .3s ease;
-		overflow: hidden;
+		transition: max-height .5s ease;
 	}
 }
 .form-search-box-inner {
@@ -26,6 +28,7 @@
 	@extend .layout-pt;
 	width: 100%;
 }
+
 .form-search {
 	display: flex;
 	align-items: center;
@@ -35,13 +38,7 @@
 }
 .form-search-label {
 	position: absolute;
-	left:-100vw;
-
-	@media ( min-width : em($mq-layout-m) ) {
-		position: static;
-		flex-shrink: 0;	
-		margin-right:rem(10);
-	}
+	left:-666vw;
 }
 .form-search-input {
 	width: auto;

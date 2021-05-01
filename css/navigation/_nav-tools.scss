@@ -15,7 +15,17 @@
 =            Containers            =
 ==================================*/
 
-.h-tools {}
+.h-tools {
+	position: absolute;
+	bottom:$space;
+	right:$space;
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		bottom:auto;
+		top:rem($space-max);
+		right: rem($space-max);
+	}
+}
 .h-tools-inner {}
 
 
@@ -36,32 +46,31 @@
 =======================================*/
 
 .h-tools-link {
-	@extend .button;
-	// padding:rem(10);
-	// background-color: $color-black;
-	// transition:background-color .3s ease;
-
-	// &:hover, &:focus {
-	//    background-color: $color-white;
-	//    transition:background-color .3s ease;
-	// }
+	display: flex;
+	align-items: center;
+	font-family: $font-bold;
 }
 .h-tools-ico {
-	
-	// svg {
-	// 	fill:$color-white;
-	// }
+	padding:rem(10);
+	background-color: $color-black;
 
-	// .h-tools-link:hover &, .h-tools-link:focus & {
-	   
-	// 	svg {
-	// 		fill: $color-black;
-	// 	}
-	// }
+	svg {
+		fill:$color-white;
+	}
+	
+	@media ( min-width : em($mq-layout-m) ) {
+		margin-right: rem(10);
+	}
 }
 .h-tools-txt {
 	position: absolute;
-	left:-100vw;
+	left:-666vw;
+	font-size: rem(26);
+	text-transform: uppercase;
+
+	@media ( min-width : em($mq-layout-m) ) {
+		position:static;
+	}
 }
 
 

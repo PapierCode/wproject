@@ -14,12 +14,12 @@
 =            Fichiers CSS & JS            =
 =========================================*/
 
-/*----------  CSS  ----------*/
+/*----------  Suppression CSS Woocommerce  ----------*/
  
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 
 
-/*----------  Javascript  ----------*/
+/*----------  Suppressions javascript et dépendances CSS  ----------*/
 
 add_action( 'wp_enqueue_scripts', 'pc_woo_enqueue_scripts', 999 );
 
@@ -32,8 +32,6 @@ add_action( 'wp_enqueue_scripts', 'pc_woo_enqueue_scripts', 999 );
 		wp_deregister_script( 'wc-password-strength-meter' );
 		wp_dequeue_script( 'wc-password-strength-meter' );
 
-		// wp_deregister_script( 'wc-country-select' );
-		// wp_dequeue_script( 'wc-country-select' );
 	
 	}
 
@@ -82,13 +80,6 @@ add_filter( 'pc_filter_images_sizes', 'pc_woo_edit_images_sizes' );
 =            Variables            =
 =================================*/
 
-$woo_pages = array(
-	'shop' => wc_get_page_id('shop'),
-	'cart' => wc_get_page_id('cart'),
-	'checkout' => wc_get_page_id('checkout'),
-	'myaccount' => wc_get_page_id('myaccount')
-);
-
 $shop_name = 'Boutique';
 
 
@@ -110,7 +101,6 @@ add_filter( 'query_vars', 'pc_woo_query_vars' );
 =            Include            =
 ===============================*/
 
-include 'woo_functions.php';
 include 'woo_admin.php';
 include 'woo_templates.php';
 

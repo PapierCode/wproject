@@ -66,12 +66,12 @@ body {
 }
 
 .header-inner {
+	position:relative;
 	@extend .layout-ptrbl;
 	@extend .layout-mw;
 	@extend .layout-center;
 
 	@media ( min-width : em($mq-layout-mw) ) {
-		position:relative;
 		display:flex;
 		justify-content: space-between;
 		align-items: flex-end;

@@ -77,7 +77,7 @@ if ( $xxx_query->have_posts() ) {
 	echo '<script type="application/ld+json">'.json_encode($xxx_schema,JSON_UNESCAPED_SLASHES).'</script>';
 	
 	// pagination
-	add_action( 'pc_action_page_main_footer', 'pc_xxx_add_pager', 25 );
+	add_action( 'pc_action_main_footer', 'pc_xxx_add_pager', 25 );
 
 		function pc_xxx_add_pager() {
 			

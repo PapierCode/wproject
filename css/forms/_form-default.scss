@@ -94,7 +94,7 @@ textarea {
 	&.error { border-color: $color-msg-error; }
 	&:focus {
 		outline: none;
-		background-color: $color-blue;
+		border-color: $color-black;
 	}
 }
 
@@ -135,8 +135,7 @@ input[type="checkbox"] {
 	}
 	&:focus + * {
 		&::before {
-			background-color:$color-blue;
-			border-color:$color-blue;
+			outline-color: $color-black;
 		}
 	}
 	&:checked + * {	

@@ -97,7 +97,7 @@ function pc_xxx_html_css_class( $css_classes ) {
 =            Page précédente            =
 =======================================*/
 
-add_action( 'pc_action_page_main_footer', 'pc_xxx_back_link', 30, 1 );
+add_action( 'pc_action_main_footer', 'pc_xxx_back_link', 30, 1 );
 
 function pc_xxx_back_link( $post ) {
 
@@ -124,7 +124,7 @@ function pc_xxx_back_link( $post ) {
 =            Contenu            =
 ===============================*/
 
-add_action( 'pc_action_page_main_content', 'pc_xxx_content', 20, 2 );
+add_action( 'pc_action_main_content', 'pc_xxx_content', 20, 2 );
 
 	function pc_xxx_content( $post, $post_metas ) {
 

@@ -28,6 +28,9 @@
 			flex-grow: 1;
 		}
 	}
+	@media ( min-width : em($mq-layout-l) ) {
+		max-width:rem(500);
+	}
 }
 
 

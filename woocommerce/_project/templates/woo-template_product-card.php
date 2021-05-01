@@ -3,65 +3,54 @@
  * 
  * Woocommerce template : produit résumé
  * 
- ** Hooks (suppressions)
- ** Hooks (ajouts)
- ** CSS classes
+ ** Layout (Hooks)
+ ** Classes CSS
  ** Contenu
- ** Ajout au panier avec quantité
- ** Containeur prix + ajout au panier
  * 
  */
 
  
-/*============================================
-=            Hooks (suppressions)            =
-============================================*/
+/*======================================
+=            Layout (hooks)            =
+======================================*/
+
+/*----------  Suppressions  ----------*/
 
 // lien start (content-product.php)
 remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
 
-// ---------
+	// promotion (content-product.php)
+	remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
+	// visuel (content-product.php)
+	remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
 
-// visuel (content-product.php)
-remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
-// visuel (content-product.php)
-remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
+	// titre (content-product.php)
+	remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
 
-// ---------
-
-// titre (content-product.php)
-remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
-
-// ---------
-
-// notes (content-product.php)
-remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
-// prix (content-product.php)
-remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
-
-// ---------
+	// notes (content-product.php)
+	remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
+	// prix (content-product.php)
+	remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
 
 // lien end (content-product.php)
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
+// ajout au panier ( content-product.php)
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 
 
-/*=====  FIN Hooks (suppressions)  =====*/
+/*----------  Ajouts  ----------*/
 
-/*======================================
-=            Hooks (ajouts)            =
-======================================*/
-
-// Promorion/staock/prix ($pc_post)
-add_action( 'pc_post_card_before_end', 'pc_woo_display_product_card_price', 10 );
 // contenu (content-product.php)
 add_action( 'woocommerce_before_shop_loop_item', 'pc_woo_display_product_card_content', 10 );
 
+// Promotion/stock/prix (PC_Post)
+add_action( 'pc_post_card_before_end', 'pc_woo_display_product_card_price', 10 );
 
-/*=====  FIN Hooks (ajouts)  =====*/
+
+/*=====  FIN Layout (hooks)  =====*/
 
 /*===================================
-=            CSS classes            =
+=            Classes CSS            =
 ===================================*/
 
 add_filter( 'woocommerce_post_class', 'pc_woo_edit_product_card_css_classes', 10 ,2 );
@@ -80,7 +69,7 @@ add_filter( 'woocommerce_post_class', 'pc_woo_edit_product_card_css_classes', 10
 	}
 
 
-/*=====  FIN CSS classes  =====*/
+/*=====  FIN Classes CSS  =====*/
 
 /*===============================
 =            Contenu            =
@@ -107,12 +96,6 @@ function pc_woo_display_product_card_price( $pc_post ) {
 			woocommerce_show_product_loop_sale_flash();
 
 			woocommerce_template_loop_price();
-
-			// if ( $product->get_type() == 'variable' ) {
-			// 	if ( !$product->is_on_backorder() ) { woocommerce_variable_add_to_cart(); }
-			// } else {
-			// 	woocommerce_simple_add_to_cart();
-			// }
 
 		echo '</div>';
 

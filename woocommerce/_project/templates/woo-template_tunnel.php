@@ -3,17 +3,17 @@
  * 
  * Woocommerce template : panier, validation commande, compte
  * 
- ** Communs
- ** Validation commande
+ ** Modifications Wpreform
+ ** Page de validation de la commande
  * 
  */
 
 
-/*===============================
-=            Communs            =
-===============================*/
+/*==============================================
+=            Modifications Wpreform            =
+==============================================*/
 
-/*----------  Page sans container editor  ----------*/
+/*----------  Sans container editor  ----------*/
 
 add_filter( 'pc_the_content_before', 'pc_woo_remove_editor_form_cart' );
 add_filter( 'pc_the_content_after', 'pc_woo_remove_editor_form_cart' );
@@ -33,7 +33,26 @@ add_filter( 'pc_the_content_after', 'pc_woo_remove_editor_form_cart' );
 	}
 
 
-/*----------  No footer  ----------*/
+/*----------  Sans données structurées  ----------*/
+
+add_filter( 'pc_filter_page_schema_article_display', 'pc_woo_remove_schema_article' );
+
+	function pc_woo_remove_schema_article() {
+
+		if ( is_cart() || is_checkout() || is_account_page() ) {
+
+			return false;
+
+		} else {
+
+			return true;
+			
+		}
+
+	}
+
+
+/*----------  Sans piedi de page  ----------*/
 
 add_action( 'wp', 'pc_woo_remove_main_footer' );
 
@@ -50,52 +69,18 @@ add_action( 'wp', 'pc_woo_remove_main_footer' );
 	}
 
 
-/*----------  Message champs obligatoires  ----------*/
+/*=====  FIN Modifications Wpreform  =====*/
 
-add_action( 'woocommerce_before_customer_login_form', 'pc_woo_display_message_required_fields', 10 );
-add_action( 'woocommerce_before_checkout_billing_form', 'pc_woo_display_message_required_fields', 10 );
+/*=========================================================
+=            Page de validation de la commande            =
+=========================================================*/
 
-	function pc_woo_display_message_required_fields() {
+/*----------  Adresse de livraison masquée par défaut  ----------*/
 
-		echo '<p class="pc-woo-msg-required-fields"><em>Les champs obligatoires sont signalés par un astérisque</em>&nbsp;<abbr class="required" title="obligatoire">*</abbr></p>';
-
-	}
-	
-
-/*=====  FIN Communs  =====*/
-
-/*=================================================
-=            Validation de la commande            =
-=================================================*/
-
-// autre adresse masquée par défaut
 add_filter( 'woocommerce_ship_to_different_address_checked', '__return_false' );
 
-add_filter( 'woocommerce_checkout_fields', 'pc_woo_checkout_fields' );
 
-	function pc_woo_checkout_fields( $fields ) { 
-
-		$fields['billing']['billing_phone']['required'] = false;
-		$fields['billing']['billing_email']['label'] = 'E-mail';
-
-		$fields['account']['account_password']['label'] = 'Mot de passe';
-		$fields['account']['account_password']['placeholder'] = '';
-
-		$fields['order']['order_comments']['label'] = 'Associez un message à la commande';
-		$fields['order']['order_comments']['placeholder'] = '';
-
-		return $fields;
-
-	}
-
-add_action( 'woocommerce_admin_order_data_after_shipping_address', 'pc_woo_admin_order_data_after_shipping_address', 10, 1 );
-
-	function pc_woo_admin_order_data_after_shipping_address( $order ){
-
-		echo '<p><strong>'.__('Phone From Checkout Form').':</strong> ' . get_post_meta( $order->get_id(), '_shipping_phone', true ) . '</p>';
-
-	}
-
+/*----------  Mise en forme frais de port  ----------*/
 
 add_filter( 'woocommerce_cart_shipping_method_full_label', 'pc_woo_cart_shipping_label', 10, 2 );
 
@@ -106,16 +91,7 @@ add_filter( 'woocommerce_cart_shipping_method_full_label', 'pc_woo_cart_shipping
 
 	}
 
-
-/*=====  FIN Validation de la commande  =====*/
-
-add_filter( 'woocommerce_get_terms_and_conditions_checkbox_text', 'pc_woo_terms_and_conditions_checkbox_text' );
-
-	function pc_woo_terms_and_conditions_checkbox_text( $text ) {
-
-		return 'truc';
-
-	}
+/*----------  Bouton de validation  ----------*/
 
 add_filter( 'woocommerce_order_button_html', 'pc_woo_order_button_html' );
 
@@ -125,9 +101,5 @@ add_filter( 'woocommerce_order_button_html', 'pc_woo_order_button_html' );
 
 	}
 
-/*=============================================
-=            Confirmation commande            =
-=============================================*/
 
-
-/*=====  FIN Confirmation commande  =====*/
+/*=====  FIN Page de validation de la commande  =====*/

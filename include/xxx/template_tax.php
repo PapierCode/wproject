@@ -85,7 +85,7 @@ function pc_xxx_display_nav_categories( $current_term = null ) {
 
 }
 
-add_action( 'pc_action_page_main_header', 'pc_xxx_page_display_nav_categories', 25, 2 );
+add_action( 'pc_action_main_header', 'pc_xxx_page_display_nav_categories', 25, 2 );
 
 	function pc_xxx_page_display_nav_categories( $post, $post_metas ) {
 

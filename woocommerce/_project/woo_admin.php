@@ -51,10 +51,8 @@ add_action( 'admin_enqueue_scripts', 'pc_woo_admin_enqueue_scripts', 999 );
 add_action( 'add_meta_boxes', 'pc_woo_admin_remove_specific_metaboxes', 999, 2 );
 
 	function pc_woo_admin_remove_specific_metaboxes( $post_type, $post ) {
-		
-		global $woo_pages;
-		
-		if ( $post->ID == $woo_pages['shop'] ) {
+				
+		if ( $post->ID == wc_get_page_id('shop') ) {
 			remove_meta_box( 'page-content-sup', 'page', 'normal' ); 
 		}
 
@@ -71,11 +69,15 @@ add_action( 'pre_get_posts' ,'pc_woo_admin_hide_pages' );
 
 		if( is_admin() && 'administrator' != $current_user_role && 'edit.php' == $pagenow && 'page' == $query->get('post_type') ) {
 
-			global $woo_pages;
+			$woo_pages = array(
+				'cart' => wc_get_page_id('cart'),
+				'checkout' => wc_get_page_id('checkout'),
+				'myaccount' => wc_get_page_id('myaccount')
+			);
 			$page_to_hide = array();
 
 			foreach ( $woo_pages as $slug => $id ) {
-				if ( 'shop' != $slug ) { $page_to_hide[] = $id; }
+				$page_to_hide[] = $id;
 			}
 
 			$query->set( 'post__not_in', $page_to_hide ); 
@@ -113,7 +115,12 @@ add_filter( 'pc_filter_page_metabox_subpages_args', 'pc_woo_remove_pages_from_su
 
 	function pc_woo_remove_pages_from_subpages_list( $all_subpages_args, $post ) {
 
-		global $woo_pages;
+		$woo_pages = array(
+			'shop' => wc_get_page_id('shop'),
+			'cart' => wc_get_page_id('cart'),
+			'checkout' => wc_get_page_id('checkout'),
+			'myaccount' => wc_get_page_id('myaccount')
+		);
 
 		foreach ( $woo_pages as $slug => $id ) {
 			$all_subpages_args['post__not_in'][] = $id;

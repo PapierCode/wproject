@@ -48,6 +48,10 @@
 		top:rem($space-max);
 		right:rem($space-max);
 		margin:0;
+
+		.has-search & {
+			right: rem(330);
+		}
 	}
 }
 
