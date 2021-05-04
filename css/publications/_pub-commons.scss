@@ -152,6 +152,8 @@ h1 {
 	border-radius: 50%;
 
 	svg {
+		width: rem(15);
+		height: rem(15);
 		fill:$color-white;
 		transform: rotate(180deg) translateX(-1px);
 	}

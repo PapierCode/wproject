@@ -44,13 +44,16 @@
 	}
 
 	@media ( min-width : em($mq-layout-mw) ) {
-		position:absolute;
+		margin:0;
+		position: absolute;
 		top:rem($space-max);
 		right:rem($space-max);
-		margin:0;
 
 		.has-search & {
-			right: rem(330);
+			right: rem(300); // largeur bouton recherche
+		}
+		.has-woocommerce & {
+			position: static;
 		}
 	}
 }

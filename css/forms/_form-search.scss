@@ -11,30 +11,36 @@
 
 
 .form-search-box {
-	max-height: rem(200);
-	transition: max-height .5s ease;
+	position: absolute;
+	top:rem(-($h-btn-size + 20));
+	left:0;
+	right: 0;
+	background-color: $color-yellow;
 	display: flex;
 	align-items: flex-end;
-	overflow: hidden;
-
-	&.is-hidden {
-		max-height: 0;
-		transition: max-height .5s ease;
-	}
 }
+
 .form-search-box-inner {
-	@extend .layout-center;
-	@extend .layout-mw;
-	@extend .layout-pt;
+	padding:rem(10) $space;
 	width: 100%;
+	@extend .layout-mw;
+	@extend .layout-center;
+
+	@media ( min-width : em($mq-layout-mw) ) {
+		padding: rem(10,$space-max);
+	}
 }
 
 .form-search {
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	border-bottom: $border;
-	@extend .layout-prbl;
+
+	.form-search-box & {
+		justify-content: flex-end;
+	}
+	.main-header & {
+		@extend .layout-mt;
+	}
 }
 .form-search-label {
 	position: absolute;
@@ -43,9 +49,10 @@
 .form-search-input {
 	width: auto;
 	max-width: rem(300);
+	padding-top: 0;
+	padding-bottom: 0;
+	height: rem($h-btn-size);
 }
 .form-search-submit {
 	flex-shrink: 0;
-	transform:rotate(180deg);
-	margin-left:rem(10);
 }

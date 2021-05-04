@@ -9,12 +9,7 @@
 @use "../framework/frk-functions" as *;
 @use "../framework/frk-mixins" as *;
 
-
-/*=================================
-=            Container            =
-=================================*/
-
-.pop {
+.map {
 	display:none;
 
 	&.is-visible {
@@ -25,14 +20,15 @@
 		bottom:0;
 		left:0;
 		z-index: 9999;
+		background-color: rgba($color-black,.6);
 	}
 }
 
-.pop-inner {
+.map-inner {
 	height: 100%;
 }
 
-.pop-controls {
+.map-controls {
 	position: absolute;
 	z-index: 666;
 	top:$space;
@@ -44,20 +40,6 @@
 	}
 }
 
-
-/*=====  FIN Container  =====*/
-
-/*===========================
-=            Map            =
-===========================*/
-
-.pop--map {
-	background-color: rgba($color-black,.6);
-}
-
 .map-marker {
 	background-image:url("images/map-marker.svg");
 }
-
-
-/*=====  FIN Map  =====*/

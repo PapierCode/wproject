@@ -50,6 +50,12 @@ body {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+	transition:transform .3s ease;
+
+	.search-is-open & {
+		transform:translateY(rem($h-btn-size + 20));
+		transition:transform .3s ease;
+	}
 }
 
 
@@ -67,15 +73,12 @@ body {
 
 .header-inner {
 	position:relative;
+	display:flex;
+	justify-content: space-between;
+	align-items: flex-end;
 	@extend .layout-ptrbl;
 	@extend .layout-mw;
 	@extend .layout-center;
-
-	@media ( min-width : em($mq-layout-mw) ) {
-		display:flex;
-		justify-content: space-between;
-		align-items: flex-end;
-	}
 }
 
 
@@ -164,7 +167,7 @@ body {
 .footer-inner {
 	@extend .layout-mw;
 	@extend .layout-center;
-	@extend .layout-ptrbl;
+	@include layout(p,1.5,1,1,1);
 
 	@media ( min-width : em($mq-layout-l) ) {
 		display: flex;

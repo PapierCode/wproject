@@ -4,11 +4,9 @@
  * Woocommerce template : communs
  * 
  ** Layout (Hooks) : boutique (accueil), catégories, produit
- ** Skip links
  ** Classes CSS sur l'élément HTML
- ** Menu item actif
- ** Fil d'ariane
- *
+ ** Images & icônes
+ ** Résultats de recherche
  ** Include
  * 
  */
@@ -54,26 +52,6 @@ add_action( 'woocommerce_after_main_content', 'pc_display_main_end', 60 ); // fo
 
 /*=====  FIN Layout (hooks) : boutique (accueil), catégories, produit  =====*/
 
-/*==================================
-=            Skip Links            =
-==================================*/
-
-add_filter( 'pc_filter_skip_nav', 'pc_woo_edit_skip_nav' );
-
-	function pc_woo_edit_skip_nav( $skip_nav_list ) {
-
-		$skip_nav_list = array( 
-			get_the_permalink( wc_get_page_id('cart') ) => array( 'Panier', 'Accès direct au panier' ),
-			get_the_permalink( wc_get_page_id('myaccount') ) => array( 'Compte client', 'Accès direct au compte client' )
-		) + $skip_nav_list;
-
-		return $skip_nav_list;
-
-	}
-
-
-/*=====  FIN Skip Links  =====*/
-
 /*======================================================
 =            Classes CSS sur l'élément HTML            =
 ======================================================*/
@@ -81,6 +59,8 @@ add_filter( 'pc_filter_skip_nav', 'pc_woo_edit_skip_nav' );
 add_filter( 'pc_filter_html_css_class', 'pc_woo_edit_html_css_class' );
 
 function pc_woo_edit_html_css_class ( $css_classes ) {
+
+	$css_classes[] = 'has-woocommerce';
 
 	if ( is_shop() ) {
 
@@ -127,73 +107,72 @@ function pc_woo_edit_html_css_class ( $css_classes ) {
 
 /*=====  FIN Classes CSS sur l'élément HTML  =====*/
 
-/*=======================================
-=            Menu item actif            =
-=======================================*/
+/*========================================
+=            Images & icônes            =
+========================================*/
 
-add_filter( 'wp_nav_menu_objects', 'pc_woo_nav_item_active', NULL, 2 );
+add_filter( 'intermediate_image_sizes_advanced', 'pc_woo_remove_images_sizes', 10 );
 
-function pc_woo_nav_item_active( $menu_items, $args ) {
+	function pc_woo_remove_images_sizes( $sizes ) {
 
-	// si menu d'entête
-	if ( 'nav-header' == $args->theme_location ) {
+		$sizes_to_remove = array(
+			'woocommerce_thumbnail',
+			'woocommerce_single',
+			'woocommerce_gallery_thumbnail',
+			'shop_catalog',
+			'shop_single',
+			'shop_thumbnail'
+		);
 
-		// si c'est une page woocommerce
-		if ( is_product() || is_product_category() || is_cart() || is_checkout() || is_account_page() ) {
-			$id_to_search = wc_get_page_id( 'shop' );
+		foreach ($sizes_to_remove as $size) {
+			unset( $sizes[$size] );
 		}
 
-		if ( isset( $id_to_search ) ) {
-			foreach ( $menu_items as $object ) {
-				if ( $object->object_id == $id_to_search ) {
-					// ajout classe WP (remplacée dans le Walker du menu)
-					$object->classes[] = 'current-menu-item';
-				}
-			}
-		}
+		return $sizes;
 
 	}
 
-	return $menu_items;
+add_filter( 'pc_filter_images_sizes', 'pc_woo_edit_images_sizes' );
 
-};
+	function pc_woo_edit_images_sizes( $images_sizes ) {
 
+		$images_sizes['product-single-s'] = array( 'width'=>400, 'height'=>400, 'crop'=>true );
+		$images_sizes['product-single-l'] = array( 'width'=>700, 'height'=>700, 'crop'=>true );
+		return $images_sizes;
 
-/*=====  FIN Menu item actif  =====*/
+	}
 
-/*====================================
-=            Fil d'ariane            =
-====================================*/
+	
+add_filter( 'pc_filter_sprite', 'pc_woo_edit_sprite' );
 
-add_filter( 'pc_filter_breadcrumb', 'pc_woo_edit_breadcrumb' );
+	function pc_woo_edit_sprite( $sprite ) {
 
-	function pc_woo_edit_breadcrumb( $links ) {
-
-		if ( is_shop() || is_product_category() || is_cart() || is_checkout() ) {
-
-			global $shop_name;
-			$links[] = array(
-				'name' => $shop_name,
-				'permalink' => get_the_permalink( wc_get_page_id('shop') )
-			);
-
-			if ( is_checkout() ) {
-
-				$links[] = array(
-					'name' => 'Panier',
-					'permalink' => get_the_permalink( wc_get_page_id('cart') )
-				);
-
-			}
-
-		}
-
-		return $links;
+		$sprite['cart'] = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M18.52,4.93,12.18,0,11,1.58l4.31,3.35H4.74L9.05,1.58,7.82,0,1.48,4.93H0l3,15H17l3-15Zm-3.16,13H4.64l-2.2-11H17.56Z"/></svg>';
+		$sprite['cart-more'] = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="19.93" viewBox="0 0 20 19.93"><polygon points="12.75 11.17 11 12.88 11 8.51 9 8.51 9 12.88 7.25 11.17 5.84 12.59 10 16.75 14.16 12.59 12.75 11.17"/><path d="M18.52,4.93,12.18,0,11,1.58l4.31,3.35H4.74L9.05,1.58,7.82,0,1.48,4.93H0l3,15H17l3-15Zm-3.16,13H4.64l-2.2-11H17.56Z"/></svg>';
+		$sprite['cart-less'] = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><polygon points="7.25 14.09 9 12.38 9 16.75 11 16.75 11 12.38 12.75 14.09 14.16 12.68 10 8.51 5.84 12.68 7.25 14.09"/><path d="M18.52,4.93,12.18,0,11,1.58l4.31,3.35H4.74L9.05,1.58,7.82,0,1.48,4.93H0l3,15H17l3-15Zm-3.16,13H4.64l-2.2-11H17.56Z"/></svg>';
+		
+		return $sprite;
 
 	}
 
 
-/*=====  FIN Fil d'ariane  =====*/
+/*=====  FIN Images & icônes  =====*/
+
+/*==============================================
+=            Résultats de recherche            =
+==============================================*/
+
+add_filter( 'pc_filter_search_results_type', 'pc_woo_edit_search_results_type' );
+
+	function pc_woo_edit_search_results_type( $types ) {
+
+		$types['product'] = 'Catalogue';
+		return $types;
+
+	}
+
+
+/*=====  FIN Résultats de recherche  =====*/
 
 /*===============================
 =            Include            =
@@ -201,6 +180,9 @@ add_filter( 'pc_filter_breadcrumb', 'pc_woo_edit_breadcrumb' );
 
 // formulaires
 include 'templates/woo-template_forms.php';
+
+// navigation
+include 'templates/woo-template_navigation.php';
 
 // boutique (accueil) & liste de catégories
 include 'templates/woo-template_shop.php';

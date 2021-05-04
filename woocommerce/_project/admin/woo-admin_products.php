@@ -134,7 +134,7 @@ add_filter( 'woocommerce_product_data_tabs', 'pc_woo_admin_data_tabs' );
 	function pc_woo_admin_data_tabs( $tabs ) {
 
 		unset( $tabs['advanced'] ); // avancé
-		unset( $tabs['linked_product'] ); // produits liés
+		// produits liés unset( $tabs['linked_product'] ); 
 
 		// Général devient Tarifs
 		$tabs['general']['label'] = 'Tarifs';

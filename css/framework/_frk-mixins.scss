@@ -21,7 +21,7 @@
 	#{$type} : $t*$space $r*$space $b*$space $l*$space;
 
 	@media ( min-width : em($mq-layout-mw) ) {
-		#{$type} : rem( $t*$space-max, $r*$space-max, $b*$space-max, $l*$space-max )	;
+		#{$type} : rem( .75*$t*$space-max, $r*$space-max, .75*$b*$space-max, $l*$space-max )	;
 	}
 
 }

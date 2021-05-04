@@ -1,0 +1,45 @@
+/**
+*
+* Publications : accueil
+*
+**/
+
+
+@use "../framework/frk-variables" as *;
+@use "../framework/frk-functions" as *;
+@use "../framework/frk-mixins" as *;
+
+
+.s-results-infos {
+	@include layout(m,.5,0,0,0);
+
+	em {
+		font-weight: 700;
+	}
+}
+
+.s-results-list {
+	@extend .layout-mb;
+	@extend .layout-txt-mw;
+}
+.s-results-item-title {
+	font-family: $font-bold;
+	font-size:rem(22);
+	line-height: 1.4;	
+	border-top:$border;
+	@include layout(m,.5,0,0,0);
+	@include layout(p,.5,0,0,0);
+
+	span {
+		display:inline-block;
+		background-color: rgba($color-orange,.2);
+		padding:rem(5);
+		font-size: rem(14);
+		text-transform: uppercase;
+		line-height: 1;
+		vertical-align: middle;
+	}
+}
+.s-results-item-desc {
+	margin:rem(5,0,0,0);
+}

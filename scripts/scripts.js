@@ -53,6 +53,19 @@ $win.resize( win_resize );
 
 /*=====  End of Responsive  ======*/
 
+
+/*----------  Btn fullscreen  ----------*/
+
+if ( $html.hasClass('is-fullscreen')) {
+
+	var win_h;
+
+	$('.js-button-fullscreen').click(function() {
+		$('html, body').animate({ scrollTop:win_h }, 500);
+	});
+
+}
+
 /*----------  fake post resum  ----------*/
 
 var $st_list = $('.st-list');

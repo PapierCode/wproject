@@ -11,6 +11,7 @@
  ** Galerie
  ** Propriétés
  ** Textes
+ ** Produits associés
  ** Lien retour
  * 
  */
@@ -78,7 +79,8 @@ add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product
 // div.main-content-inner end (content-single-product.php)
 add_action( 'woocommerce_after_single_product_summary', 'pc_woo_display_product_single_main_content_inner_end', 20 );
 
-
+// produits associés (single-product.php)
+add_action( 'woocommerce_after_single_product_summary', 'pc_woo_display_related_products', 30 );
 
 // lien retour (single-product.php)
 add_action( 'woocommerce_after_main_content', 'pc_woo_display_product_single_back_link', 20 );
@@ -364,6 +366,51 @@ function pc_woo_display_product_single_wysiwyg() {
 
 
 /*=====  FIN Textes  =====*/
+
+/*=========================================
+=            Produits associés            =
+=========================================*/
+
+function pc_woo_display_related_products() {
+
+	global $pc_post;
+	$metas = $pc_post->metas;
+
+	if ( isset( $metas['_upsell_ids'] ) ) {
+
+		$related_posts = get_posts( array(
+			'post_type' => 'product',
+			'post__in' => unserialize($metas['_upsell_ids'])
+		) );
+
+		if ( count( $related_posts ) > 0 ) {
+
+			echo '<aside class="product-aside">';
+			echo '<h2 class="product-aside-title">Produits associés</h2>';
+			echo '<ul class="st-list st-list--related reset-list">';
+
+				foreach ( $related_posts as $post ) {
+					$pc_related_post = new PC_Post( $post );
+					$pc_related_post_classes = wc_get_product_class( '', $pc_related_post->id );
+					$pc_related_post_classes = array_diff( $pc_related_post_classes, array( 'main-content') );
+					$pc_related_post_classes = implode( ' ', $pc_related_post_classes );
+					
+					echo '<li class="'.$pc_related_post_classes.' st st--product">';
+						$pc_related_post->display_card('3');
+					echo '</li>';
+				}
+
+			echo '</ul>';
+			echo '</aside>';
+
+		}
+
+	}
+
+}
+
+
+/*=====  FIN Produits associés  =====*/
 
 /*===================================
 =            Lien retour            =

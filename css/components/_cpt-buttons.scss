@@ -20,7 +20,6 @@
 	background-color: $color-black;
 	font-family: $font-bold;
 	font-size:rem(16);
-	line-height: 1;
 	color:$color-white;
 	text-transform: uppercase;
 
@@ -28,6 +27,8 @@
 		margin-left: rem(10);
 	}
 	svg {
+		width: rem(16);
+		height: rem(16);
 		fill:$color-white;
 		transition:fill .3s ease;
 	}

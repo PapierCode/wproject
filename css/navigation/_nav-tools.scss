@@ -16,13 +16,10 @@
 ==================================*/
 
 .h-tools {
-	position: absolute;
-	bottom:$space;
-	right:$space;
 
 	@media ( min-width : em($mq-layout-mw) ) {
-		bottom:auto;
-		top:rem($space-max);
+		position: absolute;
+		top:rem(.75*$space-max);
 		right: rem($space-max);
 	}
 }
@@ -35,8 +32,29 @@
 =            Liste            =
 =============================*/
 
-.h-tools-list {}
-.h-tools-item {}
+.h-tools-list {
+	display: flex;
+}
+.h-tools-item {
+	margin-left: rem(2*$space--h-nav);
+
+	@media ( min-width : em($mq-layout-l) ) {
+		margin-left: rem(3*$space--h-nav);		
+	}
+}
+
+.h-tools-item--search {
+	position: absolute;
+	top:$space;
+	right: calc( #{$space} + #{rem($h-btn-size + 20)} );
+
+	@media ( min-width : em($mq-layout-l) ) {
+		right: calc( #{$space} + #{rem($h-btn-size + 3*$space--h-nav + 85)} );
+	}
+	@media ( min-width : em($mq-layout-xl) ) {
+		position: static;
+	}
+}
 
 
 /*=====  FIN Liste  =====*/
@@ -45,31 +63,123 @@
 =            Liens / Boutons            =
 =======================================*/
 
-.h-tools-link {
-	display: flex;
+.h-tools-link, .h-tools-link:visited {
+	display: inline-flex;
 	align-items: center;
+	vertical-align: middle;
 	font-family: $font-bold;
+	text-decoration: none;
+
+	@media ( min-width : em($mq-layout-l) ) {
+		position: relative;
+		z-index: 1;
+		overflow: hidden;
+		padding-left:rem(10);
+		
+		&:before {
+			content:"";
+			position: absolute;
+			z-index: -1;
+			top:0;
+			bottom:0;
+			right:0;
+			width: rem($h-btn-size);
+			background-color: $color-black;
+			transition: all .5s ease;
+		}
+	
+		&:hover, &:focus {
+		   
+			&:before {
+				width:100%;
+				background-color: $color-blue;
+				transition: all .5s ease;
+			}
+		}
+	}
+
 }
 .h-tools-ico {
 	padding:rem(10);
 	background-color: $color-black;
+	transition: background-color .3s ease;
 
 	svg {
+		width: rem(16);
+		height: rem(16);
 		fill:$color-white;
+		transition: fill .3s ease;
+	}	
+
+	// .h-tools-item--search & {
+	// 	position: relative;
+	// 	overflow: hidden;
+
+	// 	&::after {
+	// 		content:"";
+	// 		position: absolute;
+	// 		top:0;
+	// 		right: 0;
+	// 		bottom: 0;
+	// 		left: 0;
+	// 		background-color: $color-black;
+	// 		background-image:svg-load('../images/cross.svg',fill=$color-white);
+	// 		background-repeat: no-repeat;
+	// 		background-size: rem(16);
+	// 		background-position: center;
+	// 	}
+	// }
+
+	.h-tools-link:hover &, .h-tools-link:focus & {
+	   background-color: $color-blue;
+	   transition: background-color .3s ease;
+	   
+		svg {
+			fill:$color-black;
+			transition: fill .3s ease;
+		}
 	}
 	
-	@media ( min-width : em($mq-layout-m) ) {
-		margin-right: rem(10);
+	@media ( min-width : em($mq-layout-l) ) {
+		margin-left: rem(10);
+
+		.h-tools-link:hover &, .h-tools-link:focus & {
+			background-color: $color-black;
+			
+			 svg {
+				 fill:$color-white;
+			 }
+		 }
 	}
 }
 .h-tools-txt {
 	position: absolute;
 	left:-666vw;
-	font-size: rem(26);
+	color:$color-black;
+	font-size: rem(22);
 	text-transform: uppercase;
 
-	@media ( min-width : em($mq-layout-m) ) {
+	@media ( min-width : em($mq-layout-l) ) {
 		position:static;
+	}
+}
+
+.h-tools-cart-counter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: rem($h-btn-size);
+	height: rem($h-btn-size);
+	padding-bottom:rem(2); // fix font wpréform
+	background-color: $color-yellow;
+	font-family: $font-regular;
+	font-size: rem(22);
+	color:$color-black;
+	transition: border-color .3s ease;
+
+	.h-tools-link:hover &, .h-tools-link:focus & {
+		border-color:$color-blue;
+		transition: border-color .3s ease;
 	}
 }
 

@@ -12,7 +12,7 @@
 =            Affichage nom & prénom client            =
 =====================================================*/
 
-add_action( 'pc_action_page_main_header', 'pc_woo_account_subtitle', 30 );
+add_action( 'pc_action_page_main_header', 'pc_woo_account_subtitle', 40 );
 
 function pc_woo_account_subtitle() {
 

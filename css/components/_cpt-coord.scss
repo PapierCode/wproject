@@ -94,13 +94,14 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: rem(30);
-	height: rem(30);
+	width: rem(40);
+	height: rem(40);
 	margin-right: rem(10);
-	background-color: $color-white;
+	border:1px solid $color-white;
+	border-radius: 50%;
 
 	path {
-		fill:$color-black;
+		fill:$color-white;
 	}
 }
 .coord-item--phone {

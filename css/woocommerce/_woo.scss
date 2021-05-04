@@ -41,36 +41,3 @@
 
 
 /*=====  FIN Layout  =====*/
-
-/*===================================================
-=            Résumés catégorie & produit            =
-===================================================*/
-
-/*----------  Article  ----------*/
-
-.st--product-cat,
-.st--product {
-	
-	article {
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-	}
-}
-
-
-/*=====  FIN Résumés catégorie & produit  =====*/
-
-/*=======================================
-=            Tunnel & compte            =
-=======================================*/
-
-.is-cart, .is-checkout, .is-account {
-
-	.main-header-inner {
-		max-width: none;
-		text-align: center;
-	}
-}
-
-/*=====  FIN Tunnel & compte  =====*/

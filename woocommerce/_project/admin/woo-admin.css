@@ -55,7 +55,10 @@ table.wp-list-table .column-product_tag
 #variable_product_options .notice p:nth-child(2), /* lien aide EN  */
 .woocommerce_variable_attributes .options label:nth-child(2), /* option téléchargeable */
 .woocommerce_variable_attributes .options label:nth-child(3), /* option virtuel */
-.woocommerce_variable_attributes .data > div:nth-of-type(3) /* classes de livraison */
+.woocommerce_variable_attributes .data > div:nth-of-type(3), /* classes de livraison */
+
+/* produits liés */
+#linked_product_data .options_group :nth-child(2)
 
 {
 	display:none !important;

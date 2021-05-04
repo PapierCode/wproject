@@ -66,6 +66,12 @@
 	}
 }
 
+.product-aside-title {
+	@include layout(m,0,0,.5,0);
+	font-family: $font-bold;
+	font-size:rem(30);
+}
+
 
 /*=====  FIN Layout  =====*/
 

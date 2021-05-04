@@ -34,22 +34,18 @@
 
 .h-nav-btn {
     display: flex;
+	flex-direction: row-reverse;
 	align-items: center;
-    
-    .h-nav-is-open & {
-        position: sticky;
-        top:$space;
-    }
 }
 
 .h-nav-btn-ico {	
 
-	$line-w : 24;
-	$line-h : 4;
-	$arrow-translate : 10;
+	$line-w : 20;
+	$line-h : 2;
+	$arrow-translate : 8;
 
-	width: rem($h-btn-nav-size);
-	height: rem($h-btn-nav-size);
+	width: rem($h-btn-size);
+	height: rem($h-btn-size);
 	position: relative;
 	transition:all $t-nav-btn-ico ease;
 	background-color: $color-black;
@@ -80,20 +76,20 @@
 	}
 
 	.h-nav-btn:hover &, .h-nav-btn:focus & {
-		background-color: transparent;
+		background-color: $color-blue;
 		transition:all $t-nav-btn-ico ease;
 
 		&::before, &::after {
 			background-color: $color-black;
 			transition:all $t-nav-btn-ico ease;
-			transition:all $t-nav-btn-ico ease;
+			width: rem(.75*$line-w);
 		}
 		&::before {
-			transform: translate(rem($arrow-translate),0) rotate(45deg);
+			transform: translate(rem(.5*$arrow-translate),0) rotate(45deg);
 			transform-origin: left top;
 		}
 		&::after {
-			transform: translate(rem($arrow-translate),0) rotate(-45deg);
+			transform: translate(rem(.5*$arrow-translate),0) rotate(-45deg);
 			transform-origin: left bottom;
 		}
 	}
@@ -128,16 +124,17 @@
 	position: absolute;
 	top:-666em;
 
-	@media ( min-width : em($mq-layout-m) ) {
+	@media ( min-width : em($mq-layout-l) ) {
 		position: static;
 		overflow: hidden;
-		padding: rem(5);
+		padding: rem(0,$space--h-nav);
 		align-self: stretch;
 		display: flex;
 		align-items: center;
 		max-width: rem(100);
 		font-family: $font-bold;
-		font-size: rem(26);
+		font-size: rem(22);
+		line-height: rem($h-btn-size);
 		text-transform: uppercase;
 		transition:all $t-nav-btn-ico ease;
 
@@ -196,7 +193,7 @@
 .h-nav-inner {
 	width: $h-nav-w-s;
 	height: 100%;
-	padding: calc( #{rem($h-btn-nav-size)} + #{2*$space} ) $space $space $space;
+	padding: calc( #{rem($h-btn-size)} + #{2*$space} ) $space $space $space;
 	background-color: $color-yellow;
 	transform: translateX(100%);
 	transition: transform $t-nav ease;
@@ -218,6 +215,7 @@
 		transform: none;
 		transition: none;
 		overflow-y: visible;
+		display: flex;
 
 		.h-nav-is-open & {
 			transform: none;
@@ -271,7 +269,8 @@
 	color: $color-white;
 	background-color:$color-black;
 	
-    padding:rem($space--h-nav);
+    padding:rem(0,$space--h-nav);
+	line-height: rem($h-btn-size);
 
 	.is-active & {
 		background-color: $color-red;
@@ -296,7 +295,7 @@
 	@media ( min-width : em($mq-layout-mw) ) {
 
 		.is-active & {
-			background-color: $color-yellow;
+			background-color: $color-white;
 			transform:translateY(rem($space--h-nav));
 		}
 		&:hover, &:focus {
