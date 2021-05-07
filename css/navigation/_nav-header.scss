@@ -14,6 +14,7 @@
 @use "../framework/frk-variables" as *;
 @use "../framework/frk-functions" as *;
 @use "../framework/frk-mixins" as *;
+@use "../components/cpt-buttons" as *;
 
 
 /*============================================
@@ -33,22 +34,34 @@
 }
 
 .h-nav-btn {
-    display: flex;
-	flex-direction: row-reverse;
-	align-items: center;
+	@extend .button;
+
+	.txt {
+		overflow: hidden;
+		max-width: rem(100);
+		transition: all .5s ease;
+	}
+	
+
+	.h-nav-is-open & {
+
+		.txt {
+			max-width: 0;
+			margin:0;
+			transition: all .5s ease;
+		}
+	}
 }
 
 .h-nav-btn-ico {	
 
-	$line-w : 20;
+	$line-w : 16;
 	$line-h : 2;
-	$arrow-translate : 8;
+	$arrow-translate : 7;
 
-	width: rem($h-btn-size);
-	height: rem($h-btn-size);
+	width: rem($line-w);
+	height: rem($button-height);
 	position: relative;
-	transition:all $t-nav-btn-ico ease;
-	background-color: $color-black;
 
 	overflow: hidden;
 	&::before, &::after {
@@ -68,7 +81,6 @@
 	&::after { transform:translateY(rem($arrow-translate)); }
 
 	.h-nav-is-open & {
-		background-color: $color-black;
 
 		&::before, &::after { transition:all $t-nav-btn-ico ease; }
 		&::before { transform: translateY(0) rotate(-45deg); }
@@ -76,8 +88,6 @@
 	}
 
 	.h-nav-btn:hover &, .h-nav-btn:focus & {
-		background-color: $color-blue;
-		transition:all $t-nav-btn-ico ease;
 
 		&::before, &::after {
 			background-color: $color-black;
@@ -118,31 +128,6 @@
 	.h-nav-is-open .h-nav-btn:hover &, .h-nav-is-open .h-nav-btn:focus &,
 	.h-nav-btn:hover &, .h-nav-btn:focus & {
 		&::after { transform: translateX(rem(100)); }
-	}
-}
-.h-nav-btn-txt {
-	position: absolute;
-	top:-666em;
-
-	@media ( min-width : em($mq-layout-l) ) {
-		position: static;
-		overflow: hidden;
-		padding: rem(0,$space--h-nav);
-		align-self: stretch;
-		display: flex;
-		align-items: center;
-		max-width: rem(100);
-		font-family: $font-bold;
-		font-size: rem(22);
-		line-height: rem($h-btn-size);
-		text-transform: uppercase;
-		transition:all $t-nav-btn-ico ease;
-
-		.h-nav-is-open & {
-			max-width: 0;
-			padding: 0;
-			transition:all $t-nav-btn-ico ease;
-		}
 	}
 }
 
@@ -193,7 +178,7 @@
 .h-nav-inner {
 	width: $h-nav-w-s;
 	height: 100%;
-	padding: calc( #{rem($h-btn-size)} + #{2*$space} ) $space $space $space;
+	padding: calc( #{rem($button-height)} + #{2*$space} ) $space $space $space;
 	background-color: $color-yellow;
 	transform: translateX(100%);
 	transition: transform $t-nav ease;
@@ -241,13 +226,13 @@
 .h-nav-item {
 
 	&:nth-child(n+2) {
-		margin-top:rem($space--h-nav);
+		margin-top:rem($button-space);
 	}
 
     @media ( min-width : em($mq-layout-mw) ) {  
 
 		&:nth-child(n+2) {
-			margin:rem(0,0,0,$space--h-nav);       
+			margin:rem(0,0,0,$button-space);       
 		}
 	}
 }
@@ -260,26 +245,14 @@
 ============================*/
 
 .h-nav-link, .h-nav-link:visited {
-	display:block;
-	position: relative;
-    text-decoration: none;
-	transition: all $t-nav-link ease;	
-
+	@extend .button;
+	display: flex;
+	text-transform: none;
 	font-family: $font-regular;
-	color: $color-white;
-	background-color:$color-black;
-	
-    padding:rem(0,$space--h-nav);
-	line-height: rem($h-btn-size);
 
 	.is-active & {
 		background-color: $color-red;
 		color:$color-black;
-	}
-	&:hover, &:focus {
-	   background-color:$color-blue;
-	   color:$color-black;
-	   transition: all $t-nav-link ease;	
 	}
 		
 	@media ( min-width : em($mq-h-nav-w) ) {
@@ -296,10 +269,10 @@
 
 		.is-active & {
 			background-color: $color-white;
-			transform:translateY(rem($space--h-nav));
+			transform:translateY(rem($button-space));
 		}
 		&:hover, &:focus {
-			transform:translateY(rem($space--h-nav));
+			transform:translateY(rem($button-space));
 			background-color:$color-blue;
 			color:$color-black;
 		}

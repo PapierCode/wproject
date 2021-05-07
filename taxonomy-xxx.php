@@ -66,7 +66,7 @@ pc_display_main_start();
 			$back_link = pc_get_page_by_custom_content( XXX_POST_SLUG );
 		}
 
-		echo '<a href="'.$back_link.'" class="main-footer-prev button" title="Page précédente">'.pc_svg('arrow').'<span>Retour</span></a>';
+		echo '<a href="'.$back_link.'" class="main-footer-prev button" title="Page précédente"><span class="ico">'.pc_svg('arrow').'<span>Retour</span></a>';
 
 		pc_display_share_links();
 

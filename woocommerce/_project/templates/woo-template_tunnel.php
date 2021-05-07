@@ -71,6 +71,10 @@ add_action( 'wp', 'pc_woo_remove_main_footer' );
 
 /*=====  FIN Modifications Wpreform  =====*/
 
+
+add_filter( 'woocommerce_product_variation_title_include_attributes', function(){ return false; } );
+
+
 /*=========================================================
 =            Page de validation de la commande            =
 =========================================================*/

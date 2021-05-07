@@ -214,10 +214,17 @@ add_filter( 'woocommerce_dropdown_variation_attribute_options_args', 'pc_woo_dro
 
 add_filter( 'woocommerce_attribute_label', 'pc_woo_attribute_label', 10 );
 
-	function pc_woo_attribute_label() {
+	function pc_woo_attribute_label( $label ) {
 
-		// text label
-		return 'Option';
+		if ( !is_admin() && is_product() ) {
+
+			return 'Option';
+
+		} else {
+
+			return $label;
+			
+		}
 
 	}
 
@@ -299,7 +306,7 @@ function pc_woo_display_product_single_gallery() {
 
 		} else {
 
-			echo '<li class="wp-gallery-item"><img class="wp-gallery-img" src="'.get_bloginfo( 'template_directory' ).'/images/square-default.jpg" alt="" loading="lazy" /></li>';
+			echo '<li class="wp-gallery-item"><img class="wp-gallery-img" src="'.get_bloginfo( 'template_directory' ).'/images/square-default.jpg" width="700" height="700" alt="" loading="lazy" /></li>';
 
 		}
 
@@ -320,6 +327,12 @@ function pc_woo_display_product_single_gallery() {
 		}
 
 	echo '</ul></figure>';
+
+	// if ( 'variable' == $product->get_type() ) {
+
+	// 	pc_var($product->get_variation_attributes());
+
+	// }
 
 }
 
@@ -422,7 +435,7 @@ function pc_woo_display_product_single_back_link() {
 
 		global $shop_name;
 
-		echo '<div class="main-footer-prev"><a href="'.get_the_permalink( wc_get_page_id('shop') ).'" class="button" title="Retour vers la boutique">'.pc_svg('arrow',null,'svg_block').'<span>'.$shop_name.'</span></a></div>';
+		echo '<div class="main-footer-prev"><a href="'.get_the_permalink( wc_get_page_id('shop') ).'" class="button" title="Retour vers la boutique"><span class="ico">'.pc_svg('arrow',null,'svg_block').'</span><span class="txt">'.$shop_name.'</span></a></div>';
 
 	}
 

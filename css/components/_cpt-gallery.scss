@@ -2,8 +2,7 @@
 *
 * Composant : gallerie
 *
-** Variables
-** Conteneur
+** Liste
 ** Diapositives
 ** Contrôles
 ** Compteur
@@ -16,36 +15,43 @@
 @use "../framework/frk-variables" as *;
 @use "../framework/frk-functions" as *;
 @use "../framework/frk-mixins" as *;
+@use "../components/cpt-buttons" as *;
 
 
-/*=======================================
-=            Icône vignette	            =
-=======================================*/
+/*===============================
+=            Liste	            =
+===============================*/
 
 .wp-gallery-link {
+	text-decoration: none;
 	display: block;
 	position: relative;
 	overflow: hidden;
+	outline:2px solid transparent;
 	
 	&:hover, &:focus {
-		
-		.wp-gallery-ico {
-			top:50%;
-			transition: top .4s ease;
-		}
+		outline-color: $color-black;
 	}
 }
+
 .wp-gallery-ico {
 	position: absolute;
 	left:50%;
-	top:rem(-15); // height/2
+	top:rem(-$button-height / 2);
 	transform:translate(-50%,-50%);
-	background-color: $color-black;
-	padding:rem(5);
+	background-color: $color-blue;
+	padding:rem($button-space);
 	transition: top .4s ease;
 
 	svg {
-		fill:$color-white;
+		width: rem($button-ico-size);
+		height: rem($button-ico-size);
+		fill:$color-black;
+	}
+	
+	.wp-gallery-link:hover &, .wp-gallery-link:focus & {
+		top:50%;
+		transition: top .4s ease;
 	}
 }
 
@@ -148,18 +154,14 @@
 /*----------  Communs  ----------*/
 
 .gl-btn {
-	position: relative;
-	transition:background-color 0.3s ease;
-	transform-origin:center center 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: rem($gl-btn-size);
-	width: rem($gl-btn-size);
-	background-color: $color-black;
+	@extend .button;
 
-	// si l'on clique sur l'enfant SVG
-	// ben ça clique à travers et ferme la galerie...
+	&:disabled:hover, &:disabled:hover {
+		border:none;
+		background-color: $color-blue;
+	}
+
+	// si l'on clique sur l'enfant SVG ça clique à travers et ferme la galerie...
 	&::after {
 		content: "";
 		position: absolute;
@@ -167,24 +169,6 @@
 		right:0;
 		bottom:0;
 		left: 0;
-	}
-
-	svg {
-		display: block;
-	}
-	path {
-		fill:$color-white;
-		transition:fill .3s ease;
-	}
-
-	&:hover, &:focus {
-		background-color: $color-blue;
-		transition:background-color 0.3s ease;
-			
-		path {
-			fill:$color-black;
-			transition:fill .3s ease;
-		}
 	}
 }
 

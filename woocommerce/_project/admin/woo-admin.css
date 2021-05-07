@@ -53,6 +53,7 @@ table.wp-list-table .column-product_tag
 
 /* variation */
 #variable_product_options .notice p:nth-child(2), /* lien aide EN  */
+#variable_product_options .toolbar optgroup, /* select options variations  */
 .woocommerce_variable_attributes .options label:nth-child(2), /* option téléchargeable */
 .woocommerce_variable_attributes .options label:nth-child(3), /* option virtuel */
 .woocommerce_variable_attributes .data > div:nth-of-type(3), /* classes de livraison */
@@ -62,5 +63,11 @@ table.wp-list-table .column-product_tag
 
 {
 	display:none !important;
+}
+
+#woocommerce-product-data ul.wc-tabs li.shipping_options a::before { content: "\e006"; }
+#woocommerce-product-data ul.wc-tabs li.general_options a::before {
+	font-family: WooCommerce;
+	content: "\e900";
 }
 

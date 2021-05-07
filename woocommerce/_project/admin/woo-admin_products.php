@@ -138,6 +138,7 @@ add_filter( 'woocommerce_product_data_tabs', 'pc_woo_admin_data_tabs' );
 
 		// Général devient Tarifs
 		$tabs['general']['label'] = 'Tarifs';
+		$tabs['shipping']['label'] = 'Propriétés';
 
 		// Attributs masqué pour les produits simples
 		$tabs['attribute']['class'][] = 'hide_if_simple';

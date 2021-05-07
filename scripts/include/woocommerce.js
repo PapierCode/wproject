@@ -1,19 +1,6 @@
 jQuery(document).ready(function($){
 
-/*========================================
-=            Galerie d'images            =
-========================================*/
-
-// $('.woocommerce-product-gallery--with-images').gallery({
-// 	btnNextInner:sprite.arrow,
-// 	btnPrevInner:sprite.arrow,
-// 	btnCloseInner:sprite.cross,
-// 	moveDuration:500,
-// 	responsiveImg:true
-// });
-
-
-/*=====  FIN Galerie d'images  =====*/
+var $html = $('html');
 
 /*==============================
 =            Panier            =
@@ -169,5 +156,24 @@ if ( $input_password.length > 0 ) {
 
 
 /*=====  FIN Mot de passe  =====*/
+
+/*=========================================
+=            Images variations            =
+=========================================*/
+
+if ( $html.hasClass('is-product') ) {
+
+	var $cart = $('.cart');
+
+	if ( $cart.hasClass('variations_form') ) {
+
+		console.log($cart.data('product_variations'));
+
+	}
+
+}
+
+
+/*=====  FIN Images variations  =====*/
 
 }); // FIN jquery ready

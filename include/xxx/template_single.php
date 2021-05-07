@@ -111,7 +111,7 @@ function pc_xxx_back_link( $post ) {
 			$back_link = pc_get_page_by_custom_content( XXX_POST_SLUB );
 		}
 
-		echo '<div class="main-footer-prev"><a href="'.$back_link.'" class="button" title="Page précédente">'.pc_svg('arrow',null,'svg_block').'<span>Retour</span></a></div>';
+		echo '<div class="main-footer-prev"><a href="'.$back_link.'" class="button" title="Page précédente"><span class="ico">'.pc_svg('arrow',null,'svg_block').'<span class="txt">Retour</span></a></div>';
 
 	}
 

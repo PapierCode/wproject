@@ -39,7 +39,8 @@ defined( 'ABSPATH' ) || exit;
 
 			<?php do_action( 'woocommerce_before_checkout_shipping_form', $checkout ); ?>
 
-			<div class="woocommerce-shipping-fields__field-wrapper">
+			<?php /* [PC] + .pc_woo_checkout-fields- */ ?>
+			<div class="woocommerce-shipping-fields__field-wrapper pc-woo-checkout-fields pc-woo-checkout-fields--shipping">
 				<?php
 				$fields = $checkout->get_checkout_fields( 'shipping' );
 

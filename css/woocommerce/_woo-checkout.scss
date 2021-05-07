@@ -1,3 +1,14 @@
+/**
+*
+* Woocommerce : validation/confirmation de la commande
+*
+** Layout
+** Catégories
+** Galerie
+** Propriétés
+*
+**/
+
 
 @use "../framework/frk-variables" as *;
 @use "../framework/frk-functions" as *;
@@ -17,7 +28,6 @@
 
 .pc-woo-checkout-form {
 
-
 	@media ( min-width : em($mq-layout-xl) ) {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
@@ -32,6 +42,14 @@
 		}
 	}
 }
+.pc-woo-checkout-fields {
+	margin-top:rem(15); // idem form-row
+}
+.pc-woo-checkout-fields--billing {}
+.pc-woo-checkout-fields--shipping {}
+
+
+
 $td-width-s : 35vw;
 
 .pc-woo-checkout-total {
@@ -159,6 +177,11 @@ $td-width-s : 35vw;
 
 		td {
 			background-color:$color-red;
+			font-weight: 700;
+
+			strong {
+				font-weight: inherit;
+			}
 		}
 
 		@media ( min-width : em($mq-layout-m) ) {

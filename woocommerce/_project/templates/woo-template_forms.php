@@ -15,6 +15,9 @@
 
 add_action( 'woocommerce_before_customer_login_form', 'pc_woo_display_message_required_fields', 10 );
 add_action( 'woocommerce_before_checkout_billing_form', 'pc_woo_display_message_required_fields', 10 );
+add_action( 'woocommerce_before_edit_address_form_billing', 'pc_woo_display_message_required_fields', 10 );
+add_action( 'woocommerce_before_edit_address_form_shipping', 'pc_woo_display_message_required_fields', 10 );
+add_action( 'woocommerce_edit_account_form_start', 'pc_woo_display_message_required_fields', 10 );
 
 	function pc_woo_display_message_required_fields() {
 

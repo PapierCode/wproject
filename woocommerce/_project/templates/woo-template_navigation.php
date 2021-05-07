@@ -80,16 +80,16 @@ add_filter( 'pc_filter_header_tools', 'pc_woo_edit_header_tools' );
 		$account_title = ( is_user_logged_in() ) ? 'Mon compte' : 'Connexion';
 		$items = array_merge( array( 'account' => array(
 			'attrs' => '',
-			'html' => '<a href="'.$account_url.'" rel="nofollow" title="'.$account_title.'" class="h-tools-link"><span class="h-tools-txt">'.$account_title.'</span><span class="h-tools-ico">'.pc_svg('account').'</span></a>'
+			'html' => '<a href="'.$account_url.'" rel="nofollow" title="'.$account_title.'" class="h-tools-link"><span class="txt">'.$account_title.'</span><span class="ico">'.pc_svg('account').'</span></a>'
 		) ), $items );
 
 
 		/*----------  Panier  ----------*/
 		
 		$quantity = WC()->cart->get_cart_contents_count();
-		$cart_link = '<a href="'.wc_get_cart_url().'" rel="nofollow" title="Voir le panier" class="h-tools-link"><span class="h-tools-txt">Panier</span><span class="h-tools-ico">'.pc_svg('cart').'</span>';
-		$cart_link .= ( $quantity > 0 ) ? '<span class="h-tools-cart-counter">'.$quantity.'</span>' : '';
+		$cart_link = '<a href="'.wc_get_cart_url().'" rel="nofollow" title="Voir le panier" class="h-tools-link"><span class="txt">Panier</span><span class="ico">'.pc_svg('cart').'</span>';
 		$cart_link .= '</a>';
+		$cart_link .= ( $quantity > 0 ) ? '<span class="h-tools-cart-counter">'.$quantity.'</span>' : '';
 
 		$items = array_merge( array( 'cart' => array(
 			'attrs' => '',

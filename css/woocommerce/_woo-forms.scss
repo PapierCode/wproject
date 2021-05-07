@@ -1,3 +1,15 @@
+/**
+*
+* Woocommerce : formulaires
+*
+** Layout
+** Catégories
+** Galerie
+** Propriétés
+*
+**/
+
+
 @use "../framework/frk-variables" as *;
 @use "../framework/frk-functions" as *;
 @use "../framework/frk-helpers" as *;
@@ -13,6 +25,9 @@
 		label + span {
 			display: block;
 			margin-top:rem(5);
+		}
+		&:first-child {
+			margin-top:0;
 		}
 	}
 	.required {
@@ -41,9 +56,8 @@
 }
 
 .pc-woo-submit-box {
-	@extend .layout-mt;
+	@include layout(m,.5,0,0,0);
 	text-align: center;
-	margin-bottom: 0;
 }
 
 #billing_country_field,
@@ -88,6 +102,9 @@
 /*----------  Login  ----------*/
 
 .woocommerce-form-login {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 
 	> :last-child {
 		display: flex;
@@ -130,6 +147,13 @@
 
 .pc-woo-msg-required-fields {
 	margin:0;
+	
+	.is-account & { // adresses
+		margin-bottom:rem(15); // .form-row
+	}
+	.is-account .edit-account & { // compte
+		margin:rem(15,0,0,0); // .form-row
+	}
 }
 
 
@@ -166,10 +190,6 @@
 				outline-color: $color-black;
 			}
 		}
-	}
-
-	+ div > div {
-		margin-top:rem(30);
 	}
 }
 

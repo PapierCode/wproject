@@ -12,23 +12,34 @@
 
 .button {
 	display: inline-flex;
-	justify-content: center;
 	align-items: center;
-	padding:rem(10);
-	text-decoration: none;
-	transition:all .3s ease;
+
+	height: rem($button-height);
+	padding:rem(0,$button-space);
+
 	background-color: $color-black;
+
 	font-family: $font-bold;
 	font-size:rem(16);
+	text-decoration: none;
 	color:$color-white;
 	text-transform: uppercase;
+	line-height: 1;
 
-	svg + span {
-		margin-left: rem(10);
+	transition:all .3s ease;
+
+	.txt {}
+	.txt:nth-child(2) {
+		margin-left: rem($button-space);
 	}
+	.txt:nth-last-child(2) {
+		margin-right: rem($button-space);
+	}
+
+	.ico {}
 	svg {
-		width: rem(16);
-		height: rem(16);
+		width: rem($button-ico-size);
+		height: rem($button-ico-size);
 		fill:$color-white;
 		transition:fill .3s ease;
 	}
@@ -44,15 +55,20 @@
 		}
 	}	
 	
+	.active {
+		outline:none;
+	}
+	&:visited {} // ?????????
 	&:disabled {
 		background-color: transparent;
 		color: $color-grey;
-		border:$border;
+		border: $border;
 		cursor: default;
 
 		&:hover, &:focus {
-		   background-color: transparent;
-		   color: $color-grey;
+			outline:none;
+		   	background-color: transparent;
+		   	color: $color-grey;
 		}
 	}
 }
@@ -60,9 +76,15 @@
 .button--xl {
 	font-size:rem(20);
 
+	svg {
+		width: auto;
+		height: auto;
+	}
+
 	@media ( min-width : em($mq-layout-l) ) {
-		font-size: rem(22);
-		padding:rem(10,20);
+		font-size: rem(24);
+		padding:rem(0,2*$button-space);
+		height: rem(1.2*$button-height);
 	}
 }
 

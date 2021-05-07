@@ -53,7 +53,7 @@ body {
 	transition:transform .3s ease;
 
 	.search-is-open & {
-		transform:translateY(rem($h-btn-size + 20));
+		transform:translateY(rem($button-height + 2*$button-space));
 		transition:transform .3s ease;
 	}
 }

@@ -1,9 +1,26 @@
+/**
+*
+* Woocommerce : compte client
+*
+** Layout
+** Nom du client
+** Navigation
+** Commandes
+** Adresses
+*
+**/
+
+
 @use "../framework/frk-variables" as *;
 @use "../framework/frk-functions" as *;
 @use "../framework/frk-helpers" as *;
 @use "../framework/frk-mixins" as *;
 @use "../components/cpt-buttons" as *;
 
+
+/*==============================
+=            Layout            =
+==============================*/
 
 .is-account {
 
@@ -12,20 +29,45 @@
 	}
 }
 
+
+/*=====  FIN Layout  =====*/
+
+/*=====================================
+=            Nom du client            =
+=====================================*/
+
 .pc-woo-account-user-name {
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	margin:rem(10,0,0,0);
 	font-weight: 700;
 
-	span {
+	.ico {
 		margin-right: rem(10);
+		background-color: $color-yellow;
+		padding:rem(10);
+		border-radius: 50%;
 	}
 	svg {
 		fill:$color-black;
+		transform: translateY(rem(-1));
+	}
+
+	a, a:visited {
+		color:$color-black;
+		transition:all .3s ease;
+
+		&:hover, &:focus {
+			text-decoration: none;
+		   	background-color: $color-yellow;
+		   	padding:rem(0,5);
+			transition:all .3s ease;
+		}
 	}
 }
+
+
+/*=====  FIN Nom du client  =====*/
 
 /*==================================
 =            Navigation            =
@@ -33,11 +75,13 @@
 
 .nav-account-list {
 	display: flex;
-	justify-content: center;
 	flex-wrap: wrap;
+	@include layout(p,.5,0,.5,0);
+	border-top: $border;
+	border-bottom: $border;
 
 	li {
-		margin:rem(0,5,10,5);
+		margin:rem(0,10,10,0);
 		
 		&.is-active a {
 			background-color: $color-red;
@@ -52,6 +96,121 @@
 
 
 /*=====  FIN Navigation  =====*/
+
+
+/*=================================
+=            Commandes            =
+=================================*/
+
+.account-orders-table {
+	@extend .layout-mt;
+	border-spacing: 0;
+	width: 100%;
+
+	tbody {
+		display: block;
+	}	
+
+	th, td {
+		padding:.5*$space $space;
+	}
+	th {
+		position: absolute;
+		left:-666em;
+	}
+	tr {
+		display: flex;
+		flex-direction: column;
+	}
+	td {
+		display: flex;
+		border-bottom: $border;
+		margin:0 $space;
+
+		&::before {
+			content:attr(data-title);
+			flex-grow: 1;
+			font-weight: 700;
+		}
+	}
+
+	.woocommerce-orders-table__cell-order-number {
+		background-color: $color-yellow;
+		justify-content: center;
+		border-bottom: none;
+		margin:0;
+
+		&::before {
+			flex-grow: 0;
+			margin-right: rem(5);
+		}
+		a, a:visited {
+			color:$color-black;
+			font-weight: 700;
+			text-decoration: none;
+
+			&:hover, &:focus {
+			   text-decoration: underline;
+			}
+		}
+	}
+	.amount {
+		margin-right: rem(5);
+	}
+	.woocommerce-orders-table__cell-order-actions {
+		border-bottom: none;
+
+		> * {
+			margin-left:rem(5);
+		}
+	}
+
+	@media ( min-width : em($mq-layout-l) ) {
+		border-spacing:rem(10);
+		margin-left:rem(-10); // 2x
+		width: calc( 100% + #{rem(20)} );
+		max-width: none;
+
+		tbody {
+			display: table-row-group;
+		}
+		th, td {
+			padding:rem(10);
+		}
+		th {
+			position: static;
+			background-color: $color-yellow;
+		}
+		tr {
+			display: table-row;
+		}
+		td {
+			display: table-cell;
+			text-align: center;
+
+			&::before {
+				display: none;
+			}
+		}
+		.woocommerce-orders-table__cell-order-number {
+			background-color: transparent;
+			border-bottom: $border;
+		}
+		.woocommerce-orders-table__cell-order-actions {
+			border-bottom: $border;
+		}
+	}
+	@media ( min-width : em($mq-layout-mw) ) {
+		margin-left:rem(-10); // 2x
+	}
+}
+
+mark {
+	background-color: $color-yellow;
+	padding:rem(0,5);
+}
+
+/*=====  FIN Commandes  =====*/
 
 /*================================
 =            Adresses            =

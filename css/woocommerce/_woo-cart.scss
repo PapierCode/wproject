@@ -1,3 +1,14 @@
+/**
+*
+* Woocommerce : panier
+*
+** Layout
+** Catégories
+** Galerie
+** Propriétés
+*
+**/
+
 
 @use "../framework/frk-variables" as *;
 @use "../framework/frk-functions" as *;
@@ -195,14 +206,14 @@
 	flex-shrink: 0;
 	display: flex;
 	background-color: $color-black;
-	padding:rem(5);
+	padding:rem(.5*$button-space);
 	border-radius: 50%;
 	transition: all .3s ease;
 
 	svg {
 		fill:$color-white;
-		width: rem(15);
-		height: rem(15);
+		width: rem($button-ico-size);
+		height: rem($button-ico-size);
 		transition: all .3s ease;
 	}
 	&:disabled {
@@ -246,9 +257,13 @@
 
 .pc-cart {
 	width: 100%;
+	border-spacing: 0;
 
 	@media ( min-width : em($mq-layout-l) ) {
 		border-spacing:rem(10);
+		margin-left:rem(-10);
+		width: calc( 100% + #{rem(20)} );
+		max-width: none;
 	}
 }
 .pc-cart-head {
@@ -360,6 +375,21 @@
 		width:auto;
 	}
 }
+.pc-cart-variation {
+	display: inline;
+
+	&::before { content:"("; }
+	&::after { content:")"; }
+
+	> * {
+		display: inline;
+		margin:0
+	}
+	dt:nth-of-type(2) {	
+		&::before { content: ',\00a0'; }
+	}
+}
+
 .pc-cart-price, .pc-cart-quantity, .pc-cart-subtotal {
 	width: 100%;
 	display: flex;
@@ -449,7 +479,6 @@
 	.checkout-button {
 		svg {
 			transform: rotate(180deg);
-			margin-left: rem(10);
 		}
 	}
 

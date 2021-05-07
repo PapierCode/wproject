@@ -206,7 +206,7 @@ function pc_woo_display_category_single_footer() {
 		}
 
 		// affichage
-		echo '<div class="main-footer-prev"><a href="'.$back_link_url.'" class="button" title="Retour '.$back_link_text.'">'.pc_svg('arrow',null,'svg_block').'<span>'.$back_link_text.'</span></a></div>';		
+		echo '<div class="main-footer-prev"><a href="'.$back_link_url.'" class="button" title="Retour '.$back_link_text.'"><span class="ico">'.pc_svg('arrow',null,'svg_block').'</span><span class="txt">'.$back_link_text.'</span></a></div>';		
 
 
 		/*----------  Pagination  ----------*/

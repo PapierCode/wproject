@@ -75,7 +75,7 @@
 		border-bottom-width:1px;
 		border-bottom-style: solid;
 		border-bottom-color: $wysi-link-color;
-		transition:background-color 0.3s ease;
+		transition:all 0.3s ease;
 		
 		&:visited {
 			color:$wysi-link-color-visited;
@@ -89,7 +89,7 @@
 			border-bottom:none;
 			color:$wysi-link-color-hover;
 			background-color: $wysi-link-bg-color-hover;
-			transition:background-color 0.3s ease;
+			transition:all 0.3s ease;
 		}
 	}
 	
@@ -182,13 +182,13 @@
 	
 	/*=====  FIN Titres  =====*/
 
-	/*================================
+	/*===============================
 	=            Galerie            =
-	================================*/
-
+	===============================*/
+	
 	$gallery-space-s : 10;
 	$gallery-space-l : 20;
-	
+
 	.wp-gallery {
 		display:flex;
 		flex-wrap:wrap;
@@ -222,13 +222,6 @@
 	}
 	.wp-gallery-link {
 		border:none;
-		outline:2px solid transparent;
-		transition:outline-color .3s ease;
-		
-		&:hover, &:focus {
-			outline-color: $color-black;
-			transition:outline-color .3s ease;
-		}
 	}
 	
 	

@@ -157,6 +157,12 @@
 			top:$space;
 		}
 	}
+	@media ( min-width : em($mq-layout-mw) ) {
+
+		.wp-gallery {
+			top:rem($space-max);
+		}
+	}
 }
 
 

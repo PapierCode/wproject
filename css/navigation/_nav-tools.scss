@@ -36,20 +36,22 @@
 	display: flex;
 }
 .h-tools-item {
-	margin-left: rem(2*$space--h-nav);
+	display: flex;
+	align-items: center;
+	margin-left: rem(2*$button-space);
 
 	@media ( min-width : em($mq-layout-l) ) {
-		margin-left: rem(3*$space--h-nav);		
+		margin-left: rem(3*$button-space);		
 	}
 }
 
 .h-tools-item--search {
 	position: absolute;
 	top:$space;
-	right: calc( #{$space} + #{rem($h-btn-size + 20)} );
+	right: calc( #{$space} + #{rem($button-height + 20)} );
 
 	@media ( min-width : em($mq-layout-l) ) {
-		right: calc( #{$space} + #{rem($h-btn-size + 3*$space--h-nav + 85)} );
+		right: calc( #{$space} + #{rem($button-height + 3*$button-space + 85)} );
 	}
 	@media ( min-width : em($mq-layout-xl) ) {
 		position: static;
@@ -64,112 +66,27 @@
 =======================================*/
 
 .h-tools-link, .h-tools-link:visited {
-	display: inline-flex;
-	align-items: center;
-	vertical-align: middle;
-	font-family: $font-bold;
-	text-decoration: none;
+	@extend .button;
 
-	@media ( min-width : em($mq-layout-l) ) {
-		position: relative;
-		z-index: 1;
-		overflow: hidden;
-		padding-left:rem(10);
-		
-		&:before {
-			content:"";
-			position: absolute;
-			z-index: -1;
-			top:0;
-			bottom:0;
-			right:0;
-			width: rem($h-btn-size);
-			background-color: $color-black;
-			transition: all .5s ease;
-		}
-	
-		&:hover, &:focus {
-		   
-			&:before {
-				width:100%;
-				background-color: $color-blue;
-				transition: all .5s ease;
-			}
-		}
-	}
-
-}
-.h-tools-ico {
-	padding:rem(10);
-	background-color: $color-black;
-	transition: background-color .3s ease;
-
-	svg {
-		width: rem(16);
-		height: rem(16);
-		fill:$color-white;
-		transition: fill .3s ease;
+	.txt {		
+		position: absolute;
+		left:-666vw;
 	}	
 
-	// .h-tools-item--search & {
-	// 	position: relative;
-	// 	overflow: hidden;
+	@media ( min-width : em($mq-layout-l) ) {
 
-	// 	&::after {
-	// 		content:"";
-	// 		position: absolute;
-	// 		top:0;
-	// 		right: 0;
-	// 		bottom: 0;
-	// 		left: 0;
-	// 		background-color: $color-black;
-	// 		background-image:svg-load('../images/cross.svg',fill=$color-white);
-	// 		background-repeat: no-repeat;
-	// 		background-size: rem(16);
-	// 		background-position: center;
-	// 	}
-	// }
-
-	.h-tools-link:hover &, .h-tools-link:focus & {
-	   background-color: $color-blue;
-	   transition: background-color .3s ease;
-	   
-		svg {
-			fill:$color-black;
-			transition: fill .3s ease;
+		.txt {
+			position:static;
 		}
-	}
-	
-	@media ( min-width : em($mq-layout-l) ) {
-		margin-left: rem(10);
-
-		.h-tools-link:hover &, .h-tools-link:focus & {
-			background-color: $color-black;
-			
-			 svg {
-				 fill:$color-white;
-			 }
-		 }
-	}
-}
-.h-tools-txt {
-	position: absolute;
-	left:-666vw;
-	color:$color-black;
-	font-size: rem(22);
-	text-transform: uppercase;
-
-	@media ( min-width : em($mq-layout-l) ) {
-		position:static;
 	}
 }
 
 .h-tools-cart-counter {
-	display: flex;
+	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	min-width: rem($h-btn-size);
-	height: rem($h-btn-size);
+	min-width: rem($button-height);
+	height: rem($button-height);
 	padding-bottom:rem(2); // fix font wpréform
 	background-color: $color-yellow;
 	font-family: $font-regular;

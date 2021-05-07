@@ -220,7 +220,7 @@
 		.is-fullscreen & {
 			display: block;
 			width:$h-nav-w-l;
-			padding: calc( #{rem($h-btn-size)} + #{rem(2*$space-max)} ) rem($space-max) rem($space-max) rem($space-max);
+			padding: calc( #{rem($button-height)} + #{rem(2*$space-max)} ) rem($space-max) rem($space-max) rem($space-max);
 			background-color: $color-yellow;
 			transform: translateX(100%);
 			transition: transform $t-nav ease;
@@ -255,7 +255,7 @@
 			margin-left:0;
 
 			&:nth-child(n+2) {
-				margin-top:rem($space--h-nav);
+				margin-top:rem($button-space);
 			}
 		}
 	}

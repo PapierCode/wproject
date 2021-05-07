@@ -34,7 +34,8 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
-	<div class="woocommerce-billing-fields__field-wrapper">
+	<?php /* [PC] + .pc-woo-checkout-fields- */ ?>
+	<div class="woocommerce-billing-fields__field-wrapper pc-woo-checkout-fields pc-woo-checkout-fields--billing">
 		<?php
 		$fields = $checkout->get_checkout_fields( 'billing' );
 

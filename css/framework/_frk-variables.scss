@@ -77,18 +77,17 @@ $mq-layout-mw			: $layout-mw;
 
 /*----------  Navigation  ----------*/
 
-// header
-$space--h-nav 			: 10;
-$h-btn-size 			: 36;
-$mq-h-nav-w				: 600;
-$h-nav-w-s	 			: 80vw; // masquée
-$h-nav-w-l				: 50vw; // masquée
+$button-ico-size	 	: 16;
+$button-space 			: 10;
+$button-height 			: $button-ico-size + 2 * $button-space;
 
-// main
-$mq-main-f-nav-l		: 600;
+// largeur navigation masquée
+$h-nav-w-s	 			: 80vw;
+$h-nav-w-l				: 50vw;
 
-// footer
-$mq-f-nav-l				: 600;
+$mq-h-nav-w				: 600; // header
+$mq-main-f-nav-l		: 600; // main
+$mq-f-nav-l				: 600; // footer
 
 
 /*----------  Divers  ----------*/

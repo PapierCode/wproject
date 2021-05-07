@@ -148,12 +148,12 @@ h1 {
 	display: inline-block;
 	vertical-align: middle;
 	background-color: $color-black;
-	padding: rem(5);
+	padding: rem(.5*$button-space);
 	border-radius: 50%;
 
 	svg {
-		width: rem(15);
-		height: rem(15);
+		width: rem($button-ico-size);
+		height: rem($button-ico-size);
 		fill:$color-white;
 		transform: rotate(180deg) translateX(-1px);
 	}
