@@ -66,6 +66,8 @@ add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product
 	add_action( 'woocommerce_before_single_product_summary', 'woocommerce_output_all_notices', 20 );
 	// images (content-single-product.php)
 	add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_gallery', 30 );
+	// json variations (content-single-product.php)
+	add_action( 'woocommerce_before_single_product_summary', 'pc_woo_display_product_single_variations_json', 40 );
 
 	// Container prix & ajout au panier start (content-single-product.php)
 	add_action( 'woocommerce_single_product_summary', 'pc_woo_display_product_single_cart_wrapper_start', 5 );
@@ -245,52 +247,69 @@ add_filter( 'woocommerce_reset_variations_link', 'pc_woo_reset_variations_link' 
 =            Galerie            =
 ===============================*/
 
-function pc_woo_get_gallery_item_datas( $img_id, $size = 'product-single-s' ) {
+/*----------  Image datas  ----------*/
+
+function pc_woo_get_gallery_item_datas( $img_id, $size = 'woocommerce_thumbnail' ) {
 		
 	$datas = array(
+		'id' => $img_id,
 		'urls' => array( 
-			$size => wp_get_attachment_image_url( $img_id ,$size ),
+			$size => wp_get_attachment_image_url( $img_id, $size ),
 			'gl-m' => wp_get_attachment_image_url( $img_id, 'gl-m' ),
 			'gl-l' => wp_get_attachment_image_url( $img_id, 'gl-l' )
 		),
 		'caption' => wp_get_attachment_caption( $img_id ),
-		'alt' => get_post_meta( $img_id, '_wp_attachment_image_alt', true ),
-		'thumb' => $size,
+		'alt' => get_post_meta( $img_id, '_wp_attachment_image_alt', true )
 	);
 
-	if ( $size == 'product-single-s' ) {
-		$datas['urls']['product-single-l'] = wp_get_attachment_image_url( $img_id, 'product-single-l' );
+	if ( $size == 'woocommerce_thumbnail' ) {
+		$datas['urls']['woocommerce_single'] = wp_get_attachment_image_url( $img_id, 'woocommerce_single' );
 	}
-
+	
 	return $datas;
 
 }
 
-function pc_woo_display_gallery_item( $item_datas ) {
 
-	global $images_sizes;
+/*----------  Affichage item liste  ----------*/
 
-	echo '<li class="wp-gallery-item">';
-		echo '<a class="wp-gallery-link" href="'.$item_datas['urls']['gl-l'].'" data-gl-caption="'.$item_datas['caption'].'" data-gl-responsive="'.$item_datas['urls']['gl-m'].'" title="Afficher l\'image">';
+function pc_woo_get_gallery_item_html( $datas ) {
 
-			if ( isset($item_datas['urls']['product-single-s']) ) {
+	global $images_sizes, $product_single_images_sizes;
 
-				$img_tag_srcset = $item_datas['urls']['product-single-s'].' 400w, '.$item_datas['urls']['product-single-l'].' 700w';
-				$img_tag_sizes = '(max-width:400px) 400px, (min-width:401px) and (max-width:700px) 700px, 400px';
+	$item = '<li class="wp-gallery-item" data-id="'.$datas['id'].'">';
+	$item .= '<a class="wp-gallery-link" href="'.$datas['urls']['gl-l'].'" data-gl-caption="'.$datas['caption'].'" data-gl-responsive="'.$datas['urls']['gl-m'].'" title="Afficher l\'image">';
 
-				echo '<img class="wp-gallery-img" src="'.$item_datas['urls']['product-single-l'].'" alt="'.$item_datas['alt'].'" srcset="'.$img_tag_srcset.'" sizes="'.$img_tag_sizes.'" loading="lazy" />';
+	if ( isset($datas['urls']['woocommerce_thumbnail']) ) {
 
-			} else {
+		$size_s = $product_single_images_sizes['s'];
+		$size_l = $product_single_images_sizes['l'];
 
-				echo '<img class="wp-gallery-img" src="'.$item_datas['urls'][$item_datas['thumb']].'" width="'.$images_sizes[$item_datas['thumb']]['width'].'" height="'.$images_sizes[$item_datas['thumb']]['height'].'" alt="'.$item_datas['alt'].'" loading="lazy"/>';
+		$srcset = $datas['urls']['woocommerce_thumbnail'].' '.$size_l.'w, '.$datas['urls']['woocommerce_single'].' '.$size_l.'w';
+		$sizes = '(max-width:'.$size_s.'px) '.$size_s.'px, (min-width:'.($size_s+1).'px) and (max-width:'.$size_l.'px) '.$size_l.'px, '.$size_s.'px';
 
-			}
+		$item .= '<img class="wp-gallery-img" src="'.$datas['urls']['woocommerce_single'].'" alt="'.$datas['alt'].'" width="'.$size_l.'" height="'.$size_l.'" srcset="'.$srcset.'" sizes="'.$sizes.'" loading="lazy" />';
 
-		echo '<span class="wp-gallery-ico">'.pc_svg('zoom').'</span>';
-		echo '</a>';
-	echo '</li>';
+	} else {
+
+		$size_th = $product_single_images_sizes['th'];
+
+		$item .= '<img class="wp-gallery-img" src="'.$datas['urls']['woocommerce_gallery_thumbnail'].'" width="'.$size_th.'" height="'.$size_th.'" alt="'.$datas['alt'].'" loading="lazy"/>';
+
+	}
+
+	// icône
+	$item .= '<span class="wp-gallery-ico">'.pc_svg('zoom').'</span>';
+
+	$item .= '</a>';
+	$item .= '</li>';
+
+	return $item;
 
 }
+
+
+/*----------  Affichage galerie  ----------*/
 
 function pc_woo_display_product_single_gallery() {
 
@@ -302,39 +321,77 @@ function pc_woo_display_product_single_gallery() {
 		if ( $product->get_image_id() && is_object( get_post( $product->get_image_id() ) ) ) {
 
 			$image_datas = pc_woo_get_gallery_item_datas( $product->get_image_id() );
-			pc_woo_display_gallery_item( $image_datas );				
+			echo pc_woo_get_gallery_item_html( $image_datas );	
 
+			// visuels supplémentaires
+			if ( count( $product->get_gallery_image_ids() ) > 0 ) {
+	
+				foreach ( $product->get_gallery_image_ids() as $id ) {
+	
+					if ( is_object( get_post( $id ) ) ) {
+					
+						$gallery_item_datas = pc_woo_get_gallery_item_datas( $id, 'woocommerce_gallery_thumbnail' );
+						echo pc_woo_get_gallery_item_html( $gallery_item_datas );
+	
+					}
+	
+				}
+	
+			}			
+
+		// visuel par défaut
 		} else {
 
 			echo '<li class="wp-gallery-item"><img class="wp-gallery-img" src="'.get_bloginfo( 'template_directory' ).'/images/square-default.jpg" width="700" height="700" alt="" loading="lazy" /></li>';
 
 		}
 
-		// visuels supplémentaires
-		if ( count( $product->get_gallery_image_ids() ) > 0 ) {
+	echo '</ul></figure>';
 
-			foreach ( $product->get_gallery_image_ids() as $key => $id ) {
+}
 
-				if ( is_object( get_post( $id ) ) ) {
+/*----------  Affichage json variations  ----------*/
+
+function pc_woo_display_product_single_variations_json() {
+
+	global $product;
+
+	if ( 'variable' == $product->get_type() ) {
+
+		$variations = $product->get_available_variations(); 
+
+		foreach ( $variations as $variation ) {
+			
+			$variation_image_id = $variation['image_id'];
+			$variation_images = $variation['image'];
+
+			if ( $variation_image_id != $product->get_image_id() && !in_array( $variation_image_id, $product->get_gallery_image_ids() ) ) {
+
+				$variation_image_datas = array(
+					'id' => $variation_image_id,
+					'urls' => array( 
+						'woocommerce_thumbnail' => $variation_images['thumb_src'],
+						'woocommerce_single' => $variation_images['src'],
+						'gl-m' => wp_get_attachment_image_url( $variation_image_id, 'gl-m' ),
+						'gl-l' => wp_get_attachment_image_url( $variation_image_id, 'gl-l' )
+					),
+					'caption' => $variation_images['caption'],
+					'alt' => $variation_images['alt']
+				);
 				
-					$gallery_item_datas = pc_woo_get_gallery_item_datas( $id, 'gl-th' );
-					pc_woo_display_gallery_item( $gallery_item_datas );
-
-				}
+				$variations_json['variation_'.$variation_image_id] = pc_woo_get_gallery_item_html( $variation_image_datas );
 
 			}
 
 		}
+		
+		echo '<script>var woo_json_variations = '.json_encode( $variations_json, JSON_UNESCAPED_SLASHES  ).'</script>';
 
-	echo '</ul></figure>';
-
-	// if ( 'variable' == $product->get_type() ) {
-
-	// 	pc_var($product->get_variation_attributes());
-
-	// }
+	}
 
 }
+
+
 
 
 /*=====  FIN Galerie  =====*/

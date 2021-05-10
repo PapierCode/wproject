@@ -43,6 +43,7 @@ add_action( 'wp_enqueue_scripts', 'pc_woo_enqueue_scripts', 999 );
 =================================*/
 
 $shop_name = 'Boutique';
+$product_single_images_sizes = array( 's' => 400, 'l' => 700, 'th' => 200 );
 
 
 /*----------  Custom vars  ----------*/

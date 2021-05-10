@@ -161,15 +161,23 @@ if ( $input_password.length > 0 ) {
 =            Images variations            =
 =========================================*/
 
-if ( $html.hasClass('is-product') ) {
+if ( $html.hasClass('is-product') && $cart.hasClass('variations_form') ) {
 
-	var $cart = $('.cart');
+	var $gallery = $('.wp-gallery'),
+	woo_variations = $cart.data('product_variations');
 
-	if ( $cart.hasClass('variations_form') ) {
+	console.log(woo_variations);
+	//console.log(woo_json_variations);
 
-		console.log($cart.data('product_variations'));
+	Object.keys(woo_variations).forEach(function(key) {
+		if (Object.values(woo_variations[key].attributes).includes('Vert')) {
+			console.log(woo_variations[key].variation_id);
+		}
+	});
 
-	}
+	$cart.find('select').change( function() {
+		console.log($(this).val());
+	});
 
 }
 

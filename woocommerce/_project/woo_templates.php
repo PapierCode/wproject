@@ -111,37 +111,53 @@ function pc_woo_edit_html_css_class ( $css_classes ) {
 =            Images & icônes            =
 ========================================*/
 
-add_filter( 'intermediate_image_sizes_advanced', 'pc_woo_remove_images_sizes', 10 );
+/*----------  Formats d'images  ----------*/
 
-	function pc_woo_remove_images_sizes( $sizes ) {
+// thumbnail = single responsive
+add_filter( 'woocommerce_get_image_size_thumbnail', 'pc_woo_edit_image_size_thumbnail' );
 
-		$sizes_to_remove = array(
-			'woocommerce_thumbnail',
-			'woocommerce_single',
-			'woocommerce_gallery_thumbnail',
-			'shop_catalog',
-			'shop_single',
-			'shop_thumbnail'
+	function pc_woo_edit_image_size_thumbnail() {
+
+		global $product_single_images_sizes;
+
+		return array(
+			'width' => $product_single_images_sizes['s'],
+			'height' => $product_single_images_sizes['s'],
+			'crop' => 1
 		);
 
-		foreach ($sizes_to_remove as $size) {
-			unset( $sizes[$size] );
-		}
+	}
 
-		return $sizes;
+add_filter( 'woocommerce_get_image_size_single', 'pc_woo_edit_image_size_single' ); 
+
+	function pc_woo_edit_image_size_single() {
+
+		global $product_single_images_sizes;
+
+		return array(
+			'width' => $product_single_images_sizes['l'],
+			'height' => $product_single_images_sizes['l'],
+			'crop' => 1,
+		);
 
 	}
 
-add_filter( 'pc_filter_images_sizes', 'pc_woo_edit_images_sizes' );
+add_filter( 'woocommerce_get_image_size_gallery_thumbnail', 'pc_woo_edit_image_size_gallery_thumbnail' ); 
 
-	function pc_woo_edit_images_sizes( $images_sizes ) {
+	function pc_woo_edit_image_size_gallery_thumbnail() {
 
-		$images_sizes['product-single-s'] = array( 'width'=>400, 'height'=>400, 'crop'=>true );
-		$images_sizes['product-single-l'] = array( 'width'=>700, 'height'=>700, 'crop'=>true );
-		return $images_sizes;
+		global $product_single_images_sizes;
+
+		return array(
+			'width' => $product_single_images_sizes['th'],
+			'height' => $product_single_images_sizes['th'],
+			'crop' => 1,
+		);
 
 	}
 
+
+/*----------  Sprite  ----------*/
 	
 add_filter( 'pc_filter_sprite', 'pc_woo_edit_sprite' );
 

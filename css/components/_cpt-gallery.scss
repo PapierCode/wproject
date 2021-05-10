@@ -27,11 +27,6 @@
 	display: block;
 	position: relative;
 	overflow: hidden;
-	outline:2px solid transparent;
-	
-	&:hover, &:focus {
-		outline-color: $color-black;
-	}
 }
 
 .wp-gallery-ico {
