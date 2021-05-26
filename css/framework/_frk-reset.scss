@@ -131,13 +131,13 @@ button:focus {
 }
 
 ::placeholder {
-	color: $color-placeholder;
+	color: $placeholder;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: $color-placeholder;
+    color: $placeholder;
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
-    color: $color-placeholder;
+    color: $placeholder;
 }
 ::-moz-placeholder {
 	opacity: 1;

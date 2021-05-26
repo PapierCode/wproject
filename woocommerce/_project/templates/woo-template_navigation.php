@@ -130,7 +130,7 @@ add_filter( 'pc_filter_breadcrumb', 'pc_woo_edit_breadcrumb' );
 
 	function pc_woo_edit_breadcrumb( $links ) {
 
-		if ( is_shop() || is_product_category() || is_cart() || is_checkout() ) {
+		if ( is_shop() || is_product_category() || is_cart() || is_checkout() || is_product() ) {
 
 			global $shop_name;
 			$links[] = array(
@@ -146,6 +146,52 @@ add_filter( 'pc_filter_breadcrumb', 'pc_woo_edit_breadcrumb' );
 				);
 
 			}
+
+			if ( is_product() ) {
+
+				global $product;
+				$terms = get_the_terms( $product->get_id(), 'product_cat' );
+
+				if ( count( $terms ) > 0 ) {
+
+					$terms_url = array();
+					foreach ($terms as $key => $term) {
+						$terms_url[$key] = get_term_link( $term, 'product_cat' );
+					}
+					$referer = wp_get_referer();
+
+					if ( $referer && in_array( $referer, $terms_url ) ) {
+
+						$term_from_id = array_search( $referer, $terms_url );
+						$term_from = $terms[$term_from_id];
+						$term_from_parent_id = $term_from->parent;
+						
+						if ( $term_from_parent_id > 0 ) {
+							
+							$terms_from_parents = array();
+							while ( $term_from_parent_id > 0 ) {
+								$pc_term_from_parent = new PC_Term( get_term_by( 'term_taxonomy_id', $term_from_parent_id ) );
+								array_unshift( $terms_from_parents, array(
+									'name' => $pc_term_from_parent->get_card_title(),
+									'permalink' => $pc_term_from_parent->permalink
+								));
+								$term_from_parent_id = $pc_term_from_parent->parent;
+							}
+							$links = array_merge( $links, $terms_from_parents );
+
+						}
+
+						$pc_term_from = new PC_Term( $terms[$term_from_id] );
+						$links[] = array(
+							'name' => $pc_term_from->get_card_title(),
+							'permalink' => $pc_term_from->permalink
+						);
+			
+					} // FIN if $referer && in_array()
+
+				} // FIN if count $terms
+
+			} // FIN is_product()
 
 		}
 

@@ -8,6 +8,22 @@
  */
 
 
+/*=============================
+=            Titre            =
+=============================*/
+
+// sans le numéro de la page courante
+add_filter( 'woocommerce_endpoint_orders_title', 'pc_woo_edit_account_orders_title' );
+
+	function pc_woo_edit_account_orders_title( $title ) {
+
+		return __( 'Orders', 'woocommerce' );
+
+	}
+
+
+/*=====  FIN Titre  =====*/
+
 /*=====================================================
 =            Affichage nom & prénom client            =
 =====================================================*/
@@ -35,7 +51,7 @@ function pc_woo_account_subtitle() {
 =            Navigation            =
 ==================================*/
 
-add_filter ( 'woocommerce_account_menu_items', 'pc_woo_account_menu_items' );
+add_filter( 'woocommerce_account_menu_items', 'pc_woo_account_menu_items' );
 
 	function pc_woo_account_menu_items( $items ){
 

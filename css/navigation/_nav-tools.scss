@@ -17,9 +17,9 @@
 
 .h-tools {
 
-	@media ( min-width : em($mq-layout-mw) ) {
+	@media ( min-width : em($mq-layout-maw) ) {
 		position: absolute;
-		top:rem(.75*$space-max);
+		top:rem($space-v-coef*$space-max);
 		right: rem($space-max);
 	}
 }
@@ -48,10 +48,10 @@
 .h-tools-item--search {
 	position: absolute;
 	top:$space;
-	right: calc( #{$space} + #{rem($button-height + 20)} );
+	right: calc( #{$space} + #{rem($button-size + 20)} );
 
 	@media ( min-width : em($mq-layout-l) ) {
-		right: calc( #{$space} + #{rem($button-height + 3*$button-space + 85)} );
+		right: calc( #{$space} + #{rem($button-size + 3*$button-space + 85)} );
 	}
 	@media ( min-width : em($mq-layout-xl) ) {
 		position: static;
@@ -85,17 +85,17 @@
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	min-width: rem($button-height);
-	height: rem($button-height);
+	min-width: rem($button-size);
+	height: rem($button-size);
 	padding-bottom:rem(2); // fix font wpréform
-	background-color: $color-yellow;
+	background-color: $yellow;
 	font-family: $font-regular;
 	font-size: rem(22);
-	color:$color-black;
+	color:$black;
 	transition: border-color .3s ease;
 
 	.h-tools-link:hover &, .h-tools-link:focus & {
-		border-color:$color-blue;
+		border-color:$blue;
 		transition: border-color .3s ease;
 	}
 }

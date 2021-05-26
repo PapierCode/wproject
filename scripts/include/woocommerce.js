@@ -1,12 +1,17 @@
 jQuery(document).ready(function($){
 
-var $html = $('html');
+var $html = $('html'),
+$cart = $('.cart'); // add to cart, cart table,...
+$coupon_remove = $('.pc-cart-total .pc-cart-button'); // add to cart, cart table,...
+
+$coupon_remove.each( function() {
+	var html = $(this).html();
+	$(this).html( html + sprite.cross );
+} );
 
 /*==============================
 =            Panier            =
 ==============================*/
-
-var $cart = $('.cart'); // add to cart, cart table,...
 
 if ( $cart.length > 0 ) {
 
@@ -45,11 +50,11 @@ if ( $cart.length > 0 ) {
 				qtyMin = Number($qtyInput.attr('min')),
 				qtyStep = Number($qtyInput.attr('step'));	
 	
-				$qtyInput.parent().before('<div class="pc-qty no-print" aria-hidden="true"><div class="pc-qty-label">Quantité</div><button class="reset-btn pc-qty-btn pc-qty-btn--less no-print" type="button" title="Supprimer une unité">'+sprite.less+'</button><div class="pc-qty-counter">'+$qtyInput.val()+'</div><button class="reset-btn pc-qty-btn pc-qty-btn--more" type="button" title="Ajouter une unité">'+sprite.more+'</button></div>');
+				$qtyInput.parent().before('<div class="pc-woo-qty no-print" aria-hidden="true"><div class="pc-woo-qty-label">Quantité</div><button class="reset-btn pc-cart-button pc-woo-qty-btn pc-woo-qty-btn--less no-print" type="button" title="Supprimer une unité">'+sprite.less+'</button><div class="pc-woo-qty-counter">'+$qtyInput.val()+'</div><button class="reset-btn pc-cart-button pc-woo-qty-btn pc-woo-qty-btn--more" type="button" title="Ajouter une unité">'+sprite.more+'</button></div>');
 				
-				var $qtyCounter = $(this).prev().find('.pc-qty-counter'),
-				$qtyBtnLess = $(this).prev().find('.pc-qty-btn--less'),
-				$qtyBtnMore = $(this).prev().find('.pc-qty-btn--more');
+				var $qtyCounter = $(this).prev().find('.pc-woo-qty-counter'),
+				$qtyBtnLess = $(this).prev().find('.pc-woo-qty-btn--less'),
+				$qtyBtnMore = $(this).prev().find('.pc-woo-qty-btn--more');
 	
 				if ( Number($qtyInput.val()) == 1 ) {
 					$qtyBtnLess.prop('disabled',true);
@@ -107,7 +112,7 @@ if ( $cart.length > 0 ) {
 	// mise à jour panier par ajax
 	$( document.body ).on( 'updated_cart_totals', function(){
 		$cart = $('.cart');
-		if ( $('.pc-qty').length < 1 ) {
+		if ( $('.pc-woo-qty').length < 1 ) {
 			pc_custom_quantity();
 		}	
 	} );
@@ -163,23 +168,70 @@ if ( $input_password.length > 0 ) {
 
 if ( $html.hasClass('is-product') && $cart.hasClass('variations_form') ) {
 
-	var $gallery = $('.wp-gallery'),
-	woo_variations = $cart.data('product_variations');
+	var woo_variations = $cart.data('product_variations'), // datas woo (array)
+	$variations_selects = $cart.find('select'), // selects variations (jQuery object)
+	variations_current = {}, // sélection courante (object)	
+	$gallery = $('.wp-gallery'); // ul galerie (jQuery object)
 
-	console.log(woo_variations);
-	//console.log(woo_json_variations);
+	// pour supprimer le visuel d'une variation
+	var remove_image_variation = function() {
+		$gallery.find('.wp-gallery-item--variation').remove();
+	};
 
-	Object.keys(woo_variations).forEach(function(key) {
-		if (Object.values(woo_variations[key].attributes).includes('Vert')) {
-			console.log(woo_variations[key].variation_id);
-		}
+	// création des attributs de variation pour la sélection courante
+	$variations_selects.each( function() {
+		variations_current['attribute_'+$(this).attr('id')] = '';
 	});
 
-	$cart.find('select').change( function() {
-		console.log($(this).val());
-	});
+	// au changemetn dans un select
+	$variations_selects.change( function() {
 
-}
+		// ajoute la variation à la sélection courante
+		variations_current['attribute_'+$(this).attr('id')] = $(this).val();		
+	
+		// pour chaque variation de woo
+		for ( var i = 0; i < woo_variations.length; i++ ) {
+
+			var woo_variation = woo_variations[i];
+
+			// si la sélection courante correspond à une variation woo
+			if ( JSON.stringify(variations_current) === JSON.stringify(woo_variation.attributes) ) {
+
+				image_id = woo_variation.image_id; // id de l'image associée à la variation woo
+
+				// si il y'a une correspondance dans l'object custom
+				if ( image_id > 0 && pc_woo_variations.hasOwnProperty(image_id) ) {
+
+					// supprime une image de variation déjà associée
+					remove_image_variation();
+					// affiche l'image associée
+					$gallery.prepend(pc_woo_variations[image_id]);
+					// pas la peine de boucler sur les autres valeurs
+					break;
+
+				} else {
+
+					// supprime une image de variation déjà associée
+					remove_image_variation();
+
+				}
+
+			} else {
+
+				if ( $gallery.find('.wp-gallery-item--variation').length > 0 ) {
+
+					// supprime une image de variation déjà associée
+					remove_image_variation();
+
+				}
+
+			}
+
+		} // FIN for (woo_variations)
+
+	}); // FIN $variations_selects.change()
+
+} // FIN if $html.hasClass('is-product')
 
 
 /*=====  FIN Images variations  =====*/

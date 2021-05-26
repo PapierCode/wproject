@@ -9,8 +9,17 @@
     font-style: normal;
     font-weight: 700;
 	font-display: swap;
-    src: url("css/font-face/raleway-v14-latin-900.woff2") format("woff2"), 
-        url("css/font-face/raleway-v14-latin-900.woff") format("woff");
+    src: url("css/font-face/raleway-900.woff2") format("woff2"), 
+        url("css/font-face/raleway-900.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Raleway 800";
+    font-style: normal;
+    font-weight: 600;
+	font-display: swap;
+    src: url("css/font-face/raleway-800.woff2") format("woff2"), 
+        url("css/font-face/raleway-800.woff") format("woff");
 }
 
 @font-face {
@@ -18,6 +27,6 @@
     font-style: normal;
     font-weight: 600;
 	font-display: swap;
-    src: url("css/font-face/raleway-v14-latin-600.woff2") format("woff2"), 
-        url("css/font-face/raleway-v14-latin-600.woff") format("woff");
+    src: url("css/font-face/raleway-600.woff2") format("woff2"), 
+        url("css/font-face/raleway-600.woff") format("woff");
 }

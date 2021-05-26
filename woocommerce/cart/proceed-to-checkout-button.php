@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* [PC] <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-button button alt wc-forward"><?php esc_html_e( 'Proceed to checkout', 'woocommerce' ); ?></a> */
-echo '<a href="'.esc_url( wc_get_checkout_url() ).'" class="checkout-button button button--xl alt wc-forward"><span class="txt">Étape suivante</span><span class="ico">'.pc_svg('arrow').'</span></a>';
+echo '<a href="'.esc_url( wc_get_checkout_url() ).'" class="checkout-button button button--xl alt wc-forward pc-cart-submit"><span class="txt">Étape suivante</span><span class="ico">'.pc_svg('arrow').'</span></a>';

@@ -1,3 +1,11 @@
+/*----------  Généralités  ----------*/
+
+.woocommerce-layout__header, /* menu dans l'entête de tous les contenus (boite de réception,...) */
+.woocommerce-marketing-knowledgebase-card /* encart commerciaux */
+{ 
+	display:none;
+}
+
 /*----------  Menu admin  ----------*/
 
 #adminmenu #toplevel_page_woocommerce .menu-icon-generic div.wp-menu-image::before {

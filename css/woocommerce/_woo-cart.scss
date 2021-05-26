@@ -16,226 +16,6 @@
 @use "../framework/frk-mixins" as *;
 
 
-/*=======================================
-=            Ajout au panier            =
-=======================================*/
-
-.pc-woo-add-to-cart {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	border:$border;
-	padding: rem(10);
-
-	.cart {
-		width: 100%;
-		margin-top: rem(10);
-	}
-
-	@media ( min-width : em($mq-layout-m) ) {
-		flex-direction: row;
-
-		> * {
-			flex-grow: 1;
-		}
-	}
-	@media ( min-width : em($mq-layout-l) ) {
-		max-width:rem(500);
-	}
-}
-
-
-/*----------  Messages promotion & stock  ----------*/
-
-.promotion, .stock {
-	display: block;
-	padding: rem(10);
-	margin:0;
-	font-family: $font-bold;
-	text-align: center;
-}
-.promotion {
-	background-color: darken($color-blue,30%);
-}
-.stock {
-	background-color: rgba($color-black,.2);
-}
-
-
-/*----------  Bouton ajout au panier  ----------*/
-
-@mixin button-add-to-cart-s {
-	text-indent: -666em;
-	overflow: hidden;
-	width: rem(40);
-	padding-left:rem(10);
-}
-@mixin button-add-to-cart-l {
-	text-indent: 0;
-	overflow: visible;
-	width: auto;
-	padding-left: rem(40);
-}
-
-.single_add_to_cart_button {
-	background-color: $color-red;
-	color: $color-black;
-	margin-left: auto;
-	background-image:svg-load('../images/cart-more.svg',fill=$color-black);
-	background-repeat: no-repeat;
-	background-position: rem(10) center;
-	@include button-add-to-cart-s;
-	font-size: rem(18);
-
-	&:hover, &:focus {
-	   background-color: $color-blue;
-	}
-
-	@media ( min-width : em(550) ) {
-		@include button-add-to-cart-l;
-	}
-	@media ( min-width : em(700) ) {
-		@include button-add-to-cart-s;
-	}
-	@media ( min-width : em(900) ) {
-		@include button-add-to-cart-l;
-	}
-}
-
-
-/*----------  Prix  ----------*/
-
-.price {
-	display: block;
-	margin:0;
-	padding:rem(10);
-	font-family: $font-bold;
-	background-color: $color-yellow;
-	font-size: rem(18);
-	text-align: center;
-
-	// .product-type-variable .pc-woo-add-to-cart > & { // single "à partir de"
-	// 	background-color: transparent;
-	// }
-
-	del {
-		font-family: $font-regular;
-		font-size: rem(14);
-	}
-	ins {
-		text-decoration: none;
-	}
-}
-
-.price-from { // txt "à partir de"
-	font-family: $font-default;
-	font-size: rem(14);
-}
-
-
-/*----------  Type de produit  ----------*/
-
-.product-type-simple {
-
-	.cart {
-		display: flex;
-	}
-}
-
-.product-type-variable {
-
-	.woocommerce-variation-add-to-cart {
-		display: flex;
-		margin-top: rem(10);
-	}
-
-	// tableau de sélection d'une variation
-	.variations, tbody {
-		display: block;
-	}
-	tr {
-		display: flex;
-		align-items: center;
-	}
-	td.label {
-		padding:rem(10,20,10,0);
-	}
-	label {
-		text-transform: uppercase;
-		font-family: $font-bold;
-	}
-	td.value {
-		flex-grow: 1;
-	}
-
-	// description variation
-	.woocommerce-variation-description {
-		p {
-			margin:rem(10,0,0,0);
-		}
-	}
-
-	// prix variation
-	.woocommerce-variation-price {
-		margin-top:rem(10);
-	}
-}
-
-
-/*----------  Quantité  ----------*/
-
-.quantity {
-	@extend .visually-hidden;
-}
-.pc-qty-label {
-	font-family: $font-bold;
-	text-transform: uppercase;
-	margin-right: rem(20);
-}
-.pc-qty {
-	display:flex;
-	justify-content: center;
-	align-items: center;
-}
-.pc-qty-counter {
-	text-align: center;
-	min-width: rem(35);
-	font-weight: 700;
-}
-.pc-qty-btn {
-	flex-shrink: 0;
-	display: flex;
-	background-color: $color-black;
-	padding:rem(.5*$button-space);
-	border-radius: 50%;
-	transition: all .3s ease;
-
-	svg {
-		fill:$color-white;
-		width: rem($button-ico-size);
-		height: rem($button-ico-size);
-		transition: all .3s ease;
-	}
-	&:disabled {
-		opacity: .3;
-		cursor: default;
-	}
-	&:not(:disabled):hover, &:not(:disabled):focus {
-		background-color: $color-blue;
-		transition: all .3s ease;
-
-	   	svg {
-			fill:$color-black;
-			transition: all .3s ease;
-		}
-		.st &:hover, .st &:focus {
-			background-color:darken($color-blue,30%);
-		}
-	}
-}
-
-/*=====  FIN Ajout au panier  =====*/
-
 /*============================
 =            Vide            =
 ============================*/
@@ -255,17 +35,28 @@
 =            Liste des produits            =
 ==========================================*/
 
+/*----------  Global  ----------*/
+
+// table
 .pc-cart {
+	border-spacing:0;
 	width: 100%;
-	border-spacing: 0;
+
+	th, td {
+		padding:rem($cart-space);
+	}
+	tfoot {
+		td {
+			padding:0;
+		}
+	}
 
 	@media ( min-width : em($mq-layout-l) ) {
-		border-spacing:rem(10);
-		margin-left:rem(-10);
-		width: calc( 100% + #{rem(20)} );
-		max-width: none;
+		@include table-with-border-spacing( $cart-border-spacing );
 	}
 }
+
+// thead
 .pc-cart-head {
 	position: absolute;
 	left: -666em;
@@ -273,12 +64,16 @@
 	@media ( min-width : em($mq-layout-l) ) {
 		position: static;
 
+		th {
+			white-space: nowrap;
+		}
 		th:nth-child(n+2) {
-			background-color: $color-yellow;
-			padding:rem(10);
+			background-color: $woo-table-th-bg-color;
 		}
 	}
 }
+
+// tbody
 .pc-cart-body {
 	display: block;
 
@@ -287,10 +82,10 @@
 	}
 }
 
-.pc-cart-row {
+// tbody > tr
+.pc-cart-body-row {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
 
 	&:nth-child(n+2) {
 		margin-top: $space;
@@ -315,56 +110,34 @@
 	}
 }
 
+
+/*----------  Colonnes : supprimer, nom  ----------*/
+
 .pc-cart-remove, .pc-cart-name {
 	align-self: stretch;
-	padding:$space;
-	background-color: $color-yellow;
+	background-color: $woo-table-th-bg-color;
 
 	@media ( min-width : em($mq-layout-l) ) {
-		padding:rem(10);
 		background-color: transparent;
 	}
 }
+
 .pc-cart-remove {
-	display: flex;
-	align-items: flex-start;
-
-	a {
-		text-decoration: none;
-		background-color: $color-red;
-		padding: rem(5);
-		border-radius: 50%;
-
-		&:hover, &:focus {
-		   background-color: $color-blue;
-		}
-	}
-	svg {
-		width: rem(15);
-		height: rem(15);
-		max-width: none;
-	}
 
 	@media ( min-width : em($mq-layout-l) ) {
-		display:table-cell;
 		text-align: center;
-
-		a {
-			display: inline-block;
-			vertical-align: middle;
-		}
 	}
 }
+
 .pc-cart-name {
 	order:-1;
-	width: calc( 100% - #{rem(25)} - #{2*$space} );
+	width: calc( 100% - #{rem($button-ico-size + $button-space)} - #{rem(2*$cart-space)} );
 
 	a, a:visited {
 		text-decoration: none;
-		font-size: rem(18);
 		line-height: 1.1;
 		font-weight: 700;
-		color:$color-black;
+		color:$black;
 
 		&:hover, &:focus {
 		   text-decoration: underline;
@@ -375,7 +148,8 @@
 		width:auto;
 	}
 }
-.pc-cart-variation {
+
+.pc-cart-name-variation {
 	display: inline;
 
 	&::before { content:"("; }
@@ -390,11 +164,13 @@
 	}
 }
 
+
+/*----------  Colonnes : prix, quantité, total  ----------*/
+
 .pc-cart-price, .pc-cart-quantity, .pc-cart-subtotal {
 	width: 100%;
 	display: flex;
-	padding:.5*$space $space;
-	margin:0 $space;
+	margin:rem(0,2*$cart-space);
 
 	&::before {
 		content:attr(data-title);
@@ -404,8 +180,6 @@
 	@media ( min-width : em($mq-layout-l) ) {
 		display:table-cell;
 		width: auto;
-		padding:rem(10);
-		margin:0;
 		text-align: center;
 
 		&::before {
@@ -413,12 +187,14 @@
 		}
 	}
 }
+
 .pc-cart-price {}
+
 .pc-cart-quantity {
 	border-top:$border;
 	border-bottom:$border;
 
-	.pc-qty-label {
+	.pc-woo-qty-label {
 		display: none;
 	}
 
@@ -426,69 +202,118 @@
 		border:none;
 	}
 }
+
 .pc-cart-subtotal {
-	font-size: rem(18);
 	font-weight: 700;
-}
-
-.pc-cart-actions {
-	text-align: center;
-	
-	td {
-		padding-top: $space;
-	}
-
-	@media ( min-width : em($mq-layout-l) ) {
-		td {
-			padding-top:rem(10);
-		}
-	}
 }
 
 
 /*=====  FIN Liste des produits  =====*/
 
+/*===============================
+=            Actions            =
+===============================*/
+
+// .pc-cart > tfoot
+
+.pc-cart-actions {
+	@include layout(m,1,0,0,0);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	@media ( min-width : em($mq-layout-l) ) {
+		justify-content: space-between;	
+		flex-direction: row-reverse;
+	}
+}
+
+.pc-cart-actions-coupon {
+	width: 100%;
+	display: flex;
+	margin-top:$space;
+
+	input {
+		height: rem($button-size);
+	}
+
+	@media ( min-width : em($mq-layout-l) ) {
+		width:auto;
+		margin-top: 0;
+	}
+}
+
+
+/*=====  FIN Actions  =====*/
+
 /*=============================
 =            Total            =
 =============================*/
 
-.pc-cart-total {
+.pc-cart-total  {
+	@include table-with-border-spacing( $cart-border-spacing );
 	@extend .layout-mt;
-	margin:$space auto 0;
 
-	.shop_table {
-		@extend .layout-center;
-		font-size:rem(20);
-		border-spacing:rem(10);
-
-		th, td {
-			padding:rem(10,20);
-			font-size: rem(26);
-		}
-		th {
-			background-color: $color-yellow;
-		}
-		td {
-			text-align: right;
-			font-weight: 700;
-		}
-		.order-total td {
-			background-color: $color-red;
-		}
+	tr {
+		flex-direction: column;
 	}
-	.checkout-button {
-		svg {
-			transform: rotate(180deg);
-		}
+	th {
+		padding:rem($cart-space);
+		text-align: left;
+	}	
+	td {
+		padding:rem($cart-space,2*$cart-space);
+		font-weight: 700;
+		text-align: right;
 	}
 
-	@media ( min-width : em($mq-layout-l) ) {
+	@media ( min-width : em($mq-layout-m) ) {
+		width: auto;
+		margin-left:auto;
+		margin-right:auto;
+
 		
-		.shop_table {
-			margin: 0 auto;
+		th {
+			padding:rem($cart-space,2*$cart-space);
 		}
 	}
 }
 
+.pc-cart-total-coupon {
+		
+	th {
+		background-color: $green;
+
+		span:first-child {
+			font-weight: 400;
+		}
+	}
+	td {
+		.amount {
+			margin-right: rem($cart-space);
+		}
+	}
+}
+
+.pc-cart-total-price {
+	font-size: rem(22);
+
+	th {
+		background-color: $woo-table-th-bg-color;
+	}
+	td {
+		background-color: $red;
+	}
+
+	@media ( min-width : em($mq-base-font-size) ) {
+		font-size: rem(26);
+	}
+}
+
+.pc-cart-submit {
+	svg {
+		transform: rotate(180deg);
+	}
+}
 
 /*=====  FIN Total  =====*/

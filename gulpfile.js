@@ -26,9 +26,9 @@ const rename		= require( 'gulp-rename' ); // renommage fichier
 
 const jshint		= require( 'gulp-jshint' ); // recherche d'erreurs js
 const concat		= require( 'gulp-concat' ); // empile plusieurs fichiers js en un seul
-const terser		= require( 'gulp-terser' ); // minification js
+const terser		= require( 'gulp-terser' ); // minification js  
 
-    
+
 /*=====  FIN Initialisation  ======*/
 
 /*=================================

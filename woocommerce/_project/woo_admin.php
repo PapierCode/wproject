@@ -6,9 +6,10 @@
  * 
  ** Include
  ** CSS
+ ** Renommages divers
  ** Pages
  ** Suppression des étiquettes
- ** Renommage menu admin
+ ** Menu admin
  ** Menus
  * 
  */
@@ -41,6 +42,25 @@ add_action( 'admin_enqueue_scripts', 'pc_woo_admin_enqueue_scripts', 999 );
  
  
 /*=====  FIN CSS  =====*/
+
+/*=========================================
+=            Renommages divers            =
+=========================================*/
+
+add_filter( 'gettext', 'pc_woo_admin_edit_gettext', 10, 3 );
+
+	function pc_woo_admin_edit_gettext( $translation, $text, $domain ) {
+
+		if ( is_admin() && $text == 'WooCommerce Status' ) {
+			$translation = 'E-commerce';
+		}
+
+		return $translation;
+
+	}
+
+
+/*=====  FIN Renommages divers  =====*/
 
 /*=============================
 =            Pages            =
@@ -170,16 +190,17 @@ add_action('init', 'pc_woo_disable_product_tag', 999 );
 
 /*=====  FIN Suppression des étiquettes  =====*/
 
-/*============================================
-=            Renommage menu admin            =
-============================================*/
-
+/*==================================
+=            Menu admin            =
+==================================*/
 
 add_action( 'admin_menu', 'pc_woo_rename_admin_menu' );
 
 	function pc_woo_rename_admin_menu() {
 
-		global $menu;
+		global $menu, $submenu;
+
+		// renommage WooCommerce
 		foreach ($menu as $key => $args) {
 			if ( $args[0] == 'WooCommerce' ) {
 				$menu[$key][0] = 'E-commerce';
@@ -187,10 +208,24 @@ add_action( 'admin_menu', 'pc_woo_rename_admin_menu' );
 			}
 		}
 
+
+		if ( !current_user_can( 'administrator' ) ) {
+
+			// déplacement Codes promo
+			remove_menu_page( 'edit.php?post_type=shop_coupon' );
+			$submenu['woocommerce'][] = array(
+				'Codes promo',
+				'edit_shop_coupons',
+				'edit.php?post_type=shop_coupon',
+				'Codes promo',
+			);
+
+		}
+
 	}
 
 
-/*=====  FIN Renommage menu admin  =====*/
+/*=====  FIN Menu admin  =====*/
 
 /*=============================
 =            Menus            =

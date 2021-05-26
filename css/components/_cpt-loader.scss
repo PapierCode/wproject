@@ -17,7 +17,7 @@
 	width: rem(20);
 	height: rem(20);
 	border-radius: 100%;
-	background-color: $color-white;
+	background-color: $white;
 	animation: loader-animation 1.4s infinite ease-in-out both;
 
 	&:nth-child(n+2) {

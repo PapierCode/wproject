@@ -39,7 +39,7 @@
 	height: 100vh; // modifié en js
 	background-position: center;
 	background-size: cover;
-	background-color: $color-white;
+	background-color: $white;
 }
 
 
@@ -48,7 +48,7 @@
 .header {
 	
 	.is-fullscreen & {
-		background-color: rgba($color-white,.6);
+		background-color: rgba($white,.6);
 	}
 }
 
@@ -59,7 +59,7 @@
 		max-width: none;
 	}
 
-	@media ( min-width : em($mq-layout-mw) ) {
+	@media ( min-width : em($mq-layout-maw) ) {
 		
 		.is-fullscreen & {
 			position:static;
@@ -131,7 +131,7 @@
 			min-height:calc( 100vh - #{2*$space} - #{rem(150)} ); // modifié en js, 150 : hauteur logo
 		}
 	}
-	@media ( min-width : em($mq-layout-mw) ) {
+	@media ( min-width : em($mq-layout-maw) ) {
 		.is-fullscreen & {
 			min-height:calc( 100vh - #{rem(2*$space-max)} - #{rem(150)} ); // modifié en js, 150 : hauteur logo
 		}
@@ -154,7 +154,7 @@
 .main-content, .main-footer {
 
 	.is-fullscreen & {
-		@extend .layout-mw;
+		@extend .layout-maw;
 		@extend .layout-center;
 	}
 }
@@ -181,10 +181,10 @@
 
 .h-nav-btn-box {
 
-	@media ( min-width : em($mq-layout-mw) ) {
+	@media ( min-width : em($mq-layout-maw) ) {
 		.is-fullscreen & {
 			display: block;
-			top:rem(.75*$space-max);
+			top:rem($space-v-coef*$space-max);
 			right:rem($space-max);
 		}
 	}
@@ -195,7 +195,7 @@
 
 .h-nav {
 
-	@media ( min-width : em($mq-layout-mw) ) {
+	@media ( min-width : em($mq-layout-maw) ) {
 
 		.is-fullscreen & {
 			position: absolute;
@@ -206,7 +206,7 @@
 		}
 		.is-fullscreen.h-nav-is-open & {
 			width: 100%;
-			background-color: rgba($color-black,.6);
+			background-color: rgba($black,.6);
 			cursor: pointer;
 			transition:background-color $t-nav ease;
 		}
@@ -215,13 +215,13 @@
 
 .h-nav-inner {
 
-	@media ( min-width : em($mq-layout-mw) ) {
+	@media ( min-width : em($mq-layout-maw) ) {
 
 		.is-fullscreen & {
 			display: block;
-			width:$h-nav-w-l;
-			padding: calc( #{rem($button-height)} + #{rem(2*$space-max)} ) rem($space-max) rem($space-max) rem($space-max);
-			background-color: $color-yellow;
+			width:$header-nav-w-l;
+			padding: calc( #{rem($button-size)} + #{rem(2*$space-max)} ) rem($space-max) rem($space-max) rem($space-max);
+			background-color: $yellow;
 			transform: translateX(100%);
 			transition: transform $t-nav ease;
 		}
@@ -239,7 +239,7 @@
 
 .h-nav-list {
 
-	@media ( min-width : em($mq-layout-mw) ) {
+	@media ( min-width : em($mq-layout-maw) ) {
 
 		.is-fullscreen & {
 			display: block;
@@ -249,7 +249,7 @@
 
 .h-nav-item {
 
-    @media ( min-width : em($mq-layout-mw) ) {  
+    @media ( min-width : em($mq-layout-maw) ) {  
 
 		.is-fullscreen & {
 			margin-left:0;
@@ -263,14 +263,14 @@
 
 .h-nav-link, .h-nav-link:visited {
 
-	@media ( min-width : em($mq-layout-mw) ) {
+	@media ( min-width : em($mq-layout-maw) ) {
 
 		.is-fullscreen .is-active & {
-			background-color: $color-red;
+			background-color: $red;
 			transform:translateX(rem(-.5*$space-max));
 		}
 		.is-fullscreen &:hover, .is-fullscreen &:focus {
-			background-color: $color-white;
+			background-color: $white;
 			transform:translateX(rem(-.5*$space-max));
 		}
 	}
@@ -282,7 +282,7 @@
 
 .social-list--header {
 
-	@media ( min-width : em($mq-layout-mw) ) {
+	@media ( min-width : em($mq-layout-maw) ) {
 
 		.is-fullscreen & {
 			margin-top: $space;
@@ -316,13 +316,13 @@ h1 {
 
 	.is-fullscreen & {
 		@extend .layout-ptrbl;
-		background-color: rgba($color-white,.6);
+		background-color: rgba($white,.6);
 	}
 }
 
 .form--contact {
 
-	@media ( min-width : em($mq-layout-mw) ) {
+	@media ( min-width : em($mq-layout-maw) ) {
 		.is-fullscreen & {
 			grid-column: 1 / 6;
 		}

@@ -4,6 +4,7 @@
  * Woocommerce template : panier, validation commande, compte
  * 
  ** Modifications Wpreform
+ ** Panier
  ** Page de validation de la commande
  * 
  */
@@ -71,13 +72,56 @@ add_action( 'wp', 'pc_woo_remove_main_footer' );
 
 /*=====  FIN Modifications Wpreform  =====*/
 
+/*==============================
+=            Panier            =
+==============================*/
 
 add_filter( 'woocommerce_product_variation_title_include_attributes', function(){ return false; } );
+
+
+/*----------  Coupons  ----------*/
+
+add_filter( 'woocommerce_cart_totals_coupon_label', 'pc_woo_edit_cart_totals_coupon_label', 10, 2 );
+
+	function pc_woo_edit_cart_totals_coupon_label( $label, $coupon ) {
+
+		$label = '<span>Code promo&nbsp;: </span><span>'.$coupon->get_code().'</span>';
+		return $label;
+
+	}
+
+add_filter( 'woocommerce_cart_totals_coupon_html', 'pc_woo_edit_cart_totals_coupon_html', 10, 3 );
+
+	function pc_woo_edit_cart_totals_coupon_html( $coupon_html, $coupon, $discount_amount_html ) {
+
+		if ( is_cart() ) {
+		
+			$coupon_html = str_replace( 'woocommerce-remove-coupon', 'pc-cart-button', $coupon_html );
+			$coupon_html = str_replace( 'data', 'title="Supprimer ce coupon" data', $coupon_html );
+			$coupon_html = str_replace( '[Enlever]', '<span class="visually-hidden">Supprimer ce coupon</span>', $coupon_html );
+
+		} else {
+
+			$coupon_html = $discount_amount_html;
+
+		}
+
+		return $coupon_html;
+
+	}
+
+
+/*=====  FIN Panier  =====*/
 
 
 /*=========================================================
 =            Page de validation de la commande            =
 =========================================================*/
+
+/*----------  Pas de code promo à cette étape  ----------*/
+
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+
 
 /*----------  Adresse de livraison masquée par défaut  ----------*/
 

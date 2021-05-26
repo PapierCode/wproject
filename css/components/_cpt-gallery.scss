@@ -32,16 +32,16 @@
 .wp-gallery-ico {
 	position: absolute;
 	left:50%;
-	top:rem(-$button-height / 2);
+	top:rem(-$button-size / 2);
 	transform:translate(-50%,-50%);
-	background-color: $color-blue;
+	background-color: $blue;
 	padding:rem($button-space);
 	transition: top .4s ease;
 
 	svg {
 		width: rem($button-ico-size);
 		height: rem($button-ico-size);
-		fill:$color-black;
+		fill:$black;
 	}
 	
 	.wp-gallery-link:hover &, .wp-gallery-link:focus & {
@@ -67,8 +67,8 @@
 	overflow: hidden;
 	display:flex;
 	flex-direction: column;	
-	background-color: rgba($color-black,.8);
-	color: $color-white;
+	background-color: rgba($black,.8);
+	color: $white;
 
 	// utiliser une animation pour l'ouverture
 	// une transition ne fonctionne pas si l'élément est ajouté par le plugin
@@ -90,19 +90,15 @@
 	display: flex;
 	align-items: center;
 	padding: $space;
-
-	@media ( min-width : em($mq-layout-l) ) {
-		padding:$space/2 $space;
-	}
 }
 .gl-main {
 	height: 0;
 	flex-grow: 1;
 }
 .gl-footer {
-	padding: $space/2 $space;
+	padding: $space;
 	text-align: center;
-	background-color: rgba($color-black,.5);
+	background-color: rgba($black,.5);
 }
 
 
@@ -135,7 +131,7 @@
 	}
 
 	@media ( min-width : em($mq-layout-l) ) {
-		padding: 0 calc( #{rem($gl-btn-size)} + #{2*$space} );
+		padding: 0 calc( #{rem($button-size)} + #{2*$space} );
 	}
 }
 
@@ -150,10 +146,11 @@
 
 .gl-btn {
 	@extend .button;
+	position: relative;
 
 	&:disabled:hover, &:disabled:hover {
 		border:none;
-		background-color: $color-blue;
+		background-color: $blue;
 	}
 
 	// si l'on clique sur l'enfant SVG ça clique à travers et ferme la galerie...
@@ -188,7 +185,7 @@
 }
 .gl-btn-nav--next {
 	transform:rotate(180deg);
-	margin:0 $space/2;
+	margin:0 rem($button-space);
 
 	@media ( min-width : em($mq-layout-l) ) {
 		margin:0;
@@ -222,10 +219,7 @@
 =            Légende            =
 ===============================*/
 
-.gl-caption {
-	min-height: rem($gl-btn-size);
-	line-height: 1.3;;
-}
+.gl-caption {}
 
 
 /*=====  FIN Légende  ======*/
@@ -247,7 +241,7 @@
 		left:50%;
 		top:50%;
 		transform: translate(-50%,-50%) rotate(45deg);
-		background-color: $color-black;
+		background-color: $black;
 		width: rem(100);
 		height:rem(100);
 	}

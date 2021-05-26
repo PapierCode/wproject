@@ -18,11 +18,11 @@
 =============================*/
 
 .f-nav-list {
-	border-top:1px solid rgba($color-white,.25);
+	border-top:1px solid rgba($white,.25);
 	margin-top:$space;
 	padding-top:$space;
 
-	@media ( min-width : em($mq-f-nav-l) ) {
+	@media ( min-width : em($mq-footer-nav-l) ) {
 		border:none;
 		margin: 0;
 		padding: 0;
@@ -45,7 +45,7 @@
 
 .f-nav-link {
 	text-decoration: none;
-	color:$color-white;
+	color:$white;
 
 	&:hover, &:focus {
 		text-decoration: underline;

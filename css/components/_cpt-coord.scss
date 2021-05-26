@@ -36,7 +36,7 @@
 
 	button {
 		text-decoration: none;
-		color:$color-yellow;
+		color:$yellow;
 		font-size: rem(16);
 
 		&::before {
@@ -46,7 +46,7 @@
 			height: rem(2);
 			vertical-align: middle;
 			margin-right: rem(5);
-			background-color: $color-yellow;
+			background-color: $yellow;
 		}
 
 		&:hover, &:focus {
@@ -68,7 +68,7 @@
 	
 	a {
 		text-decoration: none;
-		color:$color-white;
+		color:$white;
 
 		&:hover, &:focus {
 		   text-decoration: underline;
@@ -97,11 +97,11 @@
 	width: rem(40);
 	height: rem(40);
 	margin-right: rem(10);
-	border:1px solid $color-white;
+	border:1px solid $white;
 	border-radius: 50%;
 
 	path {
-		fill:$color-white;
+		fill:$white;
 	}
 }
 .coord-item--phone {

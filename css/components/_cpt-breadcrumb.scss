@@ -22,6 +22,7 @@
 }
 .breadcrumb-list {
 	display: flex;
+	flex-wrap: wrap;
 }
 .breadcrumb-item {
 	display: flex;
@@ -33,12 +34,12 @@
 	}
 	&:nth-last-child(2) {
 		display: flex;
-		flex-direction: row-reverse;
+		flex-direction: reverse;
 	}
 
 	a, a:visited {
 		text-decoration: none;
-		color:$color-black;
+		color:$black;
 
 		&:hover, &:focus {
 		   text-decoration: underline;
@@ -56,7 +57,7 @@
 		}
 
 		&:last-child {
-			color:rgba($color-black,.6);
+			color:rgba($black,.6);
 		}
 		
 	}

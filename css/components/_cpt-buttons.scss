@@ -14,15 +14,15 @@
 	display: inline-flex;
 	align-items: center;
 
-	height: rem($button-height);
+	height: rem($button-size);
 	padding:rem(0,$button-space);
 
-	background-color: $color-black;
+	background-color: $black;
 
 	font-family: $font-bold;
 	font-size:rem(16);
 	text-decoration: none;
-	color:$color-white;
+	color:$white;
 	text-transform: uppercase;
 	line-height: 1;
 
@@ -38,19 +38,20 @@
 
 	.ico {}
 	svg {
+		display: block;
 		width: rem($button-ico-size);
 		height: rem($button-ico-size);
-		fill:$color-white;
+		fill:$white;
 		transition:fill .3s ease;
 	}
 
 	&:hover, &:focus {
-		background-color: $color-blue;
-		color:$color-black;
+		background-color: $blue;
+		color:$black;
 		transition:all .3s ease;
 
 		svg {
-			fill:$color-black;
+			fill:$black;
 			transition:fill .3s ease;
 		}
 	}	
@@ -61,14 +62,14 @@
 	&:visited {} // ?????????
 	&:disabled {
 		background-color: transparent;
-		color: $color-grey;
+		color: $grey;
 		border: $border;
 		cursor: default;
 
 		&:hover, &:focus {
 			outline:none;
 		   	background-color: transparent;
-		   	color: $color-grey;
+		   	color: $grey;
 		}
 	}
 }
@@ -84,15 +85,15 @@
 	@media ( min-width : em($mq-layout-l) ) {
 		font-size: rem(24);
 		padding:rem(0,2*$button-space);
-		height: rem(1.2*$button-height);
+		height: rem(1.2*$button-size);
 	}
 }
 
 .button--red {
-	background-color: $color-red;
-	color:$color-black;
+	background-color: $red;
+	color:$black;
 }
 .button--yellow {
-	background-color: $color-yellow;
-	color:$color-black;
+	background-color: $yellow;
+	color:$black;
 }

@@ -20,30 +20,79 @@
 
 	#{$type} : $t*$space $r*$space $b*$space $l*$space;
 
-	@media ( min-width : em($mq-layout-mw) ) {
-		#{$type} : rem( .75*$t*$space-max, $r*$space-max, .75*$b*$space-max, $l*$space-max )	;
+	@media ( min-width : em($mq-layout-l) ) {
+		#{$type} : $t*$space-v-coef*$space $r*$space $b*$space-v-coef*$space $l*$space;
+	}
+	@media ( min-width : em($mq-layout-maw) ) {
+		#{$type} : rem( $t*$space-v-coef*$space-max, $r*$space-max, $b*$space-v-coef*$space-max, $l*$space-max );
 	}
 
 }
 
 .layout-ptrbl	{ @include layout(); }
 .layout-prbl	{ @include layout( p, 0, 1, 1, 1 ); }
-.layout-pt 		{ @include layout( p, 1, 0, 0, 0 ); }
-.layout-pb 		{ @include layout( p, 0, 0, 1, 0 ); }
 
-.layout-mt		{ @include layout( m, 1, 0, 0, 0 ); }
-.layout-mb		{ @include layout( m, 0, 0, 1, 0 ); }
+.layout-pt {
+	padding-top : $space;
+
+	@media ( min-width : em($mq-layout-l) ) {
+		padding-top : $space-v-coef*$space;
+	}
+	@media ( min-width : em($mq-layout-maw) ) {
+		padding-top : rem( $space-v-coef*$space-max );
+	}
+}
+.layout-pb {
+	padding-bottom : $space;
+
+	@media ( min-width : em($mq-layout-l) ) {
+		padding-bottom : $space-v-coef*$space;
+	}
+	@media ( min-width : em($mq-layout-maw) ) {
+		padding-bottom : rem( $space-v-coef*$space-max );
+	}
+}
+
+.layout-mt {
+	margin-top : $space;
+
+	@media ( min-width : em($mq-layout-l) ) {
+		margin-top : $space-v-coef*$space;
+	}
+	@media ( min-width : em($mq-layout-maw) ) {
+		margin-top : rem( $space-v-coef*$space-max );
+	}
+}
+.layout-mb {
+	margin-bottom : $space;
+
+	@media ( min-width : em($mq-layout-l) ) {
+		margin-bottom : $space-v-coef*$space;
+	}
+	@media ( min-width : em($mq-layout-maw) ) {
+		margin-bottom : rem( $space-v-coef*$space-max );
+	}
+}
 
 .layout-center {
 	margin-right: auto;
 	margin-left: auto;
 }
-.layout-mw {
-	max-width:rem($layout-mw);
+.layout-maw {
+	max-width:rem($maw-layout);
 }
-.layout-txt-mw {
-	max-width:rem($txt-mw);
+.layout-maw-txt {
+	max-width:rem($maw-txt);
 }
 
 
 /*=====  FIN Layout  =====*/
+
+@mixin table-with-border-spacing( $space ) {
+
+	border-spacing:rem($space);
+	margin-left:rem(-$space); // 2x
+	width: calc( 100% + #{rem(2*$space)} );
+	max-width: none;
+
+}

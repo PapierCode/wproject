@@ -37,11 +37,11 @@ body {
 	font-family: $font-default;
 	font-size: rem($base-font-size-s);
 	line-height: $line-height-default;
-	color: $color-black;
+	color: $black;
 	
-	background-color: $color-white;
+	background-color: $white;
 
-	@media ( min-width : em($mq-layout-l) ) {
+	@media ( min-width : em($mq-base-font-size) ) {
 		font-size: rem($base-font-size-l);
 	}
 }
@@ -53,7 +53,7 @@ body {
 	transition:transform .3s ease;
 
 	.search-is-open & {
-		transform:translateY(rem($button-height + 2*$button-space));
+		transform:translateY(rem($button-size + 2*$button-space));
 		transition:transform .3s ease;
 	}
 }
@@ -68,7 +68,7 @@ body {
 /*----------  Header containers  ----------*/
 
 .header {
-	background-color: $color-orange;
+	background-color: $orange;
 }
 
 .header-inner {
@@ -77,7 +77,7 @@ body {
 	justify-content: space-between;
 	align-items: flex-end;
 	@extend .layout-ptrbl;
-	@extend .layout-mw;
+	@extend .layout-maw;
 	@extend .layout-center;
 }
 
@@ -109,8 +109,8 @@ body {
 }
 
 .main-inner {
-	@extend .layout-ptrbl;
-	@extend .layout-mw;
+	@include layout(p,1.5,1,1.5,1);
+	@extend .layout-maw;
 	@extend .layout-center;
 }
 
@@ -140,7 +140,7 @@ body {
 	border-top: $border;
 	@extend .layout-pt;
 	
-	@media ( min-width : em($mq-main-f-nav-l) ) {
+	@media ( min-width : em($mq-main-nav-l) ) {
 		display:grid;
 		grid-template-columns: repeat(2,1fr);
 	}
@@ -159,13 +159,13 @@ body {
 /*----------  Footer containers  ----------*/
 
 .footer {
-	background-color:$color-black;
-	color:$color-white;
+	background-color:$black;
+	color:$white;
 	flex-grow: 1;
 }
 
 .footer-inner {
-	@extend .layout-mw;
+	@extend .layout-maw;
 	@extend .layout-center;
 	@include layout(p,1.5,1,1,1);
 

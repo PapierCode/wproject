@@ -19,7 +19,7 @@
 .is-checkout {
 
 	.login {
-		@extend .layout-prbl;
+		@include layout(p,0,0,2,0);
 		@extend .layout-center;
 		max-width: rem(500);
 	}
@@ -69,7 +69,7 @@ $td-width-s : 35vw;
 		}
 	}
 	th {
-		background-color: $color-yellow;
+		background-color: $yellow;
 		text-align: left;
 		vertical-align: top;
 	}
@@ -176,7 +176,7 @@ $td-width-s : 35vw;
 	.order-total {
 
 		td {
-			background-color:$color-red;
+			background-color:$red;
 			font-weight: 700;
 
 			strong {
@@ -231,12 +231,12 @@ $td-width-s : 35vw;
 
 .pc-woo-thankyou-page {
 	@extend .layout-center;
-	@extend .layout-txt-mw;
+	@extend .layout-maw-txt;
 
 	td {
 
 		a, a:visited {
-			color:$color-black;
+			color:$black;
 			text-decoration: none;
 
 			&:hover, &:focus {

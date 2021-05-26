@@ -15,16 +15,16 @@
  * @version 2.3.6
  */
 
-defined( 'ABSPATH' ) || exit;
+defined( 'ABSPATH' ) || exit; ?>
 
-/* [PC] + .pc-cart-total */ ?>
-<div class="pc-cart-total cart_totals <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?>">
+<div class="cart_totals <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?>">
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-	<?php /* [PC] <h2><?php esc_html_e( 'Cart totals', 'woocommerce' ); ?></h2> */ ?>
-
-	<table cellspacing="0" class="shop_table shop_table_responsive">
+	<?php /* [PC] <h2><?php esc_html_e( 'Cart totals', 'woocommerce' ); ?></h2> */
+	
+	/* [PC] + .pc-cart-total */ ?>
+	<table cellspacing="0" class="shop_table shop_table_responsive pc-cart-total">
 
 		<?php /* [PC]
 		<tr class="cart-subtotal">
@@ -33,10 +33,19 @@ defined( 'ABSPATH' ) || exit;
 		</tr>
 		*/ ?>
 
+		<?php /* [PC]
 		<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
 			<tr class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
 				<th><?php wc_cart_totals_coupon_label( $coupon ); ?></th>
 				<td data-title="<?php echo esc_attr( wc_cart_totals_coupon_label( $coupon, false ) ); ?>"><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
+			</tr>
+		<?php endforeach; ?>
+		*/ ?>
+		<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) :
+			/* [PC] + .pc-cart-total-coupon */ ?>
+			<tr class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?> pc-cart-total-coupon">
+				<th><?php wc_cart_totals_coupon_label( $coupon ); ?></th>
+				<td data-title="Code promo : <?php echo esc_attr( sanitize_title( $code ) ); ?>"><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
 			</tr>
 		<?php endforeach; ?>
 
@@ -96,9 +105,10 @@ defined( 'ABSPATH' ) || exit;
 		}
 		?>
 
-		<?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
-
-		<tr class="order-total">
+		<?php do_action( 'woocommerce_cart_totals_before_order_total' );
+		
+		/* [PC] + .pc-cart-total-price */ ?>
+		<tr class="order-total pc-cart-total-price">
 			<th><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
 			<?php /* [PC] <td data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td> */ ?>
 			<td data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?= WC()->cart->get_cart_total(); ?></td>

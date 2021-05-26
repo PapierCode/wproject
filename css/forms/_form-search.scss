@@ -12,10 +12,10 @@
 
 .form-search-box {
 	position: absolute;
-	top:rem(-($button-height + 2*$button-space));
+	top:rem(-($button-size + 2*$button-space));
 	left:0;
 	right: 0;
-	background-color: $color-yellow;
+	background-color: $yellow;
 	display: flex;
 	align-items: flex-end;
 }
@@ -23,10 +23,10 @@
 .form-search-box-inner {
 	padding:rem($button-space) $space;
 	width: 100%;
-	@extend .layout-mw;
+	@extend .layout-maw;
 	@extend .layout-center;
 
-	@media ( min-width : em($mq-layout-mw) ) {
+	@media ( min-width : em($mq-layout-maw) ) {
 		padding: rem(10,$space-max);
 	}
 }
@@ -51,7 +51,7 @@
 	max-width: rem(300);
 	padding-top: 0;
 	padding-bottom: 0;
-	height: rem($button-height);
+	height: rem($button-size);
 }
 .form-search-submit {
 	flex-shrink: 0;

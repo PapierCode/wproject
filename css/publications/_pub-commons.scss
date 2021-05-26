@@ -20,7 +20,7 @@
 ==========================================*/
 
 h1 {
-	color:$color-black;
+	color:$black;
 	font-family: $font-bold;
 	font-weight: 900;
 
@@ -76,7 +76,7 @@ h1 {
 	   
 		&::before {
 			transform:scale(1);
-			background-color: $color-blue;
+			background-color: $blue;
 			transition:all .3s ease;
 		}
 	}
@@ -112,7 +112,7 @@ h1 {
 }
 
 .st-link {
-	color:$color-black;
+	color:$black;
 	text-decoration: none;
 
 	&::after {
@@ -147,14 +147,14 @@ h1 {
 .st-desc-ico {
 	display: inline-block;
 	vertical-align: middle;
-	background-color: $color-black;
+	background-color: $black;
 	padding: rem(.5*$button-space);
 	border-radius: 50%;
 
 	svg {
 		width: rem($button-ico-size);
 		height: rem($button-ico-size);
-		fill:$color-white;
+		fill:$white;
 		transform: rotate(180deg) translateX(-1px);
 	}
 }
@@ -164,21 +164,21 @@ h1 {
 	margin-top:auto;
 	display: inline-flex;
 	align-items: center;
-	background-color: $color-black;
+	background-color: $black;
 	padding:rem(5,10);
 }
 .st-read-more-ico {
 	margin-right: rem(5);
 
 	svg {
-		fill:$color-white;
+		fill:$white;
 	}
 }
 .st-read-more-txt {
 	font-size:rem(16);
 	text-transform: uppercase;
 	font-family: $font-bold;
-	color:$color-white;
+	color:$white;
 }
 
 

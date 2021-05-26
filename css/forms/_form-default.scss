@@ -91,10 +91,10 @@ textarea {
 	padding:rem(10);
 	border: $border;
 
-	&.error { border-color: $color-msg-error; }
+	&.error { border-color: $msg-error; }
 	&:focus {
 		outline: none;
-		border-color: $color-black;
+		border-color: $black;
 	}
 }
 
@@ -111,7 +111,7 @@ select {
 		right: 1px;
 		bottom:1px;
 		width: rem(20);
-		background-color: $color-white;
+		background-color: $white;
 	}
 }
 
@@ -135,12 +135,12 @@ input[type="checkbox"] {
 	}
 	&:focus + * {
 		&::before {
-			outline-color: $color-black;
+			outline-color: $black;
 		}
 	}
 	&:checked + * {	
 		&::before {
-			background-color: $color-red;
+			background-color: $red;
 		}
 	}
 }

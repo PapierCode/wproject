@@ -25,7 +25,7 @@
 .is-account {
 
 	.main-content-inner {
-		@extend .layout-txt-mw;
+		@extend .layout-maw-txt;
 	}
 }
 
@@ -44,25 +44,13 @@
 
 	.ico {
 		margin-right: rem(10);
-		background-color: $color-yellow;
+		background-color: $yellow;
 		padding:rem(10);
 		border-radius: 50%;
 	}
 	svg {
-		fill:$color-black;
+		fill:$black;
 		transform: translateY(rem(-1));
-	}
-
-	a, a:visited {
-		color:$color-black;
-		transition:all .3s ease;
-
-		&:hover, &:focus {
-			text-decoration: none;
-		   	background-color: $color-yellow;
-		   	padding:rem(0,5);
-			transition:all .3s ease;
-		}
 	}
 }
 
@@ -84,11 +72,11 @@
 		margin:rem(0,10,10,0);
 		
 		&.is-active a {
-			background-color: $color-red;
-			color:$color-black;
+			background-color: $red;
+			color:$black;
 
 			&:hover, &:focus {
-			   background-color: $color-blue;
+			   background-color: $blue;
 			}
 		}
 	}
@@ -98,9 +86,9 @@
 /*=====  FIN Navigation  =====*/
 
 
-/*=================================
-=            Commandes            =
-=================================*/
+/*===========================================
+=            Liste des commandes            =
+===========================================*/
 
 .account-orders-table {
 	@extend .layout-mt;
@@ -111,16 +99,16 @@
 		display: block;
 	}	
 
+	tr {
+		display: flex;
+		flex-direction: column;
+	}
 	th, td {
-		padding:.5*$space $space;
+		padding:rem($account-space);
 	}
 	th {
 		position: absolute;
 		left:-666em;
-	}
-	tr {
-		display: flex;
-		flex-direction: column;
 	}
 	td {
 		display: flex;
@@ -134,8 +122,8 @@
 		}
 	}
 
-	.woocommerce-orders-table__cell-order-number {
-		background-color: $color-yellow;
+	.woocommerce-orders-table__cell-order-number { // td numéro commande
+		background-color: $woo-table-th-bg-color;
 		justify-content: center;
 		border-bottom: none;
 		margin:0;
@@ -145,7 +133,7 @@
 			margin-right: rem(5);
 		}
 		a, a:visited {
-			color:$color-black;
+			color:$black;
 			font-weight: 700;
 			text-decoration: none;
 
@@ -154,32 +142,27 @@
 			}
 		}
 	}
-	.amount {
-		margin-right: rem(5);
-	}
-	.woocommerce-orders-table__cell-order-actions {
+
+	.woocommerce-orders-table__cell-order-actions { // td boutons actions
 		border-bottom: none;
 
 		> * {
-			margin-left:rem(5);
+			margin-left:rem($account-space);
 		}
 	}
 
 	@media ( min-width : em($mq-layout-l) ) {
-		border-spacing:rem(10);
-		margin-left:rem(-10); // 2x
-		width: calc( 100% + #{rem(20)} );
-		max-width: none;
+		@include table-with-border-spacing( $account-border-spacing );
 
 		tbody {
 			display: table-row-group;
 		}
 		th, td {
-			padding:rem(10);
+			padding:rem($account-space);
 		}
 		th {
 			position: static;
-			background-color: $color-yellow;
+			background-color: $woo-table-th-bg-color;
 		}
 		tr {
 			display: table-row;
@@ -192,25 +175,23 @@
 				display: none;
 			}
 		}
-		.woocommerce-orders-table__cell-order-number {
+		.woocommerce-orders-table__cell-order-number { // td numéro commande
 			background-color: transparent;
 			border-bottom: $border;
 		}
-		.woocommerce-orders-table__cell-order-actions {
+		.woocommerce-orders-table__cell-order-actions { // td boutons actions
 			border-bottom: $border;
 		}
-	}
-	@media ( min-width : em($mq-layout-mw) ) {
-		margin-left:rem(-10); // 2x
 	}
 }
 
 mark {
-	background-color: $color-yellow;
+	background-color: $woo-table-th-bg-color;
 	padding:rem(0,5);
 }
 
-/*=====  FIN Commandes  =====*/
+
+/*=====  FIN Liste des commandes  =====*/
 
 /*================================
 =            Adresses            =
@@ -219,7 +200,7 @@ mark {
 address {
 
 	.is-account & {
-		margin-bottom: rem(10);
+		margin-bottom: rem($account-space);
 	}
 }
 

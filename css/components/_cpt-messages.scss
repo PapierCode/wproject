@@ -25,7 +25,7 @@
 	align-items: center;
 
 	&.msg--block {
-		background-color:$color-msg-default;
+		background-color:$msg-default;
 	}
 
 	@media ( min-width : em($mq-layout-m) ) {
@@ -41,18 +41,18 @@
 	width: rem(30);
 	height: rem(30);
 	border-radius: 50%;
-	background-color: $color-msg-default;
+	background-color: $msg-default;
 	margin-right:rem(10);
 
 	svg {
-		fill: $color-white;
+		fill: $white;
 	}
 
 	.msg--block & {
-		background-color:$color-white;
+		background-color:$white;
 
 		svg {
-			fill: $color-msg-default;
+			fill: $msg-default;
 		}
 	}
 }
@@ -65,17 +65,17 @@
 ==============================*/
 
 .msg--error {
-	color:$color-msg-error;
+	color:$msg-error;
 
 	.msg-ico {
-		background-color:$color-msg-error;
+		background-color:$msg-error;
 	}
 
 	&.msg--block {
-		background-color:$color-msg-error;
+		background-color:$msg-error;
 		
 		svg {
-			fill: $color-msg-error;
+			fill: $msg-error;
 		}
 	}
 }
@@ -88,17 +88,17 @@
 ==================================*/
 
 .msg--success {
-	color:$color-msg-success;
+	color:$msg-success;
 	
 	.msg-ico {
-		background-color:$color-msg-success;
+		background-color:$msg-success;
 	}
 
 	&.msg--block {
-		background-color:$color-msg-success;
+		background-color:$msg-success;
 
 		svg {
-			fill: $color-msg-success;
+			fill: $msg-success;
 		}
 	}
 }
@@ -112,13 +112,13 @@
 
 .msg--block {
 	padding:rem(10);
-	color:$color-white;
+	color:$white;
 
 	.msg-ico {
-		background-color:$color-white;
+		background-color:$white;
 	}
 	a, a:visited {
-		color:$color-white;
+		color:$white;
 	}
 
 }

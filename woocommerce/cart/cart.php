@@ -33,7 +33,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<th class="product-price"><?php esc_html_e( 'Price', 'woocommerce' ); ?></th>
 				<th class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
 				<?php /* [PC] <th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th> */ ?>
-				<th class="product-subtotal">Total</th>
+				<th class="product-subtotal">Sous-Total</th>
 			</tr>
 		</thead>
 		<?php /* [PC] + .pc-cart-body */ ?>
@@ -49,7 +49,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 					$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 					
 					/* [PC] + .pc-cart-row */ ?>
-					<tr class="woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?> pc-cart-row">
+					<tr class="woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?> pc-cart-body-row">
 
 						<?php /* [PC] + .pc-cart-remove */ ?>
 						<td class="product-remove pc-cart-remove">
@@ -58,7 +58,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 									'woocommerce_cart_item_remove_link',
 									sprintf(
 										/* [PC] '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>', */
-										'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s" title="Retirer ce produit du panier">'.pc_svg('cross').'</a>',
+										'<a href="%s" class="remove pc-cart-button" aria-label="%s" data-product_id="%s" data-product_sku="%s" title="Retirer ce produit du panier"><span class="visually-hidden">Supprimer</span>'.pc_svg('cross').'</a>',
 										esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 										esc_html__( 'Remove this item', 'woocommerce' ),
 										esc_attr( $product_id ),
@@ -129,7 +129,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						?>
 						</td>
 
-						<?php /* [PC] + . pc-cart-subtotal */ ?>
+						<?php /* [PC] + .pc-cart-subtotal */ ?>
 						<td class="product-subtotal pc-cart-subtotal" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">
 							<?php
 								echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
@@ -143,23 +143,35 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 			<?php do_action( 'woocommerce_cart_contents' ); ?>
 
-			</tr>
-			
-		<?php /* [PC] + */ ?>
 		</tbody>
-		<tfoot class="pc-cart-actions">
+		<tfoot> <?php /* [PC] + */ ?>
 
 			<tr>
 				<td colspan="6" class="actions">
 
-					<?php if ( wc_coupons_enabled() ) { ?>
-						<div class="coupon">
-							<label for="coupon_code"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>
+					<?php /* [PC] + div */ ?>
+					<div class="pc-cart-actions">
+
+					<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
+
+					<?php if ( wc_coupons_enabled() ) {
+						 /* [PC] + .pc-cart-actions-coupon */ ?>
+						<div class="coupon pc-cart-actions-coupon">
+
+							<?php /* [PC] + visually-hidden */ ?>
+							<label for="coupon_code" class="visually-hidden"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>							
+							<input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" />
+							
+							<?php /* [PC] <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>*/ ?>
+							<button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><span class="txt">Appliquer</span></button>
+
 							<?php do_action( 'woocommerce_cart_coupon' ); ?>
+
 						</div>
 					<?php } ?>
 
-					<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
+					<?php /* [PC] + div */ ?>
+					</div>
 
 					<?php do_action( 'woocommerce_cart_actions' ); ?>
 
@@ -167,10 +179,9 @@ do_action( 'woocommerce_before_cart' ); ?>
 				</td>
 			</tr>
 
-			<?php do_action( 'woocommerce_after_cart_contents' );
-		
-		/* [PC] + */ ?>
-		</tfoot>
+			<?php do_action( 'woocommerce_after_cart_contents' ); ?>
+
+		</tfoot> <?php /* [PC] + */ ?>
 
 	</table>
 	<?php do_action( 'woocommerce_after_cart_table' ); ?>
@@ -178,7 +189,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 <?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 
-<div class="cart-collaterals">
+<?php /* [PC] <div class="cart-collaterals"> */ ?>
 	<?php
 		/**
 		 * Cart collaterals hook.
@@ -188,6 +199,6 @@ do_action( 'woocommerce_before_cart' ); ?>
 		 */
 		do_action( 'woocommerce_cart_collaterals' );
 	?>
-</div>
+<?php /* [PC] </div> */ ?>
 
 <?php do_action( 'woocommerce_after_cart' ); ?>

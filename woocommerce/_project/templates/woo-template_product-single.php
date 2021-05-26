@@ -132,43 +132,13 @@ function pc_woo_display_product_single_main_content_inner_end() {
 =            Entête            =
 ==============================*/
 
-function pc_woo_display_product_single_categories() {
-
-	global $product;
-	$terms = get_the_terms( $product->get_id(), 'product_cat' );
-
-	if ( count( $terms ) > 0 ) {
-
-		// suppression des catégories avec enfant(s)
-		foreach ( $terms as $key => $term ) {
-			$term_childrens = get_term_children( $term->term_id, 'product_cat' );
-			if ( count( $term_childrens ) > 0 ) {
-				unset( $terms[$key] );
-			}
-		}
-
-		$prefix = ( count( $terms ) > 1 ) ? 'Catégories' : 'Catégorie';
-
-		echo '<dl class="related-product-cat"><dt class="related-product-cat-title">'.$prefix.'&nbsp;: </dt>';
-			foreach ( $terms as $key => $term ) {
-				echo '<dd class="related-product-cat-item">';
-					echo '<a href="'.get_term_link( $term, 'product_cat' ).'" class="related-product-cat-link" title="Voir la catégorie '.$term->name.'">'.$term->name.'</a>';
-					if ( $key + 1 != count( $terms ) ) { echo ', '; } else { echo '.'; }
-				echo '</dd>';
-			}
-		echo '</dl>';
-
-	}
-	
-}
-
 function pc_woo_display_product_single_header() {
 
 	global $product;
 
 	echo '<header class="main-header"><div class="main-header-inner">';
 
-		pc_woo_display_product_single_categories();
+		pc_display_breadcrumb();
 
 		echo '<h1><span>'.$product->get_title().'</span></h1>';
 
@@ -273,11 +243,14 @@ function pc_woo_get_gallery_item_datas( $img_id, $size = 'woocommerce_thumbnail'
 
 /*----------  Affichage item liste  ----------*/
 
-function pc_woo_get_gallery_item_html( $datas ) {
+function pc_woo_get_gallery_item_html( $datas, $variation = false ) {
 
 	global $images_sizes, $product_single_images_sizes;
 
-	$item = '<li class="wp-gallery-item" data-id="'.$datas['id'].'">';
+	$item_class = 'wp-gallery-item';
+	if ( $variation ) { $item_class .= ' wp-gallery-item--variation'; }
+
+	$item = '<li class="'.$item_class.'" data-id="'.$datas['id'].'">';
 	$item .= '<a class="wp-gallery-link" href="'.$datas['urls']['gl-l'].'" data-gl-caption="'.$datas['caption'].'" data-gl-responsive="'.$datas['urls']['gl-m'].'" title="Afficher l\'image">';
 
 	if ( isset($datas['urls']['woocommerce_thumbnail']) ) {
@@ -285,7 +258,7 @@ function pc_woo_get_gallery_item_html( $datas ) {
 		$size_s = $product_single_images_sizes['s'];
 		$size_l = $product_single_images_sizes['l'];
 
-		$srcset = $datas['urls']['woocommerce_thumbnail'].' '.$size_l.'w, '.$datas['urls']['woocommerce_single'].' '.$size_l.'w';
+		$srcset = $datas['urls']['woocommerce_thumbnail'].' '.$size_s.'w, '.$datas['urls']['woocommerce_single'].' '.$size_l.'w';
 		$sizes = '(max-width:'.$size_s.'px) '.$size_s.'px, (min-width:'.($size_s+1).'px) and (max-width:'.$size_l.'px) '.$size_l.'px, '.$size_s.'px';
 
 		$item .= '<img class="wp-gallery-img" src="'.$datas['urls']['woocommerce_single'].'" alt="'.$datas['alt'].'" width="'.$size_l.'" height="'.$size_l.'" srcset="'.$srcset.'" sizes="'.$sizes.'" loading="lazy" />';
@@ -355,6 +328,7 @@ function pc_woo_display_product_single_gallery() {
 function pc_woo_display_product_single_variations_json() {
 
 	global $product;
+	$variations_json = array();
 
 	if ( 'variable' == $product->get_type() ) {
 
@@ -379,13 +353,15 @@ function pc_woo_display_product_single_variations_json() {
 					'alt' => $variation_images['alt']
 				);
 				
-				$variations_json['variation_'.$variation_image_id] = pc_woo_get_gallery_item_html( $variation_image_datas );
+				$variations_json[$variation_image_id] = pc_woo_get_gallery_item_html( $variation_image_datas, true );
 
 			}
 
 		}
 		
-		echo '<script>var woo_json_variations = '.json_encode( $variations_json, JSON_UNESCAPED_SLASHES  ).'</script>';
+		if (count( $variations_json ) > 0 ) {
+			echo '<script>var pc_woo_variations = '.json_encode( $variations_json, JSON_UNESCAPED_SLASHES  ).'</script>';
+		}
 
 	}
 
@@ -490,9 +466,20 @@ function pc_woo_display_product_single_back_link() {
 
 	if ( is_product() ) {	
 
-		global $shop_name;
+		$wp_referer = wp_get_referer();
+			
+		if ( $wp_referer ) {
+			$back_link = $wp_referer;
+			$back_title = 'Page précédente';
+			$back_txt = 'Retour';
+		} else {
+			global $shop_name;
+			$back_link = get_the_permalink( wc_get_page_id('shop') );
+			$back_title = 'Page d\'accueil du catalogue';
+			$back_txt = $shop_name;
+		}
 
-		echo '<div class="main-footer-prev"><a href="'.get_the_permalink( wc_get_page_id('shop') ).'" class="button" title="Retour vers la boutique"><span class="ico">'.pc_svg('arrow',null,'svg_block').'</span><span class="txt">'.$shop_name.'</span></a></div>';
+		echo '<div class="main-footer-prev"><a href="'.$back_link.'" class="button" title="'.$back_title.'"><span class="ico">'.pc_svg('arrow').'</span><span class="txt">'.$back_txt.'</span></a></div>';
 
 	}
 

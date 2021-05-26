@@ -2,8 +2,7 @@
 *
 * Woocommerce : communs
 *
-** Layout
-** Résumés catégorie & produit
+** Composants
 *
 **/
 
@@ -12,9 +11,9 @@
 @use "../framework/frk-mixins" as *;
 
 
-/*==============================
-=            Layout            =
-==============================*/
+/*==================================
+=            Composants            =
+==================================*/
 
 /*----------  Titre intermédiaires  ----------*/
 
@@ -33,11 +32,43 @@
 		margin: $space 0 .5*$space 0;
 		padding-bottom: .5*$space;
 	}
-	@media ( min-width : em($mq-layout-mw) ) {
+	@media ( min-width : em($mq-layout-maw) ) {
 		margin:rem($space-max) 0 rem(.5*$space-max) 0;
 		padding-bottom: rem(.5*$space-max);
 	}
 }
 
 
-/*=====  FIN Layout  =====*/
+/*----------  Boutons  ----------*/
+
+.pc-cart-button {
+	display:inline-flex;
+	justify-content: center;
+	align-items: center;
+	vertical-align: middle;
+	text-decoration: none;
+	background-color: $black;
+	width: rem($button-ico-size + $button-space);
+	height: rem($button-ico-size + $button-space);
+	border-radius: 50%;
+	transition:background-color .3s ease;
+	
+	svg {
+		fill:$white;
+		width: rem($cart-button-ico-size);
+		height: rem($cart-button-ico-size);
+	}
+
+	&:hover, &:focus {
+	   background-color: $blue;
+	   transition:background-color .3s ease;
+
+	   svg {
+		   fill:$black;
+	   }
+	}
+
+}
+
+
+/*=====  FIN Composants  =====*/
