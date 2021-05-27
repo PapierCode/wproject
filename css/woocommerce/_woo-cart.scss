@@ -10,10 +10,8 @@
 **/
 
 
-@use "../framework/frk-variables" as *;
-@use "../framework/frk-functions" as *;
-@use "../framework/frk-helpers" as *;
-@use "../framework/frk-mixins" as *;
+@use "../variables" as *;
+@use "../helpers" as *;
 
 
 /*============================
@@ -149,21 +147,6 @@
 	}
 }
 
-.pc-cart-name-variation {
-	display: inline;
-
-	&::before { content:"("; }
-	&::after { content:")"; }
-
-	> * {
-		display: inline;
-		margin:0
-	}
-	dt:nth-of-type(2) {	
-		&::before { content: ',\00a0'; }
-	}
-}
-
 
 /*----------  Colonnes : prix, quantité, total  ----------*/
 
@@ -258,11 +241,11 @@
 		flex-direction: column;
 	}
 	th {
-		padding:rem($woo-cell-padding-v,$woo-cell-padding-h);
+		padding:rem($woo-cell-padding-v,2*$woo-cell-padding-h);
 		text-align: left;
 	}	
 	td {
-		padding:rem($woo-cell-padding-v,$woo-cell-padding-h);
+		padding:rem($woo-cell-padding-v,2*$woo-cell-padding-h);
 		font-weight: 700;
 		text-align: right;
 	}
@@ -282,7 +265,7 @@
 .pc-cart-total-coupon {
 		
 	th {
-		background-color: $green;
+		background-color: $woo-coupon-bg-color;
 
 		span:first-child {
 			font-weight: 400;

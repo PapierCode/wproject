@@ -10,11 +10,10 @@
 @use "font-face/font-face";
 
 
-/*----------  Framework  ----------*/
+/*----------  Reset  ----------*/
 
-@use "framework/frk-normalize";
-@use "framework/frk-reset";
-@use "framework/frk-helpers";
+@use "reset/frk-normalize";
+@use "reset/frk-reset";
 
 
 /*----------  Composants  ----------*/

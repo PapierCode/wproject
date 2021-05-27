@@ -24,6 +24,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<dt class="<?php echo sanitize_html_class( 'variation-' . $data['key'] ); ?>"><?php echo wp_kses_post( $data['key'] ); ?>&nbsp;: </dt>
 		<dd class="<?php echo sanitize_html_class( 'variation-' . $data['key'] ); ?>"><?php echo wp_kses_post( wpautop( $data['display'] ) ); ?></dd>
 	<?php endforeach; ?>
-</dl> */ ?>
+</dl> */
 
-<dl class="variation pc-cart-name-variation"><?php foreach ( $item_data as $data ) : ?><dt class="<?php echo sanitize_html_class( 'variation-' . $data['key'] ); ?>"><?php echo wp_kses_post( $data['key'] ); ?> </dt><dd class="<?php echo sanitize_html_class( 'variation-' . $data['key'] ); ?>"><?php echo wp_kses_post( $data['display'] ); ?></dd><?php endforeach; ?></dl>
+// à modifier aussi dans _project/templates/woo-template_tunnel.php
+echo ' (';
+$index = 1;
+foreach ( $item_data as $data ) {
+	if ( $index > 1 ) { echo ', '; }
+	echo $data['key'].'&nbsp;'.$data['display'];
+	$index++;
+}
+echo ')';
+
+?>

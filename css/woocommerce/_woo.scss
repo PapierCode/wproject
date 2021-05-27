@@ -6,9 +6,9 @@
 *
 **/
 
-@use "../framework/frk-variables" as *;
-@use "../framework/frk-functions" as *;
-@use "../framework/frk-mixins" as *;
+
+@use "../variables" as *;
+@use "../helpers" as *;
 
 
 /*==================================
@@ -68,6 +68,30 @@
 	   }
 	}
 
+}
+
+
+/*----------  Loader  ----------*/
+
+.blockOverlay {
+    background-color: rgba($white,.75)!important;
+    background-image: url("images/woo-loader.svg")!important;
+    background-position: center!important;
+    background-repeat: no-repeat!important;
+    opacity: 1!important;
+	width: auto!important;
+	height: auto!important;
+	top:rem(-10)!important;
+	right:rem(-10)!important;
+	bottom:rem(-10)!important;
+	left:rem(-10)!important;
+
+	table & {
+		top:rem(0)!important;
+		right:rem(0)!important;
+		bottom:rem(0)!important;
+		left:rem(0)!important;
+	}
 }
 
 

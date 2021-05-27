@@ -53,7 +53,7 @@ add_filter( 'pc_filter_page_schema_article_display', 'pc_woo_remove_schema_artic
 	}
 
 
-/*----------  Sans piedi de page  ----------*/
+/*----------  Sans pied de page  ----------*/
 
 add_action( 'wp', 'pc_woo_remove_main_footer' );
 
@@ -71,6 +71,36 @@ add_action( 'wp', 'pc_woo_remove_main_footer' );
 
 
 /*=====  FIN Modifications Wpreform  =====*/
+
+/*=================================
+=            Variation            =
+=================================*/
+
+add_filter( 'woocommerce_display_item_meta', 'pc_woo_display_item_meta', 10, 3 );
+
+	function pc_woo_display_item_meta( $html, $item, $args ) {
+
+		if ( is_checkout() || is_account_page() ) {
+
+		// à modifier aussi dans cart/cart-item-data.php
+
+		$html = ' (';
+		$index = 1;
+		foreach ( $item->get_formatted_meta_data() as $meta ) {
+			if ( $index > 1 ) { $html .= ', '; }
+			$html .= $meta->display_key.'&nbsp;'.$meta->value;
+			$index++;
+		}
+		$html .= ')';
+
+		}
+
+		return $html;
+
+	}
+
+
+/*=====  FIN Variation  =====*/
 
 /*==============================
 =            Panier            =

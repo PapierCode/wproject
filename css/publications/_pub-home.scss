@@ -9,9 +9,8 @@
 **/
 
 
-@use "../framework/frk-variables" as *;
-@use "../framework/frk-functions" as *;
-@use "../framework/frk-mixins" as *;
+@use "../variables" as *;
+@use "../helpers" as *;
 
 
 /*==========================================
@@ -191,7 +190,7 @@ h1 {
 	position: absolute;
 	left: 0;
 	top: 0;
-	transform:translate($space/2,$space/2);	
+	transform:translate(.5*$space,.5*$space);	
 	background-color: $white;
 	display: flex;
 	justify-content: center;
@@ -216,7 +215,7 @@ h1 {
 		}	
 	}
 	@media ( min-width : em($mq-layout-maw) ) {
-		transform:translate(rem($space-max/2),rem($space-max/2));
+		transform:translate(rem(.5*$space-max),rem(.5*$space-max));
 
 		.home-shortcut-link:hover &, .home-shortcut-link:focus & {
 			transform:translate(0,rem(.5*$space-max));	

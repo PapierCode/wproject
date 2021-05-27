@@ -10,9 +10,8 @@
 **/
 
 
-@use "../framework/frk-variables" as *;
-@use "../framework/frk-functions" as *;
-@use "../framework/frk-mixins" as *;
+@use "../variables.scss" as *;
+@use "../helpers.scss" as *;
 
 
 /*==========================================
@@ -152,6 +151,7 @@ h1 {
 	border-radius: 50%;
 
 	svg {
+		display:block;
 		width: rem($button-ico-size);
 		height: rem($button-ico-size);
 		fill:$white;

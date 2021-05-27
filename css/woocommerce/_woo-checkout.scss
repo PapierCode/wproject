@@ -10,10 +10,8 @@
 **/
 
 
-@use "../framework/frk-variables" as *;
-@use "../framework/frk-functions" as *;
-@use "../framework/frk-helpers" as *;
-@use "../framework/frk-mixins" as *;
+@use "../variables" as *;
+@use "../helpers" as *;
 
 
 .is-checkout {
@@ -27,6 +25,10 @@
 }
 
 .pc-woo-checkout-form {
+
+	.woocommerce-account-fields {
+		margin-top:rem($woo-space-form-row);
+	}
 
 	@media ( min-width : em($mq-layout-xl) ) {
 		display: grid;
@@ -42,6 +44,7 @@
 		}
 	}
 }
+
 .pc-woo-checkout-fields {
 	@extend .layout-mt;
 
@@ -76,20 +79,13 @@
 
 	th, td {
 		padding: rem($woo-cell-padding-v,$woo-cell-padding-h);
+		vertical-align: top;
 	}
 	th {
 		background-color: $woo-th-bg-color;
 		text-align: left;
-		vertical-align: top;
 	}
 	td {}
-
-	thead {
-
-		th:nth-child(2) {
-			text-align: right;
-		}
-	}
 
 	tbody {
 
@@ -98,27 +94,25 @@
 			vertical-align: top;
 			padding-top:0; 
 
-			&:first-child {
-				text-align: left;
-			}
 			&:nth-child(2) {
-				text-align: right;
 				font-weight: 700;
 			}
-		}
-	}
-
-	tfoot {
-
-		td {
-			vertical-align: middle;
-			text-align: right;
 		}
 	}
 
 
 	/*----------  Produit  ----------*/
 		
+	.product-name {
+		a, a:visited {
+			color:$black;
+			text-decoration: none;
+
+			&:hover, &:focus {
+			   text-decoration: underline;
+			}
+		}
+	}
 	.product-quantity {
 		&::before { content:"("; }
 		&::after { content:")"; }
@@ -128,6 +122,16 @@
 
 		@media ( min-width : em($mq-layout-l) ) {
 			width: auto;
+		}
+	}
+
+
+	/*----------  Code promo  ----------*/
+	
+	.cart-discount, .discount {
+
+		th {
+			background-color: $woo-coupon-bg-color;
 		}
 	}
 	
@@ -246,18 +250,6 @@
 .pc-woo-thankyou-page {
 	@extend .layout-center;
 	@extend .layout-maw-txt;
-
-	td {
-
-		a, a:visited {
-			color:$black;
-			text-decoration: none;
-
-			&:hover, &:focus {
-			   text-decoration:underline;
-			}
-		}
-	}
 
 	tfoot {
 

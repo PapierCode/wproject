@@ -11,10 +11,8 @@
 **/
 
 
-@use "../framework/frk-variables" as *;
-@use "../framework/frk-functions" as *;
-@use "../framework/frk-helpers" as *;
-@use "../framework/frk-mixins" as *;
+@use "../variables" as *;
+@use "../helpers" as *;
 @use "../components/cpt-buttons" as *;
 
 
@@ -49,6 +47,7 @@
 		border-radius: 50%;
 	}
 	svg {
+		display:block;
 		fill:$black;
 		transform: translateY(rem(-1));
 	}

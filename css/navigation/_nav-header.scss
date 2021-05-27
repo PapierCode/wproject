@@ -11,9 +11,8 @@
 **/
 
 
-@use "../framework/frk-variables" as *;
-@use "../framework/frk-functions" as *;
-@use "../framework/frk-mixins" as *;
+@use "../variables" as *;
+@use "../helpers" as *;
 @use "../components/cpt-buttons" as *;
 
 
@@ -72,7 +71,7 @@
 		z-index: 1;
 		top:50%;
 		left:50%;
-		margin: rem(-$line-h/2,0,0,-$line-w/2);
+		margin: rem(-.5*$line-h,0,0,-.5*$line-w);
 		background-color: $white;
 		transform-origin:center center 0;
 		transition:all $t-nav-btn-ico ease;
@@ -258,11 +257,11 @@
 	@media ( min-width : em($mq-header-nav-l) ) {
 
 		.is-active & {
-			transform:translateX(-$space/2);
+			transform:translateX(-.5*$space);
 			color:$black;
 		}
 		&:hover, &:focus {
-			transform:translateX(-$space/2);
+			transform:translateX(-.5*$space);
 		}
 	}
 	@media ( min-width : em($mq-layout-maw) ) {

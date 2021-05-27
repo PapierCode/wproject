@@ -7,9 +7,8 @@
 **/
 
 
-@use "../framework/frk-variables" as *;
-@use "../framework/frk-functions" as *;
-@use "../framework/frk-mixins" as *;
+@use "../variables" as *;
+@use "../helpers" as *;
 
 
 .editor {
@@ -56,8 +55,8 @@
 			margin-right: rem($wysi-space-default-s);
 		}
 		@media ( min-width : em($mq-layout-l) ) {
-			margin-left: rem(2 * $wysi-space-default-l);
-			margin-right: rem(2 * $wysi-space-default-l);
+			margin-left: rem(2*$wysi-space-default-l);
+			margin-right: rem(2*$wysi-space-default-l);
 		}
 	}
 	
@@ -262,7 +261,7 @@
 		}
 		figcaption {
 			font-style: italic;
-			margin-top: rem($wysi-space-default-l / 2);
+			margin-top: rem(.5*$wysi-space-default-l);
 		}
 	}
 
