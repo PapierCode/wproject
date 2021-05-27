@@ -177,10 +177,15 @@ $wysi-intro-font-size		: 20;
 ===================================*/
 
 $woo-space					: 10;
-$woo-border-spacing			: $woo-space; // tableaux
 
-$woo-table-th-bg-color		: $yellow;
+$woo-cell-padding-v			: $woo-space;
+$woo-cell-padding-h			: $woo-space;
+$woo-border-spacing			: $woo-space;
 
+$woo-th-bg-color			: $yellow;
+$woo-total-bg-color			: $red;
+
+$woo-space-form-row			: 15;
 
 /*----------  Ajout au panier  ----------*/
 
@@ -194,10 +199,12 @@ $atc-ico-size				: 20;
 
 /*----------  Panier  ----------*/
 
-$cart-space					: $woo-space;
-$cart-border-spacing		: $woo-border-spacing;
-
 $cart-button-ico-size		: 14;
+
+
+/*----------  Validation commande  ----------*/
+
+$checkout-td-width			: 35vw;
 
 
 /*----------  Compte  ----------*/

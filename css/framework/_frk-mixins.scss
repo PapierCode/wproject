@@ -89,10 +89,8 @@
 /*=====  FIN Layout  =====*/
 
 @mixin table-with-border-spacing( $space ) {
-
 	border-spacing:rem($space);
 	margin-left:rem(-$space); // 2x
 	width: calc( 100% + #{rem(2*$space)} );
 	max-width: none;
-
 }

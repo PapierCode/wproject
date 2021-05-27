@@ -43,7 +43,7 @@
 	width: 100%;
 
 	th, td {
-		padding:rem($cart-space);
+		padding:rem($woo-cell-padding-v,$woo-cell-padding-h);
 	}
 	tfoot {
 		td {
@@ -52,7 +52,7 @@
 	}
 
 	@media ( min-width : em($mq-layout-l) ) {
-		@include table-with-border-spacing( $cart-border-spacing );
+		@include table-with-border-spacing($woo-border-spacing);
 	}
 }
 
@@ -68,7 +68,7 @@
 			white-space: nowrap;
 		}
 		th:nth-child(n+2) {
-			background-color: $woo-table-th-bg-color;
+			background-color: $woo-th-bg-color;
 		}
 	}
 }
@@ -115,7 +115,7 @@
 
 .pc-cart-remove, .pc-cart-name {
 	align-self: stretch;
-	background-color: $woo-table-th-bg-color;
+	background-color: $woo-th-bg-color;
 
 	@media ( min-width : em($mq-layout-l) ) {
 		background-color: transparent;
@@ -131,7 +131,7 @@
 
 .pc-cart-name {
 	order:-1;
-	width: calc( 100% - #{rem($button-ico-size + $button-space)} - #{rem(2*$cart-space)} );
+	width: calc( 100% - #{rem($button-ico-size + $button-space)} - #{rem(2*$woo-cell-padding-h)} );
 
 	a, a:visited {
 		text-decoration: none;
@@ -170,7 +170,7 @@
 .pc-cart-price, .pc-cart-quantity, .pc-cart-subtotal {
 	width: 100%;
 	display: flex;
-	margin:rem(0,2*$cart-space);
+	margin:0 $space;
 
 	&::before {
 		content:attr(data-title);
@@ -251,18 +251,18 @@
 =============================*/
 
 .pc-cart-total  {
-	@include table-with-border-spacing( $cart-border-spacing );
+	@include table-with-border-spacing( $woo-border-spacing );
 	@extend .layout-mt;
 
 	tr {
 		flex-direction: column;
 	}
 	th {
-		padding:rem($cart-space);
+		padding:rem($woo-cell-padding-v,$woo-cell-padding-h);
 		text-align: left;
 	}	
 	td {
-		padding:rem($cart-space,2*$cart-space);
+		padding:rem($woo-cell-padding-v,$woo-cell-padding-h);
 		font-weight: 700;
 		text-align: right;
 	}
@@ -274,7 +274,7 @@
 
 		
 		th {
-			padding:rem($cart-space,2*$cart-space);
+			padding:rem($woo-cell-padding-v,$woo-cell-padding-h);
 		}
 	}
 }
@@ -290,7 +290,8 @@
 	}
 	td {
 		.amount {
-			margin-right: rem($cart-space);
+			margin-right: rem(5);
+			vertical-align: middle;
 		}
 	}
 }
@@ -299,10 +300,10 @@
 	font-size: rem(22);
 
 	th {
-		background-color: $woo-table-th-bg-color;
+		background-color: $woo-th-bg-color;
 	}
 	td {
-		background-color: $red;
+		background-color: $woo-total-bg-color;
 	}
 
 	@media ( min-width : em($mq-base-font-size) ) {

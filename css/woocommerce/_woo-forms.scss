@@ -25,7 +25,7 @@ Validation commande
 	
 	// container label + champ
 	.form-row {
-		margin:rem(15,0,0,0);
+		margin:rem($woo-space-form-row,0,0,0);
 
 		label + span {
 			display: block;
@@ -75,10 +75,10 @@ Validation commande
 	margin:0;
 	
 	.is-account & { // adresses
-		margin-bottom:rem(15); // .form-row
+		margin-bottom:rem($woo-space-form-row);
 	}
 	.is-account .edit-account & { // compte
-		margin:rem(15,0,0,0); // .form-row
+		margin:rem($woo-space-form-row,0,0,0);
 	}
 }
 

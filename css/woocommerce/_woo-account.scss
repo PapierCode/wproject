@@ -123,7 +123,7 @@
 	}
 
 	.woocommerce-orders-table__cell-order-number { // td numéro commande
-		background-color: $woo-table-th-bg-color;
+		background-color: $woo-th-bg-color;
 		justify-content: center;
 		border-bottom: none;
 		margin:0;
@@ -162,7 +162,7 @@
 		}
 		th {
 			position: static;
-			background-color: $woo-table-th-bg-color;
+			background-color: $woo-th-bg-color;
 		}
 		tr {
 			display: table-row;
@@ -186,7 +186,7 @@
 }
 
 mark {
-	background-color: $woo-table-th-bg-color;
+	background-color: $woo-th-bg-color;
 	padding:rem(0,5);
 }
 
