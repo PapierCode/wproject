@@ -207,9 +207,14 @@
 	tr {
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
+
+		&:nth-child(n+2) {
+			margin-top:rem($atc-space);
+		}
 	}
 	td.label {
-		min-width: rem($atc-label-miw-s);
+		padding-right: rem($atc-space);
 	}
 	label {
 		text-transform: uppercase;

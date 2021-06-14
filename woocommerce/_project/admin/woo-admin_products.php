@@ -108,7 +108,6 @@ add_action( 'add_meta_boxes', 'pc_woo_admin_product_remove_metaboxes', 999 );
 		remove_meta_box( 'postcustom', 'product', 'normal' ); // champs personnalisés
 		remove_meta_box( 'slugdiv', 'product', 'normal' ); // slug
 		remove_meta_box( 'postexcerpt', 'product', 'normal' ); // description
-		remove_meta_box( 'commentsdiv', 'product', 'normal' ); // avis
 
 	}
 

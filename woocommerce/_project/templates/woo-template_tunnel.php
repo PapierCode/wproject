@@ -80,7 +80,7 @@ add_filter( 'woocommerce_display_item_meta', 'pc_woo_display_item_meta', 10, 3 )
 
 	function pc_woo_display_item_meta( $html, $item, $args ) {
 
-		if ( is_checkout() || is_account_page() ) {
+		if ( ( is_checkout() || is_account_page() ) && count( $item->get_formatted_meta_data() ) > 0 ) {
 
 		// à modifier aussi dans cart/cart-item-data.php
 

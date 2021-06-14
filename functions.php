@@ -26,10 +26,10 @@ add_filter( 'pc_filter_js_files', 'pc_enqueuechild_theme_js' );
 	function pc_enqueuechild_theme_js( $js_files ) {
 
 		if ( class_exists( 'woocommerce' ) ) {
-			$js_files['wpreform'] = get_bloginfo('template_directory').'/scripts/scripts.min.js'; // version sans jquery
+			$js_files['wpreform'] = get_bloginfo('template_directory').'/scripts/pc-preform.min.js'; // version sans jquery
 		}
 
-		$js_files['project'] = get_stylesheet_directory_uri().'/scripts/scripts.min.js';
+		$js_files['project'] = get_stylesheet_directory_uri().'/scripts/pc-project.min.js';
 
 		return $js_files;
 
@@ -67,3 +67,19 @@ include 'include/images.php';
 
 
 /*=====  FIN Include  =====*/
+
+
+add_filter( 'pc_filter_post_contact_fields', 'pc_contact_test' );
+
+	function pc_contact_test( $post_contact_fields ) {
+
+		$post_contact_fields['fields'][] = array(
+			'type'      		=> 'text',
+			'id'        		=> 'truc',
+			'label'     		=> 'Truc',
+			'attr'				=> 'readonly',
+			'css'       		=> 'width:100%',
+		);
+		return $post_contact_fields;
+
+	}

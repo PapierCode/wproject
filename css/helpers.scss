@@ -111,6 +111,62 @@
 =            Classes utiles            =
 ======================================*/
 
+/*----------  Visually hidden  ----------*/
+
+.visually-hidden {
+	position: absolute;
+	overflow: hidden;
+	height: 1px;
+	width: 1px;
+	margin: 0;
+	padding: 0;
+	clip: rect(1px,1px,1px,1px);
+	border: 0;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+
+/*----------  Reset list & button  ----------*/
+
+.reset-list {
+	list-style:none;
+	margin: 0;
+	padding: 0;
+	li { list-style-image:none; }
+}
+
+.reset-btn, .button {
+	border:none;
+	padding: 0;
+	border-radius:0;
+	background:none;
+}
+
+
+/*----------  Iframe  ----------*/
+
+.iframe {
+	position: relative;
+	padding-top: rem(25);
+	height: 0;
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.iframe_16-9 {
+	padding-bottom: 56.25%; /* 16:9 */
+}
+.iframe_16-10 {
+	padding-bottom: 62.5%; /* 16:10 */
+}
+
+
 /*----------  Layout padding  ----------*/
 
 .layout-ptrbl { @include layout(); }
@@ -176,62 +232,6 @@
 }
 .layout-maw-txt {
 	max-width:rem($maw-txt);
-}
-
-
-/*----------  Visually hidden  ----------*/
-
-.visually-hidden {
-	position: absolute;
-	overflow: hidden;
-	height: 1px;
-	width: 1px;
-	margin: 0;
-	padding: 0;
-	clip: rect(1px,1px,1px,1px);
-	border: 0;
-	clip-path: inset(50%);
-	white-space: nowrap;
-}
-
-
-/*----------  Reset list & button  ----------*/
-
-.reset-list {
-	list-style:none;
-	margin: 0;
-	padding: 0;
-	li { list-style-image:none; }
-}
-
-.reset-btn, .button {
-	border:none;
-	padding: 0;
-	border-radius:0;
-	background:none;
-}
-
-
-/*----------  Iframe  ----------*/
-
-.iframe {
-	position: relative;
-	padding-top: rem(25);
-	height: 0;
-	iframe {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-}
-
-.iframe_16-9 {
-	padding-bottom: 56.25%; /* 16:9 */
-}
-.iframe_16-10 {
-	padding-bottom: 62.5%; /* 16:10 */
 }
 
 

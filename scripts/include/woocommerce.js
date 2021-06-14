@@ -166,7 +166,7 @@ if ( $input_password.length > 0 ) {
 =            Images variations            =
 =========================================*/
 
-if ( $html.hasClass('is-product') && $cart.hasClass('variations_form') ) {
+if ( typeof pc_woo_variations !== 'undefined' && $html.hasClass('is-product') && $cart.hasClass('variations_form') ) {
 
 	var woo_variations = $cart.data('product_variations'), // datas woo (array)
 	$variations_selects = $cart.find('select'), // selects variations (jQuery object)

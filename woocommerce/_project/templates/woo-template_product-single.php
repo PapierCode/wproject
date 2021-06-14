@@ -173,33 +173,6 @@ function pc_woo_display_product_single_cart_wrapper_end() {
    
 
 /*----------  Select variations  ----------*/
-
-add_filter( 'woocommerce_dropdown_variation_attribute_options_args', 'pc_woo_dropdown_variation_attribute_options_args', 10 );
-
-	function pc_woo_dropdown_variation_attribute_options_args( $args ) {
-
-		// texte option vide = label
-		$args['show_option_none'] = $args['attribute'];
-		return $args;
-
-	}
-
-add_filter( 'woocommerce_attribute_label', 'pc_woo_attribute_label', 10 );
-
-	function pc_woo_attribute_label( $label ) {
-
-		if ( !is_admin() && is_product() ) {
-
-			return 'Option';
-
-		} else {
-
-			return $label;
-			
-		}
-
-	}
-
 	
 add_filter( 'woocommerce_reset_variations_link', 'pc_woo_reset_variations_link' );
 

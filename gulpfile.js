@@ -16,7 +16,7 @@
 
 const { src, dest, watch, series } = require( 'gulp' ); // base
 
-const sass          = require( 'gulp-sass' ); // scss to css
+const sass          = require( 'gulp-dart-sass' ); // scss to css
 const postcss 		= require( 'gulp-postcss' ); // package
 const cssnano 		= require( 'cssnano' ); // minification css
 const autoprefixer 	= require( 'autoprefixer' ); // ajout des préfixes
@@ -67,7 +67,7 @@ function css() {
 
 var js_src = [
 	'scripts/include/woocommerce.js',
-	'scripts/scripts.js'
+	'scripts/pc-project.js'
 ];
 
 function js_hint() {
@@ -81,7 +81,7 @@ function js_hint() {
 function js() {
 
     return src( js_src )
-        .pipe(concat( 'scripts.min.js' ))
+        .pipe(concat( 'pc-project.min.js' ))
         .pipe(terser())
         .pipe(dest( 'scripts/' ));
 
@@ -96,7 +96,7 @@ function js() {
 
 exports.watch = function() {
 	watch( 'css/**/*.scss', series(css) )
-	watch( ['scripts/**/*.js', '!scripts/scripts.min.js'], series(js_hint,js) )
+	watch( ['scripts/**/*.js', '!scripts/pc-project.min.js'], series(js_hint,js) )
 };
 
 

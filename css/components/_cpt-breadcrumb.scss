@@ -31,10 +31,6 @@
 		position: absolute;
 		left:-100vw;
 	}
-	&:nth-last-child(2) {
-		display: flex;
-		flex-direction: reverse;
-	}
 
 	a, a:visited {
 		text-decoration: none;
@@ -43,6 +39,9 @@
 		&:hover, &:focus {
 		   text-decoration: underline;
 		}
+	}
+	svg {
+		display: block;
 	}
 
 	@media ( min-width : em($mq-layout-l) ) {
@@ -62,10 +61,14 @@
 	}
 }
 .breadcrumb-ico {
-	transform:scale(.6);
+	transform:scale(.5);
 
 	@media ( min-width : em($mq-layout-l) ) {
 		margin:0;
-		transform:rotate(180deg) scale(.6);
+		transform:rotate(180deg) scale(.5);
+
+		.breadcrumb-item:first-child & {
+			display: none;
+		}
 	}
 }

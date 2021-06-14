@@ -63,6 +63,9 @@ label {
 	.form-item--checkbox & {
 		display: flex;
 	}
+	.form-item--error & {
+		color:$red;
+	}
 
 	@media ( min-width : em($mq-layout-l) ) {
 		min-width : rem(300);
@@ -89,8 +92,10 @@ textarea {
 	width:100%;
 	padding:rem(10);
 	border: $border;
-
-	&.error { border-color: $msg-error; }
+	
+	.form-item--error & {
+		border-color:$msg-error;
+	}
 	&:focus {
 		outline: none;
 		border-color: $black;
@@ -140,6 +145,11 @@ input[type="checkbox"] {
 	&:checked + * {	
 		&::before {
 			background-color: $red;
+		}
+	}
+	.form-item--error & + * {
+		&::before {
+			outline-color: $msg-error;
 		}
 	}
 }

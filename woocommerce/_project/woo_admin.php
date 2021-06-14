@@ -37,6 +37,7 @@ add_action( 'admin_enqueue_scripts', 'pc_woo_admin_enqueue_scripts', 999 );
     function pc_woo_admin_enqueue_scripts() {
 
 		wp_enqueue_style( 'pc-woo-css-admin', get_stylesheet_directory_uri().'/woocommerce/_project/admin/woo-admin.css' );
+		wp_enqueue_script( 'pc-woo-js-admin', get_stylesheet_directory_uri().'/woocommerce/_project/admin/woo-admin.js' );
         
     };
  
