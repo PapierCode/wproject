@@ -312,7 +312,7 @@ function pc_woo_display_product_single_variations_json() {
 			$variation_image_id = $variation['image_id'];
 			$variation_images = $variation['image'];
 
-			if ( $variation_image_id != $product->get_image_id() && !in_array( $variation_image_id, $product->get_gallery_image_ids() ) ) {
+			if ( $variation_image_id != $product->get_image_id() ) {
 
 				$variation_image_datas = array(
 					'id' => $variation_image_id,

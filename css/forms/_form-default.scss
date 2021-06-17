@@ -44,7 +44,7 @@
 =            Label            =
 =============================*/
 
-label {
+label, .label-like {
 	font-family: $font-regular;
 
 	a, a:visited {
@@ -96,9 +96,18 @@ textarea {
 	.form-item--error & {
 		border-color:$msg-error;
 	}
+	
 	&:focus {
 		outline: none;
 		border-color: $black;
+	}
+
+	&:read-only {
+		background-color: $grey;
+
+		&:focus {
+			border-color:$grey;
+		}
 	}
 }
 
@@ -165,6 +174,7 @@ input[type="radio"] {
 /*----------  Description  ----------*/
 
 .form-item-desc {
+	font-size:rem(16);
 	font-style: italic;
 	line-height: 1.3;
 	margin-top:rem(5);

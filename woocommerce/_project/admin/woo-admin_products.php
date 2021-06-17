@@ -33,19 +33,6 @@ add_filter( 'product_type_selector', 'pc_woo_admin_product_type_selector' );
 =            Liste des produits            =
 ==========================================*/
 
-/*----------  Vues  ----------*/
-
-add_filter( 'views_edit-product', 'pc_woo_admin_product_view', 99 );
-
-function pc_woo_admin_product_view( $views ) {
-
-	unset($views['byorder']); // tri manuel
-
-	return $views;
-
-}
-
-
 /*----------  Filtre par type  ----------*/
 
 add_filter( 'woocommerce_products_admin_list_table_filters', 'pc_woo_admin_type_selector_sub' );

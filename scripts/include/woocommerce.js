@@ -176,6 +176,7 @@ if ( typeof pc_woo_variations !== 'undefined' && $html.hasClass('is-product') &&
 	// pour supprimer le visuel d'une variation
 	var remove_image_variation = function() {
 		$gallery.find('.wp-gallery-item--variation').remove();
+		$gallery.find('.gallery-not-in').removeClass('gallery-not-in').show();
 	};
 
 	// création des attributs de variation pour la sélection courante
@@ -204,6 +205,9 @@ if ( typeof pc_woo_variations !== 'undefined' && $html.hasClass('is-product') &&
 
 					// supprime une image de variation déjà associée
 					remove_image_variation();
+					// si l'image de variation est dans la galerie
+					$variation_in_gallery = $gallery.find('li[data-id="'+image_id+'"');
+					if ( $variation_in_gallery.length > 0 ) { $variation_in_gallery.addClass('gallery-not-in').hide(); }
 					// affiche l'image associée
 					$gallery.prepend(pc_woo_variations[image_id]);
 					// pas la peine de boucler sur les autres valeurs

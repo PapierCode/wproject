@@ -68,18 +68,3 @@ include 'include/images.php';
 
 /*=====  FIN Include  =====*/
 
-
-add_filter( 'pc_filter_post_contact_fields', 'pc_contact_test' );
-
-	function pc_contact_test( $post_contact_fields ) {
-
-		$post_contact_fields['fields'][] = array(
-			'type'      		=> 'text',
-			'id'        		=> 'truc',
-			'label'     		=> 'Truc',
-			'attr'				=> 'readonly',
-			'css'       		=> 'width:100%',
-		);
-		return $post_contact_fields;
-
-	}
