@@ -86,13 +86,15 @@ function pc_woo_display_product_card_content() {
 
 function pc_woo_display_product_card_price( $pc_post ) {
 
-	if ( 'product' == $pc_post->type ) {
+	if ( in_array( $pc_post->type, array( 'product', 'product_variation' ) ) ) {
 
 		global $product;
 
 		echo '<div class="st-price">';
 		
-			echo wc_get_stock_html( $product );
+			if ( !$product->is_in_stock() || $product->is_on_backorder() ) {
+				echo wc_get_stock_html( $product );
+			}
 			woocommerce_show_product_loop_sale_flash();
 
 			woocommerce_template_loop_price();

@@ -62,10 +62,10 @@
 .woocommerce-notice,
 .woocommerce-info,
 .woocommerce-message { 
-	background-color: $green;
+	background-color: $msg-default;
 }
 .woocommerce-error {
-	background-color: $red;
+	background-color: $msg-error;
 }
 
 .woocommerce-notice,

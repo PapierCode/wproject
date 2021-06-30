@@ -2,12 +2,7 @@ jQuery(document).ready(function($){
 
 var $html = $('html'),
 $cart = $('.cart'); // add to cart, cart table,...
-$coupon_remove = $('.pc-cart-total .pc-cart-button'); // add to cart, cart table,...
 
-$coupon_remove.each( function() {
-	var html = $(this).html();
-	$(this).html( html + sprite.cross );
-} );
 
 /*==============================
 =            Panier            =
@@ -19,6 +14,19 @@ if ( $cart.length > 0 ) {
 	$('.single_add_to_cart_button').attr('title', 'Ajouter au panier');
 	// reset select variation
 	$('.variations_form select').prop('selectedIndex',0);
+
+	/*----------  Lien suppression coupon  ----------*/
+	
+	var pc_coupon_link_add_icon = function() {
+		$('.pc-cart-total .pc-cart-button').each( function() {
+			var inner = $(this).html();
+			$(this).html( inner + sprite.cross );
+		} );
+	};
+	pc_coupon_link_add_icon();
+	$('body').on('updated_cart_totals', function(){
+		pc_coupon_link_add_icon();
+	});
 		
 	
 	/*----------  Quantité  ----------*/

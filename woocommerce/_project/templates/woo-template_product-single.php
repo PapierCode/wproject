@@ -160,7 +160,9 @@ function pc_woo_display_product_single_cart_wrapper_start() {
 	echo '<div class="pc-woo-add-to-cart">';
 
 	global $product;
-	echo wc_get_stock_html( $product );
+	if ( !$product->is_in_stock() || $product->is_on_backorder() ) {
+		echo wc_get_stock_html( $product );
+	}
 	woocommerce_show_product_loop_sale_flash();
 
 }
@@ -390,6 +392,19 @@ function pc_woo_display_product_single_wysiwyg() {
 =            Produits associés            =
 =========================================*/
 
+add_filter( 'pc_filter_card_description', 'pc_woo_display_related_variation_description', 10, 2 );
+
+	function pc_woo_display_related_variation_description( $description, $pc_post ) {
+
+		if ( 'product_variation' == $pc_post->type ) {
+			$post_parent = get_post( $pc_post->parent );
+			$pc_post_parent = new PC_Post( $post_parent );
+			$description = '<strong>'.$description.'</strong><br/>'.$pc_post_parent->get_card_description();
+		}
+		return $description;
+
+	}
+
 function pc_woo_display_related_products() {
 
 	global $pc_post;
@@ -398,7 +413,7 @@ function pc_woo_display_related_products() {
 	if ( isset( $metas['_upsell_ids'] ) ) {
 
 		$related_posts = get_posts( array(
-			'post_type' => 'product',
+			'post_type' => array('product','product_variation'),
 			'post__in' => unserialize($metas['_upsell_ids'])
 		) );
 
@@ -406,10 +421,13 @@ function pc_woo_display_related_products() {
 
 			echo '<aside class="product-aside">';
 			echo '<h2 class="product-aside-title">Produits associés</h2>';
-			echo '<ul class="st-list st-list--related reset-list">';
+			echo '<ul class="st-list--related reset-list">';
 
-				foreach ( $related_posts as $post ) {
-					$pc_related_post = new PC_Post( $post );
+				foreach ( $related_posts as $related_post ) {
+
+					setup_postdata( $GLOBALS['post'] =& $related_post );
+					$pc_related_post = new PC_Post( $related_post );
+					
 					$pc_related_post_classes = wc_get_product_class( '', $pc_related_post->id );
 					$pc_related_post_classes = array_diff( $pc_related_post_classes, array( 'main-content') );
 					$pc_related_post_classes = implode( ' ', $pc_related_post_classes );
@@ -417,7 +435,10 @@ function pc_woo_display_related_products() {
 					echo '<li class="'.$pc_related_post_classes.' st st--product">';
 						$pc_related_post->display_card('3');
 					echo '</li>';
+
 				}
+
+				wp_reset_postdata();
 
 			echo '</ul>';
 			echo '</aside>';

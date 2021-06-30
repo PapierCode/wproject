@@ -63,7 +63,7 @@ table.wp-list-table .column-product_tag
 .woocommerce_variable_attributes .options label:nth-child(3), /* option virtuel */
 
 /* produits liés */
-#linked_product_data .options_group :nth-child(2)
+#linked_product_data .options_group > :nth-child(2)
 
 {
 	display:none !important;
