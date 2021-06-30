@@ -11,6 +11,7 @@
  ** Suppression des étiquettes
  ** Menu admin
  ** Menus
+ ** Comptes
  * 
  */
 
@@ -23,7 +24,6 @@ include 'admin/woo-admin_products.php';
 include 'admin/woo-admin_categories.php';
 include 'admin/woo-admin_attributs.php';
 include 'admin/woo-admin_orders.php';
-include 'admin/woo-admin_caps.php';
 
 
 /*=====  FIN Include  =====*/
@@ -195,36 +195,70 @@ add_action('init', 'pc_woo_disable_product_tag', 999 );
 =            Menu admin            =
 ==================================*/
 
-add_action( 'admin_menu', 'pc_woo_rename_admin_menu' );
+add_action( 'admin_menu', 'pc_woo_rename_admin_menu', 999 );
 
 	function pc_woo_rename_admin_menu() {
 
-		global $menu, $submenu;
+		global $menu, $submenu, $current_user_role;
 
-		// renommage WooCommerce
-		foreach ($menu as $key => $args) {
-			if ( $args[0] == 'WooCommerce' ) {
-				$menu[$key][0] = 'E-commerce';
-				$menu[$key][6] = 'dashicons-products'; // + woo-admin.css
+		if ( 'shop_manager' == $current_user_role ) {
+
+			// WooCommerce : déplacer l'accueil pour le masquer...
+			$woo_home = $submenu['woocommerce'][0];
+			unset( $submenu['woocommerce'][0]);
+			$submenu['woocommerce'][] = $woo_home;
+
+			// WooCommerce
+			remove_submenu_page( 'woocommerce', 'wc-reports' ); // ancienne version
+			remove_submenu_page( 'woocommerce', 'wc-settings' ); // réglages
+			remove_submenu_page( 'woocommerce', 'wc-status' ); // état
+			remove_submenu_page( 'woocommerce', 'wc-addons' ); // extensions
+
+			// Marketing, supprimer l'accueil 
+			remove_submenu_page( 'woocommerce-marketing', 'admin.php?page=wc-admin&path=/marketing' );
+
+			// Icône & renommage
+			foreach ($menu as $key => $args) {
+				if ( in_array( $args[0], array( 'WooCommerce', 'Produits', 'Marketing', 'Statistiques' ) ) ) {
+					$menu[$key][6] = 'dashicons-store';
+				}
+				if ( 'WooCommerce' == $args[0] ) {
+					$menu[$key][0] = 'Commandes';
+				}
 			}
-		}
-
-
-		if ( !current_user_can( 'administrator' ) ) {
-
-			// déplacement Codes promo
-			remove_menu_page( 'edit.php?post_type=shop_coupon' );
-			$submenu['woocommerce'][] = array(
-				'Codes promo',
-				'edit_shop_coupons',
-				'edit.php?post_type=shop_coupon',
-				'Codes promo',
-			);
 
 		}
 
 	}
 
+
+/*----------  Sous-menus statistiques  ----------*/
+
+add_filter( 'woocommerce_analytics_report_menu_items', 'pc_woo_edit_analytics_report_menu_items' );
+
+	function pc_woo_edit_analytics_report_menu_items( $report_pages ) {
+
+		global $current_user_role;
+
+		if ( 'shop_manager' == $current_user_role ) {
+
+			$items_to_remove = array(
+				'woocommerce-analytics-taxes',
+				'woocommerce-analytics-downloads',
+				'woocommerce-analytics-settings'
+			);
+
+			foreach ($report_pages as $key => $page) {			
+				if ( in_array( $page['id'], $items_to_remove ) ) {
+					unset( $report_pages[$key] );				
+				}
+			}
+
+		}
+
+		return $report_pages;
+
+	}
 
 /*=====  FIN Menu admin  =====*/
 
@@ -269,3 +303,19 @@ add_filter( 'nav_menu_items_page', 'pc_woo_admin_navigation_remove_pages', 10, 1
 
 
 /*=====  FIN Menus  =====*/
+
+/*===============================
+=            Comptes            =
+===============================*/
+
+add_filter( 'user_row_actions', 'pc_woo_admin_user_row_actions' );
+
+	function pc_woo_admin_user_row_actions( $actions ) {
+
+		unset( $actions['view'] );
+		return $actions;
+
+	}
+
+
+/*=====  FIN Comptes  =====*/
