@@ -1,16 +1,11 @@
 /*----------  Généralités  ----------*/
 
+.role_shop_manager a[href="admin.php?page=wc-admin"],
 .woocommerce-layout__header, /* menu dans l'entête de tous les contenus (boite de réception,...) */
-.woocommerce-marketing-knowledgebase-card /* encart commerciaux */
+.woocommerce-marketing-knowledgebase-card, /* encart commerciaux */
+.woocommerce-ellipsis-menu  /* statistiques, options d'affichage */
 { 
-	display:none;
-}
-
-/*----------  Menu admin  ----------*/
-
-#adminmenu #toplevel_page_woocommerce .menu-icon-generic div.wp-menu-image::before {
-	font-family:dashicons !important;
-	content:"\f312";
+	display:none!important;
 }
 
 
