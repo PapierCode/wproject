@@ -195,7 +195,7 @@ input[type="radio"] {
 	padding-top: $space;
 	border-top:$border;
 	
-	.g-recaptcha {
+	.h-captcha {
 		margin-top: rem(10);
 
 		@media ( min-width : em($mq-layout-l) ) {
@@ -203,17 +203,19 @@ input[type="radio"] {
 			margin-top: 0;
 		}
 	}
+	iframe {
+		transform-origin:left top;
+		transform:scale(0.95);
+	}
+	
+	@media ( min-width:em(330) ) {
+
+		iframe {
+			transform:scale(1);
+		}
+	}
 	@media ( min-width : em($mq-layout-l) ) {
 		padding-top: rem(20);
-	}
-}
-
-.g-recaptcha {
-	transform-origin:left top;
-	transform:scale(0.95);
-
-	@media (min-width:em(330)) {
-		transform:scale(1);
 	}
 }
 
