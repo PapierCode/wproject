@@ -213,6 +213,7 @@ add_action( 'admin_menu', 'pc_woo_rename_admin_menu', 999 );
 			remove_submenu_page( 'woocommerce', 'wc-settings' ); // réglages
 			remove_submenu_page( 'woocommerce', 'wc-status' ); // état
 			remove_submenu_page( 'woocommerce', 'wc-addons' ); // extensions
+			remove_submenu_page( 'woocommerce', 'wpo_wcpdf_options_page' ); // plugin pdf facture et bon de livraison
 
 			// Marketing, supprimer l'accueil 
 			remove_submenu_page( 'woocommerce-marketing', 'admin.php?page=wc-admin&path=/marketing' );

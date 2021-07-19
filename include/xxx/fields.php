@@ -63,7 +63,6 @@ if ( class_exists('PC_add_field_to_tax') ) {
 	$xxx_tax_img_fields_args = array(	
 		'title'     => 'Visuel',
 		'prefix'    => 'visual',
-		'desc'		=> $metabox_img_desc,
 		'fields'    => array(
 			array(
 				'type'      => 'img',
@@ -107,22 +106,23 @@ if ( class_exists('PC_add_field_to_tax') ) {
 	$xxx_tax_card_fields_args = array(	
 		'title'     => 'Résumé',
 		'prefix'    => 'resum',
-		'desc'		=> $metabox_card_desc,
 		'fields'    => array(
 			array(
 				'type'      => 'text',
 				'id'        => 'title',
 				'label'     => 'Titre',
 				'attr'      => 'class="pc-counter" data-counter-max="40"',
-				'css'		=> 'width:100%'
+				'css'		=> 'width:100%',
+				'desc' 		=> 'Si ce champ n\'est pas saisi, le nom de la catégorie est utilisé.'
 			),			
 			array(
 				'type'      => 'textarea',
 				'id'        => 'desc',
 				'label'     => 'Description',
 				'attr'      => 'class="pc-counter" data-counter-max="150"',
-				'css'		=> 'width:100%'
-			)					
+				'css'		=> 'width:100%',
+				'desc' 		=> 'Si ce champ n\'est pas saisi, les premiers mots de l\'introduction sont utilisés.<br/>Si l\'introduction n\'est pas saisie, aucune description n\'est affichée.'
+			)						
 		)
 	);
 
@@ -134,21 +134,22 @@ if ( class_exists('PC_add_field_to_tax') ) {
 	$xxx_tax_seo_fields_args = array(	
 		'title'     => 'Référencement (SEO) & réseaux sociaux',
 		'prefix'    => 'seo',
-		'desc'		=> $metabox_seo_desc,
 		'fields'    => array(
 			array(
 				'type'      => 'text',
 				'id'        => 'title',
 				'label'     => 'Titre',
 				'attr'      => 'class="pc-counter" data-counter-max="70"',
-				'css'		=> 'width:100%'
+				'css'		=> 'width:100%',
+				'desc' 		=> 'Si ce champ n\'est pas saisi, le titre du résumé est utilisé.<br/>Si le titre du résumé n\'est pas saisi, le nom de la catégorie est utilisé.'
 			),			
 			array(
 				'type'      => 'textarea',
 				'id'        => 'desc',
 				'label'     => 'Description',
 				'attr'      => 'class="pc-counter" data-counter-max="200"',
-				'css'		=> 'width:100%'
+				'css'		=> 'width:100%',
+				'desc' 		=> 'Si ce champ n\'est pas saisi, la description du résumé est utilisée.<br/>Si la description du résumé n\'est pas saisie, les premiers mots de l\'introduction sont utilisés.<br/>Si l\'introduction n\'est pas saisie, la description par défaut est utilisée (cf. Paramètres).'
 			)						
 		)
 	);

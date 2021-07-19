@@ -20,7 +20,7 @@ add_filter( 'single_template', 'pc_xxx_single_template', 999, 1 );
 
 	function pc_xxx_single_template( $single_template ) {
 
-		if ( is_singular( XXX_POST_SLUB ) ) {
+		if ( is_singular( XXX_POST_SLUG ) ) {
 			$single_template = get_template_directory().'/page.php';
 		}
 
@@ -43,10 +43,10 @@ function pc_xxx_nav_parent_active( $menu_items, $args ) {
 	if ( $args->theme_location == 'nav-header' ) {
 
 		// si c'est une actualité d'afficher
-		if ( is_singular( XXX_POST_SLUB ) ) {
+		if ( is_singular( XXX_POST_SLUG ) ) {
 
 			// page qui publie les actus
-			$post = pc_get_page_by_custom_content( XXX_POST_SLUB, 'object' );
+			$post = pc_get_page_by_custom_content( XXX_POST_SLUG, 'object' );
 			if ( $post ) {
 				// si la page qui publie les actus a un parent ou pas
 				$id_to_search = ( $post->post_parent > 0 ) ? $post->post_parent : $post->ID;
@@ -83,7 +83,7 @@ add_filter( 'pc_filter_html_css_class', 'pc_xxx_html_css_class' );
 
 function pc_xxx_html_css_class( $css_classes ) {
 
-	if ( get_post_type() == XXX_POST_SLUB ) {
+	if ( get_post_type() == XXX_POST_SLUG ) {
 		$css_classes[] = 'is-xxx';
 	}
 	return $css_classes;
@@ -101,14 +101,14 @@ add_action( 'pc_action_page_main_footer', 'pc_xxx_back_link', 30, 1 );
 
 function pc_xxx_back_link( $post ) {
 
-	if ( $post->post_type == XXX_POST_SLUB ) {
+	if ( $post->post_type == XXX_POST_SLUG ) {
 
 		$wp_referer = wp_get_referer();
 		
 		if ( $wp_referer ) {
 			$back_link = $wp_referer;
 		} else {
-			$back_link = pc_get_page_by_custom_content( XXX_POST_SLUB );
+			$back_link = pc_get_page_by_custom_content( XXX_POST_SLUG );
 		}
 
 		echo '<div class="main-footer-prev"><a href="'.$back_link.'" class="button" title="Page précédente"><span class="ico">'.pc_svg('arrow',null,'svg_block').'<span class="txt">Retour</span></a></div>';
@@ -128,7 +128,7 @@ add_action( 'pc_action_page_main_content', 'pc_xxx_content', 20, 2 );
 
 	function pc_xxx_content( $post, $post_metas ) {
 
-		if ( is_singular( XXX_POST_SLUB ) ) {
+		if ( is_singular( XXX_POST_SLUG ) ) {
 
 			
 			
