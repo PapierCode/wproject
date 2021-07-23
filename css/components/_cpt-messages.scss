@@ -2,11 +2,6 @@
 *
 * Composant : messages
 *
-** Défaut
-** Erreur
-** Succès
-** Inline to Block
-*
 **/
 
 
@@ -14,17 +9,32 @@
 @use "../helpers" as *;
 
 
-/*==============================
-=            Défaut            =
-==============================*/
-
 .msg {
 	display:flex;
 	line-height: 1.4;
 	align-items: center;
+	color:$black;
 
 	&.msg--block {
 		background-color:$msg-default;
+		padding:rem(10);
+	}
+	
+
+	button, a, a:visited {
+		border:none;
+		padding:0;
+		background-color: transparent;
+		color:$black;
+		text-decoration: underline;
+		transition:background-color .3s ease;
+
+		&:hover, &:focus {
+		   text-decoration: none;
+		   background-color: $black;
+		   color:$white;
+		   transition:background-color .3s ease;
+		}
 	}
 
 	@media ( min-width : em($mq-layout-m) ) {
@@ -44,83 +54,34 @@
 	margin-right:rem(10);
 
 	svg {
-		fill: $white;
+		fill: $black;
 	}
 
 	.msg--block & {
-		background-color:$white;
+		background-color:$black;
 
 		svg {
-			fill: $msg-default;
+			fill: $white;
 		}
 	}
 }
-
-
-/*=====  FIN Défaut  ======*/
-
-/*==============================
-=            Erreur            =
-==============================*/
 
 .msg--error {
-	color:$msg-error;
-
-	.msg-ico {
-		background-color:$msg-error;
+	
+	&:not(.msg--block) .msg-ico {
+		background-color: $msg-error;
 	}
-
 	&.msg--block {
 		background-color:$msg-error;
-		
-		svg {
-			fill: $msg-error;
-		}
 	}
 }
-
-
-/*=====  FIN Erreur  ======*/
-
-/*==================================
-=            Succès            =
-==================================*/
 
 .msg--success {
-	color:$msg-success;
-	
-	.msg-ico {
-		background-color:$msg-success;
-	}
 
+	&:not(.msg--block) .msg-ico {
+		background-color: $msg-success;
+	}
 	&.msg--block {
 		background-color:$msg-success;
-
-		svg {
-			fill: $msg-success;
-		}
 	}
 }
-
-
-/*=====  FIN Succès  ======*/
-
-/*=======================================
-=            Inline to block            =
-=======================================*/
-
-.msg--block {
-	padding:rem(10);
-	color:$white;
-
-	.msg-ico {
-		background-color:$white;
-	}
-	a, a:visited {
-		color:$white;
-	}
-
-}
-
-
-/*=====  FIN Inline to block  ======*/
