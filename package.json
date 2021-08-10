@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "Gulp pour Papier Codé",
 	"devDependencies": {
+		"@wordpress/scripts": "^17.1.0",
 		"autoprefixer": "^10.2.5",
 		"cssnano": "^5.0.2",
 		"es6-promise": "^4.2.8",

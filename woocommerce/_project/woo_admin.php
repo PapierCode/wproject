@@ -108,15 +108,15 @@ add_action( 'pre_get_posts' ,'pc_woo_admin_hide_pages' );
 	}
 
 
-/*----------  Ne pas supprimer la page catalogue & CGV  ----------*/
+/*----------  Ne pas supprimer des pages catalogue & CGV  ----------*/
 
-add_filter( 'map_meta_cap', 'pc_woo_admin_prevent_delete_shop_page', 10, 4 );
+add_filter( 'map_meta_cap', 'pc_woo_admin_prevent_delete_page', 10, 4 );
 
-	function pc_woo_admin_prevent_delete_shop_page( $caps, $cap, $user_id, $args ) {
+	function pc_woo_admin_prevent_delete_page( $caps, $cap, $user_id, $args ) {
 
 		global $current_user_role;
 
-		if ( 'editor' == $current_user_role && 'delete_post' == $cap ) {
+		if ( 'shop_manager' == $current_user_role && 'delete_post' == $cap ) {
 
 			if ( wc_get_page_id('shop') == $args[0] || wc_terms_and_conditions_page_id() == $args[0] ) {
 	
@@ -127,6 +127,43 @@ add_filter( 'map_meta_cap', 'pc_woo_admin_prevent_delete_shop_page', 10, 4 );
 	
 		return $caps;
 
+	}
+
+add_filter( 'wp_list_table_show_post_checkbox', 'pc_woo_checkbox', 10, 2 );
+
+	function pc_woo_checkbox( $show, $post ) {
+
+		global $current_user_role;
+
+		if ( 'editor' == $current_user_role || 'shop_manager' == $current_user_role ) {
+
+			if ( $post->ID == wc_get_page_id('shop') || $post->ID == wc_terms_and_conditions_page_id() ) {
+
+				$show = false;
+
+			}
+
+		}
+
+		return $show;
+
+	}
+
+
+/*----------  Ne pas modififer le status des pages catalogue & CGV  ----------*/
+
+add_filter( 'wp_insert_post_data', 'pc_woo_prevent_update_status', 10, 2 );
+
+	function pc_woo_prevent_update_status( $data, $postarr ) {
+		
+		// force le status
+		if ( 'page' == $data['post_type'] && ( wc_get_page_id('shop') == $postarr['ID'] || wc_terms_and_conditions_page_id() == $postarr['ID'] )  ) {
+			$data['post_status'] = 'publish';
+			$data['post_password'] = '';
+		}
+
+		return $data;
+		
 	}
 
 

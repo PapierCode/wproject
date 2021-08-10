@@ -1,0 +1,21 @@
+{
+	"apiVersion": 2,
+	"name": "papiercode/paragraph",
+	"icon": "editor-paragraph",
+	"title": "Paragraphe",
+	"category": "text",
+	"supports" : {
+		"html": false,
+		"reusable": false
+	},
+	"attributes": {
+		"content": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		},
+		"alignment": {
+			"type":"string"
+		}
+	}
+}

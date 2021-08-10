@@ -45,9 +45,12 @@ if ( class_exists( 'woocommerce' ) ) {
 
 }
 
+
 /*===============================
 =            Include            =
 ===============================*/
+
+include 'include/admin/admin.php';
 
 include 'include/images.php';
 

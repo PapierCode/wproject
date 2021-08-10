@@ -1,0 +1,12 @@
+{
+    "version": 1,
+    "settings": {
+		"color": {
+            "custom": false
+        },
+        "typography": {
+            "customFontSize": false,
+			"dropCap": false
+		}
+    }
+}
