@@ -21,8 +21,8 @@ add_filter( 'pc_filter_skip_nav', 'pc_woo_edit_skip_nav' );
 	function pc_woo_edit_skip_nav( $skip_nav_list ) {
 
 		$skip_nav_list = array( 
-			get_the_permalink( wc_get_page_id('cart') ) => array( 'Panier', 'Accès direct au panier' ),
-			get_the_permalink( wc_get_page_id('myaccount') ) => array( 'Compte client', 'Accès direct au compte client' )
+			get_the_permalink( wc_get_page_id('cart') ) => 'Panier',
+			get_the_permalink( wc_get_page_id('myaccount') ) => 'Compte client'
 		) + $skip_nav_list;
 
 		return $skip_nav_list;
