@@ -10,9 +10,9 @@
 
 
 .form--contact {
+	max-width: rem(700);
 
 	form {
-		@extend .layout-maw-txt;
 		@extend .layout-pb;
 	}
 }
@@ -33,7 +33,6 @@
 		padding-top:rem(20);
 	}
 }
-
 
 .form-item-inner {
 	margin-top : rem(5);

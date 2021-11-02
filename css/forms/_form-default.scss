@@ -27,10 +27,6 @@
 	}
 
 	@media ( min-width : em($mq-layout-l) ) {
-		&:not(.form-item--checkbox) {
-			display: flex;
-			align-items: flex-start;
-		}
 		& + & {
 			margin-top: rem(20);
 		}
@@ -59,6 +55,7 @@ label, .label-like {
 }
 
 .form-label {
+	display: block;
 
 	.form-item--checkbox & {
 		display: flex;
@@ -68,7 +65,7 @@ label, .label-like {
 	}
 
 	@media ( min-width : em($mq-layout-l) ) {
-		min-width : rem(300);
+		margin-bottom: rem(5);
 	}
 }
 
@@ -87,6 +84,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="tel"],
+input[type="number"],
 select,
 textarea {		
 	width:100%;
@@ -207,15 +205,25 @@ input[type="radio"] {
 		transform-origin:left top;
 		transform:scale(0.95);
 	}
+	input[type="number"] {
+		width:rem(100);
+	}
 	
 	@media ( min-width:em(330) ) {
-
 		iframe {
 			transform:scale(1);
 		}
 	}
 	@media ( min-width : em($mq-layout-l) ) {
+		display: flex;
 		padding-top: rem(20);
+
+		&.form-item--mathcaptcha {
+			align-items: center;
+		}
+		input[type="number"] {
+			margin-left: rem(20);
+		}
 	}
 }
 
