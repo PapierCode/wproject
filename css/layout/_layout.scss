@@ -49,12 +49,6 @@ body {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	transition:transform .3s ease;
-
-	.search-is-open & {
-		transform:translateY(rem($button-size + 2*$button-space));
-		transition:transform .3s ease;
-	}
 }
 
 
@@ -83,16 +77,17 @@ body {
 
 /*----------  Header logo  ----------*/
 
-.h-logo {}
-
-.h-logo-link {
-	text-decoration: none;
-	display: inline-block;
+.h-logo {
 	max-width: rem(100);
 
 	@media ( min-width : em($mq-layout-l) ) {
 		max-width: none;
 	}
+}
+
+.h-logo-link {
+	text-decoration: none;
+	display: inline-block;
 }
 
 

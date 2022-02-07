@@ -21,9 +21,9 @@ add_action( 'wp_enqueue_scripts', 'pc_enqueue_child_theme_style', 30 );
 /*----------  JS  ----------*/
 
 
-add_filter( 'pc_filter_js_files', 'pc_enqueuechild_theme_js' );
+add_filter( 'pc_filter_js_files', 'pc_enqueue_child_theme_js' );
 
-	function pc_enqueuechild_theme_js( $js_files ) {
+	function pc_enqueue_child_theme_js( $js_files ) {
 
 		if ( class_exists( 'woocommerce' ) ) {
 			$js_files['wpreform'] = get_bloginfo('template_directory').'/scripts/pc-preform.min.js'; // version sans jquery
@@ -52,7 +52,7 @@ if ( class_exists( 'woocommerce' ) ) {
 
 include 'include/admin/admin.php';
 
-include 'include/images.php';
+include 'include/medias.php';
 
 
 /*----------  Custom post  ----------*/

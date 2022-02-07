@@ -132,6 +132,40 @@ if ( $st_list.length > 0 ) {
 
 /*=====  FIN Message cookies  ======*/
 
+/*===========================
+=            Map            =
+===========================*/
+
+if ( $html.hasClass('is-event') ) {
+
+	var $eventMap = $('#event-map'),
+	eventMap = L.map( 'event-map', { 
+		center: L.latLng( $eventMap.data('lat'), $eventMap.data('lng') ),
+		zoom: 14,
+		minZoom : 10,
+		maxZoom: 18,
+		scrollWheelZoom : false,
+		tap : false
+	});
+
+	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicGFwaWVyY29kZSIsImEiOiJja203a3E5N3kweXplMnhuNjBuOTV2bmQ1In0.UtKowadsitAGdxDUpMv5aA', {
+		id: 'mapbox/streets-v11',
+		tileSize: 512,
+		zoomOffset: -1
+	}).addTo(eventMap);
+
+	var mapIcon = L.divIcon({
+		iconSize: [40,60],
+		iconAnchor: [20,60],
+		className: 'map-marker'
+	});
+	var marker = L.marker([$eventMap.data('lat'), $eventMap.data('lng')], {icon: mapIcon}).addTo(eventMap);
+
+
+}
+
+
+/*=====  FIN Map  =====*/
 
 });
 

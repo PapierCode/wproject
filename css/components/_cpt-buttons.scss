@@ -73,6 +73,20 @@
 	}
 }
 
+.button--inner-txt {
+	font-family: $font-regular;
+	font-size:inherit;
+	line-height: inherit;
+	text-transform: none;
+	padding:rem(0,.5*$button-space);
+	height: auto;
+
+	svg {
+		width: rem(10);
+		height: rem(10);
+	}
+}
+
 .button--xl {
 	font-size:rem(20);
 

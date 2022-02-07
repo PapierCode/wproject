@@ -1,0 +1,187 @@
+/**
+*
+* Publications : événements
+*
+**/
+
+
+@use "../variables" as *;
+@use "../helpers" as *;
+@use "../components/cpt-buttons" as *;
+
+
+/*===============================
+=            Filtres            =
+===============================*/
+
+.event-filter {
+	@extend .layout-mb;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	
+	@media ( min-width : em($mq-layout-m) ) {
+		display: block;
+		position: relative;
+	}
+}
+
+.event-filter-btn--past {
+
+	svg {
+		transform:rotate(180deg);
+	}
+
+	.event-filter:not(.event-filter--past) & {
+		margin-top: rem($button-space);
+	
+		@media ( min-width : em($mq-layout-m) ) {
+			margin-top: 0;
+			position: absolute;
+			top:0;
+			right: 0;
+		}
+	}
+}
+
+
+.event-filter-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+.event-filter-item {
+	margin:rem($button-space,$button-space,0,0);
+}
+.event-filter-link {
+
+	&.is-active {
+		@extend .button--red;
+
+		&:hover, &:focus {
+		   background-color: $blue;
+		   color:$black;
+		   transition: all .3s ease;
+		}
+	}
+}
+
+
+/*=====  FIN Filtres  =====*/
+
+/*==============================
+=            Single            =
+==============================*/
+
+.is-event {
+	.editor {
+		@include layout(m,0,0,2,0);	
+	}
+
+	@media ( min-width : em($mq-layout-maw) ) {
+		.main-content-inner {
+			display: grid;
+			grid-template-columns: auto 1fr;
+			grid-template-rows: auto 1fr;
+			gap:rem(.5*$space-max,$space-max);
+		}
+		.editor {
+			margin:0;
+		}
+	}
+}
+
+
+/*----------  Date  ----------*/
+
+.event-date {
+	display: flex;
+	align-items: center;
+	font-family: $font-regular;
+	margin: 0 0 $space 0;
+
+	.ico {
+		margin-right: rem($button-space);
+		flex-shrink: 0;
+		padding:rem($button-space - 4,$button-space,$button-space,$button-space); // -4 ajustement icône
+		border: $border;
+	}
+	time {
+		font-family: $font-semi;
+	}
+	svg {
+		width: rem(30);
+		height: rem(30);
+	}
+
+	@media ( min-width : em($mq-layout-l) ) {
+		font-size: rem(20);
+	}
+	@media ( min-width : em($mq-layout-maw) ) {
+		margin-bottom:0;
+	}
+}
+
+
+/*----------  Adresse & map  ----------*/
+
+$event-location-space : 10;
+
+.event-location {
+	@extend .layout-mb;
+	@extend .layout-ptrbl;
+	border:$border;
+	position: relative;
+	max-width: rem($maw-txt);
+
+	@media ( min-width : em($mq-layout-maw) ) {
+		grid-column: 2/3;
+		grid-row: 1/3;
+		margin-top:rem(26); // 1/2 hauteur icône
+	}
+}
+
+.event-location-ico {
+	position: absolute;
+	left:50%;
+	top:0;
+	transform:translate(-50%,-50%);
+	background-color: $white;
+	padding:rem($event-location-space);
+	border: $border;
+
+	svg {
+		width: rem(30);
+		height: rem(30);
+	}
+}
+
+.event-location-title {
+	@extend .visually-hidden;
+}
+.event-location-address {}
+.event-location-desc {
+	font-style: normal;
+	margin:rem(2*$event-location-space,0,0,0);
+
+	dd {
+		margin-left: 0;
+	}
+	.name {
+		font-family: $font-semi;
+		font-size: rem(20);
+	}
+	.link {
+		margin-top:rem($event-location-space);
+	}
+	.ico {
+		transform: rotate(180deg);
+	}
+}
+.event-location-map {
+	margin-top:rem(3*$event-location-space);
+	height: rem(300);
+}
+
+
+/*=====  FIN Single  =====*/
+

@@ -11,3 +11,14 @@
 //         return $logo_datas;
 
 //     }
+
+/*----------  Type de fichiers  ----------*/
+
+// add_filter( 'pc_filter_upload_mimes', 'visio_upload_mimes' );
+
+// 	function visio_upload_mimes( $mimes ) {
+
+// 		$mimes['mp3'] = 'audio/mpeg';
+// 		return $mimes;
+
+// 	}

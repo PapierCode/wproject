@@ -287,7 +287,7 @@ add_filter( 'woocommerce_analytics_report_menu_items', 'pc_woo_edit_analytics_re
 			);
 
 			foreach ($report_pages as $key => $page) {			
-				if ( in_array( $page['id'], $items_to_remove ) ) {
+				if ( isset( $page['id'] ) && in_array( $page['id'], $items_to_remove ) ) {
 					unset( $report_pages[$key] );				
 				}
 			}

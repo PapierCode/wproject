@@ -36,18 +36,23 @@
 	@extend .button;
 
 	.txt {
-		overflow: hidden;
-		max-width: rem(100);
-		transition: all .5s ease;
+		position: absolute;
+		left: -666em;
 	}
-	
 
-	.h-nav-is-open & {
-
+	@media ( min-width : em($mq-header-nav-l) ) {
 		.txt {
-			max-width: 0;
-			margin:0;
+			position: static;
+			overflow: hidden;
+			max-width: rem(100);
 			transition: all .5s ease;
+		}	
+		.h-nav-is-open & {
+			.txt {
+				max-width: 0;
+				margin:0;
+				transition: all .5s ease;
+			}
 		}
 	}
 }
@@ -141,17 +146,16 @@
 	position: fixed;
 	z-index: 888;
 	top: 0;
-	left: 0;
+	left: 100%;
 	bottom: 0;
-	width: 0;
-	overflow: hidden;
-	transition:width 0s ease $t-nav, background-color $t-nav ease;
-
+	width: 100%;
 	display: flex;
 	justify-content: flex-end;
+	overflow: hidden;
+	transition:left 0s ease $t-nav, background-color $t-nav ease;
 
 	.h-nav-is-open & {
-		width: 100%;
+		left:0;
 		background-color: rgba($black,.6);
 		cursor: pointer;
 		transition:background-color $t-nav ease;
@@ -261,7 +265,8 @@
 			color:$black;
 		}
 		&:hover, &:focus {
-			transform:translateX(-.5*$space);
+			background-color:$blue;
+			color:$black;
 		}
 	}
 	@media ( min-width : em($mq-layout-maw) ) {
@@ -271,7 +276,6 @@
 			transform:translateY(rem($button-space));
 		}
 		&:hover, &:focus {
-			transform:translateY(rem($button-space));
 			background-color:$blue;
 			color:$black;
 		}

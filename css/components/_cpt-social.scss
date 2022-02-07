@@ -44,16 +44,6 @@
 
 	@media ( min-width : em($mq-layout-maw) ) {
 		margin:0;
-		position: absolute;
-		top:rem($space-max);
-		right:rem($space-max);
-
-		.has-search & {
-			right: rem(300); // largeur bouton recherche
-		}
-		.has-woocommerce & {
-			position: static;
-		}
 	}
 }
 

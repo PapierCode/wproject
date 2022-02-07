@@ -19,7 +19,7 @@
 
 .s-results-list {
 	border-bottom: $border;
-	@include layout(m,.5,0,0,0);
+	@extend .layout-mt;
 	@extend .layout-maw-txt;
 }
 .s-results-item {
@@ -127,6 +127,10 @@
 }
 
 .is-search {
+	.form-search {
+		@extend .layout-maw-txt;
+		@extend .layout-mt;
+	}
 	.main-footer {
 		@extend .layout-mt;
 	}

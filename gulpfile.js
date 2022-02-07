@@ -16,7 +16,7 @@
 
 const { src, dest, watch, series } = require( 'gulp' ); // base
 
-const sass          = require( 'gulp-dart-sass' ); // scss to css
+const sass          = require( 'gulp-sass' )(require('sass')); // scss to css
 const postcss 		= require( 'gulp-postcss' ); // package
 const cssnano 		= require( 'cssnano' ); // minification css
 const autoprefixer 	= require( 'autoprefixer' ); // ajout des préfixes

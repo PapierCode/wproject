@@ -9,49 +9,25 @@
 @use "../helpers" as *;
 
 
-.form-search-box {
-	position: absolute;
-	top:rem(-($button-size + 2*$button-space));
-	left:0;
-	right: 0;
-	background-color: $yellow;
-	display: flex;
-	align-items: flex-end;
-}
-
-.form-search-box-inner {
-	padding:rem($button-space) $space;
-	width: 100%;
-	@extend .layout-maw;
-	@extend .layout-center;
-
-	@media ( min-width : em($mq-layout-maw) ) {
-		padding: rem(10,$space-max);
-	}
-}
-
 .form-search {
 	display: flex;
 	align-items: center;
-
-	.form-search-box & {
-		justify-content: flex-end;
-	}
-	.main-header & {
-		@extend .layout-mt;
-	}
-}
-.form-search-label {
-	position: absolute;
-	left:-666vw;
 }
 .form-search-input {
-	width: auto;
-	max-width: rem(300);
-	padding-top: 0;
-	padding-bottom: 0;
 	height: rem($button-size);
 }
 .form-search-submit {
 	flex-shrink: 0;
+	margin-left:rem($button-space);
+
+	.txt {
+		position: absolute;
+		left:-666em;
+	}
+
+	@media ( min-width : em($mq-layout-m) ) {
+		.txt {
+			position: static;
+		}
+	}
 }

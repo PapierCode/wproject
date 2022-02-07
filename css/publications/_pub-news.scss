@@ -12,22 +12,15 @@
 .st-list--news {}
 
 .st--news {
+	
+	.st-date {
+		margin-bottom:rem(.5*$space--st);
+		text-align: center;
+	}
 
 	@media ( min-width : em($mq-layout-xl) ) {
 		.is-home &:nth-child(4) {
 			display:none;
 		}
-	}
-}
-
-.st-date {
-	display: block;
-	text-align: center;
-	margin-bottom:rem(5);
-	color:$black;
-	font-style: italic;
-
-	span {
-		font-weight: 700;
 	}
 }

@@ -79,7 +79,8 @@ if ( class_exists( 'PC_Add_Custom_Post' )) {
 	$xxx_tax_args = array(
 		'rewrite'   => array( 'slug' => 'xxx' ),
 		'show_in_nav_menus' => false,
-		'hierarchical' => false
+		'hierarchical' => false,
+		'meta_box_cb' => 'post_categories_meta_box'
 	);
 
 

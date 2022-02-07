@@ -68,7 +68,10 @@ h1 {
 		bottom:0;
 		left:0;
 		transform: scale(.5);
-		transition:all .3s ease;
+		transition:all .75*$t-st-hover ease;
+	}
+	* {
+		transition:all $t-st-hover ease;
 	}
 
 	&:hover, &:focus-within {
@@ -76,7 +79,18 @@ h1 {
 		&::before {
 			transform:scale(1);
 			background-color: $blue;
-			transition:all .3s ease;
+			transition:all .75*$t-st-hover ease;
+		}
+		* {
+			transition:all $t-st-hover ease;
+		}
+		.st-desc-ico {
+			svg {
+				fill:$blue;
+			}
+		}
+		.st-tax {
+			border-top-color: darken($blue,20%);
 		}
 	}
 
@@ -103,7 +117,7 @@ h1 {
 }
 
 .st-title {
-	margin:rem($space--st,0,.5*$space--st,0);
+	margin:rem($space--st,0,0,0);
 	font-weight: 400;
 	font-family: $font-bold;
 	font-size: rem(20);
@@ -141,7 +155,7 @@ h1 {
 }
 
 .st-desc {
-	margin: rem(0,0,.5*$space--st,0);
+	margin: rem(.5*$space--st,0,0,0);
 }
 .st-desc-ico {
 	display: inline-block;
@@ -179,6 +193,41 @@ h1 {
 	text-transform: uppercase;
 	font-family: $font-bold;
 	color:$white;
+}
+
+.st-date {
+	display: block;
+	font-size:rem(16);
+	color:$black;
+	font-style: italic;
+
+	span {
+		font-weight: 700;
+	}
+}
+
+.st-tax {
+	position: relative;
+	z-index: 1;
+	font-size: rem(16);
+	margin:rem(.5*$space--st,0,0,0);
+	border-top:$border;
+	padding-top:rem(.5*$space--st);
+
+	svg {
+		width: rem(16);
+		height: rem(16);
+		margin-right: .5em;
+	}
+	a {
+		color:$black;
+		text-decoration: none;
+		outline: none;
+
+		&:hover, &:focus {
+		   text-decoration: underline;
+		}
+	}
 }
 
 

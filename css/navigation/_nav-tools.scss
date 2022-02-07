@@ -44,19 +44,6 @@
 	}
 }
 
-.h-tools-item--search {
-	position: absolute;
-	top:$space;
-	right: calc( #{$space} + #{rem($button-size + 20)} );
-
-	@media ( min-width : em($mq-layout-l) ) {
-		right: calc( #{$space} + #{rem($button-size + 3*$button-space + 85)} );
-	}
-	@media ( min-width : em($mq-layout-xl) ) {
-		position: static;
-	}
-}
-
 
 /*=====  FIN Liste  =====*/
 
@@ -72,7 +59,7 @@
 		left:-666vw;
 	}	
 
-	@media ( min-width : em($mq-layout-l) ) {
+	@media ( min-width : em($mq-header-nav-l) ) {
 
 		.txt {
 			position:static;
