@@ -136,10 +136,10 @@ if ( $st_list.length > 0 ) {
 =            Map            =
 ===========================*/
 
-if ( $html.hasClass('is-event') ) {
+if ( $html.hasClass('has-map') ) {
 
-	var $eventMap = $('#event-map'),
-	eventMap = L.map( 'event-map', { 
+	var $eventMap = $('#map'),
+	eventMap = L.map( 'map', { 
 		center: L.latLng( $eventMap.data('lat'), $eventMap.data('lng') ),
 		zoom: 14,
 		minZoom : 10,

@@ -73,6 +73,7 @@
 ==============================*/
 
 .is-event {
+
 	.editor {
 		@include layout(m,0,0,2,0);	
 	}
@@ -124,9 +125,9 @@
 
 /*----------  Adresse & map  ----------*/
 
-$event-location-space : 10;
+$location-space : 10;
 
-.event-location {
+.location {
 	@extend .layout-mb;
 	@extend .layout-ptrbl;
 	border:$border;
@@ -140,13 +141,13 @@ $event-location-space : 10;
 	}
 }
 
-.event-location-ico {
+.location-ico {
 	position: absolute;
 	left:50%;
 	top:0;
 	transform:translate(-50%,-50%);
 	background-color: $white;
-	padding:rem($event-location-space);
+	padding:rem($location-space);
 	border: $border;
 
 	svg {
@@ -155,30 +156,31 @@ $event-location-space : 10;
 	}
 }
 
-.event-location-title {
+.location-title {
 	@extend .visually-hidden;
 }
-.event-location-address {}
-.event-location-desc {
+.location-address {}
+.location-desc {
 	font-style: normal;
-	margin:rem(2*$event-location-space,0,0,0);
+	margin:rem(2*$location-space,0,0,0);
 
 	dd {
 		margin-left: 0;
 	}
-	.name {
-		font-family: $font-semi;
-		font-size: rem(20);
-	}
-	.link {
-		margin-top:rem($event-location-space);
-	}
+}
+.location-name {
+	font-family: $font-semi;
+	font-size: rem(20);
+}
+.location-link {
+	margin-top:rem($location-space);
+	
 	.ico {
 		transform: rotate(180deg);
 	}
 }
-.event-location-map {
-	margin-top:rem(3*$event-location-space);
+.location-map {
+	margin-top:rem(3*$location-space);
 	height: rem(300);
 }
 
