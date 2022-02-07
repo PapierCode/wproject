@@ -32,7 +32,7 @@
 		transform:rotate(180deg);
 	}
 
-	.event-filter:not(.event-filter--past) & {
+	&:not(:only-child) {
 		margin-top: rem($button-space);
 	
 		@media ( min-width : em($mq-layout-m) ) {
