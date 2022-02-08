@@ -15,7 +15,7 @@
 ===============================*/
 
 .event-filter {
-	@extend .layout-mb;
+	@extend .layout-mt;	
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -68,57 +68,32 @@
 
 /*=====  FIN Filtres  =====*/
 
+/*============================
+=            Card            =
+============================*/
+
+.st--event {
+	.st-desc {
+		margin-bottom: rem($space--st);
+	}
+}
+
+
+/*=====  FIN Card  =====*/
+
 /*==============================
 =            Single            =
 ==============================*/
 
 .is-event {
 
-	.editor {
-		@include layout(m,0,0,2,0);	
-	}
-
 	@media ( min-width : em($mq-layout-maw) ) {
 		.main-content-inner {
 			display: grid;
 			grid-template-columns: auto 1fr;
-			grid-template-rows: auto 1fr;
+			grid-template-rows: auto 1fr auto;
 			gap:rem(.5*$space-max,$space-max);
 		}
-		.editor {
-			margin:0;
-		}
-	}
-}
-
-
-/*----------  Date  ----------*/
-
-.event-date {
-	display: flex;
-	align-items: center;
-	font-family: $font-regular;
-	margin: 0 0 $space 0;
-
-	.ico {
-		margin-right: rem($button-space);
-		flex-shrink: 0;
-		padding:rem($button-space - 4,$button-space,$button-space,$button-space); // -4 ajustement icône
-		border: $border;
-	}
-	time {
-		font-family: $font-semi;
-	}
-	svg {
-		width: rem(30);
-		height: rem(30);
-	}
-
-	@media ( min-width : em($mq-layout-l) ) {
-		font-size: rem(20);
-	}
-	@media ( min-width : em($mq-layout-maw) ) {
-		margin-bottom:0;
 	}
 }
 
@@ -128,15 +103,15 @@
 $location-space : 10;
 
 .location {
-	@extend .layout-mb;
 	@extend .layout-ptrbl;
 	border:$border;
 	position: relative;
 	max-width: rem($maw-txt);
 
 	@media ( min-width : em($mq-layout-maw) ) {
+		align-self: start;
 		grid-column: 2/3;
-		grid-row: 1/3;
+		grid-row: 1/4;
 		margin-top:rem(26); // 1/2 hauteur icône
 	}
 }

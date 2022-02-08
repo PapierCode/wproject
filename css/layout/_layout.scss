@@ -132,6 +132,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	border-top: $border;
+	@include layout(m,2,0,0,0);
 	@extend .layout-pt;
 	
 	@media ( min-width : em($mq-main-nav-l) ) {

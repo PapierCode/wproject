@@ -11,9 +11,7 @@
 @use "../helpers" as *;
 
 
-.editor {
-	@extend .layout-pb;
-}
+.editor {}
 
 .editor-inner {
 	

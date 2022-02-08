@@ -11,6 +11,7 @@
 
 .form--contact {
 	max-width: rem(700);
+	@extend .layout-mt;	
 
 	form {
 		@extend .layout-pb;
