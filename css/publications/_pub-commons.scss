@@ -298,13 +298,14 @@ h1 {
 		flex-shrink: 0;
 		padding:rem($button-space - 4,$button-space,$button-space,$button-space); // -4 ajustement icône
 		border: $border;
+		
+		svg {
+			width: rem(30);
+			height: rem(30);
+		}
 	}
 	time {
 		font-family: $font-semi;
-	}
-	svg {
-		width: rem(30);
-		height: rem(30);
 	}
 
 	@media ( min-width : em($mq-layout-l) ) {
@@ -321,22 +322,22 @@ h1 {
 
 .single-tax {
 	margin: 0;
-}
 
-.single-tax-ico {
-	margin-right: rem($button-space);
-	border: $border;
-	padding: rem($button-space);
-}
-.single-tax-label {
-	font-weight: 700;
-}
-.single-tax-link {
-	color:$black;
-	text-decoration: none;
-
-	&:hover, &:focus {
-	   text-decoration: underline;
+	.ico {
+		margin-right: rem($button-space);
+		border: $border;
+		padding: rem($button-space);
+	}
+	.label {
+		font-weight: 700;
+	}
+	a, a:visited {
+		color:$black;
+		text-decoration: none;
+	
+		&:hover, &:focus {
+		   text-decoration: underline;
+		}
 	}
 }
 
