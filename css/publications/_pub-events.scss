@@ -103,6 +103,7 @@
 $location-space : 10;
 
 .location {
+	@include layout(m,2,0,0,0);
 	@extend .layout-ptrbl;
 	border:$border;
 	position: relative;
@@ -112,7 +113,7 @@ $location-space : 10;
 		align-self: start;
 		grid-column: 2/3;
 		grid-row: 1/4;
-		margin-top:rem(26); // 1/2 hauteur icône
+		margin-top:0;
 	}
 }
 

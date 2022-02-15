@@ -296,13 +296,13 @@ h1 {
 	.ico {
 		margin-right: rem($button-space);
 		flex-shrink: 0;
-		padding:rem($button-space - 4,$button-space,$button-space,$button-space); // -4 ajustement icône
+		padding:rem($button-space - 2,$button-space,$button-space,$button-space); // -4 ajustement icône
 		border: $border;
-		
-		svg {
-			width: rem(30);
-			height: rem(30);
-		}
+	}
+	svg {
+		display: block;
+		width: rem(30);
+		height: rem(30);
 	}
 	time {
 		font-family: $font-semi;
@@ -321,12 +321,18 @@ h1 {
 
 
 .single-tax {
-	margin: 0;
+	display: flex;
+	align-items: center;
+	@extend .layout-mt;
+	margin-bottom: 0;
 
 	.ico {
 		margin-right: rem($button-space);
 		border: $border;
 		padding: rem($button-space);
+	}
+	svg {
+		display: block;
 	}
 	.label {
 		font-weight: 700;

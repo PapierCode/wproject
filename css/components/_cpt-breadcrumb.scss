@@ -30,6 +30,7 @@
 	&:not(:nth-last-child(2)) {
 		position: absolute;
 		left:-100vw;
+		visibility: hidden;
 	}
 
 	a, a:visited {
@@ -48,6 +49,7 @@
 
 		&:not(:nth-last-child(2)) {
 			position: static;
+			visibility: visible;
 		}
 		&:nth-last-child(2) {
 			flex-direction: row;
