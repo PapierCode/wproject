@@ -10,7 +10,7 @@
 
 
 .breadcrumb {
-	font-family: $font-regular;
+	@include font();
 	@include layout(m,0,0,.5,0);
 
 	.is-fullscreen & {

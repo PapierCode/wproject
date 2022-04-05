@@ -18,12 +18,11 @@
 
 	background-color: $black;
 
-	font-family: $font-bold;
+	@include font(900);
 	font-size:rem(16);
 	text-decoration: none;
 	color:$white;
 	text-transform: uppercase;
-	line-height: 1;
 
 	transition:all .3s ease;
 
@@ -73,10 +72,8 @@
 	}
 }
 
-.button--inner-txt {
-	font-family: $font-regular;
+.button--inline {
 	font-size:inherit;
-	line-height: inherit;
 	text-transform: none;
 	padding:rem(0,.5*$button-space);
 	height: auto;

@@ -67,9 +67,8 @@
 
 .s-results-item-title {
 	margin:0;
-	font-family: $font-semi;
+	@include font(800,1.4);
 	font-size:rem(18);
-	line-height: 1.4;
 
 	.has-image & {
 		grid-column: 2/3;

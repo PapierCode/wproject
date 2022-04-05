@@ -41,7 +41,7 @@
 =============================*/
 
 label, .label-like {
-	font-family: $font-regular;
+	@include font();
 
 	a, a:visited {
 		color:inherit;

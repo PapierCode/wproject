@@ -105,6 +105,16 @@
 }
 
 
+/*----------  Font face  ----------*/
+
+@mixin font( $weight : 600, $line-height : 1.2, $letter-spacing : 1em ) {
+	font-family: $font-face;
+	font-weight: $weight;
+	letter-spacing: $letter-spacing + em;
+	line-height: $line-height + em;
+}
+
+
 /*=====  FIN Mixins  =====*/
 
 /*======================================

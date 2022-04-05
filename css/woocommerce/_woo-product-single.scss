@@ -66,7 +66,7 @@
 
 .product-aside-title {
 	@include layout(m,0,0,1,0);
-	font-family: $font-bold;
+	@include font(900);
 	font-size:rem(30);
 }
 

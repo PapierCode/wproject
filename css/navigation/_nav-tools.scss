@@ -75,7 +75,7 @@
 	height: rem($button-size);
 	padding-bottom:rem(2); // fix font wpréform
 	background-color: $yellow;
-	font-family: $font-regular;
+	@include font();
 	font-size: rem(22);
 	color:$black;
 	transition: border-color .3s ease;

@@ -55,7 +55,7 @@
 	display: block;
 	padding: rem($atc-space);
 	margin:0;
-	font-family: $font-bold;
+	@include font(900);
 	text-align: center;
 }
 .promotion {
@@ -122,13 +122,13 @@
 	display: block;
 	margin:0;
 	padding:rem($atc-space);
-	font-family: $font-bold;
+	@include font(900);
 	background-color: $yellow;
 	font-size: rem(18);
 	text-align: center;
 
 	del {
-		font-family: $font-regular;
+		@include font();
 		font-size: rem(14);
 	}
 	ins {
@@ -152,7 +152,7 @@
 	@extend .visually-hidden;
 }
 .pc-woo-qty-label {
-	font-family: $font-bold;
+	@include font(900);
 	text-transform: uppercase;
 	min-width: rem($atc-label-miw-s);
 
@@ -218,7 +218,7 @@
 	}
 	label {
 		text-transform: uppercase;
-		font-family: $font-bold;
+		@include font(900);
 	}
 	td.value {
 		flex-grow: 1;

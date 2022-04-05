@@ -98,8 +98,7 @@ h1 {
 	position: relative;
 	text-decoration: none;
 	text-align: center;
-	font-family: $font-bold;
-	line-height: 1.3;
+	@include font(900,1.3);
 }
 
 .home-shortcut-img {
@@ -234,11 +233,9 @@ h1 {
 
 .home-title-sub {
 	color:$black;
-	font-family: $font-bold;
-	font-weight: 900;
+	@include font(900,1.2);
 	margin:0;
 	font-size: rem(36);
-	line-height: 1.2; // dépend de la font
 	text-align: center;
 	@include layout(p,2,1,1,1);
 	

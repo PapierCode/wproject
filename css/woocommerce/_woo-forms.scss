@@ -38,9 +38,8 @@ Validation commande
 	.required {
 		display: inline-block;
 		color:$red;
-		font-family: $font-regular;
+		@include font();
 		text-decoration: none;
-		line-height: 1;
 		transform: scale(2);
 		margin-left:rem(3)
 	}
@@ -175,7 +174,7 @@ Validation commande
 		display: flex;
 		align-items: center;
 		padding:rem(10);
-		font-family: $font-bold;
+		@include font(900);
 		font-size: rem(16);
 		text-transform: uppercase;
 		color:$white;

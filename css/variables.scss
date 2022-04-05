@@ -87,9 +87,8 @@ $mq-gallery-max			: 1200;
 ===================================*/
 
 $font-default 			: Arial, sans-serif;
-$font-regular			: 'Raleway 600', sans-serif;
-$font-semi				: 'Raleway 800', sans-serif;
-$font-bold				: 'Raleway 900', sans-serif;
+$font-face				: 'Raleway', sans-serif;
+$font-bold				: sans-serif;
 
 $base-font-size-s		: 16;
 $base-font-size-l		: 18;
@@ -137,9 +136,6 @@ $wysi-space-default-l		: 20;
 
 /*----------  Titres  ----------*/
 
-$wysi-title-font 			: $font-bold;
-$wysi-title-line-h			: 1.3;
-
 $wysi-h2-color				: $black;
 $wysi-h2-font-size-s		: 26;
 $wysi-h2-font-size-l		: 30;
@@ -166,7 +162,6 @@ $wysi-link-border-color-visited		: $grey;
 
 /*----------  Formats  ----------*/
 
-$wysi-intro-font			: $font-regular;
 $wysi-intro-font-size		: 20;
 
 

@@ -251,7 +251,7 @@
 	@extend .button;
 	display: flex;
 	text-transform: none;
-	font-family: $font-regular;
+	@include font();
 
 	.is-active & {
 		background-color: $red;

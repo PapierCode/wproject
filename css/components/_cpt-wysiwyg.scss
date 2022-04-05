@@ -126,7 +126,7 @@
 	==============================*/
 	
 	h2, h3  {
-		font-family: $wysi-title-font;
+		@include font(900,1.3);
 		margin-bottom: 0;
 
 		a {
@@ -146,7 +146,6 @@
 		color: $wysi-h2-color;
 
 		font-size: rem($wysi-h2-font-size-s);
-		line-height: $wysi-title-line-h;
 		margin-top: rem($wysi-h2-mtop-s);
 
 		@media ( min-width : em($mq-layout-l) ) {
@@ -159,7 +158,6 @@
 		color: $wysi-h3-color;
 
 		font-size: rem($wysi-h3-font-size-s);
-		line-height: $wysi-title-line-h;
 		margin-top: rem($wysi-h3-mtop-s);
 
 		@media ( min-width : em($mq-layout-l) ) {
@@ -271,7 +269,7 @@
 	===============================*/
 	
 	.wysi-intro {
-		font-family: $wysi-intro-font;
+		@include font();
 		font-size: rem($wysi-intro-font-size);
 	}
 	

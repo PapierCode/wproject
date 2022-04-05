@@ -78,6 +78,10 @@
 	}
 }
 
+.st-label--canceled {
+	background-color: $msg-error;
+}
+
 
 /*=====  FIN Card  =====*/
 
@@ -86,6 +90,10 @@
 ==============================*/
 
 .is-event {
+
+	.msg {
+		margin-top:0;
+	}
 
 	@media ( min-width : em($mq-layout-maw) ) {
 		.main-content-inner {
@@ -145,7 +153,7 @@ $location-space : 10;
 	}
 }
 .location-name {
-	font-family: $font-semi;
+	@include font(800);
 	font-size: rem(20);
 }
 .location-link {
