@@ -24,3 +24,7 @@
 		}
 	}
 }
+
+.single-date--news {
+	@include layout(m,.5,0,0,0);
+}
