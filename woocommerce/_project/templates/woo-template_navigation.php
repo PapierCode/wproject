@@ -20,11 +20,8 @@ add_filter( 'pc_filter_skip_nav', 'pc_woo_edit_skip_nav' );
 
 	function pc_woo_edit_skip_nav( $skip_nav_list ) {
 
-		$skip_nav_list = array( 
-			get_the_permalink( wc_get_page_id('cart') ) => 'Panier',
-			get_the_permalink( wc_get_page_id('myaccount') ) => 'Compte client'
-		) + $skip_nav_list;
-
+		$skip_nav_list[] = array( 'href' => get_the_permalink( wc_get_page_id('cart') ), 'label' => 'Panier' );
+		
 		return $skip_nav_list;
 
 	}

@@ -140,11 +140,11 @@ $location-space : 10;
 	}
 }
 
+.location-details {}
 .location-title {
 	@extend .visually-hidden;
 }
-.location-address {}
-.location-desc {
+.location-list {
 	font-style: normal;
 	margin:rem(2*$location-space,0,0,0);
 

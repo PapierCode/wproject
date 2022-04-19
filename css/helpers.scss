@@ -107,7 +107,7 @@
 
 /*----------  Font face  ----------*/
 
-@mixin font( $weight : 600, $line-height : 1.2, $letter-spacing : 1em ) {
+@mixin font( $weight : 600, $line-height : 1.2, $letter-spacing : 0 ) {
 	font-family: $font-face;
 	font-weight: $weight;
 	letter-spacing: $letter-spacing + em;

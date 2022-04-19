@@ -12,9 +12,25 @@
 .form-search {
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
+
+	@media ( min-width : em($mq-layout-l) ) {
+		flex-wrap: nowrap;
+	}
 }
-.form-search-input {
+.form-search-label {
+	width: 100%;
+	margin-bottom: rem(.5*$button-space);
+
+	@media ( min-width : em($mq-layout-l) ) {
+		width: auto;
+		margin: rem(0,$button-space,0,0);
+	}
+}
+.form-search-input[type="text"] {
 	height: rem($button-size);
+	width: auto;
+	flex-grow: 1;
 }
 .form-search-submit {
 	flex-shrink: 0;

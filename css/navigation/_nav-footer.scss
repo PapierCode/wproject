@@ -21,7 +21,7 @@
 	margin-top:$space;
 	padding-top:$space;
 
-	@media ( min-width : em($mq-footer-nav-l) ) {
+	@media ( min-width : em($mq-layout-l) ) {
 		border:none;
 		margin: 0;
 		padding: 0;
