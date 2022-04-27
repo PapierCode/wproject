@@ -50,11 +50,21 @@ var plugins = [
 	
 function css() {
     
-    return src( ['css/use.scss'] )
+    return src( ['css/sass/use.scss'] )
         .pipe(sass({ precision: 3 }))
         .pipe(postcss( plugins ))
-		.pipe(rename('project.css'))
-        .pipe(dest( './' ));
+		.pipe(rename('screen.css'))
+        .pipe(dest( './css/' ));
+
+}
+	
+function admin_css() {
+    
+    return src( ['css/sass/admin/use.scss'] )
+        .pipe(sass({ precision: 3 }))
+        .pipe(postcss( plugins ))
+		.pipe(rename('admin.css'))
+        .pipe(dest( './css/' ));
 
 }
 
@@ -95,7 +105,7 @@ function js() {
 ==================================*/
 
 exports.watch = function() {
-	watch( 'css/**/*.scss', series(css) )
+	watch( 'css/**/*.scss', series(css,admin_css) )
 	watch( ['scripts/**/*.js', '!scripts/pc-project.min.js'], series(js_hint,js) )
 };
 

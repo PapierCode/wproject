@@ -1,0 +1,46 @@
+/**
+*
+* Formulaires : contact
+*
+**/
+
+
+@use "../variables" as *;
+@use "../mixins" as *;
+@use "../helpers" as *;
+
+
+.form--contact {
+	max-width: rem(700);
+	@extend .layout-mt;	
+
+	form {
+		@extend .layout-pb;
+	}
+}
+
+.form-item--contact-cgu {
+	padding-top:$space;
+	border-top:$border;
+
+	input[type="checkbox"] {
+		+ * {
+			&::before {
+				margin:rem(0,10,0,0);
+			}
+		}
+	}
+
+	@media ( min-width : em($mq-layout-l) ) {
+		padding-top:rem(20);
+	}
+}
+
+.form-item-inner {
+	margin-top : rem(5);
+
+	@media ( min-width : em($mq-layout-l) ) {
+		margin-top: 0;
+		flex-grow: 1;
+	}
+}

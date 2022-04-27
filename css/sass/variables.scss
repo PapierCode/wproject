@@ -1,0 +1,219 @@
+/**
+*
+* Variables SASS
+*
+**/
+
+
+/*================================
+=            Couleurs            =
+================================*/
+
+$black				: #290f0f;
+$grey				: #e3dcd3;
+$white 				: #f9f5ec;
+
+$red				: #fd4949;
+$orange				: #ff7800;
+$yellow				: #ffcb00;
+$blue				: #bee8ea;
+$green				: #aad262;
+
+// formulaires
+$placeholder 		: $black;
+
+// Messages 
+$msg-default		: $black;
+$msg-error			: $red;
+$msg-success		: $green;
+
+
+/*=====  FIN Couleurs  =====*/	
+
+/*==================================
+=            Agencement            =
+==================================*/
+
+/**
+*
+* mq 	: media query
+* h 	: header
+* w 	: width
+* maw 	: max width
+*
+*/
+
+
+/*----------  Layout global  ----------*/
+
+$space					: 4vw;
+$space-max				: 40;
+$space-v-coef			: .75;
+
+$maw-txt          		: 800;
+$maw-layout				: 1300;
+
+$mq-layout-m			: 480;
+$mq-layout-l			: 700;
+$mq-layout-xl			: 1100;
+$mq-layout-maw			: $maw-layout;
+
+
+/*----------  Navigation  ----------*/
+
+$button-ico-size	 	: 16;
+$button-space 			: 10;
+$button-size 			: $button-ico-size + 2 * $button-space;
+
+$header-nav-w-s	 		: 80vw; // navigation masquée
+$header-nav-w-l			: 50vw; // navigation masquée
+
+$mq-header-nav-l		: 500;
+$mq-main-nav-l			: 600;
+
+
+/*----------  Divers  ----------*/
+
+$space--st 				: 20; // ???
+
+$mq-gallery-max			: 1200;
+
+
+/*=====  FIN Agencement  ======*/
+
+/*===================================
+=            Typographie            =
+===================================*/
+
+$font-default 			: Arial, sans-serif;
+$font-face				: 'Raleway', sans-serif;
+
+$base-font-size-s		: 16;
+$base-font-size-l		: 18;
+$line-height-default	: 1.5;
+
+$mq-base-font-size		: $mq-layout-l;
+
+$h1-font-size-s			: 36;
+$h1-font-size-l			: 44;
+
+
+/*=====  FIN Typographie  ======*/
+
+/*==========================================
+=            Durées d'animation            =
+==========================================*/
+
+// navigation
+$t-nav					: .5s;
+$t-nav-btn-ico			: .6s;
+$t-nav-link 			: .3s;
+
+// article résumé
+$t-st-hover				: .5s;
+
+// accueil
+$t-home-shortcut-hover 	: .4s;
+
+
+/*=====  FIN Durées d'animation  =====*/
+
+/*==================================
+=            Décoration            =
+==================================*/
+
+$border					: 1px solid $grey;
+
+
+/*=====  FIN Décoration  =====*/
+	
+/*===============================
+=            Wysiwyg            =
+===============================*/
+
+$wysi-space-default-s		: 10;
+$wysi-space-default-l		: 20;
+
+
+/*----------  Titres  ----------*/
+
+$wysi-heading-font			: $font-face;
+$wysi-heading-weight		: 900;
+$wysi-heading-line-height	: 1.3;
+
+$wysi-h2-color				: $black;
+$wysi-h2-font-size-s		: 26;
+$wysi-h2-font-size-l		: 30;
+$wysi-h2-mtop-s				: 1.5 * $wysi-space-default-l;
+$wysi-h2-mtop-l				: 2.5 * $wysi-space-default-l;
+
+$wysi-h3-color				: $black;
+$wysi-h3-font-size-s		: 20;
+$wysi-h3-font-size-l		: 24;
+$wysi-h3-mtop-s				: $wysi-space-default-l;
+$wysi-h3-mtop-l				: 1.5 * $wysi-space-default-l ;
+
+
+/*----------  Lien  ----------*/
+
+$wysi-link-color					: $black;
+
+$wysi-link-color-hover				: $black;
+$wysi-link-bg-color-hover			: $yellow;
+
+$wysi-link-color-visited			: $black;
+$wysi-link-border-color-visited		: $grey;
+
+
+/*----------  Blocs ACF  ----------*/
+
+$wysi-cta-bg-color			: $grey;
+
+
+
+/*=====  FIN Wysiwyg  =====*/
+
+/*===================================
+=            Woocommerce            =
+===================================*/
+
+$woo-space					: 10;
+
+$woo-cell-padding-v			: $woo-space;
+$woo-cell-padding-h			: $woo-space;
+$woo-border-spacing			: $woo-space;
+
+$woo-th-bg-color			: $yellow;
+$woo-coupon-bg-color		: $green;
+$woo-total-bg-color			: $red;
+
+$woo-space-form-row			: 15;
+
+
+/*----------  Ajout au panier  ----------*/
+
+$atc-space					: $woo-space;
+
+$atc-maw					: 500;
+$atc-label-miw-s			: 100;
+$atc-label-miw-l			: 120;
+$atc-ico-size				: 20;
+
+
+/*----------  Panier  ----------*/
+
+$cart-button-ico-size		: 14;
+
+
+/*----------  Validation commande  ----------*/
+
+$checkout-td-width			: 35vw;
+
+
+/*----------  Compte  ----------*/
+
+$account-space				: $woo-space;
+$account-border-spacing		: $woo-border-spacing;
+
+
+/*=====  FIN Woocommerce  =====*/

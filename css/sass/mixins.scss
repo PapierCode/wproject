@@ -1,0 +1,143 @@
+/**
+*
+* Fonctions & Mixins
+*
+**/
+
+
+@use "sass:math";
+@use "variables" as *;
+
+
+/*=================================
+=            Fonctions            =
+=================================*/
+
+/*----------  Px to em  ----------*/
+
+@function em($a, $b:null, $c:null, $d:null, $base: 16) {
+
+	// $a
+	@if $a != null and $b == null and $c == null and $d == null {
+
+		@return math.div($a,$base)+'em';
+
+	// $a et $b
+	} @else if $a != null and $b != null and $c == null and $d == null {
+
+		@return math.div($a,$base)+'em' math.div($b,$base)+'em';
+
+	// $a, $b, $c et $d
+	} @else if $a != null and $b != null and $c != null and $d != null {
+
+		@return math.div($a,$base)+'em' math.div($b,$base)+'em' math.div($c,$base)+'em' math.div($d,$base)+'em';
+
+	} @else {
+
+		@return "!";
+
+	}
+
+}
+
+
+/*----------  Px to rem  ----------*/
+
+@function rem($a, $b:null, $c:null, $d:null, $base: 16) {
+
+	// $a
+	@if $a != null and $b == null and $c == null and $d == null {
+
+		@return math.div($a,$base)+rem;
+
+	// $a et $b
+	} @else if $a != null and $b != null and $c == null and $d == null {
+
+		@return math.div($a,$base)+rem math.div($b,$base)+rem;
+
+	// $a, $b, $c et $d
+	} @else if $a != null and $b != null and $c != null and $d != null {
+
+		@return math.div($a,$base)+rem math.div($b,$base)+rem math.div($c,$base)+rem math.div($d,$base)+rem;
+
+	} @else {
+
+		@return "!";
+
+	}
+
+}
+
+
+/*=====  FIN Fonctions  =====*/
+
+/*==============================
+=            Mixins            =
+==============================*/
+
+/*----------  Layout  ----------*/
+
+@mixin layout( $type : p, $t : 1, $r : 1, $b : 1, $l : 1 ) {
+
+	@if ( $type == p ) { $type : padding; }
+	@if ( $type == m ) { $type : margin; }
+
+	#{$type} : $t*$space $r*$space $b*$space $l*$space;
+
+	@media ( min-width : em($mq-layout-l) ) {
+		#{$type} : $t*$space-v-coef*$space $r*$space $b*$space-v-coef*$space $l*$space;
+	}
+	@media ( min-width : em($mq-layout-maw) ) {
+		#{$type} : rem( $t*$space-v-coef*$space-max, $r*$space-max, $b*$space-v-coef*$space-max, $l*$space-max );
+	}
+
+}
+
+/*----------  Table  ----------*/
+
+@mixin table-with-border-spacing( $space ) {
+	border-spacing:rem($space);
+	margin-left:rem(-$space); // 2x
+	width: calc( 100% + #{rem(2*$space)} );
+	max-width: none;
+}
+
+
+/*----------  Font face  ----------*/
+
+@mixin font( $weight : 600, $line-height : 1.2, $letter-spacing : 0 ) {
+	font-family: $font-face;
+	font-weight: $weight;
+	letter-spacing: $letter-spacing + em;
+	line-height: $line-height;
+}
+
+/*----------  Bouton (défaut)  ----------*/
+
+@mixin button() {
+	display: inline-flex;
+	align-items: center;
+
+	height: rem($button-size);
+	padding:rem(0,$button-space);
+
+	background-color: $black;
+
+	@include font(900);
+	font-size:rem(16);
+	text-decoration: none;
+	color:$white;
+	text-transform: uppercase;
+
+	transition:all .3s ease;
+	
+	&:hover, &:focus {
+		background-color: $blue;
+		color:$black;
+		transition:all .3s ease;
+	}
+	
+}
+
+
+/*=====  FIN Mixins  =====*/

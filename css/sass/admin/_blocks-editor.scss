@@ -1,0 +1,19 @@
+.acf-block-component {
+	margin:1rem 0;
+}
+
+/*----------  Métaboxes  ----------*/
+
+.block-editor .postbox {
+	background-color: #f2f2f2;
+}
+
+/*----------  Options  ----------*/
+
+a[href="https://fr.wordpress.org/support/article/wordpress-editor/"],
+a[href="https://www.w3.org/TR/html52/dom.html#the-title-attribute"],
+a[href="https://wordpress.org/support/article/page-jumps/"],
+a[href="https://fr.wordpress.org/support/article/writing-posts/#descriptions-des-boites-meta"],
+a[href="edit.php?post_type=wp_block"] {
+	display: none;
+}

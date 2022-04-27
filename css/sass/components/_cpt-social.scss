@@ -1,0 +1,93 @@
+/**
+*
+* Composant : social (liens & partage)
+*
+** Communs
+** Liens vers les pages
+** Partage
+*
+**/
+
+
+@use "../variables" as *;
+@use "../mixins" as *;
+@use "../helpers" as *;
+@use "cpt-buttons" as *;
+
+
+/*===============================
+=            Communs            =
+===============================*/
+
+.social-list {
+	display:flex;
+}
+.social-item {}
+
+.social-link {
+	@extend .button;
+}
+
+
+/*=====  FIN Communs  =====*/
+
+/*============================================
+=            Liens vers les pages            =
+============================================*/
+
+.social-list--header {
+	justify-content: center;
+	margin-top: $space;
+
+	.social-item {
+		margin-left:rem(10);
+	}
+
+	@media ( min-width : em($mq-layout-maw) ) {
+		margin:0;
+	}
+}
+
+
+/*=====  FIN Liens vers les pages  =====*/
+
+/*===============================
+=            Partage            =
+===============================*/
+
+.social-share {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	
+	.social-item {
+		margin-left:rem(10);
+		flex-shrink: 0;
+	}
+
+	&:nth-child(n+2) {
+		border-top:$border;
+		margin-top: $space;
+		padding-top: $space;
+	}
+
+	@media ( min-width : em($mq-main-nav-l) ) {
+		grid-column: 2/3;
+				
+		&:nth-child(n+2) {
+			border-top:none;
+			margin-top: 0;
+			padding-top: 0;
+		}
+	}
+	@media ( min-width : em($mq-layout-xl) ) {
+		grid-column: 3/4;
+	}
+}
+
+.social-share-title {
+	margin:0;
+}
+
+
+/*=====  FIN Partage  =====*/

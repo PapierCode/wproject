@@ -1,0 +1,58 @@
+/**
+*
+* Navigation dans le pied de page
+*
+** Liste
+** Liens
+*
+**/
+
+
+@use "../variables" as *;
+@use "../mixins" as *;
+@use "../helpers" as *;
+
+
+/*=============================
+=            Liste            =
+=============================*/
+
+.f-nav-list {
+	border-top:1px solid rgba($white,.25);
+	margin-top:$space;
+	padding-top:$space;
+
+	@media ( min-width : em($mq-layout-l) ) {
+		border:none;
+		margin: 0;
+		padding: 0;
+		text-align: right;
+	}
+}
+
+.f-nav-item {
+	&:nth-child(n+2) {
+		margin-top:rem(5);
+	}
+}
+
+
+/*=====  FIN Liste  ======*/
+
+/*=============================
+=            Liens            =
+=============================*/
+
+.f-nav-link {
+	text-decoration: none;
+	color:$white;
+
+	&:hover, &:focus {
+		text-decoration: underline;
+	}
+}
+
+.f-nav-link-inner {}
+
+
+/*=====  FIN Liens  ======*/

@@ -1,0 +1,23 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.components-button[aria-label="Titre 1"],
+.components-button[aria-label="Titre 4"],
+.components-button[aria-label="Titre 5"],
+.components-button[aria-label="Titre 6"] {
+	display: none;
+}
+
+.editor-post-title, .wp-block-heading {
+	@include font(900,1.4);
+}
+
+.editor-post-title {
+	font-size: rem($h1-font-size-l);
+}
+h2.wp-block-heading {
+	font-size: rem($wysi-h2-font-size-l);
+}
+h3.wp-block-heading {
+	font-size: rem($wysi-h3-font-size-l);
+}

@@ -1,0 +1,30 @@
+.wp-gallery {
+	list-style:none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap:1rem;
+	padding:0;
+}
+.wp-gallery-item {
+	width: calc( (100% - 5rem) / 6 );
+
+	[data-align="wide"] & {
+		width: calc( (100% - 7rem) / 8 );
+	}
+}
+.wp-gallery-link {
+	display: block;
+}
+.wp-gallery-img {
+	vertical-align: bottom;
+}
+.wp-gallery-ico {
+	display: none;
+}
+
+.acf-gallery-side [data-name="title"],
+.acf-gallery-side [data-name="description"],
+.acf-gallery-side .media-types-required-info {
+	display: none;
+}
