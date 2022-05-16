@@ -92,7 +92,7 @@ function pc_acf_init_block_types() {
 
 function pc_get_acf_block_cta_html( $frame, $title, $button_txt, $button_link, $space_v, $size ) {
 
-	if ( !trim($button_txt) && !is_array($button_link) ) { return FALSE; }
+	if ( '' == trim($button_txt) || !is_array($button_link) ) { return FALSE; }
 	
 	$block_css = array( 'bloc-cta', 'cta' );
 	if ( $frame ) { $block_css[] = 'cta--frame'; }

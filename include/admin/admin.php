@@ -44,8 +44,8 @@ add_filter( 'allowed_block_types_all', 'pc_allowed_block_types_all', 10, 2 );
 			'acf/pc-image',
 			'acf/pc-gallery',
 			'acf/pc-button',
-			'acf/pc-cols',
-			'acf/pc-quote'
+			// 'acf/pc-cols',
+			// 'acf/pc-quote'
 		);
 	
 		return $block_editor_context;
