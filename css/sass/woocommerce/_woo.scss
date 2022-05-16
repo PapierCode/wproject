@@ -18,17 +18,17 @@
 /*----------  Titre intermédiaires  ----------*/
 
 .pc-woo-subtitle {
-	font-family: $wysi-title-font;
-	font-size: rem($wysi-h2-font-size-s);
-	line-height: $wysi-title-line-h;
-	color: $wysi-h2-color;
+	font-family: $editor-title-font;
+	font-size: rem($editor-h2-font-size-s);
+	line-height: $editor-title-line-h;
+	color: $editor-h2-color;
 
 	margin: 2*$space 0 $space 0;
 	padding-bottom:$space;
 	border-bottom: $border;
 
 	@media ( min-width : em($mq-layout-l) ) {
-		font-size: rem($wysi-h2-font-size-l);
+		font-size: rem($editor-h2-font-size-l);
 		margin: $space 0 .5*$space 0;
 		padding-bottom: .5*$space;
 	}

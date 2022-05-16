@@ -1,18 +1,18 @@
-[data-type="acf/pc-image"] {
-	figure {
-		margin:0
-	}
-}
-.wysi-image {
+.bloc-image {
 	display:flex;
-	flex-direction: column;
+	justify-content: center;
 
-	&.wysi-image--center {
-		align-items: center;
+	.bloc-columns &, figure  {
+		margin:0;
 	}
-	&.wysi-image--right {
-		align-items: flex-end;
+
+	&.bloc-image--center {
+		text-align: center;
 	}
+	&.bloc-image--right {
+		text-align: right;
+	}
+	
 	figcaption {
 		font-style: italic;
 		margin-top: .5rem;

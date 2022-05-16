@@ -1,0 +1,41 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+@use "../../helpers" as *;
+
+.editor {
+
+	@media ( min-width : em($mq-layout-l) ) {
+
+		.bloc-columns--2 {
+			display: flex;
+			gap:rem($editor-space-default-l);
+	
+			[class*="bloc-"] {
+				margin:0;
+			}
+
+			> * {
+				width: 50%;
+			}
+		}
+		
+	}
+
+	@media ( min-width : em($mq-layout-xl) ) {
+
+		.bloc-columns {
+		}
+		.bloc-columns--3 {
+			> * {
+				width: calc( 100% / 3 );
+			}
+		}
+		.bloc-columns--4 {
+			> * {
+				width: 25%;
+			}
+		}
+		
+	}
+
+}

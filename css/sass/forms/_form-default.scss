@@ -49,7 +49,7 @@ label, .label-like {
 		transition:all .3s ease;
 
 		&:hover, &:focus {
-		   background-color: $wysi-link-bg-color-hover;
+		   background-color: $editor-link-bg-color-hover;
 		   transition:all .3s ease;
 		}
 	}

@@ -9,8 +9,8 @@
     font-style: normal;
     font-weight: 900;
 	font-display: swap;
-    src: url("css/font-face/raleway-900.woff2") format("woff2"), 
-        url("css/font-face/raleway-900.woff") format("woff");
+    src: url("sass/font-face/raleway-900.woff2") format("woff2"), 
+        url("sass/font-face/raleway-900.woff") format("woff");
 }
 
 @font-face {
@@ -18,8 +18,8 @@
     font-style: normal;
     font-weight: 800;
 	font-display: swap;
-    src: url("css/font-face/raleway-800.woff2") format("woff2"), 
-        url("css/font-face/raleway-800.woff") format("woff");
+    src: url("sass/font-face/raleway-800.woff2") format("woff2"), 
+        url("sass/font-face/raleway-800.woff") format("woff");
 }
 
 @font-face {
@@ -27,6 +27,6 @@
     font-style: normal;
     font-weight: 600;
 	font-display: swap;
-    src: url("css/font-face/raleway-600.woff2") format("woff2"), 
-        url("css/font-face/raleway-600.woff") format("woff");
+    src: url("sass/font-face/raleway-600.woff2") format("woff2"), 
+        url("sass/font-face/raleway-600.woff") format("woff");
 }

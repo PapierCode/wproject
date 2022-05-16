@@ -1,0 +1,28 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+@use "../../helpers" as *;
+
+.editor {
+
+	.bloc-image {
+		display: flex;
+		justify-content: center;
+
+		figcaption {
+			margin-top:rem(.5*$editor-space-default-s);
+			font-style: italic;
+		}
+		@media ( min-width : em($mq-layout-l) ) {
+			figcaption {
+				margin-top:rem(.5*$editor-space-default-l);
+			}	
+		}
+	}
+	.bloc-image--center {
+		text-align:center
+	}
+	.bloc-image--right {
+		text-align:right
+	}
+
+}

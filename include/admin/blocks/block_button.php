@@ -1,35 +1,19 @@
 <?php
+$cta = pc_get_acf_block_cta_html( 
+	get_field('_bloc_cta_box'), // cadre ?
+	get_field('_bloc_cta_title'), // titre si encadré
+	get_field('_bloc_cta_button_txt'), // texte du bouton
+	get_field('_bloc_cta_button_link'), // href du bouton
+	get_field('_bloc_space_v'), // espacement vertical
+	get_field('_bloc_size') // largeur du bloc
+);
 
-acf_register_block_type(array(
-	'name'              => 'pc-button',
-	'title'             => 'Bouton (CTA)',
-	'icon'              => 'button',
-	'category'          => 'text',
-	'keywords'          => array( 'bouton' ),
-	'mode'				=> 'auto',
-	'supports'			=> array(
-		'align' => array( 'wide' ),
-		'anchor' => true
-	),
-	'render_callback'   => 'pc_acf_block_button',
-));
+if ( $cta ) {
+	
+	echo $cta;
 
-function pc_acf_block_button( $block ) {
+} else if ( $is_preview ) {
 
-	$box_visibility = get_field('afficher-dans-un-encadre');
-	$box_title = trim( get_field('titre-de-lencadre') );
-	$box_css = array( 'wysi-cta' );
-	if ( $box_visibility ) { $box_css[] = 'is-visible'; }
-
-	$txt = get_field('texte-du-bouton');
-	$link = get_field('lien-du-bouton');
-	$link_attrs[] = 'href="'.$link['url'].'"';
-	$link_attrs[] = 'class="wysi-button"';
-    if ( $link['target'] ) { $link_attrs[] = 'target="'.$link['target'].'"'; }
-
-	echo '<div class="'.implode( ' ', $box_css ).'">';
-		if ( $box_visibility && '' != $box_title ) { echo '<h2 class="wysi-cta-title">'.$box_title.'</h2>'; }
-		echo '<a '.implode( ' ', $link_attrs ).'>'.$txt.'</a>';
-	echo '</div>';
+	echo '<p class="editor-error">Erreur bloc <em>Bouton (CTA)</em> : saisissez au moins le texte et le lien du bouton.</p>';
 
 }

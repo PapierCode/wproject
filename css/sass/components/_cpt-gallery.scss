@@ -22,14 +22,14 @@
 =            Liste	            =
 ===============================*/
 
-.wp-gallery-link {
+.gallery-link {
 	text-decoration: none;
 	display: block;
 	position: relative;
 	overflow: hidden;
 }
 
-.wp-gallery-ico {
+.gallery-ico {
 	position: absolute;
 	left:50%;
 	top:rem(-.5*$button-size);
@@ -45,7 +45,7 @@
 		fill:$black;
 	}
 	
-	.wp-gallery-link:hover &, .wp-gallery-link:focus & {
+	.gallery-link:hover &, .gallery-link:focus & {
 		top:50%;
 		transition: top .4s ease;
 	}

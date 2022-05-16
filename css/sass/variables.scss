@@ -51,7 +51,7 @@ $space-max				: 40;
 $space-v-coef			: .75;
 
 $maw-txt          		: 800;
-$maw-layout				: 1300;
+$maw-layout				: 1280;
 
 $mq-layout-m			: 480;
 $mq-layout-l			: 700;
@@ -90,7 +90,7 @@ $font-face				: 'Raleway', sans-serif;
 
 $base-font-size-s		: 16;
 $base-font-size-l		: 18;
-$line-height-default	: 1.5;
+$line-height-default	: 1.6;
 
 $mq-base-font-size		: $mq-layout-l;
 
@@ -131,43 +131,43 @@ $border					: 1px solid $grey;
 =            Wysiwyg            =
 ===============================*/
 
-$wysi-space-default-s		: 10;
-$wysi-space-default-l		: 20;
+$editor-space-default-s		: 10;
+$editor-space-default-l		: 20;
 
 
 /*----------  Titres  ----------*/
 
-$wysi-heading-font			: $font-face;
-$wysi-heading-weight		: 900;
-$wysi-heading-line-height	: 1.3;
+$editor-heading-font			: $font-face;
+$editor-heading-weight			: 900;
+$editor-heading-line-height		: 1.3;
 
-$wysi-h2-color				: $black;
-$wysi-h2-font-size-s		: 26;
-$wysi-h2-font-size-l		: 30;
-$wysi-h2-mtop-s				: 1.5 * $wysi-space-default-l;
-$wysi-h2-mtop-l				: 2.5 * $wysi-space-default-l;
+$editor-h2-color				: $black;
+$editor-h2-font-size-s			: 26;
+$editor-h2-font-size-l			: 30;
+$editor-h2-mtop-s				: 1.5 * $editor-space-default-l;
+$editor-h2-mtop-l				: 2.5 * $editor-space-default-l;
 
-$wysi-h3-color				: $black;
-$wysi-h3-font-size-s		: 20;
-$wysi-h3-font-size-l		: 24;
-$wysi-h3-mtop-s				: $wysi-space-default-l;
-$wysi-h3-mtop-l				: 1.5 * $wysi-space-default-l ;
+$editor-h3-color				: $black;
+$editor-h3-font-size-s			: 20;
+$editor-h3-font-size-l			: 24;
+$editor-h3-mtop-s				: $editor-space-default-l;
+$editor-h3-mtop-l				: 1.5 * $editor-space-default-l ;
 
 
 /*----------  Lien  ----------*/
 
-$wysi-link-color					: $black;
+$editor-link-color					: $black;
 
-$wysi-link-color-hover				: $black;
-$wysi-link-bg-color-hover			: $yellow;
+$editor-link-color-hover			: $black;
+$editor-link-bg-color-hover			: $yellow;
 
-$wysi-link-color-visited			: $black;
-$wysi-link-border-color-visited		: $grey;
+$editor-link-color-visited			: $black;
+$editor-link-border-color-visited	: $grey;
 
 
 /*----------  Blocs ACF  ----------*/
 
-$wysi-cta-bg-color			: $grey;
+$editor-cta-bg-color		: $grey;
 
 
 

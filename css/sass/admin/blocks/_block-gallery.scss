@@ -1,4 +1,4 @@
-.wp-gallery {
+.gallery-list {
 	list-style:none;
 	display: flex;
 	flex-wrap: wrap;
@@ -6,20 +6,20 @@
 	gap:1rem;
 	padding:0;
 }
-.wp-gallery-item {
-	width: calc( (100% - 5rem) / 6 );
+.gallery-item {
+	width: calc( (100% - 3rem) / 4 );
 
-	[data-align="wide"] & {
-		width: calc( (100% - 7rem) / 8 );
+	.bloc-wide & {
+		width: calc( (100% - 5rem) / 6 );
 	}
 }
-.wp-gallery-link {
+.gallery-link {
 	display: block;
 }
-.wp-gallery-img {
+.gallery-img {
 	vertical-align: bottom;
 }
-.wp-gallery-ico {
+.gallery-ico {
 	display: none;
 }
 

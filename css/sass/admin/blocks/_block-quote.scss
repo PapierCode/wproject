@@ -1,0 +1,23 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.bloc-quote {
+	position: relative;
+
+	p {
+		font-style: italic;
+		font-weight: 700;
+		margin:0;
+	}
+	cite {
+		display: block;
+		text-align: right;
+		font-style: normal;
+		margin-top:rem(5)
+	}
+	.ico {
+		position: absolute;
+		top:0;
+		right: calc(100% + #{rem(10)});
+	}
+}

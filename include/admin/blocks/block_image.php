@@ -1,32 +1,86 @@
 <?php
-			
-acf_register_block_type(array(
-	'name'              => 'pc-image',
-	'title'             => 'Images',
-	'icon'              => 'format-image',
-	'category'          => 'media',
-	'keywords'          => array( 'image' ),
-	'mode'				=> 'auto',
-	'supports'			=> array(
-		'align' => array( 'wide' ),
-		'anchor' => true
-	),
-	'render_callback'   => 'pc_acf_block_image_render',
-));
+$img = get_field('_bloc_img_id');
 
-function pc_acf_block_image_render( $block ) {
+if ( $img ) {
 
-	$image_id = get_field('image');
-	$caption = wp_get_attachment_caption($image_id);
-	$container = ( '' != $caption ) ? 'figure' : 'div';
+	$caption = $img['caption'];
+	$tag = ( $caption ) ? 'figure' : 'div';
 
-	$align = get_field('alignement');
+	$block_css = array( 'bloc-image', 'bloc-image--'.get_field('_bloc_img_align'), 'bloc-space--'.get_field('_bloc_space_v') );
 	
-	echo '<'.$container.' class="wysi-image wysi-image--'.$align.'">';
-		echo wp_get_attachment_image( $image_id, 'full' );
-		if ( '' != $caption ) {
-			echo '<figcaption>'.$caption.'</figcaption>';
+	$block_size = get_field('_bloc_size');
+	if ( 'wide' == $block_size ) { $block_css[] = 'bloc-wide'; }
+	
+	$img_size = get_field('_bloc_img_size');
+	$sizes = array();
+	$srcset = array();
+
+	if ( 'wide' == $block_size || ( 'default' == $block_size && in_array( $img_size, array('600','800') ) ) ) {
+
+		$srcset = array(
+			$img['sizes']['thumbnail'].' 400w',
+			$img['sizes']['medium'].' 600w'
+		);
+
+		if ( 'wide' == $block_size || ( 'default' == $block_size && '800' == $img_size ) ) {
+
+			$srcset[] = $img['sizes']['medium_large'].' 800w';
+
+			if ( 'wide' == $block_size ) {
+				$srcset[] = $img['sizes']['large'].' 1200w';
+			}
+
 		}
-	echo '</'.$container.'>';
+
+		$sizes = array(
+			'(max-width:'.(400/16).'em) 400px'
+		);
+
+		if ( 'default' == $block_size && '600' == $img_size ) {
+			$sizes[] = '600px';
+		}
+		if ( 'wide' == $block_size || ( 'default' == $block_size && '800' == $img_size ) ) {
+			$sizes[] = '(max-width:'.(600/16).'em) 600px';
+		}
+		if ( 'default' == $block_size && '800' == $img_size ) {
+			$sizes[] = '800px';
+		}
+		if ( 'wide' == $block_size ) {
+			$sizes = array_merge(
+				$sizes,
+				array(
+					'(max-width:'.(800/16).'em) 800px',
+					'1200px'
+				)
+			);
+		}
+
+	}
+
+	$attrs = array(
+		'alt' => $img['alt'],
+		'loading' => 'lazy',
+		'src' => $img['sizes']['large'],
+		'width' => $img['sizes']['large-width'],
+		'height' => $img['sizes']['large-height'],
+	);
+	if ( !empty( $srcset ) ) { $attrs['srcset'] = implode( ', ', $srcset ); }
+	if ( !empty( $sizes ) ) { $attrs['sizes'] = implode( ', ', $sizes ); }
+
+	echo '<div class="'.implode(' ',$block_css).'"><'.$tag.'>';
+
+		echo '<img';
+			foreach ( $attrs as $key => $value ) {
+				echo ' '.$key.'="'.$value.'"';
+			}
+		echo '/>';
+
+		if ( $caption ) { echo '<figcaption>'.$caption.'</figcaption>'; }
+
+	echo '</'.$tag.'></div>';
+
+} else if ( $is_preview ) {
+
+	echo '<p class="editor-error">Erreur bloc <em>Image</em> : sélectionnez une image.</p>';
 
 }

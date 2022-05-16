@@ -1,53 +1,31 @@
 <?php
-			
-acf_register_block_type(array(
-	'name'              => 'pc-gallery',
-	'title'             => 'Galerie d\'images',
-	'icon'              => 'format-gallery',
-	'category'          => 'media',
-	'keywords'          => array( 'image', 'galerie' ),
-	'mode'				=> 'auto',
-	'supports'			=> array(
-		'align' => array( 'wide' ),
-		'anchor' => true
-	),
-	'render_callback'   => 'pc_acf_block_gallery_render',
-));
 
-function pc_acf_block_gallery_render() {
+$gallery = get_field('_bloc_gallery_ids');
 
-	$gallery = get_field('images');
+if ( $gallery ) {
 
-	if ( is_array( $gallery ) && count( $gallery ) > 0 ) {
+	$block_css = array( 'gallery', 'bloc-gallery', 'bloc-space--'.get_field('_bloc_space_v') );
+	
+	$block_size = get_field('_bloc_size');
+	if ( 'wide' == $block_size ) { $block_css[] = 'bloc-wide'; }
 
-		echo '<ul class="wp-gallery reset-list">';
+	echo '<div class="'.implode(' ',$block_css).'"><ul class="gallery-list reset-list">';
 
-		foreach ( $gallery as $img_id ) {
+	foreach ( $gallery as $image ) {
 
-			$thumbnail_datas = wp_get_attachment_image_src( $img_id, 'gl-th' );
-
-			if ( isset( $thumbnail_datas ) && $thumbnail_datas[3] == 1 ) {
-
-				$medium_datas = wp_get_attachment_image_url( $img_id,'gl-m' );
-				$large_datas = wp_get_attachment_image_url( $img_id,'gl-l' );
-
-				$caption = wp_get_attachment_caption($img_id);
-				$alt = get_post_meta( $img_id, '_wp_attachment_image_alt', true);
-
-				// affichage
-				echo '<li class="wp-gallery-item">';
-					echo '<a class="wp-gallery-link" href="'.$large_datas.'" data-gl-caption="'.$caption.'" data-gl-responsive="'.$medium_datas.'" title="Afficher l\'image">';
-						echo '<img class="wp-gallery-img" src="'.$thumbnail_datas[0].'" width="'.$thumbnail_datas[1].'" height="'.$thumbnail_datas[2].'" alt="'.$alt.'" loading="lazy"/>';
-						echo '<span class="wp-gallery-ico">'.pc_svg('zoom').'</span>';
-					echo '</a>';
-				echo '</li>';
-
-			}
-
-		}
-
-		echo '</ul>';
+		echo '<li class="gallery-item">';
+			echo '<a class="gallery-link" href="'.$image['sizes']['gl-l'].'" data-gl-caption="'.$image['caption'].'" data-gl-responsive="'.$image['sizes']['gl-m'].'" title="Afficher l\'image">';
+				echo '<img class="gallery-img" src="'.$image['sizes']['gl-th'].'" width="'.$image['sizes']['gl-th-width'].'" height="'.$image['sizes']['gl-th-height'].'" alt="'.$image['alt'].'" loading="lazy"/>';
+				echo '<span class="gallery-ico">'.pc_svg('zoom').'</span>';
+			echo '</a>';
+		echo '</li>';
 
 	}
+
+	echo '</ul></div>';
+
+} else if ( $is_preview ) {
+
+	echo '<p class="editor-error">Erreur bloc <em>Galerie</em> : sélectionnez au moins une image.</p>';
 
 }

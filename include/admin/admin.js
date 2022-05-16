@@ -9,6 +9,7 @@
 		wp.data.dispatch( "core/editor" ).updateEditorSettings({
 			autosaveInterval: 99999
 		});
+
       
 		/*----------  Page sidebar  ----------*/
 		
@@ -27,18 +28,12 @@
 		wp.blocks.unregisterBlockStyle( 'core/image', 'rounded');
 
 
-			
-		wp.blocks.unregisterBlockVariation( 'core/columns', 'one-column-full' );
-		wp.blocks.unregisterBlockVariation( 'core/columns', 'three-columns-wider-center' );
-
-
 		/*----------  Options de texte  ----------*/
 
 		wp.richText.unregisterFormatType( 'core/image' );
 		wp.richText.unregisterFormatType( 'core/code' );
 		wp.richText.unregisterFormatType( 'core/keyboard' );
 		wp.richText.unregisterFormatType( 'core/text-color' );
-
    
     });
 
@@ -47,21 +42,13 @@
 		if ( name == 'core/heading' ) {
 			return lodash.assign( {}, settings, {
 				supports: lodash.assign( {}, settings.supports, {
-					align: [ 'wide' ],
+					align: [],
 				} )
 			} );
 		}
-		// if ( name == 'core/column' ) {
-			
-		// 	console.log(settings);
-		// 	return lodash.assign( {}, settings, {
-		// 		attributes: lodash.assign( {}, settings.attributes, {
-		// 			width: false,
-		// 		} )
-		// 	} );
-		// }
-	 
+
 		return settings;
+
 	}
 	 
 	wp.hooks.addFilter(
@@ -74,4 +61,3 @@
 
 
 /*=====  FIN Blocks Editor  =====*/
-

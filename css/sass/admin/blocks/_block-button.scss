@@ -1,0 +1,21 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.cta {
+	text-align: center;
+
+	&.cta--frame {
+		background-color: $editor-cta-bg-color;
+		padding:2rem;
+	}
+}
+.cta-title {
+	font-family: $font-face;
+	font-weight: $editor-heading-weight;
+	line-height: $editor-heading-line-height;
+	font-size: rem($editor-h2-font-size-l);
+	margin:0 0 1rem 0;
+}
+.cta-button {
+	@include button();
+}

@@ -1,5 +1,43 @@
-.acf-block-component {
-	margin:1rem 0;
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.acf-block-preview {
+	> * {
+		margin:1rem auto;
+		max-width:rem($maw-txt)
+	}
+	> *.bloc-wide {
+		max-width: none;
+	}
+}
+.bloc-space--x2 {
+	margin:2rem auto;
+}
+.bloc-space--x3 {
+	margin:3rem auto;
+}
+.bloc-space--x4 {
+	margin:4rem auto;
+}
+
+.editor-error {
+	padding:1rem;
+	background-color: red;
+	text-align: center;
+	font-weight: bold;
+}
+
+.wp-block {
+	line-height: 1.5;
+}
+p, ul, ol, h1, h2, h3 {
+	&.wp-block {
+		max-width:rem($maw-txt)!important;
+	}
+}
+h1 {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /*----------  Métaboxes  ----------*/

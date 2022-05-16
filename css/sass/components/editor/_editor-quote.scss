@@ -1,0 +1,51 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+@use "../../helpers" as *;
+
+.editor {
+
+	blockquote {
+		padding-left:rem($editor-space-default-s);
+		position: relative;
+
+		p {
+			margin: 0;
+			font-style: italic;
+			font-weight: 700;
+		}
+		cite {
+			display: block;
+			font-style: normal;
+			margin-top:rem($editor-space-default-s);
+			text-align: right;
+		}
+
+		.ico {
+			position: absolute;
+			z-index: -1;
+			top:0;
+			left:rem(-$editor-space-default-s);
+			transform-origin: left top;
+			transform: scale(4);
+		}
+		svg {
+			display: block;
+			fill: $grey;
+		}
+
+		&[class*="bloc-space"] {
+			.ico {
+				top:rem(-$editor-space-default-s);
+			}
+		}
+
+		@media ( min-width : em($mq-layout-xl) ) {
+			padding-left:rem($editor-space-default-l);
+
+			.ico {
+				left:rem(-$editor-space-default-l);
+			}
+		}
+	}
+
+}
