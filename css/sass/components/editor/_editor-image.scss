@@ -10,19 +10,15 @@
 
 		figcaption {
 			margin-top:rem(.5*$editor-space-default-s);
+			margin-right:rem($editor-space-default-s);
 			font-style: italic;
 		}
 		@media ( min-width : em($mq-layout-l) ) {
 			figcaption {
 				margin-top:rem(.5*$editor-space-default-l);
+				margin-right:rem($editor-space-default-l);
 			}	
 		}
-	}
-	.bloc-image--center {
-		text-align:center
-	}
-	.bloc-image--right {
-		text-align:right
 	}
 
 }

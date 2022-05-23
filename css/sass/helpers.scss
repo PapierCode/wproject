@@ -137,5 +137,14 @@
 	max-width:rem($maw-txt);
 }
 
+/*----------  Texte alignement  ----------*/
+
+.txt-align--center {
+	text-align: center;
+}
+.txt-align--right {
+	text-align: right;
+}
+
 
 /*=====  FIN Classes utiles  =====*/

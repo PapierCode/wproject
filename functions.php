@@ -8,9 +8,9 @@
 
 /*----------  Styles  ----------*/
 
-add_action( 'wp_enqueue_scripts', 'pc_enqueue_child_theme_style', 30 );
+add_action( 'wp_enqueue_scripts', 'pc_enqueue_project_dependencies' );
 
-    function pc_enqueue_child_theme_style() {
+    function pc_enqueue_project_dependencies() {
 		
 		wp_enqueue_style( 'project-screen', get_stylesheet_directory_uri().'/css/screen.css', null, null, 'screen' );
 		wp_enqueue_style( 'project-print', get_stylesheet_directory_uri().'/css/print.css', null, null, 'print' );
@@ -19,7 +19,6 @@ add_action( 'wp_enqueue_scripts', 'pc_enqueue_child_theme_style', 30 );
 
 
 /*----------  JS  ----------*/
-
 
 add_filter( 'pc_filter_js_files', 'pc_enqueue_child_theme_js' );
 
@@ -34,9 +33,22 @@ add_filter( 'pc_filter_js_files', 'pc_enqueue_child_theme_js' );
 		return $js_files;
 
 	}
-		
 
-/*----------  WooCommerce  ----------*/
+
+/*----------  Admin  ----------*/
+
+add_action( 'admin_enqueue_scripts', 'pc_enqueue_admin_project_dependencies' );
+
+	function pc_enqueue_admin_project_dependencies() {
+
+		wp_enqueue_style( 'pc-project-css-admin', get_stylesheet_directory_uri().'/css/admin.css' );
+		
+	}	
+
+
+/*===============================
+=            Include            =
+===============================*/	
 
 if ( class_exists( 'woocommerce' ) ) {
 
@@ -45,11 +57,7 @@ if ( class_exists( 'woocommerce' ) ) {
 
 }
 
-/*===============================
-=            Include            =
-===============================*/
-
-include 'include/admin/admin.php';
+// include 'include/admin/admin.php';
 
 include 'include/medias.php';
 

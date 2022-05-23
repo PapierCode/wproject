@@ -40,6 +40,14 @@ h1 {
 	margin-right: auto;
 }
 
+.txt-align--center {
+	text-align: center;
+}
+.txt-align--right {
+	text-align: right;
+}
+
+
 /*----------  Métaboxes  ----------*/
 
 .block-editor .postbox {
@@ -47,6 +55,8 @@ h1 {
 }
 
 /*----------  Options  ----------*/
+
+.block-editor-post-preview__dropdown,
 
 a[href="https://fr.wordpress.org/support/article/wordpress-editor/"],
 a[href="https://www.w3.org/TR/html52/dom.html#the-title-attribute"],

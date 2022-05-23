@@ -32,11 +32,6 @@
 		max-width: rem($maw-txt);
 		margin-inline: auto;
 	}
-	
-	ul:not([class]),
-	ol:not([class]) {
-		max-width: rem( $maw-txt - 2*$editor-space-default-l );
-	}
 
 	> *.bloc-wide {
 		max-width: none;
@@ -81,7 +76,7 @@
 	> :first-child, [class*="bloc-"]:first-child {
 		margin-top:0;
 	}
-	> :last-child, [class*="bloc-"]:first-child {
+	> :last-child, [class*="bloc-"]:last-child {
 		margin-bottom:0;
 	}
 	
@@ -124,10 +119,18 @@
 	==============================*/
 	
 	ul:not([class]) {
-		padding-left: rem(20);
+		padding-left: rem(2*$editor-space-default-s);
+
+		@media ( min-width : em($mq-layout-l) ) {
+			padding: rem(0,2*$editor-space-default-l);
+		}
 	}
 	ol:not([class]) {
-		padding-left: rem(30);
+		padding-left: rem(3*$editor-space-default-s);
+
+		@media ( min-width : em($mq-layout-l) ) {
+			padding: rem(0,3*$editor-space-default-l);
+		}
 	}
 	
 

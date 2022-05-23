@@ -5,7 +5,6 @@
 .editor {
 
 	blockquote {
-		padding-left:rem($editor-space-default-s);
 		position: relative;
 
 		p {
@@ -17,9 +16,7 @@
 			display: block;
 			font-style: normal;
 			margin-top:rem($editor-space-default-s);
-			text-align: right;
 		}
-
 		.ico {
 			position: absolute;
 			z-index: -1;
@@ -32,15 +29,16 @@
 			display: block;
 			fill: $grey;
 		}
-
 		&[class*="bloc-space"] {
 			.ico {
 				top:rem(-$editor-space-default-s);
 			}
 		}
 
+		@media ( min-width : em($mq-layout-l) ) {
+			padding: rem(0,2*$editor-space-default-l);
+		}
 		@media ( min-width : em($mq-layout-xl) ) {
-			padding-left:rem($editor-space-default-l);
 
 			.ico {
 				left:rem(-$editor-space-default-l);
