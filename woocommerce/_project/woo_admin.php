@@ -7,6 +7,7 @@
  ** Include
  ** CSS
  ** Renommages divers
+ ** Dashboard
  ** Pages
  ** Suppression des étiquettes
  ** Menu admin
@@ -62,6 +63,23 @@ add_filter( 'gettext', 'pc_woo_admin_edit_gettext', 10, 3 );
 
 
 /*=====  FIN Renommages divers  =====*/
+
+/*=================================
+=            Dashboard            =
+=================================*/
+
+/*----------  Suppression widget  ----------*/
+
+add_action('wp_dashboard_setup', 'pc_woo_remove_dashboard_widgets', 40);
+
+	function pc_woo_remove_dashboard_widgets() {
+
+		remove_meta_box( 'wc_admin_dashboard_setup', 'dashboard', 'normal');
+		
+	}
+
+
+/*=====  FIN Dashboard  =====*/
 
 /*=============================
 =            Pages            =

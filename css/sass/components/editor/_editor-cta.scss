@@ -7,11 +7,15 @@
 
 	.cta {
 		text-align: center;
-	}
-		
+	}		
 	.cta--frame {
-		background-color: $grey;
 		@extend .layout-ptrbl;
+	}
+	.cta--v1 {
+		background-color: $grey;
+	}
+	.cta--v2 {
+		border:5px solid $black;
 	}
 
 	.cta-title {

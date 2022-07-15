@@ -8,10 +8,10 @@
 	$gallery-space-s : 10;
 	$gallery-space-l : 20;
 
-	$mq-gallery-3cols : calc( #{ em( 2*200 + $gallery-space-s ) } + #{ 2*$space } );
-	$mq-gallery-4cols : calc( #{ em( 3*200 + 2*$gallery-space-s ) } + #{ 2*$space } );
-	$mq-gallery-5cols : calc( #{ em( 4*200 + 3*$gallery-space-l ) } + #{ 2*$space } );
-	$mq-gallery-6cols : calc( #{ em( 5*200 + 4*$gallery-space-l ) } + #{ 2*$space } );
+	$mq-gallery-3cols : em( 2*200 + $gallery-space-s );
+	$mq-gallery-4cols : em( 3*200 + 2*$gallery-space-s );
+	$mq-gallery-5cols : em( 4*200 + 3*$gallery-space-l );
+	$mq-gallery-6cols : em( 5*200 + 4*$gallery-space-l );
 
 	.gallery-list {
 		display:flex;

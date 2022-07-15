@@ -90,6 +90,7 @@ select,
 textarea {		
 	width:100%;
 	padding:rem(10);
+	background-color: #fff;
 	border: $border;
 	
 	.form-item--error & {
@@ -100,32 +101,24 @@ textarea {
 		outline: none;
 		border-color: $black;
 	}
-
-	&:read-only {
-		background-color: $grey;
-
-		&:focus {
-			border-color:$grey;
-		}
-	}
 }
 
-select {
-	position: relative;
+// select {
+// 	position: relative;
 
-	&::before, &::after {
-		content:"";
-		position: absolute;
-		z-index: 1;
-	}
-	&::after {
-		top:1px;
-		right: 1px;
-		bottom:1px;
-		width: rem(20);
-		background-color: $white;
-	}
-}
+// 	&::before, &::after {
+// 		content:"";
+// 		position: absolute;
+// 		z-index: 1;
+// 	}
+// 	&::after {
+// 		top:1px;
+// 		right: 1px;
+// 		bottom:1px;
+// 		width: rem(20);
+// 		background-color: $white;
+// 	}
+// }
 
 input[type="radio"],
 input[type="checkbox"] {
@@ -166,6 +159,16 @@ input[type="radio"] {
 		&::before {
 			border-radius:50%;
 		}
+	}
+}
+
+input:read-only,
+textarea:read-only,
+select:disabled {
+	background-color: $grey;
+
+	&:focus {
+		border-color:$grey;
 	}
 }
 

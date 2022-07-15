@@ -70,7 +70,7 @@
 		@include editor-margin( 3*$editor-space-default-s, 3*$editor-space-default-l );
 	}
 	.bloc-space--x4 {
-		@include editor-margin( 3*$editor-space-default-s, 4*$editor-space-default-l );
+		@include editor-margin( 4*$editor-space-default-s, 4*$editor-space-default-l );
 	}
 
 	> :first-child, [class*="bloc-"]:first-child {

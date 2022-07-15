@@ -42,7 +42,7 @@ var plugins = [
 	inlinesvg(),
 	autoprefixer({ grid: 'false', flexbox: 'false' }),
 	mqcombine(),
-	cssnano()
+	cssnano({ preset: ['default', { calc: false }] })
 ];
 
 
