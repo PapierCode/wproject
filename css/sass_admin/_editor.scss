@@ -1,0 +1,68 @@
+/**
+*
+* Blocks Editor & Metaboxes
+*
+**/
+
+@use "../sass/variables" as *;
+@use "../sass/mixins" as *;
+
+
+/*====================================
+=            Block Editor            =
+====================================*/
+
+/*----------  Interface  ----------*/
+
+.block-editor-post-preview__dropdown, // aperçu responsive
+.block-editor-inserter__tips // astuces dans le menu des blocs
+{
+	display: none !important;
+}
+
+// liens d'aide
+a[href="https://wordpress.org/support/article/embeds/"],
+a[href="https://fr.wordpress.org/support/article/wordpress-editor/"],
+a[href="https://www.w3.org/TR/html52/dom.html#the-title-attribute"],
+a[href="https://wordpress.org/support/article/page-jumps/"],
+a[href="https://fr.wordpress.org/support/article/writing-posts/#descriptions-des-boites-meta"],
+a[href="edit.php?post_type=wp_block"] {
+	display: none !important;
+}
+
+
+/*=====  FIN Block Editor  =====*/
+
+/*=================================
+=            Metaboxes            =
+=================================*/
+
+.block-editor .postbox {
+	background-color: #f2f2f2;
+}
+
+
+/*=====  FIN Metaboxes  =====*/
+
+/*===============================
+=            Helpers            =
+===============================*/
+
+// message d'erreur custom
+.editor-error {
+	padding:1rem;
+	background-color: #ff5e5e;
+	text-align: center;
+	font-weight: bold;
+}
+
+// alignements du texte
+.txt-align--center {
+	text-align: center;
+}
+.txt-align--right {
+	text-align: right;
+}
+
+
+/*=====  FIN Helpers  =====*/

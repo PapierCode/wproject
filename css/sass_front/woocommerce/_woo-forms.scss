@@ -1,0 +1,231 @@
+/**
+*
+* Woocommerce : formulaires
+*
+** Communs
+** Mot de passe
+** Connexion
+Validation commande
+*
+**/
+
+
+@use "../../sass/variables" as *;
+@use "../helpers" as *;
+@use "../forms/form-default" as *;
+
+
+/*===============================
+=            Communs            =
+===============================*/
+
+.woocommerce {
+	
+	// container label + champ
+	.form-row {
+		margin:rem($woo-space-form-row,0,0,0);
+
+		label + span {
+			display: block;
+			margin-top:rem(5);
+		}
+		&:first-child {
+			margin-top:0;
+		}
+	}
+
+	// indiquation champ obligatoire
+	.required {
+		display: inline-block;
+		color:$red;
+		@include font();
+		text-decoration: none;
+		transform: scale(2);
+		margin-left:rem(3)
+	}
+
+	// mention champ facultatif
+	.optional {
+		display: none;
+	}
+
+	// input radio et checkbox remplacés, cf. css/forms/form-default
+	input[type="radio"],
+	input[type="checkbox"] {
+		@extend .visually-hidden;
+	}
+
+}
+
+
+/*----------  Container validation  ----------*/
+
+.pc-woo-submit-box {
+	@include layout(m,1,0,0,0);
+	text-align: center;
+}
+
+
+/*----------  Message indiquant les champs obligatoires  ----------*/
+
+.pc-woo-msg-required-fields {
+	margin:0;
+	
+	.is-account & { // adresses
+		margin-bottom:rem($woo-space-form-row);
+	}
+	.is-account .edit-account & { // compte
+		margin:rem($woo-space-form-row,0,0,0);
+	}
+}
+
+
+/*=====  FIN Communs  =====*/
+
+/*====================================
+=            Mot de passe            =
+====================================*/
+
+.password-display-box {
+	position: relative;
+
+	input[type="password"] {
+		padding-right:rem(50);
+	}
+}
+.password-display-btn {
+	display: flex;
+	position: absolute;
+	top:50%;
+	right:rem(10);
+	transform: translateY(-50%);
+
+	svg {
+		fill:$black;
+	}
+
+	&:hover, &:focus {	   
+		svg {
+			fill:$red;
+		}
+	}
+}
+
+
+/*=====  FIN Mot de passe  =====*/
+
+/*=================================
+=            Connexion            =
+=================================*/
+
+.woocommerce-form-login {
+
+	> :last-child {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+		a {
+			margin-top: $space;
+		}
+	}	
+
+	@media ( min-width : em($mq-layout-m) ) {
+
+		> :last-child {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+
+			a {
+				margin-top: 0;
+			}
+		}		
+	}
+}
+
+.pc-woo-link-lost-password {
+	color:$black;
+	transition:all .3s ease;
+
+	&:hover, &:focus {
+	   text-decoration: none;
+	   background-color: $yellow;
+	   padding:rem(0,10);
+	   transition:all .3s ease;
+	}
+}
+
+
+/*=====  FIN Connexion  =====*/
+
+/*===========================================
+=            Validation commande            =
+===========================================*/
+
+/*----------  Case à cocher "Expédier à une adresse différente"  ----------*/
+
+#ship-to-different-address {
+	@extend .layout-mt;
+	margin-bottom:0;
+	display: inline-block;
+
+	label {
+		display: flex;
+		align-items: center;
+		padding:rem(10);
+		@include font(900);
+		font-size: rem(16);
+		text-transform: uppercase;
+		color:$white;
+		background-color: $black;
+		transition: all .3s ease;
+	
+		&:hover, &:focus {
+		   background-color: $blue;
+		   color:$black;
+		   transition: all .3s ease;
+		}
+
+		span {
+			display: flex;
+			align-items: center;
+
+			&::before {
+				margin-right:rem(10);
+				outline-color: $black;
+			}
+		}
+	}
+}
+
+
+/*----------  Select Pays  ----------*/
+
+// si les commandes sont limitées à un seul pays
+#billing_country_field,
+#shipping_country_field,
+.is-account #billing_email_field {
+	display: none;
+}
+
+
+/*----------  Message associé à la commande  ----------*/
+
+.woocommerce-additional-fields {
+
+	.form-row {
+		margin-top:0;
+	}
+}
+
+
+/*----------  Listes (reset)  ----------*/
+
+.woocommerce-shipping-methods, // méthodes de livraison
+.wc_payment_methods { // méthodes de paiement
+	@extend .reset-list;
+}
+
+
+/*=====  FIN Validation commande  =====*/

@@ -16,6 +16,8 @@
 
 const { src, dest, watch, series } = require( 'gulp' ); // base
 
+const browsersync 	= require('browser-sync').create();
+
 const sass          = require( 'gulp-sass' )(require('sass')); // scss to css
 const postcss 		= require( 'gulp-postcss' ); // package
 const cssnano 		= require( 'cssnano' ); // minification css
@@ -37,8 +39,7 @@ const terser		= require( 'gulp-terser' ); // minification js
 
 sass.compiler = require('sass');
 
-// plugins CSS
-var plugins = [
+var postCssPlugins = [
 	inlinesvg(),
 	autoprefixer({ grid: 'false', flexbox: 'false' }),
 	mqcombine(),
@@ -48,21 +49,21 @@ var plugins = [
 
 /*----------  Fonctions  ----------*/
 	
-function css() {
+function cssScreen() {
     
-    return src( ['css/sass/use.scss'] )
+    return src( ['css/sass_front/use.scss'] )
         .pipe(sass({ precision: 3 }))
-        .pipe(postcss( plugins ))
-		.pipe(rename('screen.css'))
+        .pipe(postcss( postCssPlugins ))
+		.pipe(rename('front.css'))
         .pipe(dest( './css/' ));
 
 }
 	
-function admin_css() {
+function cssAdmin() {
     
-    return src( ['css/sass/admin/use.scss'] )
+    return src( ['css/sass_admin/use.scss'] )
         .pipe(sass({ precision: 3 }))
-        .pipe(postcss( plugins ))
+        .pipe(postcss( postCssPlugins ))
 		.pipe(rename('admin.css'))
         .pipe(dest( './css/' ));
 
@@ -80,7 +81,7 @@ var js_src = [
 	'scripts/pc-project.js'
 ];
 
-function js_hint() {
+function jsHint() {
 
 	return src( js_src )
         .pipe(jshint())
@@ -104,9 +105,25 @@ function js() {
 =            Monitoring            =
 ==================================*/
 
+function browserSyncReload( cb ) {
+	browsersync.reload();
+	cb();
+}
+
 exports.watch = function() {
-	watch( 'css/**/*.scss', series(css,admin_css) )
-	watch( ['scripts/**/*.js', '!scripts/pc-project.min.js'], series(js_hint,js) )
+
+	browsersync.init({
+        proxy: 'dev.preform.papier-code.fr',
+		notify: false,
+		open: false
+    });
+
+	watch( 'css/sass/**/*.scss', series( cssScreen, cssAdmin, browserSyncReload ) )
+	watch( 'css/sass_front/**/*.scss', series( cssScreen, browserSyncReload ) )
+	watch( 'css/sass_admin/**/*.scss', series( cssAdmin, browserSyncReload ) )
+	watch( '**/**.php', series( browserSyncReload ) )
+	watch( ['scripts/**/*.js','!scripts/pc-project.min.js'], series( jsHint, js, browserSyncReload ) )
+
 };
 
 

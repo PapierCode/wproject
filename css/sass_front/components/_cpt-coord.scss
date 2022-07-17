@@ -1,0 +1,111 @@
+/**
+*
+* Composant : coord
+*
+**/
+
+
+@use "../../sass/variables" as *;
+@use "../../sass/mixins" as *;
+@use "../helpers" as *;
+
+
+.coord {}
+
+.coord-list {
+	margin:0;
+	font-style: normal;
+}
+
+.coord-item {
+	margin:0;
+	display: flex;
+}
+
+.coord-item--logo {
+	
+	@media ( min-width : em($mq-layout-m) ) {
+		img {
+			width:rem(120);
+		}
+	}
+}
+
+.coord-item--addr {
+	margin-top:rem(20);
+
+	button {
+		text-decoration: none;
+		color:$yellow;
+		font-size: rem(16);
+
+		&::before {
+			content:"";
+			display: inline-block;
+			width: rem(20);
+			height: rem(2);
+			vertical-align: middle;
+			margin-right: rem(5);
+			background-color: $yellow;
+		}
+
+		&:hover, &:focus {
+		   text-decoration: underline;
+		}
+	}
+
+	@media ( min-width : em($mq-layout-m) ) {
+		margin-top:rem(30);
+		
+		br:nth-of-type(1) {
+			display:none;
+		}
+	}
+
+}
+.coord-item--phone {
+	margin-top:rem(10);
+	
+	a {
+		text-decoration: none;
+		color:$white;
+
+		&:hover, &:focus {
+		   text-decoration: underline;
+		}
+	}
+	.coord-sep {
+		display: none;
+	}
+
+	@media ( min-width : em($mq-layout-m) ) {
+	
+		br {
+			display:none;
+		}
+		.coord-sep {
+			display: inline;
+		}
+	}
+}
+
+.coord-ico {
+	flex-shrink: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: rem(40);
+	height: rem(40);
+	margin-right: rem(10);
+	border:1px solid $white;
+	border-radius: 50%;
+
+	path {
+		fill:$white;
+	}
+}
+.coord-item--phone {
+	align-items: center;
+}
+
+.coord-txt {}

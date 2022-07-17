@@ -1,0 +1,248 @@
+/**
+*
+* Woocommerce : ajout au panier
+*
+** Container
+** Messages promotion & stock
+** Bouton ajout au panier
+** Prix
+** Quantité
+** Contextes
+*
+**/
+
+
+@use "../../sass/variables" as *;
+@use "../helpers" as *;
+
+
+/*=================================
+=            Container            =
+=================================*/
+
+.pc-woo-add-to-cart {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	border:$border;
+	padding: rem($atc-space);
+
+	.cart {
+		width: 100%;
+		margin-top: rem($atc-space);
+	}
+
+	@media ( min-width : em($mq-layout-m) ) {
+		flex-direction: row;
+
+		> * {
+			flex-grow: 1;
+		}
+	}
+	@media ( min-width : em($mq-layout-l) ) {
+		max-width:rem($atc-maw);
+	}
+}
+
+
+/*=====  FIN Container  =====*/
+
+/*==================================================
+=            Messages promotion & stock            =
+==================================================*/
+
+.promotion, .stock {
+	display: block;
+	padding: rem($atc-space);
+	margin:0;
+	@include font(900);
+	text-align: center;
+}
+.promotion {
+	background-color: darken($blue,30%);
+}
+.stock {
+	background-color: rgba($black,.2);
+}
+
+
+/*=====  FIN Messages promotion & stock  =====*/
+
+/*==============================================
+=            Bouton ajout au panier            =
+==============================================*/
+
+@mixin button-add-to-cart-s {
+	text-indent: -666em;
+	overflow: hidden;
+	width: rem($atc-ico-size + 2 * $button-space);
+	padding-left:rem($button-space);
+}
+@mixin button-add-to-cart-l {
+	text-indent: 0;
+	overflow: visible;
+	width: auto;
+	padding-left: rem($atc-ico-size + 2 * $button-space);
+}
+
+.single_add_to_cart_button {
+	background-color: $red;
+	color: $black;
+	margin-left: auto;
+	background-image:svg-load('../images/cart-more.svg',fill=$black);
+	background-repeat: no-repeat;
+	background-size: rem($atc-ico-size);
+	background-position: rem($button-space) center;
+	@include button-add-to-cart-s;
+	font-size: rem(18);
+
+	&:hover, &:focus {
+	   background-color: $blue;
+	}
+
+	@media ( min-width : em(550) ) {
+		@include button-add-to-cart-l;
+	}
+	@media ( min-width : em(700) ) {
+		@include button-add-to-cart-s;
+	}
+	@media ( min-width : em(900) ) {
+		@include button-add-to-cart-l;
+	}
+}
+
+
+/*=====  FIN Bouton ajout au panier  =====*/
+
+/*============================
+=            Prix            =
+============================*/
+
+.price {
+	display: block;
+	margin:0;
+	padding:rem($atc-space);
+	@include font(900);
+	background-color: $yellow;
+	font-size: rem(18);
+	text-align: center;
+
+	del {
+		@include font();
+		font-size: rem(14);
+	}
+	ins {
+		text-decoration: none;
+	}
+}
+
+.price-from { // txt "à partir de"
+	font-family: $font-default;
+	font-size: rem(14);
+}
+
+
+/*=====  FIN Prix  =====*/
+
+/*================================
+=            Quantité            =
+================================*/
+
+.quantity {
+	@extend .visually-hidden;
+}
+.pc-woo-qty-label {
+	@include font(900);
+	text-transform: uppercase;
+	min-width: rem($atc-label-miw-s);
+
+	@media ( min-width : em($mq-base-font-size) ) {
+		min-width: rem($atc-label-miw-l);
+	}
+}
+.pc-woo-qty {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.pc-woo-qty-counter {
+	text-align: center;
+	min-width: rem($atc-ico-size + 2 * $button-space);
+	font-weight: 700;
+}
+.pc-woo-qty-btn {
+	flex-shrink: 0;
+
+	&:disabled {
+		opacity: .3;
+		cursor: default;
+	}
+}
+
+
+/*=====  FIN Quantité  =====*/
+
+/*=================================
+=            Contextes            =
+=================================*/
+
+.product-type-simple {
+
+	.cart {
+		display: flex;
+	}
+}
+
+.product-type-variable {
+
+	.woocommerce-variation-add-to-cart {
+		display: flex;
+		margin-top: rem($atc-space);
+	}
+
+	// tableau de sélection d'une variation
+	.variations, tbody {
+		display: block;
+	}
+	tr {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+
+		&:nth-child(n+2) {
+			margin-top:rem($atc-space);
+		}
+	}
+	td.label {
+		padding-right: rem($atc-space);
+	}
+	label {
+		text-transform: uppercase;
+		@include font(900);
+	}
+	td.value {
+		flex-grow: 1;
+	}
+
+	// description variation
+	.woocommerce-variation-description {
+		p {
+			margin:rem($atc-space,0,0,0);
+		}
+	}
+
+	// prix variation
+	.woocommerce-variation-price {
+		margin-top:rem($atc-space);
+	}
+
+	@media ( min-width : em($mq-base-font-size) ) {
+		td.label {
+			min-width: rem($atc-label-miw-l);
+		}
+	}
+
+}
+
+
+/*=====  FIN Contextes  =====*/

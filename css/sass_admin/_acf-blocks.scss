@@ -1,0 +1,277 @@
+/**
+*
+** Blocs : paramètres & aperçus
+*
+* Défaut / Titres
+* ACF / Introduction
+* ACF / Image
+* ACF / Citation
+* ACF / CTA
+* ACF / Galerie
+* ACF / Embed
+*
+**/
+
+@use "../sass/variables" as *;
+@use "../sass/mixins" as *;
+
+
+/*===============================
+=            Communs            =
+===============================*/
+
+// bloc par défaut
+p, ul, ol, h1, h2, h3 {
+	&.wp-block {
+		max-width:rem($maw-txt)!important;
+	}
+}
+
+// typographie
+.wp-block {
+	line-height: 1.5;
+}
+
+// blocs ACF
+.acf-block-preview {
+	> * {
+		margin:1rem auto;
+		max-width:rem($maw-txt)
+	}
+	> *.bloc-wide {
+		max-width: none;
+	}
+}
+.bloc-space--x2 {
+	margin:2rem auto;
+}
+.bloc-space--x3 {
+	margin:3rem auto;
+}
+.bloc-space--x4 {
+	margin:4rem auto;
+}
+
+
+/*=====  FIN Communs  =====*/
+/*=======================================
+=            Défaut / Titres            =
+=======================================*/
+
+/*----------  Paramètres  ----------*/
+
+.components-button[aria-label="Titre 1"],
+.components-button[aria-label="Titre 4"],
+.components-button[aria-label="Titre 5"],
+.components-button[aria-label="Titre 6"]
+{
+	display: none;
+}
+
+
+/*----------  Aperçu  ----------*/
+
+.editor-post-title,
+.wp-block-heading
+{
+	@include font(900,1.4);
+}
+
+.editor-post-title {
+	font-size: rem($h1-font-size-l);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h2.wp-block-heading {
+	font-size: rem($editor-h2-font-size-l);
+}
+h3.wp-block-heading {
+	font-size: rem($editor-h3-font-size-l);
+}
+
+
+/*=====  FIN Défaut / Titres  =====*/
+
+/*==========================================
+=            ACF / Introduction            =
+==========================================*/
+
+.bloc-intro {
+	@include font(800,1.6);
+	font-size: rem(18);
+}
+
+
+/*=====  FIN ACF / Introduction  =====*/
+
+/*===================================
+=            ACF / Image            =
+===================================*/
+
+/*----------  Aperçu  ----------*/
+
+.bloc-image {
+	display:flex;
+	justify-content: center;
+
+	.bloc-columns &, figure  {
+		margin:0;
+	}
+
+	&.bloc-image--center {
+		text-align: center;
+	}
+	&.bloc-image--right {
+		text-align: right;
+	}
+	
+	figcaption {
+		font-style: italic;
+		margin-top: .5rem;
+	}
+}
+
+
+/*=====  FIN ACF / Image  =====*/
+
+/*======================================
+=            ACF / Citation            =
+======================================*/
+
+/*----------  Aperçu  ----------*/
+
+.bloc-quote {
+	position: relative;
+	font-family: $font-face;
+
+	p {
+		font-weight: 800;
+		font-size: rem(20);
+		margin:0;
+		
+		position: relative;
+		z-index: 1;
+
+		&::before, &::after {
+			content:"";
+			position: absolute;
+			top:rem(-10);
+			z-index: 0;
+			width: rem(26);
+			height: rem(20);
+			background-image: svg-load('../../images/icons/quote.svg');
+			opacity: .2;
+		}
+		&::before {
+			transform-origin: right top;
+			transform: scale(-$quote-size,$quote-size);
+			right:calc( 100% + #{rem(10)} );
+		}
+		&::after {
+			transform-origin: right top;
+			transform: scale($quote-size);
+			right:rem(-10);
+		}
+	}
+	cite {
+		display: block;
+		font-style: normal;
+		font-weight: 600;
+		margin-top:rem(5)
+	}
+}
+
+
+/*=====  FIN ACF / Citation  =====*/
+
+/*=================================
+=            ACF / CTA            =
+=================================*/
+
+/*----------  Aperçu  ----------*/
+
+.cta {
+	text-align: center;
+}
+.cta--frame {
+	padding:2rem;
+}
+.cta--v1 {
+	background-color: $editor-cta-bg-color;
+}
+.cta--v2 {
+	border:rem(5) solid $black;
+}
+
+.cta-title {
+	font-family: $font-face;
+	font-weight: $editor-heading-weight;
+	line-height: $editor-heading-line-height;
+	font-size: rem($editor-h2-font-size-l);
+	margin:0 0 1rem 0;
+}
+.cta-button {
+	@include button();
+}
+
+
+/*=====  FIN ACF / CTA  =====*/
+
+/*=====================================
+=            ACF / Galerie            =
+=====================================*/
+
+/*----------  Paramètres  ----------*/
+
+.acf-gallery-side [data-name="title"],
+.acf-gallery-side [data-name="description"],
+.acf-gallery-side .media-types-required-info
+{
+	display: none;
+}
+
+
+/*----------  Aperçu  ----------*/
+
+.gallery-list {
+	list-style:none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap:1rem;
+	padding:0;
+}
+.gallery-item {
+	width: calc( (100% - 3rem) / 4 );
+
+	.bloc-wide & {
+		width: calc( (100% - 5rem) / 6 );
+	}
+}
+.gallery-link {
+	display: block;
+}
+.gallery-img {
+	vertical-align: bottom;
+}
+.gallery-ico {
+	display: none;
+}
+
+
+/*=====  FIN ACF / Galerie  =====*/
+
+/*===================================
+=            ACF / Embed            =
+===================================*/
+
+.bloc-embed {
+	iframe {
+		display: block;
+		margin:0 auto;
+	}
+}
+
+
+/*=====  FIN ACF / Embed  =====*/

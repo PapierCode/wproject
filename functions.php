@@ -12,7 +12,7 @@ add_action( 'wp_enqueue_scripts', 'pc_enqueue_project_dependencies' );
 
     function pc_enqueue_project_dependencies() {
 		
-		wp_enqueue_style( 'project-screen', get_stylesheet_directory_uri().'/css/screen.css', null, null, 'screen' );
+		wp_enqueue_style( 'project-screen', get_stylesheet_directory_uri().'/css/front.css', null, null, 'screen' );
 		wp_enqueue_style( 'project-print', get_stylesheet_directory_uri().'/css/print.css', null, null, 'print' );
 
 	}

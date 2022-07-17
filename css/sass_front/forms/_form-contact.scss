@@ -1,0 +1,50 @@
+/**
+*
+* Formulaires : contact
+*
+**/
+
+
+@use "../../sass/variables" as *;
+@use "../../sass/mixins" as *;
+@use "../helpers" as *;
+@use "../components/cpt-buttons" as *;
+
+
+.form--contact {
+	@extend .layout-mt;	
+	@extend .layout-center;	
+	@extend .layout-maw-txt;	
+
+	form {
+		max-width: rem(700);
+	}
+	.form-item-inner {
+		margin-top : rem(5);
+	}
+	
+	@media ( min-width : em($mq-layout-l) ) {
+		
+		.form-item-inner {
+			margin-top: 0;
+			flex-grow: 1;
+		}
+	}
+}
+
+.form-item--contact-cgu {
+	padding-top:$space;
+	border-top:$border;
+
+	input[type="checkbox"] {
+		+ * {
+			&::before {
+				margin:rem(0,10,0,0);
+			}
+		}
+	}
+
+	@media ( min-width : em($mq-layout-l) ) {
+		padding-top:rem(20);
+	}
+}

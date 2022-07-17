@@ -1,0 +1,34 @@
+/**
+*
+* Composant : liens d'évitement
+*
+**/
+
+
+@use "../../sass/variables" as *;
+@use "../../sass/mixins" as *;
+@use "../helpers" as *;
+
+
+.skip-nav {
+	position: absolute;
+	margin: 0;
+	list-style: none;
+	z-index:9999;
+
+	a {
+		position: absolute;
+		left: -666em;
+		padding: rem(10);
+		background: #000;
+		color: #fff;
+		text-decoration: none;
+
+		&:focus {
+			position: static;
+			color:#fff;
+		}
+
+	}
+
+}

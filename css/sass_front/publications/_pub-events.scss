@@ -1,0 +1,174 @@
+/**
+*
+* Publications : événements
+*
+**/
+
+
+@use "../../sass/variables" as *;
+@use "../../sass/mixins" as *;
+@use "../helpers" as *;
+@use "../components/cpt-buttons" as *;
+
+
+/*===============================
+=            Filtres            =
+===============================*/
+
+.event-filter {
+	@extend .layout-mt;	
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	
+	@media ( min-width : em($mq-layout-m) ) {
+		display: block;
+		position: relative;
+	}
+}
+
+.event-filter-btn--past {
+
+	svg {
+		transform:rotate(180deg);
+	}
+
+	&:not(:only-child) {
+		margin-top: rem($button-space);
+	
+		@media ( min-width : em($mq-layout-m) ) {
+			margin-top: 0;
+			position: absolute;
+			top:0;
+			right: 0;
+		}
+	}
+}
+
+
+.event-filter-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+.event-filter-item {
+	margin:rem($button-space,$button-space,0,0);
+}
+.event-filter-link {
+
+	&.is-active {
+		@extend .button--red;
+
+		&:hover, &:focus {
+		   background-color: $blue;
+		   color:$black;
+		   transition: all .3s ease;
+		}
+	}
+}
+
+
+/*=====  FIN Filtres  =====*/
+
+/*============================
+=            Card            =
+============================*/
+
+.st--event {
+	.st-desc {
+		margin-bottom: rem($space--st);
+	}
+}
+
+.st-label--canceled {
+	background-color: $msg-error;
+}
+
+
+/*=====  FIN Card  =====*/
+
+/*==============================
+=            Single            =
+==============================*/
+
+.is-event {
+
+	.msg {
+		margin-top:0;
+	}
+
+	@media ( min-width : em($mq-layout-maw) ) {
+		.main-content-inner {
+			display: grid;
+			grid-template-columns: auto 1fr;
+			grid-template-rows: auto 1fr auto;
+			gap:rem(.5*$space-max,$space-max);
+		}
+	}
+}
+
+
+/*----------  Adresse & map  ----------*/
+
+$location-space : 10;
+
+.location {
+	@include layout(m,2,0,0,0);
+	@extend .layout-ptrbl;
+	border:$border;
+	position: relative;
+	max-width: rem($maw-txt);
+
+	@media ( min-width : em($mq-layout-maw) ) {
+		align-self: start;
+		grid-column: 2/3;
+		grid-row: 1/4;
+		margin-top:0;
+	}
+}
+
+.location-ico {
+	position: absolute;
+	left:50%;
+	top:0;
+	transform:translate(-50%,-50%);
+	background-color: $white;
+	padding:rem($location-space);
+	border: $border;
+
+	svg {
+		width: rem(30);
+		height: rem(30);
+	}
+}
+
+.location-details {}
+.location-title {
+	@extend .visually-hidden;
+}
+.location-list {
+	font-style: normal;
+	margin:rem(2*$location-space,0,0,0);
+
+	dd {
+		margin-left: 0;
+	}
+}
+.location-name {
+	@include font(800);
+	font-size: rem(20);
+}
+.location-link {
+	margin-top:rem($location-space);
+	
+	.ico {
+		transform: rotate(180deg);
+	}
+}
+.location-map {
+	margin-top:rem(3*$location-space);
+	height: rem(300);
+}
+
+
+/*=====  FIN Single  =====*/
+
