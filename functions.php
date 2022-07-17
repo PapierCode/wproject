@@ -60,6 +60,7 @@ if ( class_exists( 'woocommerce' ) ) {
 // include 'include/admin/admin.php';
 
 include 'include/medias.php';
+include 'include/form-contact.php';
 
 
 /*----------  Custom post  ----------*/
