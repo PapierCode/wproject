@@ -12,8 +12,10 @@ add_action( 'wp_enqueue_scripts', 'pc_enqueue_project_dependencies' );
 
     function pc_enqueue_project_dependencies() {
 		
-		wp_enqueue_style( 'project-screen', get_stylesheet_directory_uri().'/css/front.css', null, null, 'screen' );
-		wp_enqueue_style( 'project-print', get_stylesheet_directory_uri().'/css/print.css', null, null, 'print' );
+		$css_front_path = '/css/front.css';
+		wp_enqueue_style( 'project-screen', get_stylesheet_directory_uri().$css_front_path, null, filemtime(get_stylesheet_directory().$css_front_path), 'screen' );
+		$css_print_path = '/css/print.css';
+		wp_enqueue_style( 'project-print', get_stylesheet_directory_uri().$css_print_path, null, filemtime(get_stylesheet_directory().$css_print_path), 'print' );
 
 	}
 
@@ -25,10 +27,12 @@ add_filter( 'pc_filter_js_files', 'pc_enqueue_child_theme_js' );
 	function pc_enqueue_child_theme_js( $js_files ) {
 
 		if ( class_exists( 'woocommerce' ) ) {
-			$js_files['wpreform'] = get_bloginfo('template_directory').'/scripts/pc-preform.min.js'; // version sans jquery
+			$js_project_woo_path = '/scripts/pc-preform.min.js';
+			$js_files['wpreform'] = get_template_directory_uri().$js_project_woo_path.'?ver='.filemtime(get_template_directory().$js_project_woo_path); // version sans jquery
 		}
 
-		$js_files['project'] = get_stylesheet_directory_uri().'/scripts/pc-project.min.js';
+		$js_project_path = '/scripts/pc-project.min.js';
+		$js_files['project'] = get_stylesheet_directory_uri().$js_project_path.'?ver='.filemtime(get_stylesheet_directory().$js_project_path);
 
 		return $js_files;
 
@@ -41,7 +45,7 @@ add_action( 'admin_enqueue_scripts', 'pc_enqueue_admin_project_dependencies' );
 
 	function pc_enqueue_admin_project_dependencies() {
 
-		wp_enqueue_style( 'pc-project-css-admin', get_stylesheet_directory_uri().'/css/admin.css' );
+		wp_enqueue_style( 'pc-project-css-admin', get_stylesheet_directory_uri().'/css/admin.css', null, filemtime(get_stylesheet_directory().'/css/admin.css'), 'screen' );
 		
 	}	
 
