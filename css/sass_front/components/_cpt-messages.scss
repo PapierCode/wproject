@@ -17,27 +17,17 @@
 	color:$black;
 
 	&.msg--block {
-		background-color:$msg-default;
-		color:$white;
-		padding:rem(10);
+		border: rem(2) solid $msg-default;
+		padding:rem(10,20);
 	}
-	
 
-	// button, a, a:visited {
-	// 	border:none;
-	// 	padding:0;
-	// 	background-color: transparent;
-	// 	color:$black;
-	// 	text-decoration: underline;
-	// 	transition:background-color .3s ease;
+	a {
+		@include link();
+	}
 
-	// 	&:hover, &:focus {
-	// 	   text-decoration: none;
-	// 	   background-color: $black;
-	// 	   color:$white;
-	// 	   transition:background-color .3s ease;
-	// 	}
-	// }
+	.button {
+		height:rem($button-ico-size + $button-space)
+	}
 
 	@media ( min-width : em($mq-layout-m) ) {
 		margin: rem(30,0,30,0);
@@ -53,7 +43,7 @@
 	height: rem(30);
 	border-radius: 50%;
 	background-color: $msg-default;
-	margin-right:rem(10);
+	margin-right:rem(20);
 
 	svg {
 		fill: $white;
@@ -67,10 +57,8 @@
 	}
 
 	.msg--block & {
-		background-color:$white;
-
 		svg {
-			fill: $msg-default;
+			fill: $white;
 		}
 	}
 }
@@ -81,6 +69,7 @@
 		background-color: $msg-error;
 	}
 	&.msg--block {
+		border:none;
 		background-color:$msg-error;
 		color:$black;
 	}
@@ -92,6 +81,7 @@
 		background-color: $msg-success;
 	}
 	&.msg--block {
+		border:none;
 		background-color:$msg-success;
 	}
 }

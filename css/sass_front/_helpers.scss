@@ -146,5 +146,53 @@
 	text-align: right;
 }
 
+/*----------  Lien & Bouton (défaut)  ----------*/
+
+@mixin link() {
+	color:$editor-link-color;
+	transition:all 0.3s ease;
+	text-decoration-style: dashed;
+	
+	&:visited {
+		color:$editor-link-color-visited;
+		text-decoration-style: dotted;
+	}
+	&:active {
+		color:$editor-link-color-hover;
+		text-decoration-style: solid;
+	}
+	&:hover, &:focus {
+		color:$editor-link-color-hover;
+		text-decoration-style: solid;
+		text-decoration-thickness: 2px;
+		transition:all 0.3s ease;
+	}
+}
+
+@mixin button() {
+	display: inline-flex;
+	align-items: center;
+
+	height: rem($button-size);
+	padding:rem(0,$button-space);
+
+	background-color: $black;
+
+	@include font(900);
+	font-size:rem(16);
+	text-decoration: none;
+	color:$white;
+	text-transform: uppercase;
+
+	transition:all .3s ease;
+	
+	&:hover, &:focus {
+		background-color: $blue;
+		color:$black;
+		transition:all .3s ease;
+	}
+	
+}
+
 
 /*=====  FIN Classes utiles  =====*/

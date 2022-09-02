@@ -16,9 +16,9 @@
 
 const { src, dest, watch, series } = require( 'gulp' ); // base
 
-const browsersync 	= require('browser-sync').create();
+const browsersync 	= require( 'browser-sync' ).create();
 
-const sass          = require( 'gulp-sass' )(require('sass')); // scss to css
+const sass          = require( 'gulp-sass' )( require('sass') ); // scss to css
 const postcss 		= require( 'gulp-postcss' ); // package
 const cssnano 		= require( 'cssnano' ); // minification css
 const autoprefixer 	= require( 'autoprefixer' ); // ajout des préfixes

@@ -112,32 +112,5 @@
 	line-height: $line-height;
 }
 
-/*----------  Bouton (défaut)  ----------*/
-
-@mixin button() {
-	display: inline-flex;
-	align-items: center;
-
-	height: rem($button-size);
-	padding:rem(0,$button-space);
-
-	background-color: $black;
-
-	@include font(900);
-	font-size:rem(16);
-	text-decoration: none;
-	color:$white;
-	text-transform: uppercase;
-
-	transition:all .3s ease;
-	
-	&:hover, &:focus {
-		background-color: $blue;
-		color:$black;
-		transition:all .3s ease;
-	}
-	
-}
-
 
 /*=====  FIN Mixins  =====*/
