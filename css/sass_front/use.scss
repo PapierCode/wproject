@@ -69,12 +69,12 @@
 
 /*----------  Woocommerce  ----------*/
 
-// @use "woocommerce/woo";
-// @use "woocommerce/woo-addtocart";
-// @use "woocommerce/woo-product-card";
-// @use "woocommerce/woo-product-single";
-// @use "woocommerce/woo-messages";
-// @use "woocommerce/woo-forms";
-// @use "woocommerce/woo-account";
-// @use "woocommerce/woo-cart";
-// @use "woocommerce/woo-checkout";
+@use "woocommerce/woo";
+@use "woocommerce/woo-addtocart";
+@use "woocommerce/woo-product-card";
+@use "woocommerce/woo-product-single";
+@use "woocommerce/woo-messages";
+@use "woocommerce/woo-forms";
+@use "woocommerce/woo-account";
+@use "woocommerce/woo-cart";
+@use "woocommerce/woo-checkout";

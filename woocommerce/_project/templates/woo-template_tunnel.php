@@ -16,20 +16,17 @@
 
 /*----------  Sans container editor  ----------*/
 
-add_filter( 'pc_the_content_before', 'pc_woo_remove_editor_form_cart' );
-add_filter( 'pc_the_content_after', 'pc_woo_remove_editor_form_cart' );
+add_filter( 'pc_filter_page_wysiwyg_container', 'pc_woo_remove_editor_form_cart' );
 
-	function pc_woo_remove_editor_form_cart( $html ) {
+	function pc_woo_remove_editor_form_cart( $bool ) {
 
 		if ( is_cart() || is_checkout() || is_account_page() ) {
 
-			return '';
+			$bool = false;
 
-		} else {
-
-			return $html;
-			
 		}
+		
+		return $bool;
 
 	}
 

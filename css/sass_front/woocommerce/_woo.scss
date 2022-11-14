@@ -8,6 +8,7 @@
 
 
 @use "../../sass/variables" as *;
+@use "../../sass/mixins" as *;
 @use "../helpers" as *;
 
 
@@ -18,9 +19,9 @@
 /*----------  Titre intermédiaires  ----------*/
 
 .pc-woo-subtitle {
-	font-family: $editor-title-font;
+	font-family: $editor-heading-font;
 	font-size: rem($editor-h2-font-size-s);
-	line-height: $editor-title-line-h;
+	line-height: $editor-heading-line-height;
 	color: $editor-h2-color;
 
 	margin: 2*$space 0 $space 0;
@@ -59,7 +60,7 @@
 		height: rem($cart-button-ico-size);
 	}
 
-	&:hover, &:focus {
+	&:hover:not(:disabled), &:focus:not(:disabled) {
 	   background-color: $blue;
 	   transition:background-color .3s ease;
 
@@ -75,7 +76,7 @@
 
 .blockOverlay {
     background-color: rgba($white,.75)!important;
-    background-image: url("images/woo-loader.svg")!important;
+    background-image: svg-load("../../images/woo-loader.svg")!important;
     background-position: center!important;
     background-repeat: no-repeat!important;
     opacity: 1!important;

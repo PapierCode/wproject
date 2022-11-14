@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 3.8.0
+ * @version 7.0.1
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -27,7 +27,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 		<?php /* [PC] + .pc-cart-head */ ?>
 		<thead class="pc-cart-head">
 			<tr>
-				<th class="product-remove">&nbsp;</th>
+				<th class="product-remove"><span class="screen-reader-text"><?php esc_html_e( 'Remove item', 'woocommerce' ); ?></span></th>
 				<?php /* [PC] <th class="product-thumbnail">&nbsp;</th> */ ?>
 				<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
 				<th class="product-price"><?php esc_html_e( 'Price', 'woocommerce' ); ?></th>
@@ -152,7 +152,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 					<?php /* [PC] + div */ ?>
 					<div class="pc-cart-actions">
 
-					<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
+					<button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
 
 					<?php if ( wc_coupons_enabled() ) {
 						 /* [PC] + .pc-cart-actions-coupon */ ?>
@@ -162,8 +162,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 							<label for="coupon_code" class="visually-hidden"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>							
 							<input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" />
 							
-							<?php /* [PC] <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>*/ ?>
-							<button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><span class="txt">Appliquer</span></button>
+							<?php /* [PC] <button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>*/ ?>
+							<button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><span class="txt">Appliquer</span></button>
 
 							<?php do_action( 'woocommerce_cart_coupon' ); ?>
 

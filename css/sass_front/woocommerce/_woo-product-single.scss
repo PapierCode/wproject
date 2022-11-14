@@ -11,6 +11,7 @@
 
 
 @use "../../sass/variables" as *;
+@use "../../sass/mixins" as *;
 @use "../helpers" as *;
 
 
@@ -80,12 +81,12 @@
 .product-single-gallery {
 	margin-top:$space-v-coef*$space;
 
-	.wp-gallery {
+	.gallery {
 		display: grid;
 		grid-template-columns: repeat(3,1fr);
 		gap:rem(10);
 	}
-	.wp-gallery-item {
+	.gallery-item {
 
 		&:first-child {
 			grid-column: 1/4;
@@ -98,10 +99,10 @@
 
 	@media ( min-width : em($mq-layout-m) ) {
 		
-		.wp-gallery {
+		.gallery {
 			grid-template-columns: repeat(4,1fr);
 		}
-		.wp-gallery-item {
+		.gallery-item {
 
 			&:first-child {
 				grid-column: 1/5;
@@ -116,14 +117,14 @@
 		grid-row:2/4;
 		max-width:rem(400);
 
-		.wp-gallery {
+		.gallery {
 			position: sticky;
 			top:$space-v-coef*$space;
 		}
 	}
 	@media ( min-width : em($mq-layout-maw) ) {
 
-		.wp-gallery {
+		.gallery {
 			top:rem($space-max);
 		}
 	}

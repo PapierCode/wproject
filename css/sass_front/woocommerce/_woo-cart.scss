@@ -11,6 +11,7 @@
 
 
 @use "../../sass/variables" as *;
+@use "../../sass/mixins" as *;
 @use "../helpers" as *;
 
 
@@ -218,6 +219,9 @@
 
 	input {
 		height: rem($button-size);
+	}
+	button {
+		flex-shrink: 0;
 	}
 
 	@media ( min-width : em($mq-layout-l) ) {

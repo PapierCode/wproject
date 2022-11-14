@@ -13,6 +13,7 @@
 
 
 @use "../../sass/variables" as *;
+@use "../../sass/mixins" as *;
 @use "../helpers" as *;
 
 
@@ -89,7 +90,7 @@
 	background-color: $red;
 	color: $black;
 	margin-left: auto;
-	background-image:svg-load('../images/cart-more.svg',fill=$black);
+	background-image:svg-load('../../images/cart-more.svg',fill=$black);
 	background-repeat: no-repeat;
 	background-size: rem($atc-ico-size);
 	background-position: rem($button-space) center;
