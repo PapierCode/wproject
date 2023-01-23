@@ -229,12 +229,18 @@
 		border:5px solid $black;
 	}
 
-	.cta-title {
-		margin: 0 0 rem($editor-space-default-s) 0;
+	.cta-title, .cta-desc {
+		margin-top: 0;
+		margin-bottom: rem($editor-space-default-s);
 
 		@media ( min-width : em($mq-layout-l) ) {
 			margin-bottom:rem($editor-space-default-l);
 		}
+	}
+	.cta-title {}
+	.cta-desc {
+		max-width: rem($maw-txt);
+		@extend .layout-center;
 	}
 
 	.cta-button {

@@ -221,6 +221,8 @@
 =            Liste            =
 =============================*/
 
+/*----------  Commun  ----------*/
+
 .h-nav-list {
 
 	@media ( min-width : em($mq-layout-maw) ) {
@@ -228,18 +230,63 @@
 		flex-wrap: wrap;
 	}
 }
-.h-nav-item {
 
-	&:nth-child(n+2) {
-		margin-top:rem($button-space);
+.h-nav-item {
+	margin-top:rem($button-space);
+}
+
+
+/*----------  Level 1  ----------*/
+
+.h-p-nav-list--l1 {}
+
+.h-p-nav-item--l1 {
+
+	&:first-child {
+		margin-top:0;
 	}
 
-    @media ( min-width : em($mq-layout-maw) ) {  
+	@media ( min-width : em($mq-layout-maw) ) {
+		margin-top:0;
 
 		&:nth-child(n+2) {
-			margin:rem(0,0,0,$button-space);       
+			margin-left:rem($button-space);
+		}		
+	}
+}
+
+
+/*----------  Level 2  ----------*/
+
+.h-p-nav-list--l2 {
+	overflow-y: hidden;
+	margin-left:$space;
+	max-height: 0;
+	transition: max-height .5s ease;
+
+	.is-open & {
+		max-height: rem(1000);
+		transition: max-height 1s ease;
+	}
+
+	@media ( min-width : em($mq-layout-maw) ) {
+		flex-direction: column;
+		flex-wrap: nowrap;
+		position: absolute;
+		margin-left:0;
+
+		.is-open & {
+			// max-height: rem(1000);
 		}
 	}
+}
+
+.h-p-nav-item--l2 {
+	position: relative;
+}
+
+.h-p-nav-title--l2 {
+	margin:0;
 }
 
 
@@ -251,7 +298,7 @@
 
 .h-nav-link, .h-nav-link:visited {
 	@extend .button;
-	display: flex;
+	display: inline-flex;
 	text-transform: none;
 	@include font();
 
@@ -263,7 +310,6 @@
 	@media ( min-width : em($mq-header-nav-l) ) {
 
 		.is-active & {
-			transform:translateX(-.5*$space);
 			color:$black;
 		}
 		&:hover, &:focus {
@@ -275,7 +321,6 @@
 
 		.is-active & {
 			background-color: $white;
-			transform:translateY(rem($button-space));
 		}
 		&:hover, &:focus {
 			background-color:$blue;

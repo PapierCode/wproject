@@ -84,7 +84,7 @@ var js_src = [
 function jsHint() {
 
 	return src( js_src )
-        .pipe(jshint())
+		.pipe(jshint( { esnext:true, browser:true } ))
         .pipe(jshint.reporter( 'default' ));
 
 }

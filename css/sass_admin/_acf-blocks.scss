@@ -214,9 +214,13 @@ h3.wp-block-heading {
 .cta-button {
 	background-color: #000;
 	display:inline-block;
-	padding: 1rem 2rem;
+	padding: .5rem 2rem;
 	color: #fff;
-	text-decoration: none;
+	text-decoration: none!important;
+
+	&:hover {
+	   color:#fff;
+	}
 }
 
 
