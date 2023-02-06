@@ -23,7 +23,7 @@ h1 {
 	@include font(900);
 	color:$black;
 	font-size: rem($h1-font-size-s);
-	@include layout(p,2,0,1,0);
+	@include layout(p,2,0,2,0);
 	@extend .layout-maw-txt;
 	margin:0 auto;
 	

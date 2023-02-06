@@ -170,12 +170,12 @@ add_filter( 'wp_list_table_show_post_checkbox', 'pc_woo_checkbox', 10, 2 );
 
 /*----------  Ne pas modififer le status des pages catalogue & CGV  ----------*/
 
-add_filter( 'wp_insert_post_data', 'pc_woo_prevent_update_status', 10, 2 );
+add_filter( 'wp_insert_post_data', 'pc_woo_prevent_update_status', 10, 4 );
 
-	function pc_woo_prevent_update_status( $data, $postarr ) {
+	function pc_woo_prevent_update_status( $data, $postarr, $unsanitized_postarr, $update ) {
 		
 		// force le status
-		if ( 'page' == $data['post_type'] && ( wc_get_page_id('shop') == $postarr['ID'] || wc_terms_and_conditions_page_id() == $postarr['ID'] )  ) {
+		if ( $update && ( 'page' == $data['post_type'] && ( wc_get_page_id('shop') == $postarr['ID'] || wc_terms_and_conditions_page_id() == $postarr['ID'] ) ) ) {
 			$data['post_status'] = 'publish';
 			$data['post_password'] = '';
 		}

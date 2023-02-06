@@ -35,7 +35,7 @@ p, ul, ol, h1, h2, h3 {
 // blocs ACF
 .acf-block-preview {
 	> * {
-		margin:1rem auto;
+		margin:2rem auto;
 		max-width:rem($maw-txt)
 	}
 	> *.bloc-wide {
@@ -43,13 +43,13 @@ p, ul, ol, h1, h2, h3 {
 	}
 }
 .bloc-space--x2 {
-	margin:2rem auto;
+	margin:4rem auto;
 }
 .bloc-space--x3 {
-	margin:3rem auto;
+	margin:6rem auto;
 }
 .bloc-space--x4 {
-	margin:4rem auto;
+	margin:8rem auto;
 }
 
 
@@ -283,3 +283,39 @@ h3.wp-block-heading {
 
 
 /*=====  FIN ACF / Embed  =====*/
+
+/*==================================
+=            2 colonnes            =
+==================================*/
+
+.bloc-columns {
+	display: flex;
+	gap:2em;
+}
+.bloc-col {
+	flex:1;
+
+	> :first-child {
+		margin-top:0;
+	}
+}
+
+.bloc--columns--frame, .bloc-col--frame {
+	background-color: $grey;
+	padding:2rem;
+}
+
+.bloc-col-button {
+	background-color: #000;
+	display:inline-block;
+	padding: .5rem 2rem;
+	color: #fff;
+	text-decoration: none!important;
+
+	&:hover {
+	   color:#fff;
+	}
+}
+
+
+/*=====  FIN 2 colonnes  =====*/

@@ -136,14 +136,14 @@ if ( $st_list.length > 0 ) {
 
 /*=====  FIN Message cookies  ======*/
 
-/*===========================
-=            Map            =
-===========================*/
+/*======================================
+=            Événements Map            =
+======================================*/
 
-if ( $html.hasClass('has-map') ) {
+if ( $html.hasClass('is-event') ) {
 
-	var $eventMap = $('#map'),
-	eventMap = L.map( 'map', { 
+	var $eventMap = $('#event-map'),
+	eventMap = L.map( 'event-map', { 
 		center: L.latLng( $eventMap.data('lat'), $eventMap.data('lng') ),
 		zoom: 14,
 		minZoom : 10,
@@ -169,7 +169,7 @@ if ( $html.hasClass('has-map') ) {
 }
 
 
-/*=====  FIN Map  =====*/
+/*=====  FIN Événements Map  =====*/
 
 });
 
