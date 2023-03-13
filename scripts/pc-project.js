@@ -1,101 +1,39 @@
-jQuery(document).ready(function($){
+document.addEventListener( 'DOMContentLoaded', () => {
 
-/*=================================
-=            Variables            =
-=================================*/
+const html = document.querySelector( 'html' );
 
-var $win 			= $(window),
-	$html 			= $('html'),
-	$header 		= $('.header'),
-	$fs_img			= $('.fs-img'),
-	$main_header 	= $('.main-header'),
-
-	win_w, header_h, win_w_old = 0;
-
-
-
-
-/*=====  FIN Variables  =====*/
-
-/*==================================
-=            Responsive            =
-==================================*/
-
-// fonction executée au chargement de la page et à chaque modification de largeur de la fenêtre
-function win_resize() {
-
-	/*----------  Fullscreen  ----------*/	
-
-	if ( $html.hasClass('is-fullscreen') ) {
-
-		win_w = $win.width();
-
-		if ( win_w != win_w_old ) {
-
-			win_h = $win.height();
-			header_h = $header.outerHeight();
-
-			$main_header.css( 'height', rem( win_h - header_h ) );
-			$fs_img.css( 'height', rem( win_h ) );
-
-			win_w_old = win_w;
-
-		}
-
-	}
-
-} // fin winWidthChange()
-
-win_resize();
-
-$win.resize( win_resize );
-
-
-/*=====  End of Responsive  ======*/
-
-
-/*----------  Btn fullscreen  ----------*/
-
-if ( $html.hasClass('is-fullscreen')) {
-
-	var win_h;
-
-	$('.js-button-fullscreen').click(function() {
-		$('html, body').animate({ scrollTop:win_h }, 500);
-	});
-
-}
 
 /*----------  fake post resum  ----------*/
 
-var $st_list = $('.st-list');
+var cardLists = document.querySelectorAll( '.st-list' );
 
-if ( $st_list.length > 0 ) {
+if ( cardLists.length > 0 ) {
 
-	$st_list.each( function() { 
+	cardLists.forEach( ( cardList ) => { 
 
-		var $st_items = $(this).find('.st'),
-		$st_items_fake = 0;
+		var cards = cardList.querySelectorAll( '.st' ),
+		cardsFake = 0;
 
-		switch ( $st_items.length ) {
+		switch ( cards.length ) {
 			case 1 :
 			case 4 :
-				$st_items_fake = 2;
+				cardsFake = 2;
 				break;
 			case 2 :
 			case 3 :
 			case 5 :
-				$st_items_fake = 1;
+				cardsFake = 1;
 				break;
 		}
 
-		if ( $html.hasClass('is-home') && $st_items.length == 4 ) { $st_items_fake = 0; }
+		if ( html.classList.contains( 'is-home' ) && cards.length == 4 ) { cardsFake = 0; }
 
-		for ( i = 0; i < $st_items_fake; i++) {
+		for ( i = 0; i < cardsFake; i++ ) {
 			
-			var tag = $st_items.eq(0).prop('tagName').toLowerCase();
-
-			$(this).append('<'+tag+' class="st--fake '+$st_items.eq(0).attr('class')+'" aria-hidden="true"></'+tag+'>');
+			let cardFake = document.createElement( cards[0].tagName.toLowerCase() );
+			cardFake.classList.add( 'st--fake', cards[0].classList[0] );
+			cardFake.setAttribute( 'aria-hidden', 'true' );
+			cardList.appendChild( cardFake );
 
 		}
 
@@ -136,15 +74,15 @@ if ( $st_list.length > 0 ) {
 
 /*=====  FIN Message cookies  ======*/
 
-/*======================================
-=            Événements Map            =
-======================================*/
+/*===================================
+=            Content Map            =
+===================================*/
 
-if ( $html.hasClass('is-event') ) {
+if ( html.classList.contains( 'has-map' ) ) {
 
-	var $eventMap = $('#event-map'),
-	eventMap = L.map( 'event-map', { 
-		center: L.latLng( $eventMap.data('lat'), $eventMap.data('lng') ),
+	const singleMapBox = document.querySelector( '#main-map' );
+	const singleMap = L.map( 'main-map', { 
+		center: L.latLng( singleMapBox.dataset.lat, singleMapBox.dataset.lng ),
 		zoom: 14,
 		minZoom : 10,
 		maxZoom: 18,
@@ -152,24 +90,24 @@ if ( $html.hasClass('is-event') ) {
 		tap : false
 	});
 
-	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicGFwaWVyY29kZSIsImEiOiJja203a3E5N3kweXplMnhuNjBuOTV2bmQ1In0.UtKowadsitAGdxDUpMv5aA', {
+	L.tileLayer( 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicGFwaWVyY29kZSIsImEiOiJja203a3E5N3kweXplMnhuNjBuOTV2bmQ1In0.UtKowadsitAGdxDUpMv5aA', {
 		id: 'mapbox/streets-v11',
 		tileSize: 512,
 		zoomOffset: -1
-	}).addTo(eventMap);
+	} ).addTo( singleMap );
 
-	var mapIcon = L.divIcon({
+	const mapIcon = L.divIcon( {
 		iconSize: [40,60],
 		iconAnchor: [20,60],
 		className: 'map-marker'
-	});
-	var marker = L.marker([$eventMap.data('lat'), $eventMap.data('lng')], {icon: mapIcon}).addTo(eventMap);
+	} );
+	const marker = L.marker( [singleMapBox.dataset.lat, singleMapBox.dataset.lng], {icon: mapIcon} ).addTo( singleMap );
 
 
 }
 
 
-/*=====  FIN Événements Map  =====*/
+/*=====  FIN Content Map  =====*/
 
 });
 

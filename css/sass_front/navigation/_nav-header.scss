@@ -258,26 +258,27 @@
 
 /*----------  Level 2  ----------*/
 
-.h-p-nav-list--l2 {
+.h-p-nav-box--l2 {
+	visibility: hidden;
 	overflow-y: hidden;
-	margin-left:$space;
-	max-height: 0;
 	transition: max-height .5s ease;
 
 	.is-open & {
-		max-height: rem(1000);
 		transition: max-height 1s ease;
 	}
 
 	@media ( min-width : em($mq-layout-maw) ) {
+		position: absolute;
+	}
+
+}
+.h-p-nav-list--l2 {
+	margin-left:$space;
+
+	@media ( min-width : em($mq-layout-maw) ) {
 		flex-direction: column;
 		flex-wrap: nowrap;
-		position: absolute;
 		margin-left:0;
-
-		.is-open & {
-			// max-height: rem(1000);
-		}
 	}
 }
 
