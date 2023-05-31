@@ -187,11 +187,13 @@
 	
 	blockquote {
 		position: relative;
+		display: flex;
+		flex-direction: column;
 		font-family: $font-face;
 	
 		p {
 			font-weight: 800;
-			font-size: rem(20);
+			font-size: rem(24);
 			margin:0;
 			
 			position: relative;
@@ -218,11 +220,22 @@
 				right:rem(-10);
 			}
 		}
+
 		cite {
 			display: block;
 			font-style: normal;
 			font-weight: 600;
-			margin-top:rem(5)
+			margin-top:rem(10)
+		}
+
+		&.bloc-quote--left { align-items: flex-start;}
+		&.bloc-quote--center { 
+			align-items: center;
+			text-align: center;
+		}
+		&.bloc-quote--right { 
+			align-items: flex-end;
+			text-align: right;
 		}
 	}
 	

@@ -40,30 +40,6 @@
             "new_lines": ""
         },
         {
-            "key": "field_6286412b38941",
-            "label": "Alignement de la citation",
-            "name": "_bloc_quote_txt_align",
-            "aria-label": "",
-            "type": "button_group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "left": "Gauche",
-                "center": "Centre",
-                "right": "Droit"
-            },
-            "allow_null": 0,
-            "default_value": "center",
-            "layout": "horizontal",
-            "return_format": "value"
-        },
-        {
             "key": "field_627d1842da662",
             "label": "Source",
             "name": "_bloc_quote_src",
@@ -84,9 +60,9 @@
             "maxlength": ""
         },
         {
-            "key": "field_62864484e6517",
-            "label": "Alignement de la source",
-            "name": "_bloc_quote_src_align",
+            "key": "field_6286412b38941",
+            "label": "Alignement",
+            "name": "_bloc_quote_align",
             "aria-label": "",
             "type": "button_group",
             "instructions": "",
@@ -102,10 +78,10 @@
                 "center": "Centre",
                 "right": "Droit"
             },
-            "allow_null": 0,
             "default_value": "center",
-            "layout": "horizontal",
-            "return_format": "value"
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
         },
         {
             "key": "field_628f1614e3e3d",
@@ -167,5 +143,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678702623
+    "modified": 1685533585
 }

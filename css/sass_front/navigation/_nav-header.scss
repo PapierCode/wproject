@@ -303,14 +303,14 @@
 	text-transform: none;
 	@include font();
 
-	.is-active & {
+	.is-active > & {
 		background-color: $red;
 		color:$black;
 	}
 		
 	@media ( min-width : em($mq-header-nav-l) ) {
 
-		.is-active & {
+		.is-active > & {
 			color:$black;
 		}
 		&:hover, &:focus {
@@ -320,8 +320,8 @@
 	}
 	@media ( min-width : em($mq-layout-maw) ) {
 
-		.is-active & {
-			background-color: $white;
+		.is-active > & {
+			background-color: $green;
 		}
 		&:hover, &:focus {
 			background-color:$blue;

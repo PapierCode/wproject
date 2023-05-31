@@ -43,7 +43,7 @@ h1 {
 	border:$border;	
 	border-top:none;
 
-	html:not(.is-home) &:not(:first-child) {
+	.editor + & {
 		@extend .layout-mt;	
 	}
 
