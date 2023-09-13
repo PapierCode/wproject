@@ -10,7 +10,17 @@
 @use "../helpers" as *;
 @use "../components/cpt-buttons" as *;
 
+/*===============================
+=            Accueil            =
+===============================*/
 
+.home-events-more {
+	text-align: center;
+	@extend .layout-mt;
+}
+
+
+/*=====  FIN Accueil  =====*/
 /*===============================
 =            Filtres            =
 ===============================*/

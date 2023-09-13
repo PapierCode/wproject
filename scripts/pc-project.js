@@ -2,46 +2,6 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 const html = document.querySelector( 'html' );
 
-
-/*----------  fake post resum  ----------*/
-
-var cardLists = document.querySelectorAll( '.st-list' );
-
-if ( cardLists.length > 0 ) {
-
-	cardLists.forEach( ( cardList ) => { 
-
-		var cards = cardList.querySelectorAll( '.st' ),
-		cardsFake = 0;
-
-		switch ( cards.length ) {
-			case 1 :
-			case 4 :
-				cardsFake = 2;
-				break;
-			case 2 :
-			case 3 :
-			case 5 :
-				cardsFake = 1;
-				break;
-		}
-
-		if ( html.classList.contains( 'is-home' ) && cards.length == 4 ) { cardsFake = 0; }
-
-		for ( i = 0; i < cardsFake; i++ ) {
-			
-			let cardFake = document.createElement( cards[0].tagName.toLowerCase() );
-			cardFake.classList.add( 'st--fake', cards[0].classList[0] );
-			cardFake.setAttribute( 'aria-hidden', 'true' );
-			cardList.appendChild( cardFake );
-
-		}
-
-	});
-
-}
-
-
 /*=======================================
 =            Message cookies            =
 =======================================*/
