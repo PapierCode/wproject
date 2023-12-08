@@ -7,7 +7,7 @@
             "label": "Adresse de la page",
             "name": "_bloc_embed",
             "aria-label": "",
-            "type": "oembed",
+            "type": "url",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,8 +16,8 @@
                 "class": "",
                 "id": ""
             },
-            "width": 640,
-            "height": 360
+            "default_value": "",
+            "placeholder": ""
         }
     ],
     "location": [
@@ -38,5 +38,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1678702613
+    "modified": 1696429906
 }

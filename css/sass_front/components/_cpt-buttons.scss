@@ -90,3 +90,8 @@
 	background-color: $orange;
 	color:$black;
 }
+.button--arrow {
+	.ico {
+		transform: rotate(180deg);
+	}
+}
