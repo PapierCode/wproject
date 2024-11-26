@@ -1,2 +1,2 @@
 # WProject
-Thème enfant pour le thème WPreform pour les projets [Papier Codé](https://www.papier-code.fr).
+Obsolète, voir [V3](https://github.com/PapierCode/wpreform3).
